@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Photos-->
+        <scene sceneID="eNG-X8-xTr">
+            <objects>
+                <collectionViewController storyboardIdentifier="PhotosCollectionViewController" id="fSd-wR-duk" customClass="PhotosCollectionViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="WGn-NY-3Ce">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="g5i-u2-fQt">
+                            <size key="itemSize" width="125" height="117"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell1" id="5Z4-dH-5dw" customClass="PhotosCollectionViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="125" height="117"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="117"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Kv-7G-yvX" userLabel="photoimageView">
+                                            <rect key="frame" x="0.0" y="0.0" width="123" height="115"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="115" id="Ihp-wK-n1f"/>
+                                                <constraint firstAttribute="width" constant="123" id="syA-rY-U7i"/>
+                                            </constraints>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="constraints">
+                                                    <exclude reference="Ihp-wK-n1f"/>
+                                                    <exclude reference="syA-rY-U7i"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="3Kv-7G-yvX" secondAttribute="bottom" constant="1" id="1cY-NV-MiO"/>
+                                    <constraint firstAttribute="trailing" secondItem="3Kv-7G-yvX" secondAttribute="trailing" constant="1" id="3fS-FL-8hf"/>
+                                    <constraint firstAttribute="bottom" secondItem="3Kv-7G-yvX" secondAttribute="bottom" constant="1" id="4de-DF-WUo"/>
+                                    <constraint firstItem="3Kv-7G-yvX" firstAttribute="top" secondItem="5Z4-dH-5dw" secondAttribute="top" constant="1" id="EYU-6I-LsA"/>
+                                    <constraint firstItem="3Kv-7G-yvX" firstAttribute="leading" secondItem="5Z4-dH-5dw" secondAttribute="leading" id="JMu-nn-hdL"/>
+                                    <constraint firstItem="3Kv-7G-yvX" firstAttribute="top" secondItem="5Z4-dH-5dw" secondAttribute="top" id="QA1-sW-00t"/>
+                                    <constraint firstItem="3Kv-7G-yvX" firstAttribute="leading" secondItem="5Z4-dH-5dw" secondAttribute="leading" constant="1" id="jtt-Ub-UzW"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1cY-NV-MiO"/>
+                                        <exclude reference="3fS-FL-8hf"/>
+                                        <exclude reference="4de-DF-WUo"/>
+                                        <exclude reference="EYU-6I-LsA"/>
+                                        <exclude reference="jtt-Ub-UzW"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="1cY-NV-MiO"/>
+                                        <include reference="3fS-FL-8hf"/>
+                                        <include reference="4de-DF-WUo"/>
+                                        <include reference="EYU-6I-LsA"/>
+                                        <exclude reference="JMu-nn-hdL"/>
+                                        <exclude reference="QA1-sW-00t"/>
+                                        <include reference="jtt-Ub-UzW"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="PhotoImageView" destination="3Kv-7G-yvX" id="qdT-Ok-ff1"/>
+                                    <outlet property="photoimageView" destination="3Kv-7G-yvX" id="oRV-42-HL0"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="fSd-wR-duk" id="M7c-aS-awQ"/>
+                            <outlet property="delegate" destination="fSd-wR-duk" id="BOM-G1-jhJ"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Photos" id="8u8-IM-ybI">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="0ko-Xq-avO"/>
+                        <barButtonItem key="rightBarButtonItem" title="Ok" id="WQ5-Dc-JcK"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="WGn-NY-3Ce" id="IHC-dg-3AA"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3wz-B6-Hoh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7554" y="3312.75"/>
+        </scene>
+    </scenes>
+</document>
