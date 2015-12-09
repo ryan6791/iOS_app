@@ -570,6 +570,21 @@
     height = 64;
     ypad = 36;
     
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        height = 64;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        height = 70;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        height = 80;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        height = 55;
+    }
     
     // 1. hide the existing nav bar
     [self.navigationController setNavigationBarHidden:YES animated:NO];

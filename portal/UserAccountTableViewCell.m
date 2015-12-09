@@ -123,21 +123,21 @@
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
         pad = 3;
-        height = 35;
+        height = 30;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 0;
-        height = 35;
+        height = 30;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 0;
-        height = 35;
+        height = 33;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 0;
-        height = 35;
+        height = 30;
     }
     
     

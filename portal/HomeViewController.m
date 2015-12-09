@@ -121,21 +121,20 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 0;
-        height = 250;
+        height = 600;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 0;
-        height = 250;
+        height = 650;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 0;
-        height = 250;
+        height = 430;
     }
     
     
     
-    NSDictionary *viewsDictionary = @{@"top":self.tableBack, @"table": self.tableView};
     NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.tableBack attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
     NSLayoutConstraint *YConstraint = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.tableBack attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
     [self.tableBack addConstraint:YConstraint];
@@ -171,6 +170,22 @@
     
     height = 64;
     ypad = 36;
+    
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        height = 64;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        height = 70;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        height = 80;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        height = 55;
+    }
     
     
     // 1. hide the existing nav bar
@@ -220,28 +235,6 @@
 
 }
 
-- (void)setupTitleViewWithTitleText {
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"logo_.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-                                                                 style:UIBarButtonItemStylePlain
-                                                                target:self
-                                                                action:nil];
-    
-    
-    //  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"logo_.png"] style:UIBarButtonItemStylePlain target:self action:@selector(Back)];
-    //  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style: UIBarButtonItemStylePlain target:self action:@selector(Back)];
-    self.navigationItem.rightBarButtonItem = rightBtn;
-    
-    UIButton *titleView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-    [titleView setUserInteractionEnabled:NO];
-    
-    NSString *titleText = @"Portal";
-    [titleView setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
-    [titleView setTitle:titleText forState:UIControlStateNormal];
-    
-    
-    self.navigationItem.titleView = titleView;
-}
 
 
 
@@ -270,16 +263,16 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 0;
-        height = 500;
+        height = 600;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 0;
-        height = 500;
+        height = 650;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 0;
-        height = 500;
+        height = 430;
     }
     
     
@@ -381,14 +374,14 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        cellHeight = ceilf(180/2);
+        cellHeight = 595;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        cellHeight = ceil(300/3);
+        cellHeight = 645;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        cellHeight = ceilf(140/2);
+        cellHeight = 420;
     }
     
     return cellHeight; //(height / 5);//[self getCellHeight];

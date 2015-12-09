@@ -110,6 +110,22 @@
     height = 64;
     ypad = 36;
     
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        height = 64;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        height = 70;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        height = 80;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        height = 55;
+    }
+    
     
     // 1. hide the existing nav bar
     [self.navigationController setNavigationBarHidden:YES animated:NO];
@@ -176,21 +192,21 @@
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
         pad = 64;
-        height = 270;
+        height = 481;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 64;
-        height = 270;
+        pad = 70;
+        height = 592;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 64;
-        height = 270;
+        pad = 80;
+        height = 614;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 64;
-        height = 270;
+        pad = 55;
+        height = 471;
     }
     
     
@@ -246,16 +262,16 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 0;
-        height = 254;
+        height = 578;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 0;
-        height = 254;
+        height = 595;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 0;
-        height = 254;
+        pad = 1;
+        height = 409;
     }
     
 
@@ -314,16 +330,16 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 8;
-        height = 500;
+        height = 580;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 8;
-        height = 256;
+        height = 614;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 8;
-        height = 500;
+        pad = 6;
+        height = 411;
     }
     
     
@@ -367,39 +383,47 @@
     
     [self.view addSubview:self.socialbackground];
     
-    CGFloat pad = 0, height = 0;
+    CGFloat pad = 0, height = 0, width = 0, pad2 = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 8;
+        pad = 10;
+        pad2 = 20;
         height = 60;
+        width = 200;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 8;
+        pad = 10;
+        pad2 = 20;
         height = 60;
+        width = 220;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 8;
+        pad = 10;
+        pad2 = 20;
         height = 60;
+        width = 225;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 8;
-        height = 60;
+        pad = 10;
+        pad2 = 20;
+        height = 45;
+        width = 170;
     }
     
     
     
     NSDictionary *viewsDictionary = @{@"back":self.socialbackground, @"top": self.topbackground};
-        NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-10-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[back]-20-|" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+        NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[back]-pad-|" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
     [self.view addConstraints:constraint1];
     [self.view addConstraints:constraint2];
     
     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.socialbackground attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self.view addConstraint:constraint3];
     
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.socialbackground attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:200];
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.socialbackground attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
     [self.view addConstraint:constraint4];
     
 }
@@ -454,23 +478,20 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 17;
-        height = 30;
-        pad2 = 11;
-
+        pad = 13;
+        height = 37;
+        pad2 = 13;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 17;
-        height = 30;
-        pad2 = 11;
-
+        pad = 19;
+        height = 42;
+        pad2 = 23;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 17;
-        height = 30;
-        pad2 = 11;
-
+        pad = 9;
+        pad2 = 15;
+        height = 28;
     }
     
     
@@ -484,7 +505,7 @@
     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.facebookIcon attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self.view addConstraint:constraint3];
     
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.facebookIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:35];
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.facebookIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self.view addConstraint:constraint4];
     
 }
@@ -537,23 +558,29 @@
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
         pad = 15;
-        
         height = 35;
         pad2 = 11;
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 17;
-        height = 30;
+        pad = 13;
+        height = 37;
+        pad2 = 13;
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 17;
-        height = 30;
+        pad = 19;
+        height = 42;
+        pad2 = 15;
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 17;
-        height = 30;
+        pad = 9;
+        height = 28;
+        pad2 = 9;
+        
     }
     
     
@@ -567,7 +594,7 @@
     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.instagramIcon attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self.view addConstraint:constraint3];
     
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.instagramIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:35];
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.instagramIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self.view addConstraint:constraint4];
     
 }
@@ -621,20 +648,27 @@
         pad = 15;
         height = 35;
         pad2 = 11;
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 17;
-        height = 30;
+        pad = 13;
+        height = 37;
+        pad2 = 13;
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 17;
-        height = 30;
+        pad = 19;
+        height = 42;
+        pad2 = 15;
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 17;
-        height = 30;
+        pad = 9;
+        height = 28;
+        pad2 = 9;
+        
     }
     
     
@@ -648,7 +682,7 @@
     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.linkedinIcon attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self.view addConstraint:constraint3];
     
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.linkedinIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:35];
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.linkedinIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self.view addConstraint:constraint4];
     
 }
@@ -704,22 +738,28 @@
     {
         pad = 15;
         height = 35;
-        pad2 = 11;
-
+        pad2 = 10;
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 17;
-        height = 30;
+        pad = 13;
+        height = 38;
+        pad2 = 13;
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 17;
-        height = 30;
+        pad = 19;
+        height = 42;
+        pad2 = 15;
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 17;
-        height = 30;
+        pad = 9;
+        height = 28;
+        pad2 = 9;
+        
     }
     
     
@@ -733,7 +773,7 @@
     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.snapchatIcon attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self.view addConstraint:constraint3];
     
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.snapchatIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:35];
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.snapchatIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self.view addConstraint:constraint4];
     
 }

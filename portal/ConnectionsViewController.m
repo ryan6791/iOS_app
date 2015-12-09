@@ -100,12 +100,12 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 0;
-        height = 500;
+        height = 570;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 0;
-        height = 500;
+        height = 585;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 0;
@@ -153,6 +153,22 @@
     
     height = 64;
     ypad = 36;
+    
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        height = 64;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        height = 70;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        height = 80;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        height = 55;
+    }
     
     
     // 1. hide the existing nav bar
@@ -230,17 +246,17 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 10;
-        height = 500;
+        pad = 0;
+        height = 570;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 10;
-        height = 500;
+        pad = 0;
+        height = 585;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 10;
-        height = 500;
+        pad = 0;
+        height = 470;
     }
     
     
@@ -380,7 +396,24 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //  CGFloat height = self.tableBack.frame.size.height;
-    return 90; //(height / 5);//[self getCellHeight];
+    
+    CGFloat height = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        height =  90;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        height = 100;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        height = 105;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        height = 85;
+    }
+    return height; //(height / 5);//[self getCellHeight];
 }
 
 

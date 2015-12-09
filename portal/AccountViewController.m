@@ -171,6 +171,22 @@
 
         height = 64;
         ypad = 36;
+    
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        height = 64;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        height = 70;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        height = 80;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        height = 55;
+    }
 
     
     // 1. hide the existing nav bar
@@ -259,7 +275,6 @@
     
     
     
-    viewImage.layer.cornerRadius = 15;
     
     
     
@@ -295,23 +310,62 @@
     [self.view addConstraints:constraint2];
 
     
+    CGFloat image_size = 0, v_pad = 0, h_pad = 0, n_pad = 10;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        image_size = 32;
+        v_pad = 5;
+        n_pad = 10;
+        viewImage.layer.cornerRadius = 15;
+        h_pad = -13;
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        image_size = 35;
+        v_pad = 8;
+        viewImage.layer.cornerRadius = 18;
+        n_pad = 16;
+        h_pad = -18;
+
+
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        image_size = 37;
+        v_pad = 10;
+        viewImage.layer.cornerRadius = 20;
+        n_pad = 18;
+
+
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        
+        image_size = 29;
+        v_pad = 0;
+        viewImage.layer.cornerRadius = 15;
+        n_pad = 5;
+        h_pad = -11;
+
+    }
+    
     
 //    NSLayoutConstraint *constraint10 = [NSLayoutConstraint constraintWithItem:backView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:viewImage attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
     NSArray *constraint10 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[image]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:10]} views:viewsDictionary];
     [self.view addConstraints:constraint10];
-    NSArray *constraint20 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[image]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:5]} views:viewsDictionary];
+    NSArray *constraint20 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[image]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:v_pad]} views:viewsDictionary];
  //   [self.view addConstraint:constraint10];
     [self.view addConstraints:constraint20];
-    NSLayoutConstraint *constraint5 = [NSLayoutConstraint constraintWithItem:viewImage attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:32];
+    NSLayoutConstraint *constraint5 = [NSLayoutConstraint constraintWithItem:viewImage attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:image_size];
     [self.view addConstraint:constraint5];
     
-    NSLayoutConstraint *constraint6 = [NSLayoutConstraint constraintWithItem:viewImage attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:32];
+    NSLayoutConstraint *constraint6 = [NSLayoutConstraint constraintWithItem:viewImage attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:image_size];
     [self.view addConstraint:constraint6];
 
     
 
-        NSLayoutConstraint *constraint15 = [NSLayoutConstraint constraintWithItem:backView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:nameLabel attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:-13];
-    NSArray *constraint12 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[name]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:10]} views:viewsDictionary];
+        NSLayoutConstraint *constraint15 = [NSLayoutConstraint constraintWithItem:backView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:nameLabel attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:h_pad];
+    NSArray *constraint12 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[name]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:n_pad]} views:viewsDictionary];
     [self.view addConstraints:constraint12];
     [self.view addConstraint:constraint15];
 
@@ -478,17 +532,17 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 64;
-        height = 270;
+        pad = 70;
+        height = 310;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 64;
+        pad = 80;
         height = 270;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 64;
-        height = 270;
+        pad = 55;
+        height = 236;
     }
     
     
@@ -540,17 +594,17 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 0;
-        height = 254;
+        pad = 1;
+        height = 294;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 0;
+        pad = 1;
         height = 254;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 0;
-        height = 254;
+        pad = 1;
+        height = 234;
     }
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picturePressed:)];
@@ -612,7 +666,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 8;
-        height = 256;
+        height = 296;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
@@ -620,8 +674,8 @@
         height = 256;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 8;
-        height = 256;
+        pad = 6;
+        height = 236;
     }
     
     
@@ -665,16 +719,16 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 10;
+        pad = 0;
         height = 180;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 10;
+        pad = 0;
         height = 180;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 10;
+        pad = 0;
         height = 180;
     }
     
@@ -699,13 +753,35 @@
     UIFont *font;
     UIWindow* window = [UIApplication sharedApplication].keyWindow;
     
-    CGFloat width = window.frame.size.width - 30;
     CGFloat height = 0;
     
     self.networksLabel = [[UILabel alloc] init];
     
     self.networksLabel.font = [UIFont systemFontOfSize:5];
     height = 15;
+    
+    CGFloat pad = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 0;
+        height = 180;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 0;
+        height = 180;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 0;
+        height = 180;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 0;
+        height = 180;
+        self.networksLabel.font = [UIFont systemFontOfSize:3];
+
+    }
     
     
     
@@ -906,7 +982,23 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   //  CGFloat height = self.tableBack.frame.size.height;
-    return 45; //(height / 5);//[self getCellHeight];
+    CGFloat height = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        height = 45;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        height = 45;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        height = 48;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        height = 37;
+    }
+    return height; //(height / 5);//[self getCellHeight];
 }
 
 
@@ -1052,7 +1144,7 @@
         height = 1;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 2;
+        pad = 0;
         height = 1;
     }
     

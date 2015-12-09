@@ -74,7 +74,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 0;
-        height = 35;
+        height = 30;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
@@ -83,7 +83,7 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 0;
-        height = 35;
+        height = 23;
     }
     
     
@@ -112,8 +112,28 @@
     
     self.Label = [[UILabel alloc] init];
     
-    self.Label.font = [UIFont systemFontOfSize:5];
-    height = 15;
+    
+    CGFloat pad = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 75;
+        self.Label.font = [UIFont systemFontOfSize:5];
+
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 75;
+
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 75;
+
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 75;
+        self.Label.font = [UIFont systemFontOfSize:4];
+    }
     
     
     
@@ -125,7 +145,7 @@
     [self addSubview:self.Label];
     
     NSDictionary *viewsDictionary = @{@"label" : self.Label};
-    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-75-[label]" options:0 metrics:nil views:viewsDictionary];
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
     [self addConstraints:constraint1];
     NSLayoutConstraint *constraint2 = [NSLayoutConstraint constraintWithItem:self.Label attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0];
     [self addConstraint:constraint2];

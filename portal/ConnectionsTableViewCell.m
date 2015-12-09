@@ -74,24 +74,29 @@
     
     self.pickbackground.userInteractionEnabled = YES;
     
-    self.pickbackground.layer.cornerRadius = 20;
     
     [self addSubview:self.pickbackground];
     
     CGFloat pad = 0, height = 0;
-    CGFloat width = 0;
+    CGFloat width = 0, pad2 = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
         pad = 8;
         height = 58;
         width = 58;
+        pad2 = 20;
+        self.pickbackground.layer.cornerRadius = 20;
+
 
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 8;
-        height = 58;
-        width = 58;
+        height = 68;
+        width = 68;
+        pad2 = 22;
+        self.pickbackground.layer.cornerRadius = 20;
+
 
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
@@ -99,19 +104,24 @@
         pad = 8;
         height = 58;
         width = 58;
+        pad2 = 23;
+        self.pickbackground.layer.cornerRadius = 20;
 
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 8;
-        height = 58;
-        width = 58;
+        pad = 6;
+        height = 56;
+        width = 56;
+        pad2 = 19;
+        self.pickbackground.layer.cornerRadius = 20;
 
     }
     
     
     
     NSDictionary *viewsDictionary = @{@"back":self.pickbackground, @"top": self.backgroundView};
-    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
     NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
     [self addConstraints:constraint1];
     [self addConstraints:constraint2];
@@ -129,7 +139,6 @@
     self.pic = [[UIImageView alloc]initWithFrame:self.pickbackground.frame];
     
     self.pic.backgroundColor = [UIColor blueColor];
-    CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 10;
     self.pic.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pic invalidateIntrinsicContentSize];
     
@@ -137,7 +146,6 @@
     UIImage* image = [UIImage imageWithData:imageData];
     
     self.pic.layer.masksToBounds = YES;
-    self.pic.layer.cornerRadius = 20;
 
     
     
@@ -161,20 +169,28 @@
     {
         pad = 3;
         height = 52;
+        self.pic.layer.cornerRadius = 20;
+
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 0;
-        height = 52;
+        height = 61;
+        self.pic.layer.cornerRadius = 20;
+
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 0;
-        height = 52;
+        height = 64;
+        self.pic.layer.cornerRadius = 20;
+
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 0;
         height = 52;
+        self.pic.layer.cornerRadius = 20;
+
     }
     
     
@@ -221,39 +237,52 @@
     
     [self addSubview:self.socialbackground];
     
-    CGFloat pad = 0, height = 0;
+    CGFloat pad = 0, height = 0, pad2 = 0, width = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 8;
+        pad = 10;
         height = 60;
+        pad2 = 20;
+        width = 200;
+
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 8;
-        height = 60;
+        pad = 13;
+        height = 65;
+        pad2 = 30;
+        width = 230;
+
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 8;
+        pad = 10;
         height = 60;
+        pad2 = 20;
+        width = 240;
+
+
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 8;
-        height = 60;
+        pad = 12;
+        height = 55;
+        pad2 = 30;
+        width = 195;
+
     }
     
     
     
     NSDictionary *viewsDictionary = @{@"back":self.socialbackground, @"top": self.backgroundView, @"pickback": self.pickbackground};
-    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[back]-20-|" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[back]-pad-|" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
     [self addConstraints:constraint1];
     [self addConstraints:constraint2];
     
     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.socialbackground attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self addConstraint:constraint3];
     
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.socialbackground attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:200];
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.socialbackground attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
     [self addConstraint:constraint4];
     
 }
@@ -302,39 +331,43 @@
     
     [self.socialbackground addSubview:self.facebookIcon];
     
-    CGFloat pad = 0, height = 0;
+    CGFloat pad = 0, height = 0, pad2 = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 15;
+        pad = 23;
         height = 35;
+        pad2 = 15;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 17;
-        height = 30;
+        pad = 21;
+        height = 37;
+        pad2 = 13;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 17;
-        height = 30;
+        height = 42;
+        pad2 = 23;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 17;
-        height = 30;
+        pad = 16;
+        pad2 = 11;
+        height = 33;
     }
     
     
     
     NSDictionary *viewsDictionary = @{@"back":self.socialbackground, @"icon": self.facebookIcon};
     NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
     [self.socialbackground addConstraints:constraint1];
     [self.socialbackground addConstraints:constraint2];
     
     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.facebookIcon attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self addConstraint:constraint3];
     
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.facebookIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:35];
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.facebookIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self addConstraint:constraint4];
     
 }
@@ -349,7 +382,7 @@
     self.instagramIcon.translatesAutoresizingMaskIntoConstraints = NO;
     [self.instagramIcon invalidateIntrinsicContentSize];
     
-    UIImage *image = [UIImage imageNamed:@"instagram_icon1.png"];
+    UIImage *image = [UIImage imageNamed:@"instagram_icon"];
     
     [self.instagramIcon setBackgroundColor:[UIColor  clearColor]];
     [self.instagramIcon setBackgroundImage:image forState:UIControlStateNormal];
@@ -388,23 +421,29 @@
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
         pad = 15;
-        
         height = 35;
         pad2 = 11;
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 17;
-        height = 30;
+        pad = 13;
+        height = 37;
+        pad2 = 13;
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 17;
-        height = 30;
+        pad = 19;
+        height = 42;
+        pad2 = 15;
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 17;
-        height = 30;
+        pad = 13;
+        height = 33;
+        pad2 = 11;
+        
     }
     
     
@@ -418,7 +457,7 @@
     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.instagramIcon attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self addConstraint:constraint3];
     
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.instagramIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:35];
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.instagramIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self addConstraint:constraint4];
     
 }
@@ -475,20 +514,27 @@
         pad = 15;
         height = 35;
         pad2 = 11;
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 17;
-        height = 30;
+        pad = 13;
+        height = 37;
+        pad2 = 13;
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 17;
-        height = 30;
+        pad = 19;
+        height = 42;
+        pad2 = 15;
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 17;
-        height = 30;
+        pad = 11;
+        height = 33;
+        pad2 = 9;
+        
     }
     
     
@@ -566,17 +612,23 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 17;
-        height = 30;
+        pad = 13;
+        height = 38;
+        pad2 = 13;
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 17;
-        height = 30;
+        pad = 19;
+        height = 42;
+        pad2 = 15;
+        
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 17;
-        height = 30;
+        pad = 11;
+        height = 33;
+        pad2 = 9;
+        
     }
     
     
@@ -590,7 +642,7 @@
     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.snapchatIcon attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self addConstraint:constraint3];
     
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.snapchatIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:35];
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.snapchatIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self addConstraint:constraint4];
     
 }
@@ -660,12 +712,10 @@
 - (void)setupNameLabel {
     UIFont *font;
 
-    CGFloat height = 0;
     
     self.nameLabel = [[UILabel alloc] init];
     
     self.nameLabel.font = [UIFont systemFontOfSize:5];
-    height = 15;
     
     
     
@@ -676,12 +726,30 @@
     
     self.nameLabel.text = [[DataAccess singletonInstance] getName];
     
+    CGFloat pad = 0, pad2 = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 34;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 40;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 44;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 31;
+        pad2 = 1;
+    }
+    
     [self addSubview:self.nameLabel];
     
     NSDictionary *viewsDictionary = @{@"top":self.pickbackground, @"label" : self.nameLabel};
-    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-34-[label]" options:0 metrics:nil views:viewsDictionary];
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
     [self addConstraints:constraint1];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-2-[label]" options:0 metrics:nil views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
     [self addConstraints:constraint2];
     
 }

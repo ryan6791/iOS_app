@@ -152,6 +152,22 @@
     height = 64;
     ypad = 36;
     
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        height = 64;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        height = 70;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        height = 80;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        height = 55;
+    }
+    
     
     // 1. hide the existing nav bar
     [self.navigationController setNavigationBarHidden:YES animated:NO];
@@ -259,16 +275,16 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 10;
+        pad = 0;
         height = 180;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 10;
+        pad = 0;
         height = 180;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 10;
+        pad = 0;
         height = 180;
     }
     
@@ -303,6 +319,26 @@
     self.networksLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
     height = 15;
     
+    CGFloat pad = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 70;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 78;
+
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 80;
+
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 70;
+
+    }
+    
     
     
     [self.networksLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -318,7 +354,7 @@
     NSDictionary *viewsDictionary = @{@"label" : self.networksLabel};
     NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[label]" options:0 metrics:nil views:viewsDictionary];
     [self.view addConstraints:constraint1];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-70-[label]" options:0 metrics:nil views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
     [self.view addConstraints:constraint2];
     
 }
@@ -454,7 +490,29 @@
 
 - (CGFloat)tableView:(UITableView*)tableView
 heightForFooterInSection:(NSInteger)section {
-    return 185;
+    
+    CGFloat pad;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 185;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 240;
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 270;
+
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 140;
+        
+    }
+    
+    return pad;
 }
 
 - (UIView*)tableView:(UITableView*)tableView
@@ -536,7 +594,24 @@ viewForFooterInSection:(NSInteger)section {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //  CGFloat height = self.tableBack.frame.size.height;
-    return 45; //(height / 5);//[self getCellHeight];
+    
+    CGFloat height = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        height = 45;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        height = 45;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        height = 48;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        height = 37;
+    }
+    return height; //(height / 5);//[self getCellHeight];
 }
 
 
