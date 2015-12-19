@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "SwipeViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

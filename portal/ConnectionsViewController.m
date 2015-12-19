@@ -85,32 +85,38 @@
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1)];
     
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 100, 0);
 
     
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     
     
-    CGFloat pad = 0, height = 0;
+    CGFloat pad = 0, height = 0, edgeInset = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
         pad = 0;
         height = 500;
+        edgeInset = 100;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 0;
         height = 570;
+        edgeInset = 100;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 0;
-        height = 585;
+        height = 700;
+        edgeInset = 110;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 0;
         height = 500;
+        edgeInset = 80;
     }
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, edgeInset, 0);
+
     
     
     
@@ -252,7 +258,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 0;
-        height = 585;
+        height = 700;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 0;
@@ -333,8 +339,7 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1
-    ;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -408,7 +413,7 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        height = 105;
+        height = 110;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         height = 85;

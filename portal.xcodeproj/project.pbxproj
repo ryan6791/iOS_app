@@ -60,6 +60,14 @@
 		4ABB5BF71BC9D78100BEA3EF /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5BF61BC9D78100BEA3EF /* AccountViewController.m */; };
 		4AD55ACA1BF7C132006F2E0B /* FBAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD55AC91BF7C132006F2E0B /* FBAccountViewController.m */; };
 		4AD55ACD1BF7C464006F2E0B /* LinkedinAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD55ACC1BF7C464006F2E0B /* LinkedinAccountViewController.m */; };
+		4ADCA12D1C1E9804002A018B /* DraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCA1281C1E9804002A018B /* DraggableView.m */; };
+		4ADCA12E1C1E9804002A018B /* DraggableViewBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCA12A1C1E9804002A018B /* DraggableViewBackground.m */; };
+		4ADCA12F1C1E9804002A018B /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCA12C1C1E9804002A018B /* OverlayView.m */; };
+		4ADCA1321C1E9920002A018B /* SwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCA1311C1E9920002A018B /* SwipeViewController.m */; };
+		4ADCA1341C1E9AB1002A018B /* Oval 3 + Rectangle 11-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCA1331C1E9AB1002A018B /* Oval 3 + Rectangle 11-1.png */; };
+		4ADCA1361C1E9B47002A018B /* yesButton-01-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCA1351C1E9B47002A018B /* yesButton-01-1.png */; };
+		4ADCA1381C1E9B62002A018B /* noButton-01-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCA1371C1E9B62002A018B /* noButton-01-1.png */; };
+		4ADCA13A1C1E9B75002A018B /* Oval 2 + Rectangle 10-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCA1391C1E9B75002A018B /* Oval 2 + Rectangle 10-1.png */; };
 		4ADFECBA1BE3265B006515E5 /* LinkedinFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADFECB91BE3265B006515E5 /* LinkedinFieldViewController.m */; };
 		4ADFECBD1BE326D5006515E5 /* SnapchatFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADFECBC1BE326D5006515E5 /* SnapchatFieldViewController.m */; };
 		4AFC396F1C099D38004E7262 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC396E1C099D38004E7262 /* SettingsViewController.m */; };
@@ -173,6 +181,18 @@
 		4AD55AC91BF7C132006F2E0B /* FBAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBAccountViewController.m; sourceTree = "<group>"; };
 		4AD55ACB1BF7C464006F2E0B /* LinkedinAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedinAccountViewController.h; sourceTree = "<group>"; };
 		4AD55ACC1BF7C464006F2E0B /* LinkedinAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedinAccountViewController.m; sourceTree = "<group>"; };
+		4ADCA1271C1E9804002A018B /* DraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableView.h; sourceTree = "<group>"; };
+		4ADCA1281C1E9804002A018B /* DraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableView.m; sourceTree = "<group>"; };
+		4ADCA1291C1E9804002A018B /* DraggableViewBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableViewBackground.h; sourceTree = "<group>"; };
+		4ADCA12A1C1E9804002A018B /* DraggableViewBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableViewBackground.m; sourceTree = "<group>"; };
+		4ADCA12B1C1E9804002A018B /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
+		4ADCA12C1C1E9804002A018B /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
+		4ADCA1301C1E9920002A018B /* SwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeViewController.h; sourceTree = "<group>"; };
+		4ADCA1311C1E9920002A018B /* SwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeViewController.m; sourceTree = "<group>"; };
+		4ADCA1331C1E9AB1002A018B /* Oval 3 + Rectangle 11-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Oval 3 + Rectangle 11-1.png"; sourceTree = "<group>"; };
+		4ADCA1351C1E9B47002A018B /* yesButton-01-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yesButton-01-1.png"; sourceTree = "<group>"; };
+		4ADCA1371C1E9B62002A018B /* noButton-01-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noButton-01-1.png"; sourceTree = "<group>"; };
+		4ADCA1391C1E9B75002A018B /* Oval 2 + Rectangle 10-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Oval 2 + Rectangle 10-1.png"; sourceTree = "<group>"; };
 		4ADFECB81BE3265B006515E5 /* LinkedinFieldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedinFieldViewController.h; sourceTree = "<group>"; };
 		4ADFECB91BE3265B006515E5 /* LinkedinFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedinFieldViewController.m; sourceTree = "<group>"; };
 		4ADFECBB1BE326D5006515E5 /* SnapchatFieldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapchatFieldViewController.h; sourceTree = "<group>"; };
@@ -258,6 +278,10 @@
 		4ABB5B9A1BC8BCB600BEA3EF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4ADCA1391C1E9B75002A018B /* Oval 2 + Rectangle 10-1.png */,
+				4ADCA1371C1E9B62002A018B /* noButton-01-1.png */,
+				4ADCA1351C1E9B47002A018B /* yesButton-01-1.png */,
+				4ADCA1331C1E9AB1002A018B /* Oval 3 + Rectangle 11-1.png */,
 				4AFC39881C0ACD27004E7262 /* 1448798373_linkedin.png */,
 				4AFC39861C0ACCB3004E7262 /* 1448798253_facebook.png */,
 				4AFC39841C0ACC2E004E7262 /* 1448798067_instagram.png */,
@@ -329,6 +353,7 @@
 		4ABB5BE11BC8C08A00BEA3EF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4ADCA1261C1E9749002A018B /* Home */,
 				4ABB5BEB1BC9824300BEA3EF /* User Account */,
 				4ABB5BDE1BC8C07C00BEA3EF /* LoginViewController.h */,
 				4ABB5BDF1BC8C07C00BEA3EF /* LoginViewController.m */,
@@ -389,6 +414,21 @@
 				4AFC396E1C099D38004E7262 /* SettingsViewController.m */,
 			);
 			name = "User Account";
+			sourceTree = "<group>";
+		};
+		4ADCA1261C1E9749002A018B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4ADCA1271C1E9804002A018B /* DraggableView.h */,
+				4ADCA1281C1E9804002A018B /* DraggableView.m */,
+				4ADCA1291C1E9804002A018B /* DraggableViewBackground.h */,
+				4ADCA12A1C1E9804002A018B /* DraggableViewBackground.m */,
+				4ADCA12B1C1E9804002A018B /* OverlayView.h */,
+				4ADCA12C1C1E9804002A018B /* OverlayView.m */,
+				4ADCA1301C1E9920002A018B /* SwipeViewController.h */,
+				4ADCA1311C1E9920002A018B /* SwipeViewController.m */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -496,6 +536,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A92A38E1C057F1B00E12000 /* 1448450737_back.png in Resources */,
+				4ADCA13A1C1E9B75002A018B /* Oval 2 + Rectangle 10-1.png in Resources */,
 				4AB948971BD224FB002FEDE0 /* Main2.storyboard in Resources */,
 				4A256ADC1BE49248006CD39E /* linkedin_icon.png in Resources */,
 				4AFC39791C0A6766004E7262 /* 1448772307_Streamline-76.png in Resources */,
@@ -503,13 +544,16 @@
 				4AFC39891C0ACD27004E7262 /* 1448798373_linkedin.png in Resources */,
 				4AFC39851C0ACC2E004E7262 /* 1448798067_instagram.png in Resources */,
 				4A705C951BF598410084B23C /* Sign-in-Large---Default.png in Resources */,
+				4ADCA1341C1E9AB1002A018B /* Oval 3 + Rectangle 11-1.png in Resources */,
 				4AFC39711C0A5AEA004E7262 /* 1448769105_down4-1.png in Resources */,
 				4AFC39751C0A5D86004E7262 /* 1448769786_share-2.png in Resources */,
+				4ADCA1381C1E9B62002A018B /* noButton-01-1.png in Resources */,
 				4A92A3921C0584A300E12000 /* 1448452123_info-1.png in Resources */,
 				4A256AEA1BE4950B006CD39E /* instagram_icon1.png in Resources */,
 				4A92A3941C0586C600E12000 /* 1448452694_settings.png in Resources */,
 				4A256AEE1BE59BB0006CD39E /* checkbox.png in Resources */,
 				4A705C971BF598620084B23C /* Sign-In-Large---Default-ret.png in Resources */,
+				4ADCA1361C1E9B47002A018B /* yesButton-01-1.png in Resources */,
 				4AFC397D1C0A6A13004E7262 /* 1448772977_snapchat.png in Resources */,
 				4ABB5BAD1BC8BCB700BEA3EF /* LaunchScreen.storyboard in Resources */,
 				4A256ADE1BE49269006CD39E /* facebook_icon.png in Resources */,
@@ -554,9 +598,11 @@
 				4ABB5BDD1BC8BEC400BEA3EF /* DeviceManager.m in Sources */,
 				4ABB5BE71BC8C31400BEA3EF /* DataAccess.m in Sources */,
 				4A99BF2E1BE6EF4700356805 /* AccountTableViewCell.m in Sources */,
+				4ADCA12E1C1E9804002A018B /* DraggableViewBackground.m in Sources */,
 				4ABB5BF71BC9D78100BEA3EF /* AccountViewController.m in Sources */,
 				4A998B591C01BF97000F7BFD /* ConnectionsViewController.m in Sources */,
 				4ADFECBD1BE326D5006515E5 /* SnapchatFieldViewController.m in Sources */,
+				4ADCA1321C1E9920002A018B /* SwipeViewController.m in Sources */,
 				4A12E7A41BFB0F90000ECD59 /* UserAccountTableViewCell.m in Sources */,
 				4ABB5BF01BC9D5D800BEA3EF /* PhotoManager.m in Sources */,
 				4A99BF311BE728EC00356805 /* MyProfileViewController.m in Sources */,
@@ -575,7 +621,9 @@
 				4ABB5BE01BC8C07C00BEA3EF /* LoginViewController.m in Sources */,
 				4A86E7A41BCF709800DF3F8A /* PhotosCollectionViewCell.m in Sources */,
 				4ABB5BEA1BC8C58700BEA3EF /* HomeViewController.m in Sources */,
+				4ADCA12D1C1E9804002A018B /* DraggableView.m in Sources */,
 				4A46C3011BF6F34000FF9B46 /* ProfilePictureViewController.m in Sources */,
+				4ADCA12F1C1E9804002A018B /* OverlayView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

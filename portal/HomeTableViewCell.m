@@ -51,11 +51,14 @@
         
         [self addProfileBackground];
         [self addProfileImage];
+        [self setupNameLabel];
+        [self setupdateLabel];
         [self addSocialBackground];
         [self addFacebookIcon];
         [self addInstagramIcon];
         [self addLinkedinIcon];
         [self addSnapchatIcon];
+      //  [self addConnectIcon];
         [self addSnapchatBackground];
         [self addSnapchatLabel];
         
@@ -64,12 +67,13 @@
     return self;
 }
 
-- (void)addProfileBackground {
+
+- (void)addCellBackground {
     
-    self.pickbackground = [[UIView alloc]initWithFrame:self.backgroundView.frame];
+    self.cellbackground = [[UIView alloc]initWithFrame:self.backgroundView.frame];
     
-    self.pickbackground.backgroundColor = [UIColor grayColor];
-    CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 8;
+    self.cellbackground.backgroundColor = [self grayColor];
+    CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 80;
     self.pickbackground.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pickbackground invalidateIntrinsicContentSize];
     
@@ -89,21 +93,80 @@
     CGFloat pad = 0, height = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 8;
+        pad = 0;
         height = 481;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 8;
+        pad = 0;
         height = 574;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 8;
-        height = 645;
+        pad = 0;
+        height = 432;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 4;
+        pad = 0;
+        height = 410;
+    }
+    
+    
+    
+    NSDictionary *viewsDictionary = @{@"back":self.pickbackground, @"top": self.backgroundView};
+    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.backgroundView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.pickbackground attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.backgroundView addConstraint:constraint1];
+    [self.backgroundView addConstraints:constraint2];
+    
+    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.pickbackground attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
+    [self.backgroundView addConstraint:constraint3];
+    
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.pickbackground attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+    [self.backgroundView addConstraint:constraint4];
+    
+}
+
+- (void)addProfileBackground {
+    
+    self.pickbackground = [[UIView alloc]initWithFrame:self.backgroundView.frame];
+    
+    self.pickbackground.backgroundColor = [self grayColor];
+    CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 80;
+    self.pickbackground.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.pickbackground invalidateIntrinsicContentSize];
+    
+    //  self.pickbackground.alpha = 2.0;
+    
+    
+    self.pickbackground.layer.masksToBounds = NO;
+    self.pickbackground.layer.shadowOffset = CGSizeMake(-.1, .2);
+    self.pickbackground.layer.shadowRadius = .5;
+    self.pickbackground.layer.shadowOpacity = 0.5;
+    
+    self.pickbackground.userInteractionEnabled = YES;
+    
+    
+    [self.backgroundView addSubview:self.pickbackground];
+    
+    CGFloat pad = 0, height = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 0;
+        height = 481;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 0;
+        height = 574;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 0;
+        height = 432;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 0;
         height = 410;
     }
     
@@ -128,7 +191,7 @@
     self.pic = [[UIImageView alloc]initWithFrame:self.pickbackground.frame];
     
     self.pic.backgroundColor = [UIColor blueColor];
-    CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 10;
+    CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 82;
     self.pic.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pic invalidateIntrinsicContentSize];
     
@@ -167,7 +230,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 1;
-        height = 645;
+        height = 430;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 1;
@@ -192,11 +255,114 @@
     
 }
 
+
+- (void)setupNameLabel {
+    
+    
+    self.nameLabel = [[UILabel alloc] init];
+    
+    
+    
+    
+    [self.nameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.nameLabel invalidateIntrinsicContentSize];
+    self.nameLabel.textColor = [UIColor blackColor];
+    
+    self.nameLabel.text = [[DataAccess singletonInstance] getName];
+    
+    CGFloat pad = 0, pad2 = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        //   self.nameLabel.font = [UIFont systemFontOfSize:5];
+        pad = 15;
+        pad2 = 7;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        //    self.nameLabel.font = [UIFont systemFontOfSize:5];
+        pad = 16;
+        pad2 = 8;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 17;
+        pad2 = 9;
+        self.nameLabel.font = [UIFont systemFontOfSize:25];
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 14;
+        pad2 = 7;
+        //    self.nameLabel.font = [UIFont systemFontOfSize:4];
+        
+    }
+    
+    [self addSubview:self.nameLabel];
+    
+    NSDictionary *viewsDictionary = @{@"top":self.pickbackground, @"label" : self.nameLabel};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    [self addConstraints:constraint2];
+    
+}
+
+- (void)setupdateLabel {
+    
+    
+    self.contact_time = [[UILabel alloc] init];
+    
+    
+    
+    
+    [self.contact_time setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.contact_time invalidateIntrinsicContentSize];
+    self.contact_time.textColor = [UIColor darkGrayColor];
+    
+    self.contact_time.text = @"Encountered an hour ago";
+    
+    CGFloat pad = 0, pad2 = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        //   self.nameLabel.font = [UIFont systemFontOfSize:5];
+        pad = 15;
+        pad2 = 1;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        //    self.nameLabel.font = [UIFont systemFontOfSize:5];
+        pad = 16;
+        pad2 = 2;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 17;
+        pad2 = 2;
+        self.nameLabel.font = [UIFont systemFontOfSize:25];
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 14;
+        pad2 = 1;
+        //    self.nameLabel.font = [UIFont systemFontOfSize:4];
+        
+    }
+    
+    [self addSubview:self.contact_time];
+    
+    NSDictionary *viewsDictionary = @{@"top":self.nameLabel, @"label" : self.contact_time};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    [self addConstraints:constraint2];
+    
+}
+
 - (void)addSocialBackground {
     
     self.socialbackground = [[UIView alloc]initWithFrame:self.pic.frame];
     
-    self.socialbackground.backgroundColor = [self grayColor];
+    self.socialbackground.backgroundColor = [UIColor clearColor];
     //  CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 8;
     self.socialbackground.translatesAutoresizingMaskIntoConstraints = NO;
     [self.socialbackground invalidateIntrinsicContentSize];
@@ -329,8 +495,8 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 17;
-        height = 42;
-        pad2 = 23;
+        height = 33;
+        pad2 = 19;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 15;
@@ -416,7 +582,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 19;
-        height = 42;
+        height = 33;
         pad2 = 15;
         
     }
@@ -504,7 +670,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 19;
-        height = 42;
+        height = 33;
         pad2 = 15;
         
     }
@@ -595,7 +761,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 19;
-        height = 42;
+        height = 33;
         pad2 = 15;
 
     }
@@ -618,6 +784,94 @@
     [self addConstraint:constraint3];
     
     NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.snapchatIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
+    [self addConstraint:constraint4];
+    
+}
+
+
+- (void)addConnectIcon{
+    
+    self.addIcon = [[UIButton alloc]init];
+    
+    self.addIcon.backgroundColor = [UIColor blackColor];
+    //  CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 8;
+    self.addIcon.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.addIcon invalidateIntrinsicContentSize];
+    
+    
+    if (self.addIcon != nil) {
+        
+        self.addIcon.alpha =1.0;
+        self.addIcon.userInteractionEnabled = YES;
+        [self.addIcon
+         addTarget:self
+         action:@selector(SnapchatButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        
+    }else{
+        self.addIcon.userInteractionEnabled = NO;
+        self.addIcon.alpha = 0.2;
+    }
+    
+    
+    
+    
+    UIImage *image = [UIImage imageNamed:@"snapchat_icon"];
+    
+    [self.addIcon setBackgroundImage:image forState:UIControlStateNormal];
+    
+    [self.addIcon setBackgroundColor:[UIColor  clearColor]];
+    
+    
+    
+    self.addIcon.layer.masksToBounds = NO;
+    //    self.socialbackground.layer.shadowOffset = CGSizeMake(-.1, .2);
+    //    self.socialbackground.layer.shadowRadius = .5;
+    //    self.socialbackground.layer.shadowOpacity = 0.5;
+    
+    
+    [self.socialbackground addSubview:self.addIcon];
+    
+    CGFloat pad = 0, height = 0, pad2 = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 15;
+        height = 35;
+        pad2 = 10;
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 13;
+        height = 38;
+        pad2 = 13;
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 19;
+        height = 33;
+        pad2 = 15;
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 9;
+        height = 28;
+        pad2 = 9;
+        
+    }
+    
+    
+    
+    NSDictionary *viewsDictionary = @{@"back":self.socialbackground, @"icon": self.snapchatIcon, @"snap": self.addIcon};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[icon]-pad-[snap]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[snap]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self addConstraints:constraint1];
+    [self addConstraints:constraint2];
+    
+    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.addIcon attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
+    [self addConstraint:constraint3];
+    
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.addIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self addConstraint:constraint4];
     
 }

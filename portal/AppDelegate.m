@@ -83,7 +83,7 @@
 
 - (void)initRootViewController {
     
-    HomeViewController *ViewController = [[HomeViewController alloc] init];
+    SwipeViewController *ViewController = [[SwipeViewController alloc] init];
     
     self.navController = [[UINavigationController alloc] initWithRootViewController:ViewController];
     [self.navController setNavigationBarHidden:NO];

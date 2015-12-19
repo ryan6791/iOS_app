@@ -202,7 +202,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 80;
-        height = 614;
+        height = 670;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 55;
@@ -267,7 +267,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 0;
-        height = 595;
+        height = 635;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 1;
@@ -335,7 +335,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 8;
-        height = 614;
+        height = 638;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 6;

@@ -122,7 +122,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 0;
-        height = 250;
+        height = 210;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 0;
@@ -182,7 +182,7 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        height = 80;
+        height = 70;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         height = 55;
@@ -226,6 +226,25 @@
     UILabel *nameLabel = [[UILabel alloc] init];
     
     nameLabel.font = [UIFont systemFontOfSize:18];
+    
+    
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        nameLabel.font = [UIFont systemFontOfSize:18];
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        nameLabel.font = [UIFont systemFontOfSize:18];
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        nameLabel.font = [UIFont systemFontOfSize:23];
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        nameLabel.font = [UIFont systemFontOfSize:18];
+    }
+    
+    
     height = 15;
     
     viewImage.userInteractionEnabled = YES;
@@ -328,15 +347,14 @@
         n_pad = 16;
         h_pad = -18;
 
-
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        image_size = 37;
+        image_size = 40;
         v_pad = 10;
         viewImage.layer.cornerRadius = 20;
         n_pad = 18;
-
+        h_pad = -25;
 
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
@@ -538,7 +556,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 80;
-        height = 270;
+        height = 320;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 55;
@@ -600,7 +618,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 1;
-        height = 254;
+        height = 300;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 1;
@@ -671,7 +689,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 8;
-        height = 256;
+        height = 302;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 6;
@@ -725,7 +743,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 0;
-        height = 180;
+        height = 210;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 0;
@@ -993,7 +1011,7 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        height = 48;
+        height = 52;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         height = 37;

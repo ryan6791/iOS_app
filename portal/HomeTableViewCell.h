@@ -14,6 +14,13 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *pic;
 @property (strong, nonatomic) IBOutlet UIView *pickbackground;
+@property (strong, nonatomic) IBOutlet UIView *cellbackground;
+
+
+
+@property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UILabel *contact_time;
+@property (nonatomic, strong) UILabel *num_networks;
 
 @property (nonatomic, strong) NSString *linkedinId;
 @property (nonatomic, strong) NSString *facebook;
@@ -31,6 +38,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *instagramIcon;
 @property (strong, nonatomic) IBOutlet UIButton *linkedinIcon;
 @property (strong, nonatomic) IBOutlet UIButton *snapchatIcon;
+
+@property (strong, nonatomic) IBOutlet UIButton *addIcon;
 
 
 

@@ -79,20 +79,6 @@
     [self.tableView scrollToRowAtIndexPath:pathForCenterCell atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 
--(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
-    [self centerTable];
-
-}
-/*
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [self centerTable];
-}*/
-
-- (void)centerTable {
-    NSIndexPath *pathForCenterCell = [self.tableView indexPathForRowAtPoint:CGPointMake(CGRectGetMidX(self.tableView.bounds), CGRectGetMidY(self.tableView.bounds))];
-    
-    [self.tableView scrollToRowAtIndexPath:pathForCenterCell atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-}
 
 
 - (void)initTableView {
@@ -126,7 +112,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 0;
-        height = 650;
+        height = 660;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 0;
@@ -268,7 +254,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 0;
-        height = 650;
+        height = 660;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 0;
@@ -378,7 +364,7 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        cellHeight = 645;
+        cellHeight = 570;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         cellHeight = 420;
@@ -386,6 +372,8 @@
     
     return cellHeight; //(height / 5);//[self getCellHeight];
 }
+
+
 
 
 /*

@@ -85,7 +85,7 @@
         height = 58;
         width = 58;
         pad2 = 20;
-        self.pickbackground.layer.cornerRadius = 20;
+        self.pickbackground.layer.cornerRadius = 28;
 
 
     }
@@ -95,17 +95,17 @@
         height = 68;
         width = 68;
         pad2 = 22;
-        self.pickbackground.layer.cornerRadius = 20;
+        self.pickbackground.layer.cornerRadius = 32;
 
 
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 8;
-        height = 58;
-        width = 58;
+        height = 74;
+        width = 76;
         pad2 = 23;
-        self.pickbackground.layer.cornerRadius = 20;
+        self.pickbackground.layer.cornerRadius = 35;
 
         
     }
@@ -114,7 +114,7 @@
         height = 56;
         width = 56;
         pad2 = 19;
-        self.pickbackground.layer.cornerRadius = 20;
+        self.pickbackground.layer.cornerRadius = 26;
 
     }
     
@@ -164,32 +164,36 @@
     
     [self.pickbackground addSubview:self.pic];
     
-    CGFloat pad = 0, height = 0;
+    CGFloat pad = 0, height = 0, width = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
         pad = 3;
         height = 52;
-        self.pic.layer.cornerRadius = 20;
+        width = 54;
+        self.pic.layer.cornerRadius = 28;
 
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 0;
+        width = 63;
         height = 61;
-        self.pic.layer.cornerRadius = 20;
+        self.pic.layer.cornerRadius = 32;
 
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 0;
-        height = 64;
-        self.pic.layer.cornerRadius = 20;
+        height = 68;
+        width = 70;
+        self.pic.layer.cornerRadius = 35;
 
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 0;
         height = 52;
-        self.pic.layer.cornerRadius = 20;
+        width = 54;
+        self.pic.layer.cornerRadius = 26;
 
     }
     
@@ -206,7 +210,7 @@
     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.pic attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self.pickbackground addConstraint:constraint3];
     
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.pic attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.pic attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
     [self.pickbackground addConstraint:constraint4];
     
 }
@@ -256,10 +260,10 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 10;
-        height = 60;
-        pad2 = 20;
-        width = 240;
+        pad = 13;
+        height = 76;
+        pad2 = 30;
+        width = 260;
 
 
     }
@@ -334,7 +338,7 @@
     CGFloat pad = 0, height = 0, pad2 = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 23;
+        pad = 12;
         height = 35;
         pad2 = 15;
     }
@@ -346,9 +350,9 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 17;
+        pad = 22;
         height = 42;
-        pad2 = 23;
+        pad2 = 19;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 16;
@@ -710,18 +714,15 @@
 
 
 - (void)setupNameLabel {
-    UIFont *font;
 
     
     self.nameLabel = [[UILabel alloc] init];
     
-    self.nameLabel.font = [UIFont systemFontOfSize:5];
     
     
     
     [self.nameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.nameLabel invalidateIntrinsicContentSize];
-    self.nameLabel.font = font;
     self.nameLabel.textColor = [UIColor blackColor];
     
     self.nameLabel.text = [[DataAccess singletonInstance] getName];
@@ -729,19 +730,28 @@
     CGFloat pad = 0, pad2 = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
+     //   self.nameLabel.font = [UIFont systemFontOfSize:5];
         pad = 34;
+        pad2 = 2;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
+    //    self.nameLabel.font = [UIFont systemFontOfSize:5];
         pad = 40;
+        pad2 = 2;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 44;
+        pad2 = 1;
+        self.nameLabel.font = [UIFont systemFontOfSize:20];
+
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 31;
         pad2 = 1;
+    //    self.nameLabel.font = [UIFont systemFontOfSize:4];
+
     }
     
     [self addSubview:self.nameLabel];
