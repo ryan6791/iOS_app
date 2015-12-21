@@ -359,9 +359,9 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         
-        image_size = 29;
+        image_size = 28;
         v_pad = 0;
-        viewImage.layer.cornerRadius = 15;
+        viewImage.layer.cornerRadius = 14;
         n_pad = 5;
         h_pad = -11;
 
@@ -783,21 +783,27 @@
     {
         pad = 0;
         height = 180;
+        self.networksLabel.font = [UIFont systemFontOfSize:16];
+
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 0;
         height = 180;
+        self.networksLabel.font = [UIFont systemFontOfSize:17];
+
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 0;
         height = 180;
+        self.networksLabel.font = [UIFont systemFontOfSize:18];
+
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 0;
         height = 180;
-        self.networksLabel.font = [UIFont systemFontOfSize:3];
+        self.networksLabel.font = [UIFont systemFontOfSize:15];
 
     }
     
@@ -805,14 +811,14 @@
     
     [self.networksLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.networksLabel invalidateIntrinsicContentSize];
-    self.networksLabel.font = font;
+  //  self.networksLabel.font = font;
     self.networksLabel.textColor = [UIColor lightGrayColor];
     
     self.networksLabel.text = @"Networks";
     
     [self.view addSubview:self.networksLabel];
     
-    UIView *top = self.topbackground;
+    UIView *top = self.pickbackground;
     NSDictionary *viewsDictionary = @{@"top":top, @"label" : self.networksLabel};
     NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[label]" options:0 metrics:nil views:viewsDictionary];
     [self.view addConstraints:constraint1];
@@ -1014,7 +1020,7 @@
         height = 52;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        height = 37;
+        height = 34;
     }
     return height; //(height / 5);//[self getCellHeight];
 }

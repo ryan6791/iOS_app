@@ -44,7 +44,7 @@ static const int MAX_BUFFER_SIZE = 2; //%%% max number of cards loaded at any gi
 #warning customize all of this.  These are just place holders to make it look pretty
   //  self.backgroundColor = [UIColor colorWithRed:.92 green:.93 blue:.95 alpha:1]; //the gray background colors
     
-    self.backgroundColor = [self grayColor];
+    self.backgroundColor = [UIColor blackColor];//[self grayColor];
     
     CGFloat Button_HEIGHT = 0; //%%% height of the draggable card
     CGFloat Button_WIDTH = 0;
@@ -77,7 +77,7 @@ static const int MAX_BUFFER_SIZE = 2; //%%% max number of cards loaded at any gi
         Button_WIDTH = 80;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 363;
+        pad = 358;
         w_pad = 80;
         w_pad2 = 180;
         Button_HEIGHT = 55; //%%% height of the draggable card
@@ -134,7 +134,7 @@ static const int MAX_BUFFER_SIZE = 2; //%%% max number of cards loaded at any gi
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 24;
         w_pad = 16;
-        CARD_HEIGHT = 331; //%%% height of the draggable card
+        CARD_HEIGHT = 321; //%%% height of the draggable card
         CARD_WIDTH = 285;
     }
     

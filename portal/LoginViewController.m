@@ -8,8 +8,8 @@
 
 #import "LoginViewController.h"
 #import "DataAccess.h"
-#import "HomeViewController.h"
 #import "DeviceManager.h"
+#import "SwipeViewController.h"
 
 
 @interface LoginViewController ()
@@ -77,7 +77,7 @@
                      [[DataAccess singletonInstance] setUserLoginStatus:YES];
                      [[DataAccess singletonInstance] setUsefbOptionStatus:YES];
                      [[DataAccess singletonInstance] setisLoggedInWithFB:YES];
-                     HomeViewController *root = [[HomeViewController alloc] init];
+                     SwipeViewController *root = [[SwipeViewController alloc] init];
                      [self.navigationItem setHidesBackButton:YES];
                      [self.navigationController setNavigationBarHidden:NO animated:NO];
                      [self.navigationController pushViewController:root animated:YES];
@@ -198,7 +198,7 @@
          
          
          
-            HomeViewController *root = [[HomeViewController alloc] init];
+            SwipeViewController *root = [[SwipeViewController alloc] init];
             [self.navigationItem setHidesBackButton:YES];
             [self.navigationController setNavigationBarHidden:NO animated:NO];
             [self.navigationController pushViewController:root animated:YES];

@@ -8,6 +8,8 @@
 
 #import "SwipeViewController.h"
 #import "DraggableViewBackground.h"
+#import "ConnectionsViewController.h"
+#import "UserMenuViewController.h"
 
 @interface SwipeViewController ()
 
@@ -175,6 +177,32 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)leftButtonPressed:(id)sender {
+    
+    UserMenuViewController *account = [[UserMenuViewController alloc] init];
+    
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.6f;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionReveal;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    
+    [self.navigationItem setHidesBackButton:NO];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController pushViewController:account animated:YES];
+    
+}
+
+- (void)rightButtonPressed:(id)sender {
+    
+    
+    ConnectionsViewController *account = [[ConnectionsViewController alloc] init];
+    [self.navigationItem setHidesBackButton:NO];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController pushViewController:account animated:YES];
+    
 }
 
 /*

@@ -34,6 +34,8 @@
 #import "OverlayView.h"
 #import "DataAccess.h"
 #import "DeviceManager.h"
+#import <linkedin-sdk/LISDK.h>
+
 
 @protocol DraggableViewDelegate <NSObject>
 
@@ -81,8 +83,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *addIcon;
 
 
+@property (unsafe_unretained, nonatomic) BOOL flipsocial;
 
 -(void)leftClickAction;
 -(void)rightClickAction;
+
 
 @end

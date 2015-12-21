@@ -548,6 +548,26 @@ viewForFooterInSection:(NSInteger)section {
             cell.pic.layer.cornerRadius = 15;
             cell.imageView.clipsToBounds = YES;
             
+            if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+            {
+                cell.pic.layer.cornerRadius = 15;
+
+            }
+            else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+            {
+                cell.pic.layer.cornerRadius = 15;
+
+            }
+            else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+            {
+                cell.pic.layer.cornerRadius = 15;
+
+            }
+            else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+                cell.pic.layer.cornerRadius = 15;
+
+            }
+            
             cell.Label.text = [[DataAccess singletonInstance] getName];
     
         }else if (indexPath.row == 1) {

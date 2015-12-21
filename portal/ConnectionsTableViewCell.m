@@ -111,10 +111,10 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 6;
-        height = 56;
-        width = 56;
+        height = 58;
+        width = 58;
         pad2 = 19;
-        self.pickbackground.layer.cornerRadius = 26;
+        self.pickbackground.layer.cornerRadius = 28;
 
     }
     
@@ -190,10 +190,10 @@
 
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 0;
+        pad = 3;
         height = 52;
         width = 54;
-        self.pic.layer.cornerRadius = 26;
+        self.pic.layer.cornerRadius = 28;
 
     }
     
@@ -263,14 +263,14 @@
         pad = 13;
         height = 76;
         pad2 = 30;
-        width = 260;
+        width = 250;
 
 
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 12;
         height = 55;
-        pad2 = 30;
+        pad2 = 25;
         width = 195;
 
     }
@@ -355,7 +355,7 @@
         pad2 = 19;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 16;
+        pad = 14;
         pad2 = 11;
         height = 33;
     }

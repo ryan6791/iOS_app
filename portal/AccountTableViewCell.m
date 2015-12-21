@@ -69,21 +69,21 @@
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
         pad = 3;
-        height = 28;
+        height = 25;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 0;
-        height = 30;
+        height = 26;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 0;
-        height = 35;
+        height = 28;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 0;
-        height = 23;
+        height = 21;
     }
     
     
@@ -105,6 +105,18 @@
 }
 
 
+//if()
+//something goes down
+
+
+
+
+//bring out the next instance of social network
+
+
+///if no network you can biring on
+
+
 - (void)setupLabel {
     UIFont *font;
     
@@ -117,29 +129,33 @@
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
         pad = 75;
-        self.Label.font = [UIFont systemFontOfSize:5];
+        self.Label.font = [UIFont systemFontOfSize:16];
 
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 75;
+        self.Label.font = [UIFont systemFontOfSize:17];
+
 
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 75;
+        self.Label.font = [UIFont systemFontOfSize:18];
+
 
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 75;
-        self.Label.font = [UIFont systemFontOfSize:4];
+        self.Label.font = [UIFont systemFontOfSize:15];
     }
     
     
     
     [self.Label setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.Label invalidateIntrinsicContentSize];
-    self.Label.font = font;
+  //  self.Label.font = font;
     self.Label.textColor = [UIColor blackColor];
     
     [self addSubview:self.Label];
