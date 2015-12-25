@@ -135,9 +135,9 @@
     self.navBar.translucent = YES;
     // 3. add a new navigation item w/title to the new nav bar
     UINavigationItem *newItem = [[UINavigationItem alloc] init];
-    self.navBar.backgroundColor = [UIColor whiteColor];
-    
-    self.navBar.barTintColor = [UIColor whiteColor];
+    self.navBar.barTintColor = [UIColor whiteColor];//[UIColor blueColor];
+  //  self.navBar.tintColor = [UIColor clearColor];
+    self.navBar.translucent = NO;
     
 
     
@@ -159,9 +159,18 @@
     [titleView setUserInteractionEnabled:NO];
     
     NSString *titleText = @"Portal";
-    [titleView setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [titleView setTitleColor:[self navColor] forState:UIControlStateNormal];
     
     [titleView setTitle:titleText forState:UIControlStateNormal];
+    
+    titleView.titleLabel.font = [UIFont fontWithName:@"Superclarendon-Regular" size:21.0];
+    
+    titleView.layer.shadowRadius = 0.05;
+    titleView.layer.shadowOpacity = 0.02;
+    
+    titleView.layer.masksToBounds = NO;
+    
+  //  titleView.layer.shouldRasterize = YES;
     
     
     newItem.titleView = titleView;
@@ -208,6 +217,12 @@
     [self.navigationController pushViewController:account animated:YES];
     
 }
+
+-(UIColor*)navColor{
+    
+    return [UIColor colorWithRed:0.0 green:172.0f/255.0f blue:237.0f/255.0f alpha:1.0];
+}
+
 
 /*
 #pragma mark - Navigation
