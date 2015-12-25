@@ -137,6 +137,10 @@
     UINavigationItem *newItem = [[UINavigationItem alloc] init];
     self.navBar.backgroundColor = [UIColor whiteColor];
     
+    self.navBar.barTintColor = [UIColor whiteColor];
+    
+
+    
     UIImage *connections_image = [[UIImage imageNamed:@"connections"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     

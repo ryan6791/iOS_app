@@ -102,8 +102,8 @@
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
         pad = 6;
-        height = 375;
-        width = 280;
+        height = 475;
+        width = 292;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
@@ -177,8 +177,8 @@
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
         pad = 1;
-        height = 373;
-        width = 278;
+        height = 473;
+        width = 290;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
@@ -220,12 +220,12 @@
     
     self.socialbackground = [[UIView alloc]initWithFrame:self.pic.frame];
     
-    self.socialbackground.backgroundColor = [self grayColor];
+    self.socialbackground.backgroundColor = [UIColor clearColor];//[self grayColor];
     //  CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 8;
     self.socialbackground.translatesAutoresizingMaskIntoConstraints = NO;
     [self.socialbackground invalidateIntrinsicContentSize];
     
-    self.socialbackground.alpha = 0.5;
+ //   self.socialbackground.alpha = 0.1;
     self.socialbackground.layer.cornerRadius = 20;
     
     self.socialbackground.userInteractionEnabled = YES;
@@ -306,9 +306,18 @@
     self.nameLabel = [[UILabel alloc] init];
     [self.nameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.nameLabel invalidateIntrinsicContentSize];
-    self.nameLabel.textColor = [UIColor blackColor];
+    self.nameLabel.textColor = [UIColor whiteColor];
     
     self.nameLabel.text = [[DataAccess singletonInstance] getName];
+    
+    self.nameLabel.text = [self.nameLabel.text stringByAppendingString:@", 24"];
+    
+    self.nameLabel.layer.shadowRadius = 3.0;
+    self.nameLabel.layer.shadowOpacity = 0.5;
+    
+        self.nameLabel.layer.masksToBounds = NO;
+    
+    self.nameLabel.layer.shouldRasterize = YES;
     
     CGFloat pad = 0, pad2 = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
@@ -337,6 +346,8 @@
         
     }
     
+    self.nameLabel.alpha = 100.0;
+    
     [self.socialbackground addSubview:self.nameLabel];
     
     NSDictionary *viewsDictionary = @{@"top":self.pic, @"label" : self.nameLabel};
@@ -358,9 +369,16 @@
     
     [self.contact_time setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.contact_time invalidateIntrinsicContentSize];
-    self.contact_time.textColor = [UIColor darkGrayColor];
+    self.contact_time.textColor = [UIColor whiteColor];
     
     self.contact_time.text = @"Encountered an hour ago";
+    
+    self.contact_time.layer.shadowRadius = 3.0;
+    self.contact_time.layer.shadowOpacity = 0.5;
+    
+    self.contact_time.layer.masksToBounds = NO;
+    
+    self.contact_time.layer.shouldRasterize = YES;
     
     CGFloat pad = 0, pad2 = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
@@ -417,7 +435,10 @@
         [self.facebookIcon
          addTarget:self
          action:@selector(FacebookButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-        self.facebookIcon.alpha = 2.0;
+        self.facebookIcon.alpha = 100.0;
+        self.facebookIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        self.facebookIcon.layer.shadowRadius = 4.0;
+        self.facebookIcon.layer.shadowOpacity = 0.5;
     }else{
         self.facebookIcon.userInteractionEnabled = NO;
         self.facebookIcon.alpha = 0.2;
@@ -437,14 +458,14 @@
     
     
     
-    [self.socialbackground addSubview:self.facebookIcon];
+    [self addSubview:self.facebookIcon];
     
     CGFloat pad = 0, height = 0, pad2 = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
         pad = 15;
-        height = 35;
-        pad2 = 10;
+        height = 30;
+        pad2 = 27;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
@@ -466,17 +487,17 @@
     
     
     
-    NSDictionary *viewsDictionary = @{@"back":self.socialbackground, @"icon": self.facebookIcon};
+    NSDictionary *viewsDictionary = @{@"icon": self.facebookIcon};
     NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    [self.socialbackground addConstraints:constraint1];
-    [self.socialbackground addConstraints:constraint2];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[icon]-pad-|" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self addConstraints:constraint1];
+    [self addConstraints:constraint2];
     
     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.facebookIcon attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
-    [self.socialbackground addConstraint:constraint3];
+    [self addConstraint:constraint3];
     
     NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.facebookIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
-    [self.socialbackground addConstraint:constraint4];
+    [self addConstraint:constraint4];
     
 }
 
@@ -499,11 +520,14 @@
     
     if (self.instagram != nil) {
         
-        self.instagramIcon.alpha =1.0;
+        self.instagramIcon.alpha =100.0;
         self.instagramIcon.userInteractionEnabled = YES;
         [self.instagramIcon
          addTarget:self
          action:@selector(InstagramButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        self.instagramIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        self.instagramIcon.layer.shadowRadius = 4.0;
+        self.instagramIcon.layer.shadowOpacity = 0.5;
         
     }else{
         self.instagramIcon.userInteractionEnabled = NO;
@@ -522,14 +546,14 @@
      action:@selector(InstagramButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     
     
-    [self.socialbackground addSubview:self.instagramIcon];
+    [self addSubview:self.instagramIcon];
     
     CGFloat pad = 0, pad2 = 0, height = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
         pad = 15;
-        height = 35;
-        pad2 = 10;
+        height = 30;
+        pad2 = 15;
         
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
@@ -555,9 +579,9 @@
     
     
     
-    NSDictionary *viewsDictionary = @{@"back":self.socialbackground, @"icon": self.instagramIcon, @"fb": self.facebookIcon};
+    NSDictionary *viewsDictionary = @{@"icon": self.instagramIcon, @"fb": self.facebookIcon};
     NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[fb]-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[icon]-pad-|" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
     [self addConstraints:constraint1];
     [self addConstraints:constraint2];
     
@@ -586,16 +610,20 @@
     [self.linkedinIcon setBackgroundColor:[UIColor  clearColor]];
     
     self.linkedinIcon.hidden = YES;
-
+    self.linkedinIcon.layer.masksToBounds = NO;
     
     
     if (self.linkedinId != nil && [[DataAccess singletonInstance] uselinkedinOption]) {
         
-        self.linkedinIcon.alpha =1.0;
+        self.linkedinIcon.alpha =100.0;
         self.linkedinIcon.userInteractionEnabled = YES;
         [self.linkedinIcon
          addTarget:self
          action:@selector(LinkedinButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        
+            self.linkedinIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+            self.linkedinIcon.layer.shadowRadius = 4.0;
+            self.linkedinIcon.layer.shadowOpacity = 0.5;
         
     }else{
         self.linkedinIcon.userInteractionEnabled = NO;
@@ -605,22 +633,21 @@
     
     
     
-    self.linkedinIcon.layer.masksToBounds = NO;
-    //    self.socialbackground.layer.shadowOffset = CGSizeMake(-.1, .2);
-    //    self.socialbackground.layer.shadowRadius = .5;
-    //    self.socialbackground.layer.shadowOpacity = 0.5;
+
+
+
     
     
     
     
-    [self.socialbackground addSubview:self.linkedinIcon];
+    [self addSubview:self.linkedinIcon];
     
     CGFloat pad = 0, height = 0 , pad2 = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
         pad = 15;
-        height = 35;
-        pad2 = 10;
+        height = 30;
+        pad2 = 15;
         
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
@@ -646,9 +673,9 @@
     
     
     
-    NSDictionary *viewsDictionary = @{@"back":self.socialbackground, @"icon": self.instagramIcon, @"link": self.linkedinIcon};
+    NSDictionary *viewsDictionary = @{@"icon": self.instagramIcon, @"link": self.linkedinIcon};
     NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[icon]-pad-[link]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[link]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[link]-pad-|" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
     [self addConstraints:constraint1];
     [self addConstraints:constraint2];
     
@@ -676,11 +703,14 @@
     
     if (self.snapchat != nil) {
         
-        self.snapchatIcon.alpha =1.0;
+        self.snapchatIcon.alpha =100.0;
         self.snapchatIcon.userInteractionEnabled = YES;
         [self.snapchatIcon
          addTarget:self
          action:@selector(SnapchatButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        self.snapchatIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        self.snapchatIcon.layer.shadowRadius = 4.0;
+        self.snapchatIcon.layer.shadowOpacity = 0.5;
         
     }else{
         self.snapchatIcon.userInteractionEnabled = NO;
@@ -705,14 +735,14 @@
     //    self.socialbackground.layer.shadowOpacity = 0.5;
     
     
-    [self.socialbackground addSubview:self.snapchatIcon];
+    [self addSubview:self.snapchatIcon];
     
     CGFloat pad = 0, height = 0, pad2 = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
         pad = 15;
-        height = 35;
-        pad2 = 10;
+        height = 30;
+        pad2 = 15;
         
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
@@ -738,9 +768,9 @@
     
     
     
-    NSDictionary *viewsDictionary = @{@"back":self.socialbackground, @"icon": self.linkedinIcon, @"snap": self.snapchatIcon};
+    NSDictionary *viewsDictionary = @{@"icon": self.linkedinIcon, @"snap": self.snapchatIcon};
     NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[icon]-pad-[snap]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[snap]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[snap]-pad-|" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
     [self addConstraints:constraint1];
     [self addConstraints:constraint2];
     
@@ -908,7 +938,7 @@
 
 - (void)socialPressed:(id)sender {
     
-
+/*
     CALayer *layer = self.socialbackground.layer;
     CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;
     rotationAndPerspectiveTransform.m34 = 1.0 / -1000;
@@ -918,7 +948,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         layer.transform = CATransform3DIdentity;
 
-    }];
+    }];  */
     
     
     if (self.flipsocial == YES) {
@@ -929,6 +959,7 @@
         self.instagramIcon.hidden = YES;
         self.linkedinIcon.hidden = YES;
         self.snapchatIcon.hidden = YES;
+        self.socialbackground.hidden = NO;
 
     }else{
         self.flipsocial = YES;
@@ -938,6 +969,7 @@
         self.snapchatIcon.hidden = NO;
         self.nameLabel.hidden = YES;
         self.contact_time.hidden = YES;
+        self.socialbackground.hidden = YES;
 
 
     }

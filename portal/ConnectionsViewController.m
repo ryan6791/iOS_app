@@ -50,7 +50,7 @@
     CGRect full = [[UIScreen mainScreen]bounds];
     self.background = [[UIView alloc] initWithFrame:full];
     self.background.hidden = NO;
-    self.background.backgroundColor = [self grayColor];
+    self.background.backgroundColor = [UIColor whiteColor];
     self.background.contentMode = UIViewContentModeScaleAspectFill;
     self.pickbackground.userInteractionEnabled = YES;
     [self.view addSubview:self.background];
@@ -81,7 +81,7 @@
     self.tableView.dataSource = self;
     [self.tableBack addSubview:self.tableView];
     self.tableView.scrollEnabled = YES;
-    self.tableView.backgroundColor = [self grayColor];
+    self.tableView.backgroundColor = [UIColor whiteColor];
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1)];
     
@@ -186,6 +186,8 @@
     // 3. add a new navigation item w/title to the new nav bar
     UINavigationItem *newItem = [[UINavigationItem alloc] init];
     self.navBar.backgroundColor = [UIColor whiteColor];
+    self.navBar.barTintColor = [UIColor whiteColor];
+
     
     
     UIImage *image = [[UIImage imageNamed:@"logo"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -232,7 +234,7 @@
     
     self.tableBack = [[UIView alloc]init];
     
-    self.tableBack.backgroundColor = [self grayColor];
+    self.tableBack.backgroundColor = [UIColor whiteColor];
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     self.tableBack.translatesAutoresizingMaskIntoConstraints = NO;
     [self.tableBack invalidateIntrinsicContentSize];
@@ -282,7 +284,7 @@
 }
 
 - (void)setupnetworkLabel {
-    UIFont *font;
+   // UIFont *font;
     UIWindow* window = [UIApplication sharedApplication].keyWindow;
     
     CGFloat width = window.frame.size.width - 30;
@@ -297,8 +299,8 @@
     
     [self.networksLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.networksLabel invalidateIntrinsicContentSize];
-    self.networksLabel.font = font;
-    self.networksLabel.textColor = [UIColor lightGrayColor];
+    self.networksLabel.font = [UIFont fontWithName:@"Verdana" size:17.0f];
+    self.networksLabel.textColor = [self cdBlue];
     
     self.networksLabel.text = @"Connections";
     
@@ -496,7 +498,7 @@
     self.Line.translatesAutoresizingMaskIntoConstraints = NO;
     [self.Line invalidateIntrinsicContentSize];
     
-    
+    self.Line.hidden = YES;
     
     [self.view addSubview:self.Line];
     
@@ -541,7 +543,7 @@
     
     self.Line2 = [[UIView alloc]init];
     
-    self.Line2.backgroundColor = [self lineColor];
+    self.Line2.backgroundColor = [UIColor whiteColor];
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     self.Line2.translatesAutoresizingMaskIntoConstraints = NO;
     [self.Line2 invalidateIntrinsicContentSize];
@@ -621,6 +623,14 @@
     
     [self.navigationController popViewControllerAnimated:YES];
     
+}
+
+- (UIColor *) cdBlue {
+    return [UIColor colorWithRed:0.00 green:0.59 blue:0.84 alpha:1.0];
+}
+
+- (UIColor *) cdNavBlue {
+    return [UIColor colorWithRed:0.00 green:0.59 blue:0.85 alpha:1.0];
 }
 
 

@@ -43,8 +43,8 @@ static const int MAX_BUFFER_SIZE = 2;
 -(void)setupView
 {
 
-    self.backgroundColor = [self grayColor];
-    
+    self.backgroundColor = [UIColor whiteColor];
+/*
     CGFloat Button_HEIGHT = 0; //%%% height of the draggable card
     CGFloat Button_WIDTH = 0;
     
@@ -90,7 +90,7 @@ static const int MAX_BUFFER_SIZE = 2;
     [checkButton setImage:[UIImage imageNamed:@"checkButton"] forState:UIControlStateNormal];
     [checkButton addTarget:self action:@selector(swipeRight) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:xButton];
-    [self addSubview:checkButton];
+    [self addSubview:checkButton]; */
 }
 
 
@@ -109,31 +109,31 @@ static const int MAX_BUFFER_SIZE = 2;
     CGFloat pad = 0, w_pad;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 30;
-        w_pad = 15;
-        CARD_HEIGHT = 386; //%%% height of the draggable card
-        CARD_WIDTH = 290;
+        pad = 5;
+        w_pad = 7;
+        CARD_HEIGHT = 486;
+        CARD_WIDTH = 305;
 
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 32;
+        pad = 7;
         w_pad = 20;
-        CARD_HEIGHT = 470; //%%% height of the draggable card
+        CARD_HEIGHT = 470;
         CARD_WIDTH = 330;
 
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 34;
+        pad = 9;
         w_pad = 20;
-        CARD_HEIGHT = 525; //%%% height of the draggable card
+        CARD_HEIGHT = 525;
         CARD_WIDTH = 370;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 24;
+        pad = 3;
         w_pad = 16;
-        CARD_HEIGHT = 321; //%%% height of the draggable card
+        CARD_HEIGHT = 321;
         CARD_WIDTH = 285;
     }
     

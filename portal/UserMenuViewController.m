@@ -59,7 +59,7 @@
     
     self.background = [[UIView alloc] initWithFrame:full];
     self.background.hidden = NO;
-    self.background.backgroundColor = [self grayColor];
+    self.background.backgroundColor = [UIColor whiteColor];
     self.background.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:self.background];
     
@@ -90,9 +90,12 @@
     self.tableView.dataSource = self;
     [self.tableBack addSubview:self.tableView];
     self.tableView.scrollEnabled = NO;
-    self.tableView.backgroundColor = [self grayColor];
+    self.tableView.backgroundColor = [UIColor whiteColor];
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1)];
+    
+  //  self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
     
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     
@@ -171,6 +174,9 @@
     
     // 1. hide the existing nav bar
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    self.navBar.barTintColor = [UIColor whiteColor];
+    
+
     
     // 2. create a new nav bar and style it
     self.navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), height)];
@@ -254,7 +260,7 @@
     
     self.tableBack = [[UIView alloc]init];
     
-    self.tableBack.backgroundColor = [self grayColor];
+    self.tableBack.backgroundColor = [UIColor whiteColor];
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     self.tableBack.translatesAutoresizingMaskIntoConstraints = NO;
     [self.tableBack invalidateIntrinsicContentSize];
@@ -343,10 +349,12 @@
     
     [self.networksLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.networksLabel invalidateIntrinsicContentSize];
-    self.networksLabel.font = font;
-    self.networksLabel.textColor = [UIColor lightGrayColor];
+    self.networksLabel.font = [UIFont fontWithName:@"Verdana" size:17.0f];
+    self.networksLabel.textColor = [self cdBlue];
     
     self.networksLabel.text = @"Account";
+    
+    
     
     [self.view addSubview:self.networksLabel];
     
@@ -754,7 +762,7 @@ viewForFooterInSection:(NSInteger)section {
     
     self.Line = [[UIView alloc]init];
     
-    self.Line.backgroundColor = [self lineColor];
+    self.Line.backgroundColor = [UIColor whiteColor];
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     self.Line.translatesAutoresizingMaskIntoConstraints = NO;
     [self.Line invalidateIntrinsicContentSize];
@@ -1101,6 +1109,10 @@ viewForFooterInSection:(NSInteger)section {
     
     [self.navigationController popViewControllerAnimated:YES];
     
+}
+
+- (UIColor *) cdBlue {
+    return [UIColor colorWithRed:0.00 green:0.59 blue:0.84 alpha:1.0];
 }
 
 @end

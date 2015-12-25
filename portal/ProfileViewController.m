@@ -59,7 +59,7 @@
     
     self.background = [[UIView alloc] initWithFrame:full];
     self.background.hidden = NO;
-    self.background.backgroundColor = [self grayColor];
+    self.background.backgroundColor = [UIColor whiteColor];
     self.background.contentMode = UIViewContentModeScaleAspectFill;
     self.pickbackground.userInteractionEnabled = YES;
     [self.view addSubview:self.background];
@@ -136,7 +136,8 @@
     // 3. add a new navigation item w/title to the new nav bar
     UINavigationItem *newItem = [[UINavigationItem alloc] init];
     self.navBar.backgroundColor = [UIColor whiteColor];
-    
+    self.navBar.barTintColor = [UIColor whiteColor];
+
     
     UIImage *image = [[UIImage imageNamed:@"back_button"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
@@ -178,7 +179,7 @@
     
     self.topbackground = [[UIView alloc]initWithFrame:self.view.frame];
     
-    self.topbackground.backgroundColor = [self grayColor];
+    self.topbackground.backgroundColor = [UIColor whiteColor];
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     self.topbackground.translatesAutoresizingMaskIntoConstraints = NO;
     [self.topbackground invalidateIntrinsicContentSize];

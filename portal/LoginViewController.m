@@ -99,7 +99,7 @@
     {
         NSLog(@"Token is available : %@",[[FBSDKAccessToken currentAccessToken]tokenString]);
         
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"link, first_name, picture"}]
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"link, first_name"}]
          startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
              if (!error)
              {
@@ -108,26 +108,52 @@
                  
                  
                  
-               NSDictionary *pic_ = [result objectForKey:@"picture"];
+         //      NSDictionary *pic_ = [result objectForKey:@"picture"];
                  
             
-                 NSDictionary *res = [pic_ objectForKey:@"data"];
+         //        NSDictionary *res = [pic_ objectForKey:@"data"];
                  
 
-                 NSDictionary *imageUrl = [res objectForKey:@"url"];
+       //          NSDictionary *imageUrl = [res objectForKey:@"url"];
                  
-                 NSLog(@"%@", imageUrl);
+        //         NSLog(@"%@", imageUrl);
 
                  
-                 UIImage *proImage =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
+         //        UIImage *proImage =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
                  
-                 [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(proImage) forKey:@"ProfileImage"];
+         //        [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(proImage) forKey:@"ProfileImage"];
              }
              else
              {
                  NSLog(@"Error %@",error);
              }
          }];
+        
+        FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
+                                      initWithGraphPath:[NSString stringWithFormat:@"me/picture?type=large&redirect=false"]
+                                      parameters:nil
+                                      HTTPMethod:@"GET"];
+        [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
+                                              id result,
+                                              NSError *error) {
+            if (!error){
+                NSLog(@"result: %@",result);
+                
+                        NSDictionary *res = [result objectForKey:@"data"];
+                
+                
+                          NSDictionary *imageUrl = [res objectForKey:@"url"];
+                
+                
+                
+                        UIImage *proImage =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
+                
+                        [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(proImage) forKey:@"ProfileImage"];
+                
+            }
+            else {
+                NSLog(@"result: %@",[error description]);
+            }}];
         
     }
     

@@ -38,7 +38,7 @@
     if (self) {
         // configure control(s)
         self.backgroundView = [[UIView alloc] initWithFrame:self.frame];
-        self.backgroundView.backgroundColor = [self grayColor];
+        self.backgroundView.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.backgroundView];
         
         [self addProfileBackground];
@@ -835,4 +835,11 @@
     return [UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1.0];
 }
 
+- (UIColor *) cdBlue {
+    return [UIColor colorWithRed:0.00 green:0.59 blue:0.84 alpha:1.0];
+}
+
+- (UIColor *) cdNavBlue {
+    return [UIColor colorWithRed:0.00 green:0.59 blue:0.85 alpha:1.0];
+}
 @end

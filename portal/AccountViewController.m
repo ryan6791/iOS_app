@@ -64,7 +64,7 @@
     [self.navigationItem setHidesBackButton:YES];
     self.background = [[UIView alloc] initWithFrame:full];
     self.background.hidden = NO;
-    self.background.backgroundColor = [self grayColor];
+    self.background.backgroundColor = [UIColor whiteColor];
     self.background.contentMode = UIViewContentModeScaleAspectFill;
     self.pickbackground.userInteractionEnabled = YES;
     [self.view addSubview:self.background];
@@ -101,9 +101,12 @@
     self.tableView.dataSource = self;
     [self.tableBack addSubview:self.tableView];
     self.tableView.scrollEnabled = NO;
-    self.tableView.backgroundColor = [self grayColor];
+    self.tableView.backgroundColor = [UIColor whiteColor];
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1)];
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
 
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
 
@@ -200,7 +203,10 @@
     
     UIButton* customButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
+    newNavBar.backgroundColor = [UIColor whiteColor];
+    newNavBar.barTintColor = [UIColor whiteColor];
 
+    
     
     UIView *backView =[[UIView alloc] init];// Here you can set View width and height as per your requirement for displaying titleImageView position in navigationbar
     backView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -269,7 +275,7 @@
     
     
     newItem.rightBarButtonItem = rightBtn;
-    
+
                                  
     [backView addSubview:nameLabel];
     
@@ -533,7 +539,7 @@
     
     self.topbackground = [[UIView alloc]init];
     
-    self.topbackground.backgroundColor = [self grayColor];
+    self.topbackground.backgroundColor = [UIColor whiteColor];
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     self.topbackground.translatesAutoresizingMaskIntoConstraints = NO;
     [self.topbackground invalidateIntrinsicContentSize];
@@ -717,7 +723,7 @@
     
     self.tableBack = [[UIView alloc]init];
     
-    self.tableBack.backgroundColor = [self grayColor];
+    self.tableBack.backgroundColor = [UIColor whiteColor];
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     self.tableBack.translatesAutoresizingMaskIntoConstraints = NO;
     [self.tableBack invalidateIntrinsicContentSize];
@@ -775,6 +781,8 @@
     
     self.networksLabel = [[UILabel alloc] init];
     
+    self.networksLabel.hidden = YES;
+    
     self.networksLabel.font = [UIFont systemFontOfSize:5];
     height = 15;
     
@@ -811,8 +819,8 @@
     
     [self.networksLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.networksLabel invalidateIntrinsicContentSize];
-  //  self.networksLabel.font = font;
-    self.networksLabel.textColor = [UIColor lightGrayColor];
+    self.networksLabel.font = [UIFont fontWithName:@"Verdana" size:17.0f];
+    self.networksLabel.textColor = [self cdBlue];
     
     self.networksLabel.text = @"Networks";
     
@@ -1142,7 +1150,7 @@
     
     self.Line = [[UIView alloc]init];
     
-    self.Line.backgroundColor = [self lineColor];
+    self.Line.backgroundColor = [UIColor whiteColor];
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     self.Line.translatesAutoresizingMaskIntoConstraints = NO;
     [self.Line invalidateIntrinsicContentSize];
@@ -1192,7 +1200,7 @@
     
     self.Line2 = [[UIView alloc]init];
     
-    self.Line2.backgroundColor = [self lineColor];
+    self.Line2.backgroundColor = [UIColor whiteColor];
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     self.Line2.translatesAutoresizingMaskIntoConstraints = NO;
     [self.Line2 invalidateIntrinsicContentSize];
@@ -1511,7 +1519,9 @@
 
 
 
- 
+- (UIColor *) cdBlue {
+    return [UIColor colorWithRed:0.00 green:0.59 blue:0.84 alpha:1.0];
+}
  
  
  
