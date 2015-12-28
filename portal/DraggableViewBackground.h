@@ -33,7 +33,7 @@
 #import <UIKit/UIKit.h>
 #import "DraggableView.h"
 
-@interface DraggableViewBackground : UIView <DraggableViewDelegate>
+@interface DraggableViewBackground : UIView <DraggableViewDelegate, UITextFieldDelegate>
 
 //methods called in DraggableView
 -(void)cardSwipedLeft:(UIView *)card;
@@ -41,6 +41,9 @@
 
 @property (retain,nonatomic)NSArray* exampleCardLabels; //%%% the labels the cards
 @property (retain,nonatomic)NSMutableArray* allCards; //%%% the labels the cards
+
+@property (strong, nonatomic) IBOutlet UITextField *searchTextField;
+
 
 
 @property (strong, nonatomic) IBOutlet UILabel *label123;

@@ -148,7 +148,7 @@
     self.networksLabel.font = font;
     self.networksLabel.textColor = [UIColor lightGrayColor];
     
-    self.networksLabel.text = @"Connections";
+    self.networksLabel.text = @"Settings";
     
     [self.view addSubview:self.networksLabel];
     

@@ -777,12 +777,13 @@
     
     NSLog(@"%@", fbURL);
     
-    //    if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
+        if ([[UIApplication sharedApplication] openURL:fbURL]) {
     NSLog(@"trying to open");
     [[UIApplication sharedApplication] openURL:fbURL];
-    //   }
+        }else{
+            
+        }
     
-    // fb://profile/<id>
 }
 
 
@@ -797,10 +798,12 @@
     
     NSLog(@"%@", instagramURL);
     
-    //    if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
-    NSLog(@"trying to open");
-    [[UIApplication sharedApplication] openURL:instagramURL];
-    //   }
+        if ([[UIApplication sharedApplication] openURL:instagramURL]) {
+            NSLog(@"trying to open");
+            [[UIApplication sharedApplication] openURL:instagramURL];
+        }else{
+            
+        }
     
 }
 

@@ -28,6 +28,7 @@ static const int MAX_BUFFER_SIZE = 2;
     if (self) {
         [super layoutSubviews];
         [self setupView];
+        [self setupSearchTextField];
         exampleCardLabels = [[NSArray alloc]initWithObjects:@"first",@"second",@"third",@"fourth",@"last", nil]; //%%% placeholder for card-specific information
         loadedCards = [[NSMutableArray alloc] init];
         allCards = [[NSMutableArray alloc] init];
@@ -93,6 +94,80 @@ static const int MAX_BUFFER_SIZE = 2;
     [self addSubview:checkButton]; */
 }
 
+- (void)setupSearchTextField {
+    self.searchTextField = [[UITextField alloc] init];
+    [self addSubview:self.searchTextField];
+    self.searchTextField.delegate = self;
+    self.searchTextField.layer.cornerRadius = 7.0;
+    self.searchTextField.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.searchTextField invalidateIntrinsicContentSize];
+    
+    if ([[DataAccess singletonInstance] getSnapchat] != nil) {
+        self.searchTextField.text = [[DataAccess singletonInstance] getSnapchat];
+    }
+    
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    CGFloat height = 0, width = 0, xpad = 0, ypad = 0;
+    width = screen.size.width - 30;
+    
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        self.searchTextField.font = [UIFont fontWithName:@"HelveticaNeue" size:ceilf(32/2)];
+        height = 40;
+        xpad = 15;
+        ypad = 8;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        self.searchTextField.font = [UIFont fontWithName:@"HelveticaNeue" size:ceilf(38/2)];
+        height = 35;
+        xpad = 15;
+        ypad = 10;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        self.searchTextField.font = [UIFont fontWithName:@"HelveticaNeue" size:ceilf(62/3)];
+        height = 45;
+        xpad = 15;
+        ypad = 10;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad])
+    {
+        self.searchTextField.font = [UIFont fontWithName:@"HelveticaNeue" size:ceilf(28/2)];
+        height = 30;
+        xpad = 15;
+        ypad = 0;
+    }
+    
+    self.searchTextField.backgroundColor = [self grayColor];
+    self.searchTextField.placeholder = @"Find People";
+    self.searchTextField.textAlignment = NSTextAlignmentCenter;
+    self.searchTextField.textColor = [self lineColor];
+    self.searchTextField.layer.shadowRadius = 0.01;
+    self.searchTextField.layer.shadowOpacity = 0.01;
+    
+    self.searchTextField.layer.masksToBounds = NO;
+    
+  //    self.searchTextField.layer.shouldRasterize = YES;
+ //   self.searchTextField.layer.borderColor = [UIColor grayColor].CGColor;
+ //   self.searchTextField.layer.borderWidth = 1;
+ //   self.searchTextField.layer.masksToBounds = true;
+    
+    NSMutableDictionary *viewsDictionary = [[NSMutableDictionary alloc] init];
+    [viewsDictionary setObject:self.searchTextField forKey:@"textField"];
+    
+    NSArray *hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-xpad-[textField]" options:0 metrics:@{@"xpad" : [NSNumber numberWithFloat:xpad], @"width" : [NSNumber numberWithFloat:width]} views:viewsDictionary];
+    NSArray *vConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[textField(height)]" options:0 metrics:@{@"height" : [NSNumber numberWithFloat:height], @"pad" : [NSNumber numberWithFloat:ypad]} views:viewsDictionary];
+    
+    [self addConstraints:hConstraints];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.searchTextField attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width]];
+    
+    [self addConstraints:vConstraints];
+    
+}
+
+
 
 
 #warning include own card customization here!
@@ -109,9 +184,9 @@ static const int MAX_BUFFER_SIZE = 2;
     CGFloat pad = 0, w_pad;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 5;
+        pad = 60;
         w_pad = 7;
-        CARD_HEIGHT = 486;
+        CARD_HEIGHT = 426;
         CARD_WIDTH = 305;
 
     }
@@ -267,6 +342,49 @@ static const int MAX_BUFFER_SIZE = 2;
     return [UIColor colorWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
     
     
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    self.searchTextField.placeholder = nil;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    self.searchTextField.placeholder = @"Find People";
+    [self.searchTextField resignFirstResponder];
+    [self.searchTextField endEditing:YES];
+
+}
+
+- (void)textFieldDidChange {
+    //
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    [textField setReturnKeyType:UIReturnKeyDone];
+    return TRUE;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField{
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.searchTextField resignFirstResponder];
+    return YES;
+}
+
+
+
+- (void)touchesEnded: (NSSet *) touches withEvent: (UIEvent *) event {
+    NSArray *subviews = [self subviews];
+    for (id objects in subviews) {
+        if ([objects isKindOfClass:[UITextField class]]) {
+            UITextField *theTextField = objects;
+            if ([objects isFirstResponder]) {
+                [theTextField resignFirstResponder];
+            }
+        }
+    }
 }
 
 -(void)setupSearchLabels{

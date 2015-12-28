@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ConnectionsTableViewCell.h"
 
-@interface ConnectionsViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface ConnectionsViewController : UIViewController<UITableViewDataSource,UITableViewDelegate, UITextFieldDelegate>
+
+@property (strong, nonatomic) IBOutlet UITextField *searchTextField;
+
 
 @end

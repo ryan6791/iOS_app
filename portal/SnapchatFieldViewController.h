@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DeviceManager.h"
 
-@interface SnapchatFieldViewController : UIViewController
+@interface SnapchatFieldViewController : UIViewController<UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *networkTextField;
 

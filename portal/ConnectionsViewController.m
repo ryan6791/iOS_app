@@ -57,6 +57,7 @@
     
     [self styleNavBar];
     
+    [self setupSearchTextField];
     [self setupnetworkLabel];
     [self addLine];
     
@@ -230,6 +231,80 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setupSearchTextField {
+    self.searchTextField = [[UITextField alloc] init];
+    [self.view addSubview:self.searchTextField];
+    self.searchTextField.delegate = self;
+    self.searchTextField.layer.cornerRadius = 7.0;
+    self.searchTextField.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.searchTextField invalidateIntrinsicContentSize];
+    
+    if ([[DataAccess singletonInstance] getSnapchat] != nil) {
+        self.searchTextField.text = [[DataAccess singletonInstance] getSnapchat];
+    }
+    
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    CGFloat height = 0, width = 0, xpad = 0, ypad = 0;
+    width = screen.size.width - 30;
+    
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        self.searchTextField.font = [UIFont fontWithName:@"HelveticaNeue" size:ceilf(32/2)];
+        height = 40;
+        xpad = 15;
+        ypad = 8;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        self.searchTextField.font = [UIFont fontWithName:@"HelveticaNeue" size:ceilf(38/2)];
+        height = 35;
+        xpad = 15;
+        ypad = 10;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        self.searchTextField.font = [UIFont fontWithName:@"HelveticaNeue" size:ceilf(62/3)];
+        height = 45;
+        xpad = 15;
+        ypad = 10;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad])
+    {
+        self.searchTextField.font = [UIFont fontWithName:@"HelveticaNeue" size:ceilf(28/2)];
+        height = 30;
+        xpad = 15;
+        ypad = 0;
+    }
+    
+    self.searchTextField.backgroundColor = [self grayColor];
+    self.searchTextField.placeholder = @"Search Connections";
+    self.searchTextField.textAlignment = NSTextAlignmentCenter;
+    self.searchTextField.textColor = [UIColor blackColor];
+    self.searchTextField.layer.shadowRadius = 0.01;
+    self.searchTextField.layer.shadowOpacity = 0.01;
+    
+    self.searchTextField.layer.masksToBounds = NO;
+    
+    //    self.searchTextField.layer.shouldRasterize = YES;
+    //   self.searchTextField.layer.borderColor = [UIColor grayColor].CGColor;
+    //   self.searchTextField.layer.borderWidth = 1;
+    //   self.searchTextField.layer.masksToBounds = true;
+    
+    NSMutableDictionary *viewsDictionary = [[NSMutableDictionary alloc] init];
+    [viewsDictionary setObject:self.searchTextField forKey:@"textField"];
+    [viewsDictionary setObject:self.navBar forKey:@"nav"];
+    
+    NSArray *hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-xpad-[textField]" options:0 metrics:@{@"xpad" : [NSNumber numberWithFloat:xpad], @"width" : [NSNumber numberWithFloat:width]} views:viewsDictionary];
+    NSArray *vConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[nav]-pad-[textField(height)]" options:0 metrics:@{@"height" : [NSNumber numberWithFloat:height], @"pad" : [NSNumber numberWithFloat:ypad]} views:viewsDictionary];
+    
+    [self.view addConstraints:hConstraints];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.searchTextField attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width]];
+    
+    [self.view addConstraints:vConstraints];
+    
+}
+
 - (void)addTableContainer {
     
     self.tableBack = [[UIView alloc]init];
@@ -306,7 +381,7 @@
     
     [self.view addSubview:self.networksLabel];
     
-    NSDictionary *viewsDictionary = @{@"top":self.navBar, @"label" : self.networksLabel};
+    NSDictionary *viewsDictionary = @{@"top":self.searchTextField, @"label" : self.networksLabel};
     NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[label]" options:0 metrics:nil views:viewsDictionary];
     [self.view addConstraints:constraint1];
     NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-6-[label]" options:0 metrics:nil views:viewsDictionary];
