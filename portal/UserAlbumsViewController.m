@@ -1,16 +1,16 @@
 //
-//  UserProfileViewController.m
+//  UserAlbumsViewController.m
 //  portal
 //
-//  Created by Neil Ballard on 12/29/15.
-//  Copyright © 2015 Neil_appworld. All rights reserved.
+//  Created by Neil Ballard on 1/4/16.
+//  Copyright © 2016 Neil_appworld. All rights reserved.
 //
 
-#import "ProfileViewController.h"
+#import "UserAlbumsViewController.h"
 #import "DeviceManager.h"
 #import "DataAccess.h"
 
-@interface ProfileViewController ()
+@interface UserAlbumsViewController ()
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *tempView;
@@ -22,9 +22,11 @@
 @property (strong, nonatomic) IBOutlet UIImageView *pic4;
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 
+
+
 @end
 
-@implementation ProfileViewController
+@implementation UserAlbumsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -1031,7 +1033,5 @@
     //[self.navigationController dismissViewControllerAnimated:YES completion:nil];
     [self.navigationController popViewControllerAnimated:NO];
 }
-
-
 
 @end

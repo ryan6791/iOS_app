@@ -36,6 +36,39 @@
     return Data.isProfileImageSet;
 }
 
+- (void)setProfileImageStatus2:(BOOL)status {
+    DataAccess *Data = [DataAccess singletonInstance];
+    Data.isProfileImageSet = status;
+    [Data persistToUserDefaults];
+}
+
+- (BOOL)ProfileImageIsSet2 {
+    DataAccess *Data = [DataAccess singletonInstance];
+    return Data.isProfileImageSet;
+}
+
+- (void)setProfileImageStatus3:(BOOL)status {
+    DataAccess *Data = [DataAccess singletonInstance];
+    Data.isProfileImageSet = status;
+    [Data persistToUserDefaults];
+}
+
+- (BOOL)ProfileImageIsSet3 {
+    DataAccess *Data = [DataAccess singletonInstance];
+    return Data.isProfileImageSet;
+}
+
+- (void)setProfileImageStatus4:(BOOL)status {
+    DataAccess *Data = [DataAccess singletonInstance];
+    Data.isProfileImageSet = status;
+    [Data persistToUserDefaults];
+}
+
+- (BOOL)ProfileImageIsSet4 {
+    DataAccess *Data = [DataAccess singletonInstance];
+    return Data.isProfileImageSet;
+}
+
 - (void)setAddedFB:(BOOL)status {
     [[NSUserDefaults standardUserDefaults] setBool:status forKey:@"AddedFB"];
 }
@@ -116,15 +149,15 @@
 
 - (void)setfbPublicStatus:(BOOL)status {
     [[NSUserDefaults standardUserDefaults] setBool:status forKey:@"facebookIsPublic"];
-
+    
     
     //  DataAccess *Data = [DataAccess singletonInstance];
-  //  Data.fbPublic = status;
-  //  [Data persistToUserDefaults];
+    //  Data.fbPublic = status;
+    //  [Data persistToUserDefaults];
 }
 
 - (BOOL)fbIsPublic {
-   
+    
     if([[NSUserDefaults standardUserDefaults] boolForKey:@"facebookIsPublic"]) {
         return YES;
     }
@@ -136,7 +169,7 @@
 
 - (void)setinstagramPublicStatus:(BOOL)status {
     [[NSUserDefaults standardUserDefaults] setBool:status forKey:@"instagramIsPublic"];
-
+    
 }
 
 - (BOOL)instagramIsPublic {
@@ -149,7 +182,7 @@
 
 - (void)setlinkedinPublicStatus:(BOOL)status {
     [[NSUserDefaults standardUserDefaults] setBool:status forKey:@"linkedinIsPublic"];
-
+    
 }
 
 - (BOOL)linkedinIsPublic {
@@ -179,13 +212,64 @@
     DataAccess *Data = [DataAccess singletonInstance];
     Data.profileImage = image;
     [Data persistToUserDefaults];
-
-
+    
+    
 }
 
 -(UIImage*)getProfileImage{
     
     NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"ProfileImage"];
+    UIImage* image = [UIImage imageWithData:imageData];
+    return image;
+    
+}
+
+-(void)setProfileImage2:(UIImage*)image{
+    
+    DataAccess *Data = [DataAccess singletonInstance];
+    Data.profileImage = image;
+    [Data persistToUserDefaults];
+    
+    
+}
+
+-(UIImage*)getProfileImage2{
+    
+    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"ProfileImage2"];
+    UIImage* image = [UIImage imageWithData:imageData];
+    return image;
+    
+}
+
+-(void)setProfileImage3:(UIImage*)image{
+    
+    DataAccess *Data = [DataAccess singletonInstance];
+    Data.profileImage = image;
+    [Data persistToUserDefaults];
+    
+    
+}
+
+-(UIImage*)getProfileImage3{
+    
+    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"ProfileImage3"];
+    UIImage* image = [UIImage imageWithData:imageData];
+    return image;
+    
+}
+
+-(void)setProfileImage4:(UIImage*)image{
+    
+    DataAccess *Data = [DataAccess singletonInstance];
+    Data.profileImage = image;
+    [Data persistToUserDefaults];
+    
+    
+}
+
+-(UIImage*)getProfileImage4{
+    
+    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"ProfileImage4"];
     UIImage* image = [UIImage imageWithData:imageData];
     return image;
     
@@ -203,7 +287,7 @@
 -(NSString*)getName{
     
     NSString *name = [[NSUserDefaults standardUserDefaults]
-                         stringForKey:@"username"];
+                      stringForKey:@"username"];
     
     return name;
 }
@@ -229,7 +313,7 @@
 
 -(void)setInstagram:network{
     
- 
+    
     [[NSUserDefaults standardUserDefaults] setObject:network forKey:@"instagram_name"];
     
 }
@@ -237,7 +321,7 @@
 -(NSString*)getInstagram{
     
     NSString *network = [[NSUserDefaults standardUserDefaults]
-                            stringForKey:@"instagram_name"];
+                         stringForKey:@"instagram_name"];
     
     return network;
 }
@@ -284,19 +368,19 @@
     
     BOOL profileImageStatus = [aDecoder decodeBoolForKey:@"ProfileImageIsSet"];
     [singletonInstance setProfileImageStatus:profileImageStatus];
-  /*
-    BOOL fbPublicStatus = [aDecoder decodeBoolForKey:@"facebookIsPublic"];
-    [singletonInstance setfbOptionStatus:fbPublicStatus];
-    
-    BOOL instagramPublicStatus = [aDecoder decodeBoolForKey:@"instagramIsPublic"];
-    [singletonInstance setfbOptionStatus:instagramPublicStatus];
-    
-    BOOL linkedinPublicStatus = [aDecoder decodeBoolForKey:@"linkedinIsPublic"];
-    [singletonInstance setfbOptionStatus:linkedinPublicStatus];
-    
-    BOOL snapchatPublicStatus = [aDecoder decodeBoolForKey:@"snapchatIsPublic"];
-    [singletonInstance setfbOptionStatus:snapchatPublicStatus];
-   */
+    /*
+     BOOL fbPublicStatus = [aDecoder decodeBoolForKey:@"facebookIsPublic"];
+     [singletonInstance setfbOptionStatus:fbPublicStatus];
+     
+     BOOL instagramPublicStatus = [aDecoder decodeBoolForKey:@"instagramIsPublic"];
+     [singletonInstance setfbOptionStatus:instagramPublicStatus];
+     
+     BOOL linkedinPublicStatus = [aDecoder decodeBoolForKey:@"linkedinIsPublic"];
+     [singletonInstance setfbOptionStatus:linkedinPublicStatus];
+     
+     BOOL snapchatPublicStatus = [aDecoder decodeBoolForKey:@"snapchatIsPublic"];
+     [singletonInstance setfbOptionStatus:snapchatPublicStatus];
+     */
     
     UIImage *ProfileImage = [aDecoder decodeObjectForKey:@"ProfileImage"];
     [singletonInstance setProfileImage:ProfileImage];
@@ -315,12 +399,12 @@
     [aCoder encodeBool:[singletonInstance fbPublic] forKey:@"facebookIsPublic"];
     
     [aCoder encodeBool:[singletonInstance instagramPublic] forKey:@"instagramIsPublic"];
-
+    
     [aCoder encodeBool:[singletonInstance linkedinPublic] forKey:@"linkedinIsPublic"];
-
+    
     [aCoder encodeBool:[singletonInstance snapchatPublic] forKey:@"snapchatIsPublic"];
-
-
+    
+    
     
 }
 

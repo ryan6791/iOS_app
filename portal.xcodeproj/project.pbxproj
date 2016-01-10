@@ -10,6 +10,7 @@
 		4A12E7A11BFB0EEA000ECD59 /* UserMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12E7A01BFB0EEA000ECD59 /* UserMenuViewController.m */; };
 		4A12E7A41BFB0F90000ECD59 /* UserAccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12E7A31BFB0F90000ECD59 /* UserAccountTableViewCell.m */; };
 		4A12E7A71BFC32EB000ECD59 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12E7A61BFC32EB000ECD59 /* ProfileViewController.m */; };
+		4A1D714B1C3B28E400F0B6B8 /* UserAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1D714A1C3B28E300F0B6B8 /* UserAlbumsViewController.m */; };
 		4A256ADC1BE49248006CD39E /* linkedin_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A256ADB1BE49248006CD39E /* linkedin_icon.png */; };
 		4A256ADE1BE49269006CD39E /* facebook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A256ADD1BE49269006CD39E /* facebook_icon.png */; };
 		4A256AE21BE4929C006CD39E /* snapchat_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A256AE11BE4929C006CD39E /* snapchat_icon.png */; };
@@ -58,6 +59,7 @@
 		4ABB5BF01BC9D5D800BEA3EF /* PhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5BEF1BC9D5D800BEA3EF /* PhotoManager.m */; };
 		4ABB5BF41BC9D66E00BEA3EF /* PhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5BF31BC9D66E00BEA3EF /* PhotosCollectionViewController.m */; };
 		4ABB5BF71BC9D78100BEA3EF /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5BF61BC9D78100BEA3EF /* AccountViewController.m */; };
+		4AD404431C33C38E004AC3E8 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD404421C33C38E004AC3E8 /* UserProfileViewController.m */; };
 		4AD55ACA1BF7C132006F2E0B /* FBAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD55AC91BF7C132006F2E0B /* FBAccountViewController.m */; };
 		4AD55ACD1BF7C464006F2E0B /* LinkedinAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD55ACC1BF7C464006F2E0B /* LinkedinAccountViewController.m */; };
 		4ADCA12D1C1E9804002A018B /* DraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCA1281C1E9804002A018B /* DraggableView.m */; };
@@ -104,6 +106,8 @@
 		4A12E7A31BFB0F90000ECD59 /* UserAccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAccountTableViewCell.m; sourceTree = "<group>"; };
 		4A12E7A51BFC32EB000ECD59 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		4A12E7A61BFC32EB000ECD59 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		4A1D71491C3B28E300F0B6B8 /* UserAlbumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAlbumsViewController.h; sourceTree = "<group>"; };
+		4A1D714A1C3B28E300F0B6B8 /* UserAlbumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAlbumsViewController.m; sourceTree = "<group>"; };
 		4A256ADB1BE49248006CD39E /* linkedin_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linkedin_icon.png; sourceTree = "<group>"; };
 		4A256ADD1BE49269006CD39E /* facebook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_icon.png; sourceTree = "<group>"; };
 		4A256AE11BE4929C006CD39E /* snapchat_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snapchat_icon.png; sourceTree = "<group>"; };
@@ -177,6 +181,8 @@
 		4ABB5BF31BC9D66E00BEA3EF /* PhotosCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosCollectionViewController.m; sourceTree = "<group>"; };
 		4ABB5BF51BC9D78100BEA3EF /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		4ABB5BF61BC9D78100BEA3EF /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
+		4AD404411C33C38E004AC3E8 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
+		4AD404421C33C38E004AC3E8 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		4AD55AC81BF7C132006F2E0B /* FBAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBAccountViewController.h; sourceTree = "<group>"; };
 		4AD55AC91BF7C132006F2E0B /* FBAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBAccountViewController.m; sourceTree = "<group>"; };
 		4AD55ACB1BF7C464006F2E0B /* LinkedinAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedinAccountViewController.h; sourceTree = "<group>"; };
@@ -353,6 +359,7 @@
 		4ABB5BE11BC8C08A00BEA3EF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4AD4043D1C33B96D004AC3E8 /* Connections */,
 				4ADCA1261C1E9749002A018B /* Home */,
 				4ABB5BEB1BC9824300BEA3EF /* User Account */,
 				4ABB5BDE1BC8C07C00BEA3EF /* LoginViewController.h */,
@@ -406,14 +413,25 @@
 				4A12E7A61BFC32EB000ECD59 /* ProfileViewController.m */,
 				4A998B511C01BD3C000F7BFD /* HomeTableViewCell.h */,
 				4A998B521C01BD3C000F7BFD /* HomeTableViewCell.m */,
-				4A998B541C01BF59000F7BFD /* ConnectionsTableViewCell.h */,
-				4A998B551C01BF59000F7BFD /* ConnectionsTableViewCell.m */,
-				4A998B571C01BF97000F7BFD /* ConnectionsViewController.h */,
-				4A998B581C01BF97000F7BFD /* ConnectionsViewController.m */,
 				4AFC396D1C099D38004E7262 /* SettingsViewController.h */,
 				4AFC396E1C099D38004E7262 /* SettingsViewController.m */,
 			);
 			name = "User Account";
+			sourceTree = "<group>";
+		};
+		4AD4043D1C33B96D004AC3E8 /* Connections */ = {
+			isa = PBXGroup;
+			children = (
+				4A998B541C01BF59000F7BFD /* ConnectionsTableViewCell.h */,
+				4A998B551C01BF59000F7BFD /* ConnectionsTableViewCell.m */,
+				4A998B571C01BF97000F7BFD /* ConnectionsViewController.h */,
+				4A998B581C01BF97000F7BFD /* ConnectionsViewController.m */,
+				4AD404411C33C38E004AC3E8 /* UserProfileViewController.h */,
+				4AD404421C33C38E004AC3E8 /* UserProfileViewController.m */,
+				4A1D71491C3B28E300F0B6B8 /* UserAlbumsViewController.h */,
+				4A1D714A1C3B28E300F0B6B8 /* UserAlbumsViewController.m */,
+			);
+			name = Connections;
 			sourceTree = "<group>";
 		};
 		4ADCA1261C1E9749002A018B /* Home */ = {
@@ -598,6 +616,8 @@
 				4ABB5BDD1BC8BEC400BEA3EF /* DeviceManager.m in Sources */,
 				4ABB5BE71BC8C31400BEA3EF /* DataAccess.m in Sources */,
 				4A99BF2E1BE6EF4700356805 /* AccountTableViewCell.m in Sources */,
+				4A1D714B1C3B28E400F0B6B8 /* UserAlbumsViewController.m in Sources */,
+				4AD404431C33C38E004AC3E8 /* UserProfileViewController.m in Sources */,
 				4ADCA12E1C1E9804002A018B /* DraggableViewBackground.m in Sources */,
 				4ABB5BF71BC9D78100BEA3EF /* AccountViewController.m in Sources */,
 				4A998B591C01BF97000F7BFD /* ConnectionsViewController.m in Sources */,

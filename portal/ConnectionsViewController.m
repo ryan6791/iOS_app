@@ -18,6 +18,8 @@
 #import "ProfileViewController.h"
 #import "FBAccountViewController.h"
 #import "LinkedinAccountViewController.h"
+#import "UserProfileViewController.h"
+#import "UserAlbumsViewController.h"
 
 @interface ConnectionsViewController ()
 
@@ -53,6 +55,7 @@
     self.background.backgroundColor = [UIColor whiteColor];
     self.background.contentMode = UIViewContentModeScaleAspectFill;
     self.pickbackground.userInteractionEnabled = YES;
+    
     [self.view addSubview:self.background];
     
     [self styleNavBar];
@@ -239,10 +242,6 @@
     self.searchTextField.translatesAutoresizingMaskIntoConstraints = NO;
     [self.searchTextField invalidateIntrinsicContentSize];
     
-    if ([[DataAccess singletonInstance] getSnapchat] != nil) {
-        self.searchTextField.text = [[DataAccess singletonInstance] getSnapchat];
-    }
-    
     CGRect screen = [[UIScreen mainScreen] bounds];
     CGFloat height = 0, width = 0, xpad = 0, ypad = 0;
     width = screen.size.width - 30;
@@ -257,7 +256,7 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         self.searchTextField.font = [UIFont fontWithName:@"HelveticaNeue" size:ceilf(38/2)];
-        height = 35;
+        height = 42;
         xpad = 15;
         ypad = 10;
     }
@@ -271,9 +270,9 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad])
     {
         self.searchTextField.font = [UIFont fontWithName:@"HelveticaNeue" size:ceilf(28/2)];
-        height = 30;
+        height = 36;
         xpad = 15;
-        ypad = 0;
+        ypad = 7;
     }
     
     self.searchTextField.backgroundColor = [self grayColor];
@@ -438,6 +437,11 @@
     UIFont *myFont = [ UIFont fontWithName: @"Arial" size: 19.0 ];
     cell.textLabel.font  = myFont;
     cell.textLabel.textColor = [UIColor lightGrayColor];
+    
+    cell.pic.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picturePressed:)];
+    [cell.pic addGestureRecognizer:tapGesture];
     
     if (indexPath.row == 0) {
         
@@ -706,6 +710,18 @@
 
 - (UIColor *) cdNavBlue {
     return [UIColor colorWithRed:0.00 green:0.59 blue:0.85 alpha:1.0];
+}
+
+- (void)picturePressed:(id)sender {
+    
+    UserAlbumsViewController *albums = [[UserAlbumsViewController alloc] init];
+    [self.navigationItem setHidesBackButton:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];    
+   
+    [self.navigationController pushViewController:albums animated:NO];
+    // [self.navigationController presentViewController:albums animated:YES completion:nil];
+
+    
 }
 
 

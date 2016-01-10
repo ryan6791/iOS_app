@@ -108,19 +108,19 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 7;
-        height= 455;
-        width = 312;
+        height= 505;
+        width = 322;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 8;
-        height = 508;
+        height = 533;
         width = 350;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 5;
-        height = 311;
-        width = 275;
+        height = 351;
+        width = 292;
     }
     
     
@@ -183,19 +183,19 @@
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 1;
-        height = 453;
-        width = 310;
+        height = 503;
+        width = 320;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 1;
-        height = 506;
+        height = 531;
         width = 348;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 1;
-        height = 309;
-        width = 273;
+        height = 349;
+        width = 290;
     }
     
     

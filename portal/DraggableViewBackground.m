@@ -102,10 +102,6 @@ static const int MAX_BUFFER_SIZE = 2;
     self.searchTextField.translatesAutoresizingMaskIntoConstraints = NO;
     [self.searchTextField invalidateIntrinsicContentSize];
     
-    if ([[DataAccess singletonInstance] getSnapchat] != nil) {
-        self.searchTextField.text = [[DataAccess singletonInstance] getSnapchat];
-    }
-    
     CGRect screen = [[UIScreen mainScreen] bounds];
     CGFloat height = 0, width = 0, xpad = 0, ypad = 0;
     width = screen.size.width - 30;
@@ -120,7 +116,7 @@ static const int MAX_BUFFER_SIZE = 2;
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         self.searchTextField.font = [UIFont fontWithName:@"HelveticaNeue" size:ceilf(38/2)];
-        height = 35;
+        height = 42;
         xpad = 15;
         ypad = 10;
     }
@@ -134,9 +130,9 @@ static const int MAX_BUFFER_SIZE = 2;
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad])
     {
         self.searchTextField.font = [UIFont fontWithName:@"HelveticaNeue" size:ceilf(28/2)];
-        height = 30;
+        height = 36;
         xpad = 15;
-        ypad = 0;
+        ypad = 7;
     }
     
     self.searchTextField.backgroundColor = [self grayColor];
@@ -170,13 +166,11 @@ static const int MAX_BUFFER_SIZE = 2;
 
 
 
-#warning include own card customization here!
-//%%% creates a card and returns it.  This should be customized to fit your needs.
+
 // use "index" to indicate where the information should be pulled.  If this doesn't apply to you, feel free
 // to get rid of it (eg: if you are building cards from data from the internet)
 -(DraggableView *)createDraggableViewWithDataAtIndex:(NSInteger)index
 {
-  //  DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake((self.frame.size.width - CARD_WIDTH)/2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT)];
     
     CGFloat CARD_HEIGHT = 0; //%%% height of the draggable card
     CGFloat CARD_WIDTH = 0;
@@ -192,24 +186,24 @@ static const int MAX_BUFFER_SIZE = 2;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 7;
+        pad = 62;
         w_pad = 20;
-        CARD_HEIGHT = 470;
-        CARD_WIDTH = 330;
+        CARD_HEIGHT = 520;
+        CARD_WIDTH = 340;
 
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 9;
+        pad = 70;
         w_pad = 20;
-        CARD_HEIGHT = 525;
+        CARD_HEIGHT = 550;
         CARD_WIDTH = 370;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 3;
-        w_pad = 16;
-        CARD_HEIGHT = 321;
-        CARD_WIDTH = 285;
+        pad = 50;
+        w_pad = 7;
+        CARD_HEIGHT = 361;
+        CARD_WIDTH = 305;
     }
     
     DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake(w_pad, pad, CARD_WIDTH, CARD_HEIGHT)];
