@@ -162,10 +162,45 @@
          [[DataAccess singletonInstance] setUselinkedinOptionStatus:YES];
          [self.navigationController popViewControllerAnimated:YES];
          
-       //  LinkedinFieldViewController *root = [[LinkedinFieldViewController alloc] init];
-       //  [self.navigationItem setHidesBackButton:YES];
-       //  [self.navigationController setNavigationBarHidden:NO animated:NO];
-      //   [self.navigationController pushViewController:root animated:YES];
+         
+         [[LISDKAPIHelper sharedInstance] apiRequest:@"https://api.linkedin.com/v1/people/~:(id,publicProfileUrl)?format=json"
+                                              method:@"GET"
+                                                body:nil
+                                             success:^(LISDKAPIResponse *response) {
+                                                 NSError *parseError = nil;
+                                                 NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:[response.data dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&parseError];
+                                                 if (!parseError) {
+
+                                                     
+                                                     NSString *linkedinId = [jsonData valueForKey:@"id"];
+                                                     
+                                                     NSString *linkedinURL = [jsonData valueForKey:@"publicProfileUrl"];
+                                                     
+        
+                                                     
+                                                     [[DataAccess singletonInstance] setLinkedin:linkedinId];
+                                                     
+                                                     [[DataAccess singletonInstance] setLinkedinLink:linkedinURL];
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     
+                                                 } else {
+                                                     NSLog(@"parse error %@", parseError);
+                                                 }
+                                             }
+                                               error:^(LISDKAPIError *apiError) {
+                                                   
+                                                   NSLog(@"%@", apiError);
+                                                   
+                                                   NSInteger errorCode = apiError.code;
+                                                   if (errorCode == 401) {
+                                                       
+                                                       [LISDKSessionManager clearSession];
+                                                   }
+                                               }];
+
          
      }
      errorBlock:^(NSError *error) {

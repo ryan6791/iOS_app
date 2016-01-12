@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DraggableViewBackground.h"
+
 
 @interface SwipeViewController : UIViewController
 
 @property (nonatomic, strong) UINavigationBar *navBar;
+
+-(void) pushDetailView:(id)sender;
 
 
 @end

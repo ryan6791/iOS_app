@@ -43,7 +43,6 @@
     
 
     [self setLoginBtn];
-    [self setLinkedinLoginBtn];
     
 }
 
@@ -106,22 +105,12 @@
                  NSString *name = [result objectForKey:@"first_name"];
                  [[DataAccess singletonInstance] setName:name];
                  
-                 
-                 
-         //      NSDictionary *pic_ = [result objectForKey:@"picture"];
-                 
-            
-         //        NSDictionary *res = [pic_ objectForKey:@"data"];
-                 
-
-       //          NSDictionary *imageUrl = [res objectForKey:@"url"];
-                 
-        //         NSLog(@"%@", imageUrl);
+                 NSString *link = [result objectForKey:@"link"];
 
                  
-         //        UIImage *proImage =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
+                 [[DataAccess singletonInstance ] setFacebookLink:link];
                  
-         //        [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(proImage) forKey:@"ProfileImage"];
+                 
              }
              else
              {
@@ -197,6 +186,9 @@
                                                      [[DataAccess singletonInstance] setName:name];
                                                      
                                                      [[DataAccess singletonInstance] setLinkedin:linkedinId];
+                                                     
+                                                     [[DataAccess singletonInstance] setLinkedinLink:linkedinURL];
+
                                                      
                                                      
                                                      UIImage *proImage =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];

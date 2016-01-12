@@ -295,7 +295,7 @@
 
 #pragma - social networks
 
--(void)setFacebook:network{
+-(void)setFacebook:(NSString*)network{
     
     
     [[NSUserDefaults standardUserDefaults] setObject:network forKey:@"facebook_id"];
@@ -311,7 +311,7 @@
 }
 
 
--(void)setInstagram:network{
+-(void)setInstagram:(NSString*)network{
     
     
     [[NSUserDefaults standardUserDefaults] setObject:network forKey:@"instagram_name"];
@@ -326,7 +326,7 @@
     return network;
 }
 
--(void)setLinkedin:network{
+-(void)setLinkedin:(NSString*)network{
     
     [[NSUserDefaults standardUserDefaults] setObject:network forKey:@"linkedin_name"];
     
@@ -340,7 +340,37 @@
     return network;
 }
 
--(void)setSnapchat:network{
+-(void)setFacebookLink:(NSString*)network{
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:network forKey:@"facebook_link"];
+    
+}
+
+-(NSString*)getFacebookLink{
+    
+    NSString *link = [[NSUserDefaults standardUserDefaults]
+                         stringForKey:@"facebook_link"];
+    
+    return link;
+}
+
+-(void)setLinkedinLink:(NSString*)link{
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:link forKey:@"facebook_link"];
+    
+}
+
+-(NSString*)getLinkedinLink{
+    
+    NSString *link = [[NSUserDefaults standardUserDefaults]
+                      stringForKey:@"facebook_link"];
+    
+    return link;
+}
+
+-(void)setSnapchat:(NSString*)network{
     
     
     [[NSUserDefaults standardUserDefaults] setObject:network forKey:@"snapchat_name"];

@@ -7,9 +7,9 @@
 //
 
 #import "SwipeViewController.h"
-#import "DraggableViewBackground.h"
 #import "ConnectionsViewController.h"
 #import "UserMenuViewController.h"
+#import "SwipeAlbumViewController.h"
 
 @interface SwipeViewController ()
 
@@ -21,10 +21,19 @@
     [super viewDidLoad];
     
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushDetailView:) name:@"pushDetailView" object:nil];
+
+    
+    self.view.userInteractionEnabled = YES;
+    
+    
     [self styleNavBar];
     [self addMainView];
 
     // Do any additional setup after loading the view.
+
+    
+
 }
 
 
@@ -36,6 +45,8 @@
     [self.navigationItem setHidesBackButton:YES];
     self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     [self styleNavBar];
+    
+
     
 }
 
@@ -218,10 +229,31 @@
     
 }
 
+-(void) pushDetailView:(id)sender
+{
+    // do your pushViewController
+
+    SwipeAlbumViewController *album = [[SwipeAlbumViewController alloc] init];
+    [self.navigationItem setHidesBackButton:NO];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController pushViewController:album animated:NO];
+    
+    /*
+     -(void) pushDetailView:(NSNotification*)note
+     {
+     NSNumber indexPathRow = [note object];
+     NSDictionary *product = self.products[[indexPathRow intValue]];
+     // and on with your pushViewController code
+     }
+     */
+}
+
 -(UIColor*)navColor{
     
     return [UIColor colorWithRed:0.0 green:172.0f/255.0f blue:237.0f/255.0f alpha:1.0];
 }
+
+
 
 
 /*

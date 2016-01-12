@@ -24,6 +24,7 @@
 //delegate is instance of ViewController
 @synthesize delegate;
 
+
 @synthesize panGestureRecognizer;
 @synthesize pickbackground;
 @synthesize overlayView;
@@ -166,7 +167,7 @@
 
     UITapGestureRecognizer *socialTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self
-                                            action:@selector(socialPressed:)];
+                                            action:@selector(goThere:)];
     [self.pic addGestureRecognizer:socialTap];
     
     
@@ -938,41 +939,7 @@
 
 - (void)socialPressed:(id)sender {
     
-/*
-    CALayer *layer = self.socialbackground.layer;
-    CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;
-    rotationAndPerspectiveTransform.m34 = 1.0 / -1000;
-   // rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, M_PI / 0.3, 0.0f, 1.0f, 0.0f);
-    rotationAndPerspectiveTransform = CATransform3DMakeRotation(M_PI, 1.0f, 0.0f, 0.0f);
-    layer.transform = rotationAndPerspectiveTransform;
-    [UIView animateWithDuration:0.3 animations:^{
-        layer.transform = CATransform3DIdentity;
 
-    }];  */
-    
-    
-    if (self.flipsocial == YES) {
-        self.flipsocial = NO;
-        self.nameLabel.hidden = NO;
-        self.contact_time.hidden = NO;
-        self.facebookIcon.hidden = YES;
-        self.instagramIcon.hidden = YES;
-        self.linkedinIcon.hidden = YES;
-        self.snapchatIcon.hidden = YES;
-        self.socialbackground.hidden = NO;
-
-    }else{
-        self.flipsocial = YES;
-        self.facebookIcon.hidden = NO;
-        self.instagramIcon.hidden = NO;
-        self.linkedinIcon.hidden = NO;
-        self.snapchatIcon.hidden = NO;
-        self.nameLabel.hidden = YES;
-        self.contact_time.hidden = YES;
-        self.socialbackground.hidden = YES;
-
-
-    }
     
 
 
@@ -1066,6 +1033,17 @@
     return [UIColor colorWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
     
     
+}
+
+- (void)goThere:(id)sender {
+        
+    NSNotification* notification = [NSNotification notificationWithName:@"pushDetailView" object:self];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    /*
+    NSNumber *indexPathRow = [NSNumber numberWithInt: indexPath.row];
+    NSNotification* notification = [NSNotification notificationWithName:@"pushDetailView" indexPathRow object:indexPathRow];
+    [[NSNotificationCenter defaultCenter] postNotification:notification]; */
+
 }
 
 

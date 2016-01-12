@@ -90,14 +90,20 @@
 - (void)setsnapchatPublicStatus:(BOOL)status;
 - (BOOL)snapchatIsPublic;
 
--(void)setFacebook:network;
+-(void)setFacebook:(NSString*)network;
 -(NSString*)getFacebook;
--(void)setInstagram:network;
+-(void)setInstagram:(NSString*)network;
 -(NSString*)getInstagram;
--(void)setLinkedin:network;
+-(void)setLinkedin:(NSString*)network;
 -(NSString*)getLinkedin;
--(void)setSnapchat:network;
+-(void)setSnapchat:(NSString*)network;
 -(NSString*)getSnapchat;
+
+-(NSString*)getFacebookLink;
+-(void)setFacebookLink:(NSString*)link;
+
+-(NSString*)getLinkedinLink;
+-(void)setLinkedinLink:(NSString*)link;
 
 -(void)setName:name;
 -(NSString*)getName;
