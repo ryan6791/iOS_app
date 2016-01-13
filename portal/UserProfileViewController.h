@@ -11,8 +11,7 @@
 @interface UserProfileViewController : UIViewController
 
 @property (nonatomic, strong) UINavigationBar *navBar;
-@property (nonatomic, strong) UILabel *nameLabel;
-@property (nonatomic, strong) UILabel *contact_time;
+
 
 
 @end

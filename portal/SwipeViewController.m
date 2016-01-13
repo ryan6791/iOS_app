@@ -7,11 +7,13 @@
 //
 
 #import "SwipeViewController.h"
-#import "ConnectionsViewController.h"
 #import "UserMenuViewController.h"
 #import "SwipeAlbumViewController.h"
+#import "UserProfileViewController.h"
+#import "NewMatchViewController.h"
 
 @interface SwipeViewController ()
+
 
 @end
 
@@ -29,8 +31,7 @@
     
     [self styleNavBar];
     [self addMainView];
-
-    // Do any additional setup after loading the view.
+    
 
     
 
@@ -169,7 +170,7 @@
     UIButton *titleView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
     [titleView setUserInteractionEnabled:NO];
     
-    NSString *titleText = @"Portal";
+    NSString *titleText = @"pairedUP";
     [titleView setTitleColor:[self navColor] forState:UIControlStateNormal];
     
     [titleView setTitle:titleText forState:UIControlStateNormal];
@@ -198,10 +199,15 @@
     
 }
 
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 - (void)leftButtonPressed:(id)sender {
     
@@ -222,10 +228,17 @@
 - (void)rightButtonPressed:(id)sender {
     
     
-    ConnectionsViewController *account = [[ConnectionsViewController alloc] init];
-    [self.navigationItem setHidesBackButton:NO];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
-    [self.navigationController pushViewController:account animated:YES];
+    UserProfileViewController *account = [[UserProfileViewController alloc] init];
+  //   NewMatchViewController *account = [[NewMatchViewController alloc] init];
+  //  [self.navigationItem setHidesBackButton:YES];
+  //  [self.navigationController setNavigationBarHidden:YES animated:NO];
+  //  [self.navigationController pushViewController:account animated:YES];
+    
+ //   self.providesPresentationContextTransitionStyle = YES;
+ //   self.definesPresentationContext = YES;
+    [account setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+    account.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:account animated:YES completion:nil];
     
 }
 

@@ -10,7 +10,6 @@
 #import "DeviceManager.h"
 #import "AlbumsTableViewController.h"
 #import "DataAccess.h"
-#import "InstagramFieldViewController.h"
 #import "UserAccountTableViewCell.h"
 #import "AccountViewController.h"
 #import "LoginViewController.h"
@@ -706,12 +705,6 @@ viewForFooterInSection:(NSInteger)section {
                     [[DataAccess singletonInstance] setisLoggedInWithFB:NO];
                 
                 }
-                else if ([[DataAccess singletonInstance] LoggedInWithLinkedin])
-                {
-                    
-                    [[DataAccess singletonInstance] setisLoggedInWithLinkedin:NO];
-
-                }
         }
         if (indexPath.row == 1) {
             
@@ -723,12 +716,7 @@ viewForFooterInSection:(NSInteger)section {
                 [[DataAccess singletonInstance] setisLoggedInWithFB:NO];
                 
             }
-            else if ([[DataAccess singletonInstance] LoggedInWithLinkedin])
-            {
-                
-                [[DataAccess singletonInstance] setisLoggedInWithLinkedin:NO];
-                
-            }
+
         }
         
         CATransition *transition = [CATransition animation];

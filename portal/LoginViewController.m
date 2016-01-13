@@ -16,7 +16,6 @@
 
 @property (nonatomic, retain) UIView * background;
 @property (nonatomic, strong) IBOutlet UIButton *LoginButton;
-@property (nonatomic, strong) IBOutlet UIButton *LinkedinButton;
 @property (nonatomic,unsafe_unretained) CGRect mainScreenBounds;
 @property (nonatomic, strong) NSMutableDictionary *viewsDictionary;
 
@@ -74,7 +73,6 @@
                      [[DataAccess singletonInstance] setFacebook:userid];
                      
                      [[DataAccess singletonInstance] setUserLoginStatus:YES];
-                     [[DataAccess singletonInstance] setUsefbOptionStatus:YES];
                      [[DataAccess singletonInstance] setisLoggedInWithFB:YES];
                      SwipeViewController *root = [[SwipeViewController alloc] init];
                      [self.navigationItem setHidesBackButton:YES];
@@ -98,17 +96,12 @@
     {
         NSLog(@"Token is available : %@",[[FBSDKAccessToken currentAccessToken]tokenString]);
         
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"link, first_name"}]
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"first_name"}]
          startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
              if (!error)
              {
                  NSString *name = [result objectForKey:@"first_name"];
                  [[DataAccess singletonInstance] setName:name];
-                 
-                 NSString *link = [result objectForKey:@"link"];
-
-                 
-                 [[DataAccess singletonInstance ] setFacebookLink:link];
                  
                  
              }
@@ -149,100 +142,6 @@
 }
 
 
--(void)LinkedinButtonClicked
-{
-    [LISDKSessionManager
-     createSessionWithAuth:[NSArray arrayWithObjects:LISDK_BASIC_PROFILE_PERMISSION, nil]
-     state:nil
-     showGoToAppStoreDialog:YES
-     successBlock:^(NSString *returnState) {
-         NSLog(@"%s","success called!");
-         LISDKSession *session = [[LISDKSessionManager sharedInstance] session];
-         
-         NSLog(@"linkedin signed in %@", session);
-         [[DataAccess singletonInstance] setUserLoginStatus:YES];
-        [[DataAccess singletonInstance] setisLoggedInWithLinkedin:YES];
-         [[DataAccess singletonInstance] setUselinkedinOptionStatus:YES];
-        
-         
-         [[LISDKAPIHelper sharedInstance] apiRequest:@"https://api.linkedin.com/v1/people/~:(id,publicProfileUrl,pictureUrl,firstName)?format=json"
-                                              method:@"GET"
-                                                body:nil
-                                             success:^(LISDKAPIResponse *response) {
-                                                 NSError *parseError = nil;
-                                                 NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:[response.data dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&parseError];
-                                                 if (!parseError) {
-                                                     NSString *imageUrl = [jsonData valueForKey:@"pictureUrl"];
-                                                     
-                                                     NSLog(@"%@", imageUrl);
-                                                     
-                                                     NSString *name = [jsonData valueForKey:@"firstName"];
-                                                     
-                                                     NSString *linkedinId = [jsonData valueForKey:@"id"];
-                                                     
-                                                     NSString *linkedinURL = [jsonData valueForKey:@"publicProfileUrl"];
-                                                     
-                                                     
-                                                     [[DataAccess singletonInstance] setName:name];
-                                                     
-                                                     [[DataAccess singletonInstance] setLinkedin:linkedinId];
-                                                     
-                                                     [[DataAccess singletonInstance] setLinkedinLink:linkedinURL];
-
-                                                     
-                                                     
-                                                     UIImage *proImage =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
-                                                     
-                                                     [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(proImage) forKey:@"ProfileImage"];
-                                                     
-                                                     
-                                                     
-                                                     
-                                                 } else {
-                                                     NSLog(@"parse error %@", parseError);
-                                                 }
-                                             }
-                                               error:^(LISDKAPIError *apiError) {
-                                                   
-                                                   NSLog(@"%@", apiError);
-                                                   
-                                                   NSInteger errorCode = apiError.code;
-                                                   if (errorCode == 401) {
-                                                       
-                                                       [LISDKSessionManager clearSession];
-                                                   }
-                                               }];
-         
-         
-         
-         
-            SwipeViewController *root = [[SwipeViewController alloc] init];
-            [self.navigationItem setHidesBackButton:YES];
-            [self.navigationController setNavigationBarHidden:NO animated:NO];
-            [self.navigationController pushViewController:root animated:YES];
-
-
-         
-
-     }
-     errorBlock:^(NSError *error) {
-         NSLog(@"%s","error called!");
-     }
-     ];
-    
-    
-}
-
--(void)linkedInLogin:(void (^)(void))completionBlock{
-  
-    
-    
-
-                                 
-                        
-    NSLog(@"HIT 8");
-    
-}
 
 
 -(void)sendData:(NSString*)access_token completion:(void (^)(void))completionBlock{
@@ -457,76 +356,6 @@
     
 }
 
-
--(void)setLinkedinLoginBtn{
-    
-    
-    self.LinkedinButton = [[UIButton alloc] init];
-    self.LinkedinButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    self.LinkedinButton.backgroundColor = [self linkedinBlue];
-    [self.LinkedinButton setTitle: @"Login With Linkedin" forState: UIControlStateNormal];
-    // Handle clicks on the button
-    [self.LinkedinButton
-     addTarget:self
-     action:@selector(LinkedinButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    self.LinkedinButton.alpha = 1.0;
-    self.LinkedinButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
-    
-    self.LinkedinButton.layer.cornerRadius = 3.0;
-    
-    self.LinkedinButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.LinkedinButton invalidateIntrinsicContentSize];
-    
-    CGFloat buttonWidth = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 30;
-    
-    [self.LinkedinButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.LinkedinButton.titleEdgeInsets = UIEdgeInsetsMake(15, 0, 15, 0);
-    
-    CGFloat pad = 0, height = 0;
-    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
-    {
-        pad = 10;
-        height = 50;
-        self.LinkedinButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
-    {
-        pad = 10;
-        height = ceilf(103/2);
-        self.LinkedinButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:24];
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
-    {
-        pad = 10;
-        height = ceilf(171/3);
-        self.LinkedinButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:25];
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 10;
-        height = 35;
-        self.LinkedinButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
-    }
-    
-    
-    [self.view addSubview:self.LinkedinButton];
-    
-    NSDictionary *viewsDictionary = @{@"LinkButton" : self.LinkedinButton, @"fbButton": self.LoginButton};
-    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.LinkedinButton attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[LinkButton]-pad-[fbButton]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    [self.view addConstraint:constraint1];
-    [self.view addConstraints:constraint2];
-    
-    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.LinkedinButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
-    [self.view addConstraint:constraint3];
-    
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.LinkedinButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:buttonWidth];
-    [self.view addConstraint:constraint4];
-    
-    
-    
-}
 
 
 

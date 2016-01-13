@@ -10,7 +10,6 @@
 #import "DeviceManager.h"
 #import "AlbumsTableViewController.h"
 #import "DataAccess.h"
-#import "InstagramFieldViewController.h"
 #import "MyProfileTableViewCell.h"
 #import "AccountViewController.h"
 #import "ProfilePictureViewController.h"
@@ -611,19 +610,11 @@
         cell.imageView.image = [UIImage imageNamed:@"facebook_icon.png"];
         cell.textLabel.text = @"Facebook";
         
-        if (![[DataAccess singletonInstance] useFBOption]) {
-            cell.backgroundColor = [UIColor lightTextColor];
-        }
-        
         
     }else if (indexPath.row == 1) {
         
         cell.imageView.image = [UIImage imageNamed:@"instagram_icon1.png"];
         cell.textLabel.text = @"Instagram";
-        
-        if ([[DataAccess singletonInstance] getInstagram] == nil) {
-            cell.backgroundColor = [UIColor lightTextColor];
-        }
         
         
     }else if (indexPath.row == 2) {
@@ -631,18 +622,12 @@
         cell.imageView.image = [UIImage imageNamed:@"linkedin_icon.png"];
         cell.textLabel.text = @"Linkedin";
         
-        if ([[DataAccess singletonInstance] getLinkedin] == nil) {
-            cell.backgroundColor = [UIColor lightTextColor];
-        }
         
     }
     else if (indexPath.row == 3) {
         cell.imageView.image = [UIImage imageNamed:@"snapchat_icon.png"];
         cell.textLabel.text = @"Snapchat";
         
-        if ([[DataAccess singletonInstance] getSnapchat] == nil) {
-            cell.backgroundColor = [UIColor lightTextColor];
-        }
         
     }
     
@@ -724,47 +709,7 @@
 
            // fb://profile/<id>
     }
-    else if (indexPath.row == 1) {
-        
-        NSString *insta =  [[DataAccess singletonInstance] getInstagram];
-        
-        NSLog(@"Instagram name is: %@", insta);
-        NSURL *instagramURL = [NSURL URLWithString:@"instagram://user?username=_ryanpowers_"];
-    //    if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
-            NSLog(@"trying to open");
-            [[UIApplication sharedApplication] openURL:instagramURL];
-     //   }
-    }
-    else if(indexPath.row == 2){
-    self.linkedinId =  [[DataAccess singletonInstance] getLinkedin];
-    //    NSURL *linkURL = [NSURL URLWithString:@"linkedin://#profile/45b862b6"];
-    //    [[UIApplication sharedApplication] openURL:linkURL];
-        
-        
-        
-   [[LISDKDeeplinkHelper sharedInstance] viewOtherProfile:self.linkedinId withState:self.linkedinId showGoToAppStoreDialog:YES success:nil error:nil];
-    
-        
 
-        
-        
-        
-        
-        
-        
-    
-        
-    }else if (indexPath.row == 3){
-        NSString *snap =  [[DataAccess singletonInstance] getSnapchat];
-
-        NSURL *snapURL = [NSURL URLWithString:@"snapchat://?u=harryg_sf"];
-        //    if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
-        NSLog(@"trying to open");
-        [[UIApplication sharedApplication] openURL:snapURL];
-        //   }
-        
-        //snapchat://?u=username
-    }
     
     
 }

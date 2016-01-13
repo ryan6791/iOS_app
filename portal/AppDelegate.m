@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "DataAccess.h"
-#import "HomeViewController.h"
 #import "AccountViewController.h"
 
 @interface AppDelegate ()
@@ -32,17 +31,13 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    if ([LISDKCallbackHandler shouldHandleUrl:url]) {
-        return [LISDKCallbackHandler application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
-    }else{
+
         return [[FBSDKApplicationDelegate sharedInstance] application:application
                                                               openURL:url
                                                     sourceApplication:sourceApplication
                                                            annotation:annotation];
-    }
+
     
-    
-    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

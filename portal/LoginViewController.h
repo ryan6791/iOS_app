@@ -11,7 +11,6 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKShareKit/FBSDKShareKit.h>
 
-#import <linkedin-sdk/LISDK.h>
 
 @interface LoginViewController : UIViewController
 
@@ -21,7 +20,7 @@
 @property (nonatomic, assign) BOOL loggedin;
 
 
--(void)sendData:(NSString*)access_token;
+-(void)sendData:(NSString*)access_token completion:(void (^)(void))completionBlock;
 
 
 @end

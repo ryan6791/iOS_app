@@ -34,7 +34,6 @@
 #import "OverlayView.h"
 #import "DataAccess.h"
 #import "DeviceManager.h"
-#import <linkedin-sdk/LISDK.h>
 
 
 @protocol DraggableViewDelegate <NSObject>
