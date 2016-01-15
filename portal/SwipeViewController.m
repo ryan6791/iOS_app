@@ -153,17 +153,17 @@
     
 
     
-    UIImage *connections_image = [[UIImage imageNamed:@"connections"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+ //   UIImage *connections_image = [[UIImage imageNamed:@"connections"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithImage:connections_image  style:UIBarButtonItemStylePlain target:self action:@selector(rightButtonPressed:)];
+  //  UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithImage:connections_image  style:UIBarButtonItemStylePlain target:self action:@selector(rightButtonPressed:)];
     
     UIImage *image = [[UIImage imageNamed:@"settings"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(leftButtonPressed:)];
     
     
-    newItem.rightBarButtonItem = rightBtn;
+ //   newItem.rightBarButtonItem = rightBtn;
     newItem.leftBarButtonItem = leftBtn;
     
     
@@ -189,12 +189,38 @@
     
     
     
-    
-    
     // newItem.titleView = backView;
     // 4. add the nav bar to the main view
     [self.navBar setItems:@[newItem]];
     [self.view addSubview:self.navBar];
+    
+    UIImageView *proImage =[[UIImageView alloc] init];// Here you can set View width and height as per your requirement for displaying titleImageView position in navigationbar
+    proImage.translatesAutoresizingMaskIntoConstraints = NO;
+    [proImage invalidateIntrinsicContentSize];
+    proImage.image = [[DataAccess singletonInstance] getProfileImage];
+    proImage.layer.masksToBounds = YES;
+    proImage.layer.cornerRadius = 15;
+    proImage.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *imageTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(rightButtonPressed:)];
+    [proImage addGestureRecognizer:imageTap];
+    
+    [self.navBar addSubview:proImage];
+    
+    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:proImage attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:29];
+    [self.view addConstraint:constraint3];
+    
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:proImage attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:31];
+    [self.view addConstraint:constraint4];
+    
+    NSDictionary *viewsDictionary = @{@"back":proImage};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[back]-pad-|" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:14]} views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:27]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    [self.view addConstraints:constraint2];
+
     
     
 }
@@ -227,18 +253,20 @@
 
 - (void)rightButtonPressed:(id)sender {
     
-    
+
     UserProfileViewController *account = [[UserProfileViewController alloc] init];
-  //   NewMatchViewController *account = [[NewMatchViewController alloc] init];
-  //  [self.navigationItem setHidesBackButton:YES];
-  //  [self.navigationController setNavigationBarHidden:YES animated:NO];
-  //  [self.navigationController pushViewController:account animated:YES];
+    [self.navigationItem setHidesBackButton:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self.navigationController pushViewController:account animated:YES];
+
     
- //   self.providesPresentationContextTransitionStyle = YES;
- //   self.definesPresentationContext = YES;
+/*
+    NewMatchViewController *account = [[NewMatchViewController alloc] init];
+    self.providesPresentationContextTransitionStyle = YES;
+    self.definesPresentationContext = YES;
     [account setModalPresentationStyle:UIModalPresentationOverCurrentContext];
     account.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:account animated:YES completion:nil];
+    [self presentViewController:account animated:YES completion:nil]; */
     
 }
 

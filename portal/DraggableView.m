@@ -213,8 +213,7 @@
     
     self.socialbackground = [[UIView alloc]initWithFrame:self.pic.frame];
     
-    self.socialbackground.backgroundColor = [UIColor clearColor];//[self grayColor];
-    //  CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 8;
+    self.socialbackground.backgroundColor = [UIColor clearColor];
     self.socialbackground.translatesAutoresizingMaskIntoConstraints = NO;
     [self.socialbackground invalidateIntrinsicContentSize];
     
@@ -230,10 +229,7 @@
     self.socialbackground.layer.shadowRadius = .5;
     self.socialbackground.layer.shadowOpacity = 0.5;
     
-    UITapGestureRecognizer *socialTap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self
-                                            action:@selector(socialPressed:)];
-    [self.socialbackground addGestureRecognizer:socialTap];
+
 
 
     

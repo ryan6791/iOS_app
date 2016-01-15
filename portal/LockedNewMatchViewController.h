@@ -15,5 +15,7 @@
 
 
 @property (strong, nonatomic) UILabel *matchLabel;
+@property (strong, nonatomic) UILabel *decisionLabel;
+
 
 @end

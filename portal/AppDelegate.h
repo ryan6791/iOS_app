@@ -12,6 +12,9 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "SwipeViewController.h"
 
+static NSString *const kLayerAppID = @"LAYER-APP-ID"; // TODO Update layer app id here
+
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

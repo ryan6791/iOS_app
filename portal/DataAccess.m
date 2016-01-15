@@ -25,6 +25,52 @@
     [[NSUserDefaults standardUserDefaults] setBool:status forKey:@"isLoggedIn"];
 }
 
+
+//match data
+- (BOOL)UserHasMatch {
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"hasMatch"]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)setUserMatchStatus:(BOOL)status {
+    [[NSUserDefaults standardUserDefaults] setBool:status forKey:@"hasMatch"];
+}
+
+
+- (void)setMatchProfileImageStatus:(BOOL)status {
+    DataAccess *Data = [DataAccess singletonInstance];
+    Data.isMatchImageSet = status;
+    [Data persistToUserDefaults];
+}
+
+- (BOOL)matchImageIsSet {
+    DataAccess *Data = [DataAccess singletonInstance];
+    return Data.isMatchImageSet;
+}
+
+-(void)setMatchImage:(UIImage*)image{
+    
+    DataAccess *Data = [DataAccess singletonInstance];
+    Data.matchImage = image;
+    [Data persistToUserDefaults];
+    
+    
+}
+
+-(UIImage*)getMatchImage{
+    
+    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"MatchImage"];
+    UIImage* image = [UIImage imageWithData:imageData];
+    return image;
+    
+}
+
+
+//User Data
+
+
 - (void)setProfileImageStatus:(BOOL)status {
     DataAccess *Data = [DataAccess singletonInstance];
     Data.isProfileImageSet = status;

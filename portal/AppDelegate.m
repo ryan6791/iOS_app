@@ -20,7 +20,8 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     if ([[DataAccess singletonInstance] UserIsLoggedIn]) {
         [self initRootViewController];
     }

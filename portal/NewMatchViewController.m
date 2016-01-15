@@ -30,7 +30,7 @@
     self.navigationController.navigationBarHidden = YES;
     [self.navigationItem setHidesBackButton:YES];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor clearColor];
     
     //  self.background.hidden = YES;
     self.pic.hidden = YES;
@@ -56,12 +56,11 @@
     
     
     
-    self.background.backgroundColor = [UIColor clearColor];
+    self.background.backgroundColor = [UIColor whiteColor];
     self.background.translatesAutoresizingMaskIntoConstraints = NO;
     [self.background invalidateIntrinsicContentSize];
     
-    
-    self.background.alpha = 0.2;
+    self.background.alpha = 0.95f;
     
     self.background.userInteractionEnabled = YES;
     
@@ -133,7 +132,7 @@
     [self.matchLabel invalidateIntrinsicContentSize];
     self.matchLabel.textColor = [UIColor lightGrayColor];
     
-    self.matchLabel.text = @"Your current match is:";
+    self.matchLabel.text = @"You got a match!";
     
     
     self.matchLabel.layer.masksToBounds = NO;
@@ -337,7 +336,7 @@
     // Handle clicks on the button
     [self.goChat
      addTarget:self
-     action:@selector(ChatBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+     action:@selector(KeepSwipingBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     
     
     self.goChat.alpha = 1.0;
@@ -407,7 +406,7 @@
     // Handle clicks on the button
     [self.moveOn
      addTarget:self
-     action:@selector(ChatButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+     action:@selector(KeepSwipingBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     
     
     self.moveOn.alpha = 1.0;
@@ -492,6 +491,12 @@
       [self.navigationController setNavigationBarHidden:YES animated:NO];
       [self.navigationController pushViewController:account animated:YES];
 
+}
+
+-(void)KeepSwipingBtnPressed
+{
+    [self dismissViewControllerAnimated:NO completion:nil];
+    
 }
 
 

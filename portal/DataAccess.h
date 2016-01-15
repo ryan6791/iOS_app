@@ -22,6 +22,9 @@
 @property (nonatomic, unsafe_unretained) BOOL isProfileImageSet4;
 @property (nonatomic, strong) UIImage *profileImage4;
 
+@property (nonatomic, unsafe_unretained) BOOL isMatchImageSet;
+@property (nonatomic, strong) UIImage *matchImage;
+
 
 
 
@@ -38,6 +41,8 @@
 - (void)setProfileImageStatus:(BOOL)status;
 - (BOOL)ProfileImageIsSet;
 -(UIImage*)getProfileImage;
+
+
 
 -(void)setProfileImage2:(UIImage*)image;
 - (void)setProfileImageStatus2:(BOOL)status;
@@ -64,6 +69,19 @@
 
 -(void)setName:name;
 -(NSString*)getName;
+
+
+//Matches data
+- (BOOL)UserHasMatch;
+- (void)setUserMatchStatus:(BOOL)status;
+
+-(void)setMatchName:name;
+-(NSString*)getMatchName;
+
+-(void)setMatchImage:(UIImage*)image;
+- (void)setMatchProfileImageStatus:(BOOL)status;
+- (BOOL)matchImageIsSet;
+-(UIImage*)getMatchImage;
 
 
 @end

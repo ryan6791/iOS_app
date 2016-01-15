@@ -29,7 +29,7 @@
     self.navigationController.navigationBarHidden = YES;
     [self.navigationItem setHidesBackButton:YES];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor clearColor];
     
     //  self.background.hidden = YES;
     self.pic.hidden = YES;
@@ -44,6 +44,7 @@
     
     [self setDumpBtn];
     [self setMoveOnBtn];
+    [self setupDecisionLabel];
 }
 
 - (void)addBackground{
@@ -52,12 +53,12 @@
     
     
     
-    self.background.backgroundColor = [UIColor clearColor];
+    self.background.backgroundColor = [UIColor whiteColor];
     self.background.translatesAutoresizingMaskIntoConstraints = NO;
     [self.background invalidateIntrinsicContentSize];
     
     
-    self.background.alpha = 0.2;
+    self.background.alpha = 0.95f;
     
     self.background.userInteractionEnabled = YES;
     
@@ -129,7 +130,7 @@
     [self.matchLabel invalidateIntrinsicContentSize];
     self.matchLabel.textColor = [UIColor lightGrayColor];
     
-    self.matchLabel.text = @"Your current match is:";
+    self.matchLabel.text = @"Your matched with:";
     
     
     self.matchLabel.layer.masksToBounds = NO;
@@ -337,7 +338,7 @@
     // Handle clicks on the button
     [self.goDump
      addTarget:self
-     action:@selector(DumpBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+     action:@selector(KeepSwipingBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     
     
     self.goDump.alpha = 1.0;
@@ -407,7 +408,7 @@
     // Handle clicks on the button
     [self.moveOn
      addTarget:self
-     action:@selector(DumpButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+     action:@selector(KeepSwipingBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     
     
     self.moveOn.alpha = 1.0;
@@ -467,6 +468,62 @@
     
 }
 
+- (void)setupDecisionLabel {
+    
+    
+    self.decisionLabel = [[UILabel alloc] init];
+    [self.decisionLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.decisionLabel invalidateIntrinsicContentSize];
+    self.decisionLabel.textColor = [UIColor lightGrayColor];
+    
+    NSString *label = [@"Do you want to drop " stringByAppendingString:[[DataAccess singletonInstance] getName]];
+    
+    self.decisionLabel.text = [label stringByAppendingString:@"?"];
+
+    
+    
+    self.decisionLabel.layer.masksToBounds = NO;
+    
+    
+    CGFloat pad = 0, pad2 = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        self.decisionLabel.font = [UIFont systemFontOfSize:16];
+        pad = 17;
+        pad2 = 80;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        self.decisionLabel.font = [UIFont systemFontOfSize:18];
+        pad = 8;
+        pad2 = 90;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 9;
+        pad2 = 100;
+        self.decisionLabel.font = [UIFont systemFontOfSize:19];
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 6;
+        pad2 = 75;
+        self.decisionLabel.font = [UIFont systemFontOfSize:15];
+        
+    }
+    
+    self.decisionLabel.alpha = 100.0;
+    
+    [self.view addSubview:self.decisionLabel];
+    
+    NSDictionary *viewsDictionary = @{@"label" : self.decisionLabel, @"button": self.goDump};
+    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.decisionLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    [self.view addConstraint:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-pad-[button]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    
+}
+
 
 
 
@@ -483,6 +540,13 @@
 - (UIColor *) linkedinBlue
 {
     return [UIColor colorWithRed:0.00 green:0.48 blue:0.71 alpha:1.0];
+}
+
+-(void)KeepSwipingBtnPressed
+{
+    [self dismissViewControllerAnimated:NO completion:nil];
+    NSLog(@"hello");
+    
 }
 
 /*
