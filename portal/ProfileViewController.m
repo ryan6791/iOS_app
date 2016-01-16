@@ -1,5 +1,5 @@
 //
-//  UserProfileViewController.m
+//  ProfileViewController.m
 //  portal
 //
 //  Created by Neil Ballard on 12/29/15.

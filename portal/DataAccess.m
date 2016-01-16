@@ -8,6 +8,10 @@
 
 #import "DataAccess.h"
 
+
+static NSString * const kSettingIncomingAvatar = @"kSettingIncomingAvatar";
+static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
+
 @implementation DataAccess
 
 
@@ -50,10 +54,10 @@
     return Data.isMatchImageSet;
 }
 
--(void)setMatchImage:(UIImage*)image{
+-(void)setMatchProfileImage:(UIImage*)image{
     
     DataAccess *Data = [DataAccess singletonInstance];
-    Data.matchImage = image;
+    Data.matchProfileImage = image;
     [Data persistToUserDefaults];
     
     
@@ -61,14 +65,50 @@
 
 -(UIImage*)getMatchImage{
     
-    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"MatchImage"];
+    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"matchImage"];
     UIImage* image = [UIImage imageWithData:imageData];
     return image;
     
 }
 
 
+-(void)setMatchName:(NSString*)name{
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"matchName"];
+    
+}
+
+-(NSString*)getMatchName{
+    
+    NSString *name = [[NSUserDefaults standardUserDefaults]
+                      stringForKey:@"matchName"];
+    
+    return name;
+}
+
+
 //User Data
+
+-(void)saveOutgoingAvatarSetting:(BOOL)value
+{
+    [[NSUserDefaults standardUserDefaults] setBool:value forKey:kSettingOutgoingAvatar];
+}
+
+- (BOOL)outgoingAvatarSetting
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kSettingOutgoingAvatar];
+}
+
+- (void)saveIncomingAvatarSetting:(BOOL)value
+{
+    [[NSUserDefaults standardUserDefaults] setBool:value forKey:kSettingIncomingAvatar];
+}
+
+- (BOOL)incomingAvatarSetting
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kSettingIncomingAvatar];
+}
 
 
 - (void)setProfileImageStatus:(BOOL)status {
@@ -202,7 +242,7 @@
 
 #pragma - user info
 
--(void)setName:(id)name{
+-(void)setName:(NSString*)name{
     
     
     [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"username"];

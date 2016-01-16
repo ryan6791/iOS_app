@@ -1356,8 +1356,8 @@
     
     ProfileViewController *account = [[ProfileViewController alloc] init];
     [self.navigationItem setHidesBackButton:NO];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    [self.navigationController pushViewController:account animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController pushViewController:account animated:NO];
     
 }
 

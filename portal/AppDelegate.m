@@ -21,6 +21,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    [[DataAccess singletonInstance] setMatchName:@"Jess"];
+    UIImage *matchImage = [UIImage imageNamed:@"_avatar_cook"];
+    [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(matchImage) forKey:@"matchImage"];
+    [[DataAccess singletonInstance] saveIncomingAvatarSetting:YES];
+    [[DataAccess singletonInstance] saveOutgoingAvatarSetting:YES];
     
     if ([[DataAccess singletonInstance] UserIsLoggedIn]) {
         [self initRootViewController];

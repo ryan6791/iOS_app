@@ -9,7 +9,6 @@
 #import "NewMatchViewController.h"
 #import "DeviceManager.h"
 #import "DataAccess.h"
-#import "UserProfileViewController.h"
 
 @interface NewMatchViewController ()
 
@@ -486,10 +485,10 @@
 
 -(void)ChatBtnPressed
 {
-      UserProfileViewController *account = [[UserProfileViewController alloc] init];
-      [self.navigationItem setHidesBackButton:YES];
-      [self.navigationController setNavigationBarHidden:YES animated:NO];
-      [self.navigationController pushViewController:account animated:YES];
+    //  UserChatViewController *account = [[UserChatViewController alloc] init];
+    //  [self.navigationItem setHidesBackButton:YES];
+    //  [self.navigationController setNavigationBarHidden:YES animated:NO];
+    //  [self.navigationController pushViewController:account animated:YES];
 
 }
 

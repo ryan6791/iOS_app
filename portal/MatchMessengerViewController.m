@@ -1,32 +1,41 @@
 //
-//  UserProfileViewController.m
-//  portal
+//  MatchMessengerViewController.m
+//  pairedUP
 //
-//  Created by Neil Ballard on 12/29/15.
-//  Copyright © 2015 Neil_appworld. All rights reserved.
+//  Created by Neil Ballard on 1/15/16.
+//  Copyright © 2016 Neil_appworld. All rights reserved.
 //
 
-#import "UserProfileViewController.h"
+#import "MatchMessengerViewController.h"
 #import "DeviceManager.h"
 #import "DataAccess.h"
 #import "UserAlbumsViewController.h"
 
-@interface UserProfileViewController ()
+@interface MatchMessengerViewController ()
+
+@property (nonatomic) BOOL shouldDisplayAvatarItem;
+@property (nonatomic) NSMutableArray *objectChanges;
+@property (nonatomic) NSHashTable *sectionHeaders;
+@property (nonatomic) NSHashTable *sectionFooters;
+
+@property (nonatomic) BOOL showingMoreMessagesIndicator;
+@property (nonatomic) BOOL hasAppeared;
+@property (nonatomic) BOOL shouldShareLocation;
+@property (nonatomic) BOOL canDisableAddressBar;
+@property (nonatomic) dispatch_queue_t animationQueue;
 
 
 @end
 
-@implementation UserProfileViewController
+@implementation MatchMessengerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     self.navigationController.navigationBarHidden = YES;
     [self.navigationItem setHidesBackButton:YES];
     [self.view setBackgroundColor:[UIColor whiteColor]];
-
-    [self styleNavBar];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,13 +43,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self styleNavBar];
     
     
 }
+
 
 - (void)styleNavBar {
     
@@ -283,6 +292,22 @@
 }
 
 
++ (NSCache *)sharedMediaAttachmentCache
+{
+    static NSCache *_sharedCache;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedCache = [NSCache new];
+    });
+    return _sharedCache;
+}
+
+
+
+
+
+
+
 -(IBAction)goBack:(id)sender{
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -307,8 +332,12 @@
 }
 
 
-
-
+- (void)registerForNotifications
+{
+    
+    // Application State Notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleApplicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+}
 
 
 @end

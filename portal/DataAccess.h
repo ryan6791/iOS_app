@@ -23,7 +23,7 @@
 @property (nonatomic, strong) UIImage *profileImage4;
 
 @property (nonatomic, unsafe_unretained) BOOL isMatchImageSet;
-@property (nonatomic, strong) UIImage *matchImage;
+@property (nonatomic, strong) UIImage *matchProfileImage;
 
 
 
@@ -67,7 +67,7 @@
 -(NSString*)getFacebook;
 
 
--(void)setName:name;
+-(void)setName:(NSString*)name;
 -(NSString*)getName;
 
 
@@ -75,13 +75,19 @@
 - (BOOL)UserHasMatch;
 - (void)setUserMatchStatus:(BOOL)status;
 
--(void)setMatchName:name;
+-(void)setMatchName:(NSString*)name;
 -(NSString*)getMatchName;
 
--(void)setMatchImage:(UIImage*)image;
 - (void)setMatchProfileImageStatus:(BOOL)status;
 - (BOOL)matchImageIsSet;
 -(UIImage*)getMatchImage;
+-(void)setMatchProfileImage:(UIImage*)image;
+
+- (void)saveOutgoingAvatarSetting:(BOOL)value;
+- (BOOL)outgoingAvatarSetting;
+
+- (void)saveIncomingAvatarSetting:(BOOL)value;
+- (BOOL)incomingAvatarSetting;
 
 
 @end

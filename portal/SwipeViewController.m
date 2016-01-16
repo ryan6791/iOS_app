@@ -9,8 +9,9 @@
 #import "SwipeViewController.h"
 #import "UserMenuViewController.h"
 #import "SwipeAlbumViewController.h"
-#import "UserProfileViewController.h"
+#import "JSQMessagesViewController.h"
 #import "NewMatchViewController.h"
+#import "MessagesViewController.h"
 
 @interface SwipeViewController ()
 
@@ -197,7 +198,7 @@
     UIImageView *proImage =[[UIImageView alloc] init];// Here you can set View width and height as per your requirement for displaying titleImageView position in navigationbar
     proImage.translatesAutoresizingMaskIntoConstraints = NO;
     [proImage invalidateIntrinsicContentSize];
-    proImage.image = [[DataAccess singletonInstance] getProfileImage];
+    proImage.image = [[DataAccess singletonInstance] getMatchImage];
     proImage.layer.masksToBounds = YES;
     proImage.layer.cornerRadius = 15;
     proImage.userInteractionEnabled = YES;
@@ -253,11 +254,12 @@
 
 - (void)rightButtonPressed:(id)sender {
     
+    
 
-    UserProfileViewController *account = [[UserProfileViewController alloc] init];
+    MessagesViewController *vc = [MessagesViewController messagesViewController];
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    [self.navigationController pushViewController:account animated:YES];
+    [self.navigationController pushViewController:vc animated:YES];
 
     
 /*
