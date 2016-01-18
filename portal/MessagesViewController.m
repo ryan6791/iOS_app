@@ -862,9 +862,7 @@
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapAvatarImageView:(UIImageView *)avatarImageView atIndexPath:(NSIndexPath *)indexPath
 {
-
-    NSLog(@"image is %@", avatarImageView);
-
+    [self goToAlbum];
     NSLog(@"Tapped avatar!");
 }
 
@@ -915,6 +913,16 @@
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self.navigationController pushViewController:account animated:NO];
+    
+}
+
+-(void)goToAlbum{
+    
+    UserAlbumsViewController *account = [[UserAlbumsViewController alloc] init];
+    [self.navigationItem setHidesBackButton:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self.navigationController pushViewController:account animated:NO];
+    
     
 }
 

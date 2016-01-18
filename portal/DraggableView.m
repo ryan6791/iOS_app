@@ -15,6 +15,7 @@
 
 
 #import "DraggableView.h"
+#import "UserData.h"
 
 @implementation DraggableView {
     CGFloat xFromCenter;
@@ -132,7 +133,8 @@
     
 }
 
-- (void)addProfileImage {
+- (void)addProfileImage{
+    
     
     self.pic = [[UIImageView alloc]initWithFrame:self.pickbackground.frame];
     
@@ -141,14 +143,12 @@
     self.pic.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pic invalidateIntrinsicContentSize];
     
-    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"ProfileImage"];
-    UIImage* image = [UIImage imageWithData:imageData];
+    UserData *instance = [UserData singletonInstance];
+    self.image = [instance getImage];
     
     
-    
-    
-    if (image != nil) {
-        self.pic.image = [[DataAccess singletonInstance] getProfileImage];
+    if (self.image != nil) {
+        self.pic.image = self.image;
     }else{
         self.pic.image = [UIImage imageNamed:@"image_placeholder.png"];
     }
@@ -208,6 +208,8 @@
     [self.pickbackground addConstraint:constraint4];
     
 }
+
+
 
 - (void)addSocialBackground {
     
@@ -604,6 +606,8 @@
     [[NSNotificationCenter defaultCenter] postNotification:notification]; */
 
 }
+
+
 
 
 

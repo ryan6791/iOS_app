@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AccountViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface AccountViewController : UIViewController<UITextFieldDelegate>
+
+@property (strong, nonatomic) IBOutlet UITextField *networkTextField;
+
 
 @end

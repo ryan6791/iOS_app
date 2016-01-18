@@ -5,6 +5,7 @@
 //
 
 #import "DraggableViewBackground.h"
+#import "UserData.h"
 
 @implementation DraggableViewBackground{
     NSInteger cardsLoadedIndex;
@@ -132,8 +133,27 @@ static const int MAX_BUFFER_SIZE = 2;
         CARD_WIDTH = 305;
     }
     
-    DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake(w_pad, pad, CARD_WIDTH, CARD_HEIGHT)];
+
     
+    UserData *instance = [UserData singletonInstance];
+    UIImage *image = nil;
+    
+    if(index == 0){
+       image = [UIImage imageNamed:@"girl1"];
+        
+    }else if(index == 1){
+        image = [UIImage imageNamed:@"girl2"];
+
+        
+    }else{
+        image = [UIImage imageNamed:@"girl3"];
+
+        
+    }
+    
+    instance.image = image;
+    
+    DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake(w_pad, pad, CARD_WIDTH, CARD_HEIGHT)];
     
     
     draggableView.delegate = self;
@@ -146,7 +166,7 @@ static const int MAX_BUFFER_SIZE = 2;
     if([exampleCardLabels count] > 0) {
         NSInteger numLoadedCardsCap =(([exampleCardLabels count] > MAX_BUFFER_SIZE)?MAX_BUFFER_SIZE:[exampleCardLabels count]);
         //%%% if the buffer size is greater than the data size, there will be an array error, so this makes sure that doesn't happen
-        
+
         //%%% loops through the exampleCardsLabels array to create a card for each label.  This should be customized by removing "exampleCardLabels" with your own array of data
         for (int i = 0; i<[exampleCardLabels count]; i++) {
             DraggableView* newCard = [self createDraggableViewWithDataAtIndex:i];

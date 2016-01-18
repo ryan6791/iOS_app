@@ -60,6 +60,7 @@
 @property (strong, nonatomic) IBOutlet UIView *cellbackground;
 
 
+@property (nonatomic, strong) UIImage *image;
 
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *contact_time;
@@ -90,5 +91,9 @@
 -(void)leftClickAction;
 -(void)rightClickAction;
 
+- (void)addProfileImage;
+
+
++ (id)singletonInstance;
 
 @end

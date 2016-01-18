@@ -20,10 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *pic;
 @property (strong, nonatomic) IBOutlet UIView *topbackground;
 @property (strong, nonatomic) IBOutlet UIView *pickbackground;
-@property (strong, nonatomic) IBOutlet UIImageView *fb_logo;
-@property (strong, nonatomic) IBOutlet UIImageView *insta_logo;
-@property (strong, nonatomic) IBOutlet UIImageView *linkedin_logo;
-@property (strong, nonatomic) IBOutlet UIImageView *snapchat_logo;
+
 
 @property (strong, nonatomic) IBOutlet UIImageView *pic2;
 @property (strong, nonatomic) IBOutlet UIView *pickbackground2;
@@ -33,17 +30,11 @@
 @property (strong, nonatomic) IBOutlet UIView *pickbackground4;
 
 @property (strong, nonatomic) IBOutlet UILabel *networksLabel;
-@property (strong, nonatomic) IBOutlet UILabel *fbLabel;
-@property (strong, nonatomic) IBOutlet UILabel *instaLabel;
-@property (strong, nonatomic) IBOutlet UILabel *linkedinLabel;
-@property (strong, nonatomic) IBOutlet UILabel *snapchatLabel;
+
 
 
 @property (nonatomic, retain) UIView * Line;
-@property (nonatomic, retain) UIView * Line1;
-@property (nonatomic, retain) UIView * Line2;
-@property (nonatomic, retain) UIView * Line3;
-@property (nonatomic, retain) UIView * Line4;
+
 
 @property (nonatomic,unsafe_unretained) CGRect mainScreenBounds;
 @property (nonatomic, retain) UITableView *tableView;
@@ -83,7 +74,7 @@
     [self addProfileImage4];
     [self setupnetworkLabel];
     [self addLine];
-    
+    [self setupnetworkTextField];
     
 }
 
@@ -342,130 +333,9 @@
      */
 }
 
-- (void)setupTitleViewWithTitleText {
-    
-    //  UIImageView *imView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
-    UIImage *proIcon = [[DataAccess singletonInstance] getProfileImage];
-    //   CGRect frame = CGRectMake(0, 0, 25, 25);
-    
-    
-    UIImageView* v = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    v.image = proIcon;
-    v.layer.masksToBounds = YES;
-    v.layer.cornerRadius = 20;
-    
-    v.layer.shadowOffset = CGSizeMake(1.5, 1.5);
-    v.layer.shadowRadius = 0.5;
-    v.layer.shadowOpacity = 1.0;
-    v.layer.shadowColor = [self titleColor].CGColor;
-    
-    UIBarButtonItem* rightBtn = [[UIBarButtonItem alloc] initWithCustomView:v];
-    rightBtn.action = @selector(Edit:);
-    
-    //   self.navigationItem.rightBarButtonItem = rightBtn;
-    /*
-     //   imView.backgroundColor = [UIColor redColor];
-     imView.image = proIcon;
-     
-     
-     
-     
-     
-     //   imView.contentMode = UIViewContentModeScaleAspectFill;
-     //   imView.clipsToBounds = YES;
-     //   imView.layer.cornerRadius = 25;
-     //   imView.layer.masksToBounds = YES;
-     
-     
-     
-     UIButton* button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-     [button setBackgroundImage:imView.image forState:UIControlStateNormal];
-     [button setShowsTouchWhenHighlighted:YES];
-     
-     button.layer.cornerRadius = 25;
-     
-     
-     
-     [button addTarget:self action:@selector(Edit:) forControlEvents:UIControlEventTouchDown];
-     
-     
-     
-     UIBarButtonItem* rightBtn = [[UIBarButtonItem alloc] initWithCustomView:button];
-     
-     
-     //   UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithImage:[proIcon imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-     //                                                               style:UIBarButtonItemStylePlain
-     //                                                              target:self
-     //                                                              action:@selector(Edit:)];
-     
-     
-     
-     UIButton *useButton = [UIButton buttonWithType:UIButtonTypeCustom];
-     useButton.frame = CGRectMake(35, 35, 35, 35);
-     useButton.layer.masksToBounds = NO;
-     useButton.layer.cornerRadius = 25;
-     useButton.layer.shadowOffset = CGSizeMake(1.5, 1.5);
-     useButton.layer.shadowRadius = 0.5;
-     useButton.layer.shadowOpacity = 1.0;
-     useButton.layer.shadowColor = [UIColor blackColor].CGColor;
-     useButton.backgroundColor = [UIColor redColor];
-     
-     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithCustomView:useButton];
-     self.navigationItem.rightBarButtonItem = rightBtn;*/
-    
-    UIButton *titleView = [UIButton buttonWithType:UIButtonTypeCustom];
-    titleView.frame = CGRectMake(0, 0, 30, 30);
-    
-    [titleView setUserInteractionEnabled:YES];
-    [titleView setBackgroundImage:proIcon forState:UIControlStateNormal];
-    [titleView setShowsTouchWhenHighlighted:YES];
-    titleView.clipsToBounds = YES;
-    titleView.layer.cornerRadius = 20;
-    //    [titleView sizeToFit];
-    [titleView addTarget:self action:@selector(Edit:) forControlEvents:UIControlEventTouchUpInside];
-    
-    //  titleView.layer.cornerRadius = 25;
-    //  NSString *titleText = @"Portal";
-    // [titleView setTitleColor:[self titleColor] forState:UIControlStateNormal];
-    
-    //  [titleView setTitle:titleText forState:UIControlStateNormal];
-    
-    
-    
-    
-    
-    self.navigationItem.titleView = titleView;
-}
 
 
 
-- (void)initViewItems {
-    
-    
-    self.snapchatLabel = [[UILabel alloc] init];
-    [self.view addSubview:self.snapchatLabel];
-    self.fbLabel = [[UILabel alloc] init];
-    [self.view addSubview:self.fbLabel];
-    self.instaLabel = [[UILabel alloc] init];
-    [self.view addSubview:self.instaLabel];
-    self.linkedinLabel = [[UILabel alloc] init];
-    [self.view addSubview:self.linkedinLabel];
-    
-    
-    
-    self.Line1 = [[UIView alloc] init];
-    [self.view addSubview:self.Line1];
-    self.Line2 = [[UIView alloc] init];
-    [self.view addSubview:self.Line2];
-    self.Line3 = [[UIView alloc] init];
-    [self.view addSubview:self.Line3];
-    self.Line4 = [[UIView alloc] init];
-    [self.view addSubview:self.Line4];
-    
-    
-    
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -1134,58 +1004,6 @@
 }
 
 
-- (void)addTableContainer {
-    
-    self.tableBack = [[UIView alloc]init];
-    
-    self.tableBack.backgroundColor = [UIColor whiteColor];
-    CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
-    self.tableBack.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.tableBack invalidateIntrinsicContentSize];
-    
-    self.tableBack.layer.masksToBounds = NO;
-    self.tableBack.layer.shadowOffset = CGSizeMake(-.1, .2);
-    self.tableBack.layer.shadowRadius = .5;
-    self.tableBack.layer.shadowOpacity = 0.5;
-    
-    [self.view addSubview:self.tableBack];
-    
-    CGFloat pad = 0, height = 0;
-    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
-    {
-        pad = 0;
-        height = 180;
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
-    {
-        pad = 0;
-        height = 195;
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
-    {
-        pad = 0;
-        height = 210;
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 0;
-        height = 180;
-    }
-    
-    
-    
-    NSDictionary *viewsDictionary = @{@"back":self.tableBack, @"top": self.Line};
-    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.tableBack attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    [self.view addConstraint:constraint1];
-    [self.view addConstraints:constraint2];
-    
-    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.tableBack attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
-    [self.view addConstraint:constraint3];
-    
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.tableBack attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
-    [self.view addConstraint:constraint4];
-    
-}
 
 
 
@@ -1198,15 +1016,13 @@
     
     self.networksLabel = [[UILabel alloc] init];
     
-    self.networksLabel.hidden = YES;
-    
     self.networksLabel.font = [UIFont systemFontOfSize:5];
     height = 15;
     
     CGFloat pad = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 6;
+        pad = 27;
         height = 180;
         self.networksLabel.font = [UIFont systemFontOfSize:16];
         
@@ -1239,13 +1055,13 @@
     self.networksLabel.font = [UIFont fontWithName:@"Verdana" size:17.0f];
     self.networksLabel.textColor = [self cdBlue];
     
-    self.networksLabel.text = @"Networks";
+    self.networksLabel.text = @"Bio";
     
     [self.view addSubview:self.networksLabel];
     
     UIView *top = self.topbackground;
     NSDictionary *viewsDictionary = @{@"top":top, @"label" : self.networksLabel};
-    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[label]" options:0 metrics:nil views:viewsDictionary];
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[label]" options:0 metrics:nil views:viewsDictionary];
     [self.view addConstraints:constraint1];
     NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
     [self.view addConstraints:constraint2];
@@ -1253,7 +1069,81 @@
 }
 
 
+- (void)setupnetworkTextField {
+    
+    self.networkTextField = [[UITextField alloc]init];
+    self.networkTextField.delegate = self;
+    self.networkTextField.layer.cornerRadius = 7.0;
+    self.networkTextField.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.networkTextField invalidateIntrinsicContentSize];
 
+
+  //  if ([[DataAccess singletonInstance] getInstagram] != nil) {
+  //      self.networkTextField.text = [[DataAccess singletonInstance] getInstagram];
+  //  }
+    
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    CGFloat height = 0, width = 0, xpad = 0, ypad = 0;
+    width = screen.size.width - 30;
+    CGFloat font_size = 0;
+    
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        height = 150;
+        xpad = 15;
+        ypad = 3;
+        font_size = 12;
+
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        height = 35;
+        xpad = 15;
+        ypad = 10;
+        font_size = 13;
+
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        height = 45;
+        xpad = 15;
+        ypad = 10;
+        font_size = 14;
+
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad])
+    {
+        height = 30;
+        xpad = 15;
+        ypad = 0;
+        font_size = 11;
+
+    }
+    
+    UIColor *color = [UIColor lightGrayColor];
+
+    
+    self.networkTextField.backgroundColor = [UIColor whiteColor];
+    self.networkTextField.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.networkTextField.layer.borderWidth = 0.5f;
+    self.networkTextField.layer.masksToBounds = true;
+    
+    NSMutableDictionary *viewsDictionary = [[NSMutableDictionary alloc] init];
+    [viewsDictionary setObject:self.networkTextField forKey:@"textField"];
+    [viewsDictionary setObject:self.Line forKey:@"label"];
+    
+    [self.view addSubview:self.networkTextField];
+    
+    NSArray *hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-xpad-[textField]" options:0 metrics:@{@"xpad" : [NSNumber numberWithFloat:xpad], @"width" : [NSNumber numberWithFloat:width]} views:viewsDictionary];
+    NSArray *vConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-pad-[textField(height)]" options:0 metrics:@{@"height" : [NSNumber numberWithFloat:height], @"pad" : [NSNumber numberWithFloat:ypad]} views:viewsDictionary];
+    
+    [self.view addConstraints:hConstraints];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.networkTextField attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width]];
+    
+    [self.view addConstraints:vConstraints];
+    
+}
 
 
 
@@ -1386,7 +1276,40 @@
 }
 
 
+- (void)textFieldDidChange {
+    //
+}
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    [textField setReturnKeyType:UIReturnKeyDone];
+    return TRUE;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField{
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.networkTextField resignFirstResponder];
+    return YES;
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self.networkTextField resignFirstResponder];
+    [self.networkTextField endEditing:YES];
+}
+
+
+- (void)touchesEnded: (NSSet *) touches withEvent: (UIEvent *) event {
+    NSArray *subviews = [self.view subviews];
+    for (id objects in subviews) {
+        if ([objects isKindOfClass:[UITextField class]]) {
+            UITextField *theTextField = objects;
+            if ([objects isFirstResponder]) {
+                [theTextField resignFirstResponder];
+            }
+        }
+    }
+}
 
 
 @end
