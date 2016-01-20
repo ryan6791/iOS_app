@@ -22,8 +22,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *pic4;
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 
-
-
 @end
 
 @implementation UserAlbumsViewController
@@ -115,7 +113,7 @@
 
 -(void)addHeaderView{
     
-    self.headerView = [[UIImageView alloc]init];
+    self.headerView = [[UIView alloc]init];
     
     self.headerView.backgroundColor = [UIColor blackColor];
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
@@ -181,12 +179,12 @@
     self.propic.translatesAutoresizingMaskIntoConstraints = NO;
     [self.propic invalidateIntrinsicContentSize];
     
-    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"ProfileImage"];
+    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"matchImage"];
     UIImage* image = [UIImage imageWithData:imageData];
     
     
     if (image != nil) {
-        self.propic.image = [[DataAccess singletonInstance] getProfileImage];
+        self.propic.image = image;
     }else{
         self.propic.image = [UIImage imageNamed:@"image_placeholder.png"];
     }
@@ -256,12 +254,12 @@
     self.pic.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pic invalidateIntrinsicContentSize];
     
-    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"ProfileImage"];
+    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"matchImage"];
     UIImage* image = [UIImage imageWithData:imageData];
     
     
     if (image != nil) {
-        self.pic.image = [[DataAccess singletonInstance] getProfileImage];
+        self.pic.image = image;
     }else{
         self.pic.image = [UIImage imageNamed:@"image_placeholder.png"];
     }
@@ -333,12 +331,12 @@
     self.pic2.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pic2 invalidateIntrinsicContentSize];
     
-    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"ProfileImage"];
+    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"matchImage"];
     UIImage* image = [UIImage imageWithData:imageData];
     
     
     if (image != nil) {
-        self.pic2.image = [[DataAccess singletonInstance] getProfileImage];
+        self.pic2.image = image;
     }else{
         self.pic2.image = [UIImage imageNamed:@"image_placeholder.png"];
     }
@@ -409,12 +407,12 @@
     self.pic3.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pic3 invalidateIntrinsicContentSize];
     
-    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"ProfileImage"];
+    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"matchImage"];
     UIImage* image = [UIImage imageWithData:imageData];
     
     
     if (image != nil) {
-        self.pic3.image = [[DataAccess singletonInstance] getProfileImage];
+        self.pic3.image = image;
     }else{
         self.pic3.image = [UIImage imageNamed:@"image_placeholder.png"];
     }
@@ -485,12 +483,12 @@
     self.pic4.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pic4 invalidateIntrinsicContentSize];
     
-    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"ProfileImage"];
+    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"matchImage"];
     UIImage* image = [UIImage imageWithData:imageData];
     
     
     if (image != nil) {
-        self.pic4.image = [[DataAccess singletonInstance] getProfileImage];
+        self.pic4.image = image;
     }else{
         self.pic4.image = [UIImage imageNamed:@"image_placeholder.png"];
     }
@@ -560,7 +558,7 @@
     [self.nameLabel invalidateIntrinsicContentSize];
     self.nameLabel.textColor = [UIColor whiteColor];
     
-    self.nameLabel.text = [[DataAccess singletonInstance] getName];
+    self.nameLabel.text = [[DataAccess singletonInstance] getMatchName];
     
     self.nameLabel.text = [self.nameLabel.text stringByAppendingString:@", 24"];
     

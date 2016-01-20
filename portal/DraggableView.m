@@ -362,7 +362,7 @@
     [self.contact_time invalidateIntrinsicContentSize];
     self.contact_time.textColor = [UIColor whiteColor];
     
-    self.contact_time.text = @"Encountered an hour ago";
+    self.contact_time.text = @"";
     
     self.contact_time.layer.shadowRadius = 3.0;
     self.contact_time.layer.shadowOpacity = 0.5;

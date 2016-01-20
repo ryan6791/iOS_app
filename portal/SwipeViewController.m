@@ -11,7 +11,7 @@
 #import "SwipeAlbumViewController.h"
 #import "JSQMessagesViewController.h"
 #import "NewMatchViewController.h"
-#import "MessagesViewController.h"
+#import "MatchProfileViewController.h"
 
 @interface SwipeViewController ()
 
@@ -118,10 +118,9 @@
 
 - (void)styleNavBar {
     
-    CGFloat height = 0, ypad = 0;
+    CGFloat height = 0;
     
     height = 64;
-    ypad = 36;
     
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
@@ -210,15 +209,49 @@
     
     [self.navBar addSubview:proImage];
     
-    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:proImage attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:29];
+    CGFloat pic_width = 0, pic_height = 0, x_pad = 0, y_pad = 0;
+
+
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pic_height = 29;
+        pic_width = 31;
+        x_pad = 14;
+        y_pad = 27;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pic_height = 29;
+        pic_width = 31;
+        x_pad = 16;
+        y_pad = 33;
+
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pic_height = 29;
+        pic_width = 31;
+        x_pad = 16;
+        y_pad = 30;
+
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+       
+        pic_height = 29;
+        pic_width = 31;
+        x_pad = 14;
+        y_pad = 27;
+    }
+    
+    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:proImage attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:pic_height];
     [self.view addConstraint:constraint3];
     
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:proImage attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:31];
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:proImage attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:pic_width];
     [self.view addConstraint:constraint4];
     
     NSDictionary *viewsDictionary = @{@"back":proImage};
-    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[back]-pad-|" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:14]} views:viewsDictionary];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:27]} views:viewsDictionary];
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[back]-pad-|" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:x_pad]} views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat: y_pad ]} views:viewsDictionary];
     [self.view addConstraints:constraint1];
     [self.view addConstraints:constraint2];
 
@@ -256,7 +289,8 @@
     
     
 
-    MessagesViewController *vc = [MessagesViewController messagesViewController];
+  //  MessagesViewController *vc = [MessagesViewController messagesViewController];
+    MatchProfileViewController *vc = [[MatchProfileViewController alloc]init];
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self.navigationController pushViewController:vc animated:YES];

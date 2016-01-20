@@ -1029,7 +1029,7 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 7;
+        pad = 27;
         height = 180;
         self.networksLabel.font = [UIFont systemFontOfSize:17];
         
@@ -1097,9 +1097,9 @@
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        height = 35;
+        height = 200;
         xpad = 15;
-        ypad = 10;
+        ypad = 5;
         font_size = 13;
 
     }
