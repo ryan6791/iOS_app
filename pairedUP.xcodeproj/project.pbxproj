@@ -21,6 +21,7 @@
 		4A12E7A41BFB0F90000ECD59 /* UserAccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12E7A31BFB0F90000ECD59 /* UserAccountTableViewCell.m */; };
 		4A12E7A71BFC32EB000ECD59 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12E7A61BFC32EB000ECD59 /* ProfileViewController.m */; };
 		4A1D714B1C3B28E400F0B6B8 /* UserAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1D714A1C3B28E300F0B6B8 /* UserAlbumsViewController.m */; };
+		4A1EDE5B1C5054E600DF3087 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4A1EDE5A1C5054E600DF3087 /* .gitignore */; };
 		4A256ADC1BE49248006CD39E /* linkedin_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A256ADB1BE49248006CD39E /* linkedin_icon.png */; };
 		4A256ADE1BE49269006CD39E /* facebook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A256ADD1BE49269006CD39E /* facebook_icon.png */; };
 		4A256AE21BE4929C006CD39E /* snapchat_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A256AE11BE4929C006CD39E /* snapchat_icon.png */; };
@@ -126,6 +127,7 @@
 		4A12E7A61BFC32EB000ECD59 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		4A1D71491C3B28E300F0B6B8 /* UserAlbumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAlbumsViewController.h; sourceTree = "<group>"; };
 		4A1D714A1C3B28E300F0B6B8 /* UserAlbumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAlbumsViewController.m; sourceTree = "<group>"; };
+		4A1EDE5A1C5054E600DF3087 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4A256ADB1BE49248006CD39E /* linkedin_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linkedin_icon.png; sourceTree = "<group>"; };
 		4A256ADD1BE49269006CD39E /* facebook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_icon.png; sourceTree = "<group>"; };
 		4A256AE11BE4929C006CD39E /* snapchat_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snapchat_icon.png; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 		4ABB5B8E1BC8BCB600BEA3EF = {
 			isa = PBXGroup;
 			children = (
+				4A1EDE5A1C5054E600DF3087 /* .gitignore */,
 				4ABB5BD01BC8BCD600BEA3EF /* Frameworks */,
 				4ABB5B991BC8BCB600BEA3EF /* portal */,
 				4ABB5BB61BC8BCB700BEA3EF /* portalTests */,
@@ -610,6 +613,7 @@
 				4A705C951BF598410084B23C /* Sign-in-Large---Default.png in Resources */,
 				4ADCA1341C1E9AB1002A018B /* Oval 3 + Rectangle 11-1.png in Resources */,
 				4AFC39711C0A5AEA004E7262 /* 1448769105_down4-1.png in Resources */,
+				4A1EDE5B1C5054E600DF3087 /* .gitignore in Resources */,
 				4AFC39751C0A5D86004E7262 /* 1448769786_share-2.png in Resources */,
 				4ADCA1381C1E9B62002A018B /* noButton-01-1.png in Resources */,
 				4A92A3921C0584A300E12000 /* 1448452123_info-1.png in Resources */,
