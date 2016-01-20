@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "DataAccess.h"
 #import "AccountViewController.h"
+#import "RelationshipMatchViewController.h"
 
 @interface AppDelegate ()
 
@@ -85,7 +86,9 @@
 
 - (void)initRootViewController {
     
-    SwipeViewController *ViewController = [[SwipeViewController alloc] init];
+  //  SwipeViewController *ViewController = [[SwipeViewController alloc] init];
+    
+    RelationshipMatchViewController *ViewController = [[RelationshipMatchViewController alloc] init];
     
     self.navController = [[UINavigationController alloc] initWithRootViewController:ViewController];
     [self.navController setNavigationBarHidden:NO];

@@ -103,6 +103,7 @@
                  NSString *name = [result objectForKey:@"first_name"];
                  [[DataAccess singletonInstance] setName:name];
                  NSString *birthday = [result objectForKey:@"birthday"];
+                 [[DataAccess singletonInstance] setBirthday:birthday];
                  NSString *gender = [result objectForKey:@"gender"];
                  [[DataAccess singletonInstance] setGender:gender];
 

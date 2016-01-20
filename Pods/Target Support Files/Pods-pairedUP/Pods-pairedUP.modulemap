@@ -1,0 +1,6 @@
+framework module Pods_pairedUP {
+  umbrella header "Pods-pairedUP-umbrella.h"
+
+  export *
+  module * { export * }
+}
