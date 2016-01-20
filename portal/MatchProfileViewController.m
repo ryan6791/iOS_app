@@ -311,12 +311,15 @@
         pad = 9;
         pad2 = 16;
         self.infoText.font = [UIFont systemFontOfSize:21];
+        widthOffset = 64;
+
         
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 6;
-        pad2 = 8;
-        self.infoText.font = [UIFont systemFontOfSize:17];
+        pad = 17;
+        pad2 = 10;
+        self.infoText.font = [UIFont systemFontOfSize:14];
+        widthOffset = 70;
         
     }
     

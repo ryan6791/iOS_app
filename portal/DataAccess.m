@@ -172,14 +172,6 @@ static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
 
 
 
--(void)setProfileImage:(UIImage*)image{
-    
-    DataAccess *Data = [DataAccess singletonInstance];
-    Data.profileImage = image;
-    [Data persistToUserDefaults];
-    
-    
-}
 
 -(UIImage*)getProfileImage{
     
@@ -189,14 +181,6 @@ static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
     
 }
 
--(void)setProfileImage2:(UIImage*)image{
-    
-    DataAccess *Data = [DataAccess singletonInstance];
-    Data.profileImage = image;
-    [Data persistToUserDefaults];
-    
-    
-}
 
 -(UIImage*)getProfileImage2{
     
@@ -206,14 +190,7 @@ static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
     
 }
 
--(void)setProfileImage3:(UIImage*)image{
-    
-    DataAccess *Data = [DataAccess singletonInstance];
-    Data.profileImage = image;
-    [Data persistToUserDefaults];
-    
-    
-}
+
 
 -(UIImage*)getProfileImage3{
     
@@ -223,14 +200,6 @@ static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
     
 }
 
--(void)setProfileImage4:(UIImage*)image{
-    
-    DataAccess *Data = [DataAccess singletonInstance];
-    Data.profileImage = image;
-    [Data persistToUserDefaults];
-    
-    
-}
 
 -(UIImage*)getProfileImage4{
     
@@ -257,6 +226,37 @@ static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
     return name;
 }
 
+-(void)setGender:(NSString*)gender{
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:gender forKey:@"gender"];
+    
+}
+
+-(NSString*)getGender{
+    
+    NSString *gender = [[NSUserDefaults standardUserDefaults]
+                      stringForKey:@"gender"];
+    
+    return gender;
+}
+
+-(void)setBirthday:(NSString*)bday{
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:bday forKey:@"bday"];
+    
+}
+
+-(NSString*)getBirthday{
+    
+    NSString *bday = [[NSUserDefaults standardUserDefaults]
+                        stringForKey:@"bday"];
+    
+    return bday;
+}
+
+
 
 #pragma - social networks
 
@@ -273,6 +273,20 @@ static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
                          stringForKey:@"facebook_id"];
     
     return network;
+}
+
+
+#pragma mark - User Status Methods
+
+- (BOOL)UserIsTaken {
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"isTaken"]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)setUserTakenStatus:(BOOL)status {
+    [[NSUserDefaults standardUserDefaults] setBool:status forKey:@"isTaken"];
 }
 
 

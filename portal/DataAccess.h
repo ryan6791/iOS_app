@@ -25,10 +25,13 @@
 @property (nonatomic, unsafe_unretained) BOOL isMatchImageSet;
 @property (nonatomic, strong) UIImage *matchProfileImage;
 
+@property (nonatomic, unsafe_unretained) BOOL isTaken;
 
 
 
-
+// User status
+- (BOOL)UserIsTaken;
+- (void)setUserTakenStatus:(BOOL)status;
 
 
 
@@ -70,6 +73,11 @@
 -(void)setName:(NSString*)name;
 -(NSString*)getName;
 
+-(void)setBirthday:(NSString*)bday;
+-(NSString*)getBirthday;
+
+-(void)setGender:(NSString*)gender;
+-(NSString*)getGender;
 
 //Matches data
 - (BOOL)UserHasMatch;

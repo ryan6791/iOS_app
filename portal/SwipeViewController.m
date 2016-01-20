@@ -240,7 +240,7 @@
         pic_height = 29;
         pic_width = 31;
         x_pad = 14;
-        y_pad = 27;
+        y_pad = 17;
     }
     
     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:proImage attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:pic_height];

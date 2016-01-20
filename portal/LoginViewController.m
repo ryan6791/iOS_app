@@ -55,7 +55,7 @@
    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     login.loginBehavior = FBSDKLoginBehaviorNative;
     [login
-     logInWithReadPermissions: @[@"email", @"public_profile",  @"user_photos"]
+     logInWithReadPermissions: @[@"email", @"public_profile",  @"user_photos", @"user_birthday"]
      fromViewController:self
      handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
          if (error) {
@@ -94,14 +94,23 @@
 {
     if ([FBSDKAccessToken currentAccessToken])
     {
-        NSLog(@"Token is available : %@",[[FBSDKAccessToken currentAccessToken]tokenString]);
+       // NSLog(@"Token is available : %@",[[FBSDKAccessToken currentAccessToken]tokenString]);
         
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"first_name"}]
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"first_name, birthday, gender"}]
          startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
              if (!error)
              {
                  NSString *name = [result objectForKey:@"first_name"];
                  [[DataAccess singletonInstance] setName:name];
+                 NSString *birthday = [result objectForKey:@"birthday"];
+                 NSString *gender = [result objectForKey:@"gender"];
+                 [[DataAccess singletonInstance] setGender:gender];
+
+                 
+                 NSLog(@"the gender is %@", [[DataAccess singletonInstance] getGender]);
+                 NSLog(@"The age is: %@", birthday);
+
+
                  
                  
              }
@@ -119,7 +128,6 @@
                                               id result,
                                               NSError *error) {
             if (!error){
-                NSLog(@"result: %@",result);
                 
                         NSDictionary *res = [result objectForKey:@"data"];
                 
@@ -154,7 +162,6 @@
     
     //   self.request_success = NO;
     
-    NSLog(@"hit");
     //
     /*
     NSString *otto_url = v2URL;
