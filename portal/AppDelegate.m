@@ -86,10 +86,8 @@
 
 - (void)initRootViewController {
     
-  //  SwipeViewController *ViewController = [[SwipeViewController alloc] init];
-    
-    RelationshipMatchViewController *ViewController = [[RelationshipMatchViewController alloc] init];
-    
+    SwipeViewController *ViewController = [[SwipeViewController alloc] init];
+        
     self.navController = [[UINavigationController alloc] initWithRootViewController:ViewController];
     [self.navController setNavigationBarHidden:NO];
     
