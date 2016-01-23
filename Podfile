@@ -7,6 +7,7 @@ link_with 'pairedUP', 'pairedUPTests', 'pairedUPUITests'
 
 target 'pairedUP' do
   pod 'JSQMessagesViewController'
+  pod 'DMPagerViewController'
 end
 
 target 'pairedUPTests' do

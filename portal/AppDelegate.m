@@ -10,11 +10,16 @@
 #import "LoginViewController.h"
 #import "DataAccess.h"
 #import "AccountViewController.h"
-#import "RelationshipMatchViewController.h"
+#import "MatchProfileViewController.h"
+#import "MessagesViewController.h"
+
 
 @interface AppDelegate ()
 
 @property(nonatomic, strong) UINavigationController *navController;
+@property(nonatomic, strong) NSTimer *timer;
+
+
 
 @end
 
@@ -23,18 +28,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    [[DataAccess singletonInstance] setMatchName:@"Jess"];
-    UIImage *matchImage = [UIImage imageNamed:@"_avatar_cook"];
-    [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(matchImage) forKey:@"matchImage"];
-    [[DataAccess singletonInstance] saveIncomingAvatarSetting:YES];
-    [[DataAccess singletonInstance] saveOutgoingAvatarSetting:YES];
     
+    [self CurrentLocationIdentifier]; // call this method
+  
     if ([[DataAccess singletonInstance] UserIsLoggedIn]) {
+        [[DataAccess singletonInstance] setMatchName:@"Jess"];
+        UIImage *matchImage = [UIImage imageNamed:@"_avatar_cook"];
+        [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(matchImage) forKey:@"matchImage"];
+        [[DataAccess singletonInstance] saveIncomingAvatarSetting:YES];
+        [[DataAccess singletonInstance] saveOutgoingAvatarSetting:YES];
         [self initRootViewController];
     }
     else{
         [self initLoginViewController];
     }
+    
+
+
+    
+    
     return YES;
 }
 
@@ -76,6 +88,7 @@
 
 - (void)initLoginViewController {
     
+    
     LoginViewController *ViewController = [[LoginViewController alloc] init];
     
     self.navController = [[UINavigationController alloc] initWithRootViewController:ViewController];
@@ -86,12 +99,125 @@
 
 - (void)initRootViewController {
     
-    SwipeViewController *ViewController = [[SwipeViewController alloc] init];
-        
-    self.navController = [[UINavigationController alloc] initWithRootViewController:ViewController];
-    [self.navController setNavigationBarHidden:NO];
     
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    NSDictionary *textAttributes = @{ NSFontAttributeName : [UIFont fontWithName:@"Superclarendon-Regular" size:21.0],
+                                      NSForegroundColorAttributeName : [self navColor]};
+    
+    UIColor *bkVC1 = [UIColor colorWithRed:0.000 green:0.475 blue:0.647 alpha:1.000];
+    UIColor *bkVC2 = [UIColor colorWithRed:0.000 green:0.729 blue:0.984 alpha:1.000];
+    UIColor *bkVC3 = [UIColor colorWithRed:0.753 green:0.929 blue:0.996 alpha:1.000];
+    
+    
+    SwipeViewController *vc1 = [[SwipeViewController alloc] initWithText:@"Page #1" backgroundColor:bkVC1];
+    vc1.pagerObj = [DMPagerNavigationBarItem newItemWithText: [[NSAttributedString alloc] initWithString:@"POD" attributes:textAttributes]
+                                                     andIcon: [UIImage imageNamed:@"settings"]];
+ //   vc1.pagerObj.renderingMode = DMPagerNavigationBarItemModeOnlyText;
+    
+    
+    MatchProfileViewController *vc2 = [[MatchProfileViewController alloc] initWithText:@"Page #2" backgroundColor:bkVC2];
+    vc2.pagerObj = [DMPagerNavigationBarItem newItemWithText: [[NSAttributedString alloc] initWithString:@"MATCH" attributes:textAttributes]
+                                                     andIcon: [UIImage imageNamed:@"logo"]];
+//    vc2.pagerItem.renderingMode = DMPagerNavigationBarItemModeOnlyImage;
+    
+    MessagesViewController *vc3 = [[MessagesViewController alloc] initWithText:@"Page #3" backgroundColor:bkVC3];
+    vc3.pagerObj = [DMPagerNavigationBarItem newItemWithText: [[NSAttributedString alloc] initWithString:@"CHAT" attributes:textAttributes]
+                                                     andIcon: [UIImage imageNamed:@"chat_icon"]];
+  //  vc3.pagerObj.renderingMode = DMPagerNavigationBarItemModeOnlyText;
+    
+    // Create pager with items
+    self.pagerController = [[DMPagerViewController alloc] initWithViewControllers: @[vc1,vc2,vc3]];
+    self.pagerController.useNavigationBar = YES;
+    self.pagerController.navigationBar.style = DMPagerNavigationBarStyleClose;
+
+    
+    // Setup pager's navigation bar colors
+    UIColor *activeColor = [self navColor];
+    //[UIColor colorWithRed:0.000 green:0.235 blue:0.322 alpha:1.000];
+    UIColor *inactiveColor = [UIColor colorWithRed:.84 green:.84 blue:.84 alpha:1.0];
+    self.pagerController.navigationBar.inactiveItemColor = inactiveColor;
+    self.pagerController.navigationBar.activeItemColor = activeColor;
+    
+    [self.pagerController.navigationBar addSettingsIcon];
+    
+    self.navController = [[UINavigationController alloc] initWithRootViewController:self.pagerController];
+    [self.navController setNavigationBarHidden:YES];
     self.window.rootViewController = self.navController;
+    [self.window makeKeyAndVisible];
+}
+
+
+-(void)CurrentLocationIdentifier
+{
+    //---- For getting current gps location
+    self.locationManager = [CLLocationManager new];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager startUpdatingLocation];
+    [self.locationManager requestWhenInUseAuthorization];
+    //------
+}
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    self.currentLocation = [locations objectAtIndex:0];
+    [self.locationManager stopUpdatingLocation];
+    
+    NSLog(@"long is:%f", self.currentLocation.coordinate.longitude);
+    NSLog(@"lat is:%f", self.currentLocation.coordinate.latitude);
+
+    /*
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
+    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error)
+     {
+         if (!(error))
+         {
+             CLPlacemark *placemark = [placemarks objectAtIndex:0];
+             NSLog(@"\nCurrent Location Detected\n");
+             NSLog(@"placemark %@",placemark);
+             NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
+             NSString *Address = [[NSString alloc]initWithString:locatedAt];
+             NSString *Area = [[NSString alloc]initWithString:placemark.locality];
+             NSString *Country = [[NSString alloc]initWithString:placemark.country];
+             NSString *CountryArea = [NSString stringWithFormat:@"%@, %@", Area,Country];
+             NSLog(@"%@",CountryArea);
+         }
+         else
+         {
+             NSLog(@"Geocode failed with error %@", error);
+             NSLog(@"\nCurrent Location Not Detected\n");
+             //return;
+             CountryArea = NULL;
+         }
+
+     }];
+
+*/
+    
+    /*---- For more results
+     placemark.region);
+     placemark.country);
+     placemark.locality);
+     placemark.name);
+     placemark.ocean);
+     placemark.postalCode);
+     placemark.subLocality);
+     placemark.location);
+     ------*/
+}
+
+
+-(void)myTicker{
+/*
+    NewMatchViewController *account = [[NewMatchViewController alloc] init];
+    self.providesPresentationContextTransitionStyle = YES;
+    self.definesPresentationContext = YES;
+    [account setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+    account.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:account animated:YES completion:nil];
+ //   [self.timer invalidate];
+*/
 }
 
 
@@ -178,6 +304,10 @@
 }
 
 
+-(UIColor*)navColor{
+    
+    return [UIColor colorWithRed:0.0 green:172.0f/255.0f blue:237.0f/255.0f alpha:1.0];
+}
 
 
 

@@ -1,0 +1,6 @@
+framework module DMPagerViewController {
+  umbrella header "DMPagerViewController-umbrella.h"
+
+  export *
+  module * { export * }
+}

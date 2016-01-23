@@ -84,10 +84,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-pairedUP/DMPagerViewController.framework"
   install_framework "Pods-pairedUP/JSQMessagesViewController.framework"
   install_framework "Pods-pairedUP/JSQSystemSoundPlayer.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-pairedUP/DMPagerViewController.framework"
   install_framework "Pods-pairedUP/JSQMessagesViewController.framework"
   install_framework "Pods-pairedUP/JSQSystemSoundPlayer.framework"
 fi

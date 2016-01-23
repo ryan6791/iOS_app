@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DMPagerViewController.h"
 
-@interface MatchProfileViewController : UIViewController
+
+@interface MatchProfileViewController : UIViewController<DMPagerViewControllerProtocol>
 
 @property (nonatomic, strong) UINavigationBar *navBar;
 @property (nonatomic, strong) UIImageView *pic;
@@ -19,5 +21,9 @@
 @property (nonatomic, strong) UILabel *dumpLabel;
 @property (nonatomic, strong) UILabel *reportLabel;
 
+
+@property (nonatomic,strong) DMPagerNavigationBarItem	*pagerObj;
+
+- (instancetype)initWithText:(NSString *) aText backgroundColor:(UIColor *) aBkgColor;
 
 @end

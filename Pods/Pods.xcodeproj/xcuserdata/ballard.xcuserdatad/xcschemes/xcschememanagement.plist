@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>DMPagerViewController-DMPagerViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DMPagerViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>JSQMessagesViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,12 +32,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0032717E8C01174CF28D16E1730839C0</key>
+		<key>0BFF7A7F7644655A3FE3BE90BC9FB0E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>95DB89A8BFC5FF0BF98458651D0163CD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9F02DC628ACE7DF59D8EDA971E31B661</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ABA0832B969222B4FC7EC028DEFCA821</key>
 		<dict>
 			<key>primary</key>
 			<true/>

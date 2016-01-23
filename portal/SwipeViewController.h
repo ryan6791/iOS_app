@@ -8,12 +8,25 @@
 
 #import <UIKit/UIKit.h>
 #import "DraggableViewBackground.h"
+#import "DMPagerViewController.h"
+
+@class DMPagerNavigationBarItem;
 
 
-@interface SwipeViewController : UIViewController
+@interface SwipeViewController : UIViewController<DMPagerViewControllerProtocol>
 
 @property (nonatomic, strong) UINavigationBar *navBar;
+@property(nonatomic, strong) UINavigationController *navController;
+@property (strong, nonatomic) UIWindow *window;
+
 
 -(void) pushDetailView:(id)sender;
+
+
+@property (nonatomic,strong) DMPagerNavigationBarItem	*pagerObj;
+@property (strong, nonatomic) DMPagerNavigationBar	*pagerNav;
+
+
+- (instancetype)initWithText:(NSString *) aText backgroundColor:(UIColor *) aBkgColor;
 
 @end

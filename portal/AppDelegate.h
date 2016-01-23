@@ -11,10 +11,17 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "SwipeViewController.h"
+#import "DMPagerViewController/DMPagerViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
+
+@property(nonatomic, strong) CLLocationManager *locationManager;
+@property(nonatomic, strong) CLLocation *currentLocation;
+
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -24,6 +31,9 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+
+
+@property (strong, nonatomic) DMPagerViewController	*pagerController;
 
 
 @end

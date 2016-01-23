@@ -10,6 +10,8 @@
 #import "DataAccess.h"
 #import "DeviceManager.h"
 #import "SwipeViewController.h"
+#import "MatchProfileViewController.h"
+#import "MessagesViewController.h"
 
 
 @interface LoginViewController ()
@@ -74,12 +76,11 @@
                      
                      [[DataAccess singletonInstance] setUserLoginStatus:YES];
                      [[DataAccess singletonInstance] setisLoggedInWithFB:YES];
-                     SwipeViewController *root = [[SwipeViewController alloc] init];
-                     [self.navigationItem setHidesBackButton:YES];
-                     [self.navigationController setNavigationBarHidden:NO animated:NO];
-                     [self.navigationController pushViewController:root animated:YES];
+                 //    SwipeViewController *root = [[SwipeViewController alloc] init];
+                 //    [self.navigationItem setHidesBackButton:YES];
+                 //    [self.navigationController setNavigationBarHidden:NO animated:NO];
+                 //    [self.navigationController pushViewController:root animated:YES];
                      //[[DataAccess singletonInstance] setName:name];
-
    
                      
                      
@@ -88,10 +89,12 @@
              [self viewDidLoad];
          }
      }];
+
 }
 
 -(void)fetchUserInfo
 {
+    
     if ([FBSDKAccessToken currentAccessToken])
     {
        // NSLog(@"Token is available : %@",[[FBSDKAccessToken currentAccessToken]tokenString]);
@@ -102,6 +105,7 @@
              {
                  NSString *name = [result objectForKey:@"first_name"];
                  [[DataAccess singletonInstance] setName:name];
+                 NSLog(@"%@", [[DataAccess singletonInstance] getName]);
                  NSString *birthday = [result objectForKey:@"birthday"];
                  [[DataAccess singletonInstance] setBirthday:birthday];
                  NSString *gender = [result objectForKey:@"gender"];
@@ -110,9 +114,6 @@
                  
                  NSLog(@"the gender is %@", [[DataAccess singletonInstance] getGender]);
                  NSLog(@"The age is: %@", birthday);
-
-
-                 
                  
              }
              else
@@ -140,6 +141,9 @@
                         UIImage *proImage =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
                 
                         [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(proImage) forKey:@"ProfileImage"];
+                
+                [self start];
+
                 
             }
             else {
@@ -365,7 +369,67 @@
 }
 
 
+-(void)start{
+    
+    [[DataAccess singletonInstance] setMatchName:@"Jess"];
+    UIImage *matchImage = [UIImage imageNamed:@"_avatar_cook"];
+    [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(matchImage) forKey:@"matchImage"];
+    [[DataAccess singletonInstance] saveIncomingAvatarSetting:YES];
+    [[DataAccess singletonInstance] saveOutgoingAvatarSetting:YES];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    NSDictionary *textAttributes = @{ NSFontAttributeName : [UIFont fontWithName:@"Superclarendon-Regular" size:21.0],
+                                      NSForegroundColorAttributeName : [self navColor]};
+    
+    UIColor *bkVC1 = [UIColor colorWithRed:0.000 green:0.475 blue:0.647 alpha:1.000];
+    UIColor *bkVC2 = [UIColor colorWithRed:0.000 green:0.729 blue:0.984 alpha:1.000];
+    UIColor *bkVC3 = [UIColor colorWithRed:0.753 green:0.929 blue:0.996 alpha:1.000];
+    
+    
+    SwipeViewController *vc1 = [[SwipeViewController alloc] initWithText:@"Page #1" backgroundColor:bkVC1];
+    vc1.pagerObj = [DMPagerNavigationBarItem newItemWithText: [[NSAttributedString alloc] initWithString:@"POD" attributes:textAttributes]
+                                                     andIcon: [UIImage imageNamed:@"settings"]];
+    //   vc1.pagerObj.renderingMode = DMPagerNavigationBarItemModeOnlyText;
+    
+    
+    MatchProfileViewController *vc2 = [[MatchProfileViewController alloc] initWithText:@"Page #2" backgroundColor:bkVC2];
+    vc2.pagerObj = [DMPagerNavigationBarItem newItemWithText: [[NSAttributedString alloc] initWithString:@"MATCH" attributes:textAttributes]
+                                                     andIcon: [UIImage imageNamed:@"logo"]];
+    //    vc2.pagerItem.renderingMode = DMPagerNavigationBarItemModeOnlyImage;
+    
+    MessagesViewController *vc3 = [[MessagesViewController alloc] initWithText:@"Page #3" backgroundColor:bkVC3];
+    vc3.pagerObj = [DMPagerNavigationBarItem newItemWithText: [[NSAttributedString alloc] initWithString:@"CHAT" attributes:textAttributes]
+                                                     andIcon: [UIImage imageNamed:@"chat_icon"]];
+    //  vc3.pagerObj.renderingMode = DMPagerNavigationBarItemModeOnlyText;
+    
+    // Create pager with items
+    self.pagerController = [[DMPagerViewController alloc] initWithViewControllers: @[vc1,vc2,vc3]];
+    self.pagerController.useNavigationBar = YES;
+    self.pagerController.navigationBar.style = DMPagerNavigationBarStyleClose;
+    
+    
+    // Setup pager's navigation bar colors
+    UIColor *activeColor = [self navColor];
+    //[UIColor colorWithRed:0.000 green:0.235 blue:0.322 alpha:1.000];
+    UIColor *inactiveColor = [UIColor colorWithRed:.84 green:.84 blue:.84 alpha:1.0];
+    self.pagerController.navigationBar.inactiveItemColor = inactiveColor;
+    self.pagerController.navigationBar.activeItemColor = activeColor;
+    
+    [self.pagerController.navigationBar addSettingsIcon];
+    
+    self.navController = [[UINavigationController alloc] initWithRootViewController:self.pagerController];
+    [self.navController setNavigationBarHidden:YES];
+    self.window.rootViewController = self.navController;
+    [self.window makeKeyAndVisible];
+    
+    
+}
 
+-(UIColor*)navColor{
+    
+    return [UIColor colorWithRed:0.0 green:172.0f/255.0f blue:237.0f/255.0f alpha:1.0];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

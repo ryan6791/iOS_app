@@ -28,6 +28,7 @@
 		4A256AEA1BE4950B006CD39E /* instagram_icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A256AE91BE4950B006CD39E /* instagram_icon1.png */; };
 		4A256AEC1BE59B8E006CD39E /* checkedbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A256AEB1BE59B8E006CD39E /* checkedbox.png */; };
 		4A256AEE1BE59BB0006CD39E /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A256AED1BE59BB0006CD39E /* checkbox.png */; };
+		4A3440611C508EBB00AD5E89 /* NotificationLayover.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3440601C508EBB00AD5E89 /* NotificationLayover.m */; };
 		4A46C3011BF6F34000FF9B46 /* ProfilePictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A46C3001BF6F34000FF9B46 /* ProfilePictureViewController.m */; };
 		4A705C951BF598410084B23C /* Sign-in-Large---Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A705C941BF598410084B23C /* Sign-in-Large---Default.png */; };
 		4A705C971BF598620084B23C /* Sign-In-Large---Default-ret.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A705C961BF598620084B23C /* Sign-In-Large---Default-ret.png */; };
@@ -68,6 +69,7 @@
 		4AC9A8721C4C875F0096350D /* MatchProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9A8711C4C875F0096350D /* MatchProfileViewController.m */; };
 		4AC9A8741C4DA6B00096350D /* 1453179218_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC9A8731C4DA6B00096350D /* 1453179218_chat.png */; };
 		4AC9A8771C4F75820096350D /* RelationshipMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9A8761C4F75820096350D /* RelationshipMatchViewController.m */; };
+		4ACFE2A41C50C33D00B758AC /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACFE2A31C50C33D00B758AC /* TestViewController.m */; };
 		4ADCA12D1C1E9804002A018B /* DraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCA1281C1E9804002A018B /* DraggableView.m */; };
 		4ADCA12E1C1E9804002A018B /* DraggableViewBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCA12A1C1E9804002A018B /* DraggableViewBackground.m */; };
 		4ADCA12F1C1E9804002A018B /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCA12C1C1E9804002A018B /* OverlayView.m */; };
@@ -134,6 +136,8 @@
 		4A256AE91BE4950B006CD39E /* instagram_icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagram_icon1.png; sourceTree = "<group>"; };
 		4A256AEB1BE59B8E006CD39E /* checkedbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkedbox.png; sourceTree = "<group>"; };
 		4A256AED1BE59BB0006CD39E /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
+		4A34405F1C508EBB00AD5E89 /* NotificationLayover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationLayover.h; sourceTree = "<group>"; };
+		4A3440601C508EBB00AD5E89 /* NotificationLayover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationLayover.m; sourceTree = "<group>"; };
 		4A46C2FF1BF6F34000FF9B46 /* ProfilePictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePictureViewController.h; sourceTree = "<group>"; };
 		4A46C3001BF6F34000FF9B46 /* ProfilePictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePictureViewController.m; sourceTree = "<group>"; };
 		4A705C941BF598410084B23C /* Sign-in-Large---Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sign-in-Large---Default.png"; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 		4AC9A8731C4DA6B00096350D /* 1453179218_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1453179218_chat.png; sourceTree = "<group>"; };
 		4AC9A8751C4F75820096350D /* RelationshipMatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelationshipMatchViewController.h; sourceTree = "<group>"; };
 		4AC9A8761C4F75820096350D /* RelationshipMatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelationshipMatchViewController.m; sourceTree = "<group>"; };
+		4ACFE2A21C50C33D00B758AC /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		4ACFE2A31C50C33D00B758AC /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		4ADCA1271C1E9804002A018B /* DraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableView.h; sourceTree = "<group>"; };
 		4ADCA1281C1E9804002A018B /* DraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableView.m; sourceTree = "<group>"; };
 		4ADCA1291C1E9804002A018B /* DraggableViewBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableViewBackground.h; sourceTree = "<group>"; };
@@ -411,6 +417,8 @@
 				4ABB5BDF1BC8C07C00BEA3EF /* LoginViewController.m */,
 				4ABB5BE21BC8C11900BEA3EF /* ViewController.h */,
 				4ABB5BE31BC8C11900BEA3EF /* ViewController.m */,
+				4ACFE2A21C50C33D00B758AC /* TestViewController.h */,
+				4ACFE2A31C50C33D00B758AC /* TestViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -459,6 +467,8 @@
 				4AC9A8711C4C875F0096350D /* MatchProfileViewController.m */,
 				4AC9A8751C4F75820096350D /* RelationshipMatchViewController.h */,
 				4AC9A8761C4F75820096350D /* RelationshipMatchViewController.m */,
+				4A34405F1C508EBB00AD5E89 /* NotificationLayover.h */,
+				4A3440601C508EBB00AD5E89 /* NotificationLayover.m */,
 			);
 			name = Match;
 			sourceTree = "<group>";
@@ -562,6 +572,11 @@
 					4ABB5B961BC8BCB600BEA3EF = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = KYUNTCYL2V;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					4ABB5BB21BC8BCB700BEA3EF = {
 						CreatedOnToolsVersion = 7.0;
@@ -713,7 +728,9 @@
 				4A99BF361BE72DE700356805 /* MyProfileTableViewCell.m in Sources */,
 				4ABB5BE41BC8C11900BEA3EF /* ViewController.m in Sources */,
 				4ABB5BA81BC8BCB700BEA3EF /* portal.xcdatamodeld in Sources */,
+				4ACFE2A41C50C33D00B758AC /* TestViewController.m in Sources */,
 				4ABB5BDD1BC8BEC400BEA3EF /* DeviceManager.m in Sources */,
+				4A3440611C508EBB00AD5E89 /* NotificationLayover.m in Sources */,
 				4AB8E3AA1C463BB4007BA38D /* LockedNewMatchViewController.m in Sources */,
 				4A12DDFF1C49F6140068D79C /* NSUserDefaults+Settings.m in Sources */,
 				4ABB5BE71BC8C31400BEA3EF /* DataAccess.m in Sources */,
@@ -880,6 +897,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -899,8 +917,9 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Neil-appworld.portal";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Neil-appworld.pairedUP";
 				PRODUCT_NAME = pairedUP;
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Pods/Headers/\"/**";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -912,6 +931,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -931,8 +951,9 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Neil-appworld.portal";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Neil-appworld.pairedUP";
 				PRODUCT_NAME = pairedUP;
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Pods/Headers/\"/**";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};

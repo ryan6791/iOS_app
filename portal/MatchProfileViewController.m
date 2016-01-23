@@ -23,23 +23,60 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    [self styleNavBar];
-    [self addProfileImage];
-    [self setupNameLabel];
-    [self setupInfoTextView];
 
-    
-    [self addDivideLine];
-    [self setupDumpLabel];
-    [self setupReportLabel];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (instancetype)initWithText:(NSString *) aText backgroundColor:(UIColor *) aBkgColor {
+    self = [super init];
+    if (self) {
+        
+        self.view.backgroundColor = [UIColor whiteColor];
+        
+     //   [self styleNavBar];
+        [self addProfileImage];
+        [self setupNameLabel];
+        [self setupInfoTextView];
+        
+        
+        [self addDivideLine];
+        [self setupDumpLabel];
+        [self setupReportLabel];
+
+        
+        /*
+         self.view = [[UIView alloc] initWithFrame:CGRectZero];
+         self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+         self.view.backgroundColor = aBkgColor;
+         
+         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+         label.text = aText;
+         label.font = [UIFont boldSystemFontOfSize:40];
+         label.numberOfLines = 1;
+         label.textAlignment = NSTextAlignmentCenter;
+         label.backgroundColor = [UIColor clearColor];
+         label.textColor = [UIColor whiteColor];
+         label.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
+         UIViewAutoresizingFlexibleTopMargin    |
+         UIViewAutoresizingFlexibleBottomMargin);
+         [self.view addSubview:label];
+         
+         CGSize bestSize = [label.attributedText boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
+         options:NSStringDrawingTruncatesLastVisibleLine
+         context:NULL].size;
+         label.frame = CGRectMake(0,
+         ((CGRectGetHeight(self.view.frame)-bestSize.height)/2.0f),
+         CGRectGetWidth(self.view.frame),
+         bestSize.height); */
+        
+    }
+    return self;
+}
+
 
 - (void)styleNavBar {
     
@@ -203,9 +240,9 @@
     
     
     
-    NSDictionary *viewsDictionary = @{@"image":self.pic, @"nav": self.navBar};
+    NSDictionary *viewsDictionary = @{@"image":self.pic};
     NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.pic attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[nav]-pad-[image]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[image]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
     [self.view addConstraint:constraint1];
     [self.view addConstraints:constraint2];
     
@@ -547,6 +584,18 @@
     
 }
 
+- (DMPagerNavigationBarItem *)pagerItem {
+    
+    /*
+     NSDictionary *textAttributes = @{ NSFontAttributeName : [UIFont systemFontOfSize:12.0f],
+     NSForegroundColorAttributeName : [UIColor blackColor]};
+     
+     UIImage *itemIcon = [UIImage imageNamed:@"settings"];
+     NSAttributedString *itemTitle = @"hello3";
+     self.pagerObj = [DMPagerNavigationBarItem newItemWithText:[[NSAttributedString alloc] initWithString:@"CHAT" attributes:textAttributes] andIcon: itemIcon];
+     self.pagerObj.renderingMode = DMPagerNavigationBarItemModeOnlyText; */
+    return self.pagerObj;
+}
 /*
 #pragma mark - Navigation
 

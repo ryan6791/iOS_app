@@ -34,7 +34,7 @@
 
 #import "UIImage+JSQMessages.h"
 
-#import "SizeManager.h"
+//#import "SizeManager.h"
 
 
 const CGFloat kJSQMessagesCollectionViewCellLabelHeightDefault = 20.0f;
@@ -83,7 +83,8 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
     
    // _messageBubbleFont = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     
-    float font_size = 0.0f;
+    float font_size = 15.0f;
+/*
     if([[SizeManager sharedInstance] getIsIPhone5Screen])
     {
         font_size = 15.0f;
@@ -99,7 +100,7 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
     else if ([[SizeManager sharedInstance] getIsIPhone4Screen] || [[SizeManager sharedInstance] getIsIPad]) {
         font_size = 14.0f;
     }
-    
+ */
     _messageBubbleFont = [UIFont systemFontOfSize:font_size];
 
     

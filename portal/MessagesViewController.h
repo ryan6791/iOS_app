@@ -10,6 +10,8 @@
 
 #import "ModelData.h"
 #import "NSUserDefaults+Settings.h"
+#import "DMPagerViewController.h"
+
 
 
 @class MessagesViewController;
@@ -23,7 +25,7 @@
 
 
 
-@interface MessagesViewController : JSQMessagesViewController <UIActionSheetDelegate, JSQMessagesComposerTextViewPasteDelegate>
+@interface MessagesViewController : JSQMessagesViewController <UIActionSheetDelegate, JSQMessagesComposerTextViewPasteDelegate, DMPagerViewControllerProtocol>
 
 @property (weak, nonatomic) id<JSQViewControllerDelegate> delegateModal;
 
@@ -32,6 +34,10 @@
 - (void)receiveMessagePressed:(UIBarButtonItem *)sender;
 
 - (void)closePressed:(UIBarButtonItem *)sender;
+
+@property (nonatomic,strong) DMPagerNavigationBarItem	*pagerObj;
+
+- (instancetype)initWithText:(NSString *) aText backgroundColor:(UIColor *) aBkgColor;
 
 @end
 
