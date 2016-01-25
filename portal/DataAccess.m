@@ -350,15 +350,6 @@ static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
     
     DataAccess *singletonInstance = [DataAccess singletonInstance];
     
-    BOOL loggedInStatus = [aDecoder decodeBoolForKey:@"LoggedInStatus"];
-    [singletonInstance setUserLoginStatus:loggedInStatus];
-    
-    BOOL profileImageStatus = [aDecoder decodeBoolForKey:@"ProfileImageIsSet"];
-    [singletonInstance setProfileImageStatus:profileImageStatus];
-    
-    UIImage *ProfileImage = [aDecoder decodeObjectForKey:@"ProfileImage"];
-    [singletonInstance setProfileImage:ProfileImage];
-    
     OAuthToken *token = [aDecoder decodeObjectForKey:@"oauthToken"];
     [singletonInstance setOAuthAccessToken:token];
     
@@ -374,9 +365,6 @@ static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
     
     DataAccess *singletonInstance = [DataAccess singletonInstance];
     
-    [aCoder encodeBool:[singletonInstance UserIsLoggedIn] forKey:@"LoggedInStatus"];
-    
-    [aCoder encodeBool:[singletonInstance isProfileImageSet] forKey:@"ProfileImageIsSet"];
     
     [aCoder encodeObject:[singletonInstance accessToken] forKey:@"oauthToken"];
     
