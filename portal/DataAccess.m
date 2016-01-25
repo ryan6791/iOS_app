@@ -14,7 +14,59 @@ static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
 
 @implementation DataAccess
 
+#pragma mark - Current URL Methods
++ (NSString*)url {
+    DataAccess *data = [DataAccess singletonInstance];
+    return data.currentURLforAPI;
+}
 
++ (NSString*)uri {
+    DataAccess *data = [DataAccess singletonInstance];
+    return data.baseURIforAPI;
+}
+
+- (NSString*)apiBaseURI {
+    DataAccess *data = [DataAccess singletonInstance];
+    return data.baseURIforAPI;
+}
+
+- (NSString*)apiCurrentURL {
+    DataAccess *data = [DataAccess singletonInstance];
+    return data.currentURLforAPI;
+}
+
+- (void)setAPICurrentURL:(NSString*)api {
+    NSURL *url = [NSURL URLWithString:api];
+    DataAccess *data = [DataAccess singletonInstance];
+    
+    data.currentURLforAPI = [url absoluteString];
+    data.baseURIforAPI = [NSString stringWithFormat:@"%@://%@", url.scheme, url.host];
+    
+    [data persistToUserDefaults];
+}
+
+#pragma mark - Access Token methods
+
+- (OAuthToken*)retrieveOAuthAccessToken {
+    DataAccess *data = [DataAccess singletonInstance];
+    return data.accessToken;
+}
+
+- (void)setOAuthAccessToken:(OAuthToken *)token {
+    DataAccess *data = [DataAccess singletonInstance];
+    [data setAccessToken:token];
+    [data persistToUserDefaults];
+}
+
+- (BOOL)oAuthAccessTokenExists {
+    DataAccess *data = [DataAccess singletonInstance];
+    
+    if(nil != data.accessToken) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
 
 #pragma mark - Account Methods
 
@@ -307,6 +359,14 @@ static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
     UIImage *ProfileImage = [aDecoder decodeObjectForKey:@"ProfileImage"];
     [singletonInstance setProfileImage:ProfileImage];
     
+    OAuthToken *token = [aDecoder decodeObjectForKey:@"oauthToken"];
+    [singletonInstance setOAuthAccessToken:token];
+    
+    NSString *url = [aDecoder decodeObjectForKey:@"apiURLCurrent"];
+    [singletonInstance setCurrentURLforAPI:url];
+    
+    [singletonInstance persistToUserDefaults];
+    
     return self;
 }
 
@@ -318,9 +378,9 @@ static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
     
     [aCoder encodeBool:[singletonInstance isProfileImageSet] forKey:@"ProfileImageIsSet"];
     
+    [aCoder encodeObject:[singletonInstance accessToken] forKey:@"oauthToken"];
     
-    
-    
+    [aCoder encodeObject:[singletonInstance currentURLforAPI] forKey:@"apiURLCurrent"];
 }
 
 
@@ -346,14 +406,14 @@ static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
 #pragma mark - Singleton Methods
 + (id)singletonInstance {
     
-    static DataAccess *sharedOTTODataAccess = nil;
+    static DataAccess *sharedDataAccess = nil;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedOTTODataAccess = [[self alloc] init];
+        sharedDataAccess = [[self alloc] init];
     });
     
-    return sharedOTTODataAccess;
+    return sharedDataAccess;
     
 }
 

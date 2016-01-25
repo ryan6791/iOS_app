@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
+#import "OAuthToken.h"
 
 @interface DataAccess : NSObject <NSCoding>
 
@@ -27,7 +28,20 @@
 
 @property (nonatomic, unsafe_unretained) BOOL isTaken;
 
+@property (nonatomic, strong) OAuthToken *accessToken;
+@property (nonatomic, strong) NSString *currentURLforAPI;
+@property (nonatomic, strong) NSString *baseURIforAPI;
 
+//OAuth
+-(OAuthToken*)retrieveOAuthAccessToken;
+-(void)setOAuthAccessToken:(OAuthToken*)token;
+-(BOOL)oAuthAccessTokenExists;
+
+//URL
++(NSString*)url;
++(NSString*)uri;
+-(NSString*)apiCurrentURL;
+- (void)setAPICurrentURL:(NSString*)url;
 
 // User status
 - (BOOL)UserIsTaken;

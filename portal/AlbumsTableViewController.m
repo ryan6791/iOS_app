@@ -42,7 +42,7 @@
      
      self.activityindicator = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake((view.frame.size.width/2) - 15, (view.frame.size.height/2) - 15, 30, 30)];
      [self.activityindicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
-     [self.activityindicator setColor:[OTTOColors ottoWhite]];
+     [self.activityindicator setColor:[UIColors white]];
      [self.activityindicator startAnimating];
      [self.view addSubview:self.activityindicator];
      */

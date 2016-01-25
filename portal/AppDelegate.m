@@ -12,6 +12,8 @@
 #import "AccountViewController.h"
 #import "MatchProfileViewController.h"
 #import "MessagesViewController.h"
+#import "GlobalConstants.h"
+#import "OAuthServices.h"
 
 
 @interface AppDelegate ()
@@ -28,6 +30,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+    [[DataAccess singletonInstance] setAPICurrentURL:URL_Dev];
+    [OAuthServices startupTokenSequence];
+    
+    if([[DataAccess singletonInstance] oAuthAccessTokenExists])
+        [OAuthServices doOAuthHeartbeat];
     
     [self CurrentLocationIdentifier]; // call this method
   

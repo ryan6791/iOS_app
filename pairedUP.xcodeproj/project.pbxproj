@@ -86,6 +86,18 @@
 		4AFC39851C0ACC2E004E7262 /* 1448798067_instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AFC39841C0ACC2E004E7262 /* 1448798067_instagram.png */; };
 		4AFC39871C0ACCB3004E7262 /* 1448798253_facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AFC39861C0ACCB3004E7262 /* 1448798253_facebook.png */; };
 		4AFC39891C0ACD27004E7262 /* 1448798373_linkedin.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AFC39881C0ACD27004E7262 /* 1448798373_linkedin.png */; };
+		F98AD2EC1C55CA89001FD5F2 /* NSMutableURLRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = F98AD2E71C55CA89001FD5F2 /* NSMutableURLRequest+OAuth.m */; };
+		F98AD2ED1C55CA89001FD5F2 /* OAuthToken.m in Sources */ = {isa = PBXBuildFile; fileRef = F98AD2E91C55CA89001FD5F2 /* OAuthToken.m */; };
+		F98AD2EE1C55CA89001FD5F2 /* OAuthServices.m in Sources */ = {isa = PBXBuildFile; fileRef = F98AD2EB1C55CA89001FD5F2 /* OAuthServices.m */; };
+		F98AD2F11C55CBEA001FD5F2 /* GlobalConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F98AD2F01C55CBEA001FD5F2 /* GlobalConstants.m */; };
+		F98AD2F81C55D09E001FD5F2 /* NSMutableData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = F98AD2F31C55D09E001FD5F2 /* NSMutableData+AES.m */; };
+		F98AD2F91C55D09E001FD5F2 /* NSURL+QueryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F98AD2F51C55D09E001FD5F2 /* NSURL+QueryParser.m */; };
+		F98AD2FA1C55D09E001FD5F2 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = F98AD2F71C55D09E001FD5F2 /* NSString+URLEncoding.m */; };
+		F98AD2FD1C55D157001FD5F2 /* OAuthSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = F98AD2FC1C55D157001FD5F2 /* OAuthSecurity.m */; };
+		F98AD2FF1C55D2EE001FD5F2 /* libcommonCrypto.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F98AD2FE1C55D2EE001FD5F2 /* libcommonCrypto.tbd */; };
+		F98AD3021C55D390001FD5F2 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F98AD3001C55D390001FD5F2 /* CoreFoundation.framework */; };
+		F98AD3031C55D390001FD5F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F98AD3011C55D390001FD5F2 /* Foundation.framework */; };
+		F98AD3051C55D3BD001FD5F2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F98AD3041C55D3BD001FD5F2 /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +237,26 @@
 		4AFC39861C0ACCB3004E7262 /* 1448798253_facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1448798253_facebook.png; sourceTree = "<group>"; };
 		4AFC39881C0ACD27004E7262 /* 1448798373_linkedin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1448798373_linkedin.png; path = Assets.xcassets/linkedin_icon.imageset/1448798373_linkedin.png; sourceTree = "<group>"; };
 		6667BCF30DF006BB35318E23 /* Pods-pairedUP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pairedUP.release.xcconfig"; path = "Pods/Target Support Files/Pods-pairedUP/Pods-pairedUP.release.xcconfig"; sourceTree = "<group>"; };
+		F98AD2E61C55CA89001FD5F2 /* NSMutableURLRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+OAuth.h"; sourceTree = "<group>"; };
+		F98AD2E71C55CA89001FD5F2 /* NSMutableURLRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+OAuth.m"; sourceTree = "<group>"; };
+		F98AD2E81C55CA89001FD5F2 /* OAuthToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthToken.h; sourceTree = "<group>"; };
+		F98AD2E91C55CA89001FD5F2 /* OAuthToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthToken.m; sourceTree = "<group>"; };
+		F98AD2EA1C55CA89001FD5F2 /* OAuthServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthServices.h; sourceTree = "<group>"; };
+		F98AD2EB1C55CA89001FD5F2 /* OAuthServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthServices.m; sourceTree = "<group>"; };
+		F98AD2EF1C55CB8A001FD5F2 /* GlobalConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalConstants.h; sourceTree = "<group>"; };
+		F98AD2F01C55CBEA001FD5F2 /* GlobalConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalConstants.m; sourceTree = "<group>"; };
+		F98AD2F21C55D09E001FD5F2 /* NSMutableData+AES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableData+AES.h"; sourceTree = "<group>"; };
+		F98AD2F31C55D09E001FD5F2 /* NSMutableData+AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableData+AES.m"; sourceTree = "<group>"; };
+		F98AD2F41C55D09E001FD5F2 /* NSURL+QueryParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+QueryParser.h"; sourceTree = "<group>"; };
+		F98AD2F51C55D09E001FD5F2 /* NSURL+QueryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+QueryParser.m"; sourceTree = "<group>"; };
+		F98AD2F61C55D09E001FD5F2 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		F98AD2F71C55D09E001FD5F2 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		F98AD2FB1C55D157001FD5F2 /* OAuthSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthSecurity.h; sourceTree = "<group>"; };
+		F98AD2FC1C55D157001FD5F2 /* OAuthSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthSecurity.m; sourceTree = "<group>"; };
+		F98AD2FE1C55D2EE001FD5F2 /* libcommonCrypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcommonCrypto.tbd; path = usr/lib/system/libcommonCrypto.tbd; sourceTree = SDKROOT; };
+		F98AD3001C55D390001FD5F2 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		F98AD3011C55D390001FD5F2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F98AD3041C55D3BD001FD5F2 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +264,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F98AD3051C55D3BD001FD5F2 /* MobileCoreServices.framework in Frameworks */,
+				F98AD3021C55D390001FD5F2 /* CoreFoundation.framework in Frameworks */,
+				F98AD3031C55D390001FD5F2 /* Foundation.framework in Frameworks */,
+				F98AD2FF1C55D2EE001FD5F2 /* libcommonCrypto.tbd in Frameworks */,
 				4ABB5BD51BC8BD1600BEA3EF /* FBSDKLoginKit.framework in Frameworks */,
 				4ABB5BD41BC8BD1600BEA3EF /* FBSDKCoreKit.framework in Frameworks */,
 				4ABB5BD61BC8BD1600BEA3EF /* FBSDKShareKit.framework in Frameworks */,
@@ -278,13 +314,6 @@
 			name = Messenger;
 			sourceTree = "<group>";
 		};
-		4AAEE8E41C486F2400DFD90B /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
-			sourceTree = "<group>";
-		};
 		4ABB5B8E1BC8BCB600BEA3EF = {
 			isa = PBXGroup;
 			children = (
@@ -311,7 +340,7 @@
 		4ABB5B991BC8BCB600BEA3EF /* portal */ = {
 			isa = PBXGroup;
 			children = (
-				4AAEE8E41C486F2400DFD90B /* New Group */,
+				F98AD2E51C55CA6F001FD5F2 /* OAuth */,
 				4AB948931BD220FA002FEDE0 /* Main2.storyboard */,
 				4ABB5BE11BC8C08A00BEA3EF /* ViewControllers */,
 				4ABB5BD71BC8BE3000BEA3EF /* classes */,
@@ -385,6 +414,10 @@
 		4ABB5BD01BC8BCD600BEA3EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F98AD3041C55D3BD001FD5F2 /* MobileCoreServices.framework */,
+				F98AD3001C55D390001FD5F2 /* CoreFoundation.framework */,
+				F98AD3011C55D390001FD5F2 /* Foundation.framework */,
+				F98AD2FE1C55D2EE001FD5F2 /* libcommonCrypto.tbd */,
 				4ABB5BD11BC8BD1600BEA3EF /* FBSDKCoreKit.framework */,
 				4ABB5BD21BC8BD1600BEA3EF /* FBSDKLoginKit.framework */,
 				4ABB5BD31BC8BD1600BEA3EF /* FBSDKShareKit.framework */,
@@ -402,6 +435,8 @@
 				4ABB5BDC1BC8BEC400BEA3EF /* DeviceManager.m */,
 				4ABB5BE51BC8C31400BEA3EF /* DataAccess.h */,
 				4ABB5BE61BC8C31400BEA3EF /* DataAccess.m */,
+				F98AD2EF1C55CB8A001FD5F2 /* GlobalConstants.h */,
+				F98AD2F01C55CBEA001FD5F2 /* GlobalConstants.m */,
 			);
 			name = classes;
 			sourceTree = "<group>";
@@ -499,6 +534,27 @@
 				6667BCF30DF006BB35318E23 /* Pods-pairedUP.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F98AD2E51C55CA6F001FD5F2 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				F98AD2FB1C55D157001FD5F2 /* OAuthSecurity.h */,
+				F98AD2FC1C55D157001FD5F2 /* OAuthSecurity.m */,
+				F98AD2F21C55D09E001FD5F2 /* NSMutableData+AES.h */,
+				F98AD2F31C55D09E001FD5F2 /* NSMutableData+AES.m */,
+				F98AD2F41C55D09E001FD5F2 /* NSURL+QueryParser.h */,
+				F98AD2F51C55D09E001FD5F2 /* NSURL+QueryParser.m */,
+				F98AD2F61C55D09E001FD5F2 /* NSString+URLEncoding.h */,
+				F98AD2F71C55D09E001FD5F2 /* NSString+URLEncoding.m */,
+				F98AD2E61C55CA89001FD5F2 /* NSMutableURLRequest+OAuth.h */,
+				F98AD2E71C55CA89001FD5F2 /* NSMutableURLRequest+OAuth.m */,
+				F98AD2E81C55CA89001FD5F2 /* OAuthToken.h */,
+				F98AD2E91C55CA89001FD5F2 /* OAuthToken.m */,
+				F98AD2EA1C55CA89001FD5F2 /* OAuthServices.h */,
+				F98AD2EB1C55CA89001FD5F2 /* OAuthServices.m */,
+			);
+			name = OAuth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -736,28 +792,36 @@
 				4ABB5BE71BC8C31400BEA3EF /* DataAccess.m in Sources */,
 				4A8095151C436B9200C7295A /* SwipeAlbumViewController.m in Sources */,
 				4A12DDF91C49F4260068D79C /* ModelData.m in Sources */,
+				F98AD2EC1C55CA89001FD5F2 /* NSMutableURLRequest+OAuth.m in Sources */,
+				F98AD2EE1C55CA89001FD5F2 /* OAuthServices.m in Sources */,
 				4A1D714B1C3B28E400F0B6B8 /* UserAlbumsViewController.m in Sources */,
 				4AB8E3A71C4627A1007BA38D /* NewMatchViewController.m in Sources */,
 				4ADCA12E1C1E9804002A018B /* DraggableViewBackground.m in Sources */,
 				4ABB5BF71BC9D78100BEA3EF /* AccountViewController.m in Sources */,
+				F98AD2ED1C55CA89001FD5F2 /* OAuthToken.m in Sources */,
 				4ADCA1321C1E9920002A018B /* SwipeViewController.m in Sources */,
 				4A12E7A41BFB0F90000ECD59 /* UserAccountTableViewCell.m in Sources */,
 				4ABB5BF01BC9D5D800BEA3EF /* PhotoManager.m in Sources */,
+				F98AD2F91C55D09E001FD5F2 /* NSURL+QueryParser.m in Sources */,
 				4A99BF311BE728EC00356805 /* MyProfileViewController.m in Sources */,
 				4ABB5B9F1BC8BCB700BEA3EF /* AppDelegate.m in Sources */,
+				F98AD2F11C55CBEA001FD5F2 /* GlobalConstants.m in Sources */,
 				4ABB5B9C1BC8BCB600BEA3EF /* main.m in Sources */,
 				4A12E7A11BFB0EEA000ECD59 /* UserMenuViewController.m in Sources */,
 				4AB9489A1BD2F746002FEDE0 /* SinglePhotoViewController.m in Sources */,
 				4AC9A8771C4F75820096350D /* RelationshipMatchViewController.m in Sources */,
 				4A12E7A71BFC32EB000ECD59 /* ProfileViewController.m in Sources */,
 				4A86E71C1BCA42E200DF3F8A /* AlbumsTableViewController.m in Sources */,
+				F98AD2F81C55D09E001FD5F2 /* NSMutableData+AES.m in Sources */,
 				4AFC396F1C099D38004E7262 /* SettingsViewController.m in Sources */,
 				4ABB5BE01BC8C07C00BEA3EF /* LoginViewController.m in Sources */,
 				4A86E7A41BCF709800DF3F8A /* PhotosCollectionViewCell.m in Sources */,
 				4ADCA12D1C1E9804002A018B /* DraggableView.m in Sources */,
 				4A46C3011BF6F34000FF9B46 /* ProfilePictureViewController.m in Sources */,
+				F98AD2FA1C55D09E001FD5F2 /* NSString+URLEncoding.m in Sources */,
 				4A12DE501C4C6EEC0068D79C /* UserData.m in Sources */,
 				4ADCA12F1C1E9804002A018B /* OverlayView.m in Sources */,
+				F98AD2FD1C55D157001FD5F2 /* OAuthSecurity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -915,6 +979,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(SDKROOT)/usr/lib/system",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Neil-appworld.pairedUP";
@@ -949,6 +1014,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(SDKROOT)/usr/lib/system",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Neil-appworld.pairedUP";
