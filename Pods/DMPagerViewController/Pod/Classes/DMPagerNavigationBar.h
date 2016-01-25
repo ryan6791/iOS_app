@@ -47,6 +47,12 @@ typedef NS_ENUM(NSInteger, DMPagerNavigationBarStyle) {
 // Create a new item
 + (DMPagerNavigationBarItem *) newItemWithText:(NSAttributedString *) aTitle andIcon:(UIImage *) aIcon;
 
+@property (nonatomic,assign)	float title_width;
+
+@property (nonatomic,assign)	CGRect titleRect;
+
+@property (nonatomic,assign)	BOOL didSet;
+
 @end
 
 
@@ -65,6 +71,8 @@ typedef NS_ENUM(NSInteger, DMPagerNavigationBarStyle) {
 @property (nonatomic,strong)	UIColor								*activeItemColor;		// Inactive item tint color
 @property (nonatomic,strong)	UIColor								*inactiveItemColor;		// Active item tint color
 @property (nonatomic,assign)	DMPagerNavigationBarItemColorize	 colorizeMode;			// Colorization mode of the items
+@property (nonatomic,assign)	BOOL didSet;
+
 
 
 

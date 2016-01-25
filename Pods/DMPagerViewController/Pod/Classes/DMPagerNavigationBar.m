@@ -75,18 +75,33 @@
 	[super layoutSubviews];
 
 	CGSize navigationBarSize = self.frame.size;
-
 	CGSize imageSize = _icon.size;
-	CGSize titleSize = [_title boundingRectWithSize:CGSizeMake(navigationBarSize.width, navigationBarSize.height-imageSize.height-5.0f)
-											options:NSStringDrawingTruncatesLastVisibleLine
-											context:NULL].size;
-	
-	CGRect imageRect = CGRectMake(((CGRectGetWidth(self.bounds)-imageSize.width)/2.0f),0,
-								  imageSize.width, imageSize.height);
-	CGRect titleRect = CGRectMake(((CGRectGetWidth(self.bounds)-titleSize.width)/2.0f),
-								  CGRectGetMaxY(imageRect),
-								  titleSize.width,
-								  titleSize.height);
+    
+    CGSize titleSize = [_title boundingRectWithSize:CGSizeMake(navigationBarSize.width, navigationBarSize.height-imageSize.height-5.0f)
+                                            options:NSStringDrawingTruncatesLastVisibleLine
+                                            context:NULL].size;
+    
+  //  self.title_width = titleSize.width;
+    
+    DMPagerNavigationBar *item;
+    
+
+
+    
+    if ((!self.didSet && [_titleLabel.text isEqualToString:@"POD"]) && titleSize.width > 0) {
+        self.title_width = titleSize.width;
+        self.didSet = YES;
+
+    }
+    
+
+    CGRect imageRect = CGRectMake(((CGRectGetWidth(self.bounds)-imageSize.width)/2.0f),0,
+                                  imageSize.width, imageSize.height);
+    CGRect titleRect = CGRectMake(((CGRectGetWidth(self.bounds)-titleSize.width)/2.0f),
+                                  CGRectGetMaxY(imageRect),
+                                  titleSize.width,
+                                  titleSize.height);
+
 /*
 	if (_renderingMode == DMPagerNavigationBarItemModeOnlyImage) {
 		imageRect = CGRectMake(0.0f, 0.0f, imageRect.size.width, navigationBarSize.height);
@@ -96,12 +111,13 @@
 		titleRect = CGRectMake(0.0f, 0.0f, titleSize.width, navigationBarSize.height);
 	} */
     
+
     
     if ([_titleLabel.text isEqualToString:@"POD"]) {
         imageRect = CGRectZero;
-        titleRect = CGRectMake(0.0f, 0.0f, titleSize.width, navigationBarSize.height);
+        titleRect = CGRectMake(0.0f, 0.0f, self.title_width, navigationBarSize.height);
     }
-    if ([_titleLabel.text isEqualToString:@"CHAT"] || [_titleLabel.text isEqualToString:@"MATCH"]) {
+    if ([_titleLabel.text isEqualToString:@"CHAT"] || [_titleLabel.text isEqualToString:@"MATCH"] || [_titleLabel.text isEqualToString:@"DOP"]) {
         imageRect = CGRectMake(0.0f, 0.0f, imageRect.size.width, navigationBarSize.height);
         titleRect = CGRectZero;
     }
@@ -304,16 +320,18 @@
     if(_controller.currentPage == 0){
         //show the settings button
         self.settingsIcon.hidden = NO;
-        if ([aItem.titleLabel.text isEqualToString:@"pairedUP"]) {
-
+        if ([aItem.titleLabel.text isEqualToString:@"DOP"]) {
+            aItem.iconView.hidden = YES;
+            [self switchToText:aItem];
+            
         }
 
     }else{
         //hide the settings button
         self.settingsIcon.hidden = YES;
-        if ([aItem.titleLabel.text isEqualToString:@"pairedUP"]) {
-            
-            
+        if ([aItem.titleLabel.text isEqualToString:@"POD"]) {
+            [self switchToImage:aItem];
+            aItem.iconView.hidden = NO;
         }
     }
     
@@ -365,12 +383,73 @@
 	return [UIColor colorWithRed:r green:g blue:b alpha:1];
 }
 
+-(void)switchToText:(DMPagerNavigationBarItem *) aItem{
+    
+    
+    NSDictionary *textAttributes = @{ NSFontAttributeName : [UIFont fontWithName:@"Superclarendon-Regular" size:21.0],
+                                      NSForegroundColorAttributeName : [self navColor]};
+    
+    aItem.title = [[NSAttributedString alloc] initWithString:@"POD" attributes:textAttributes];
+    aItem.icon = [UIImage imageNamed:@"logo"];
+
+ /*
+    aItem.renderingMode = DMPagerNavigationBarItemModeOnlyText;
+    
+    aItem.iconView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    aItem.iconView.image = [UIImage imageNamed:@"logo"];
+    aItem.iconView.contentMode = UIViewContentModeCenter;
+    aItem.iconView.clipsToBounds = YES;
+    aItem.titleLabel.text = @"POD";
+    aItem.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    aItem.iconView.backgroundColor = [UIColor clearColor];
+    aItem.titleLabel.backgroundColor = [UIColor clearColor];
+    aItem.titleLabel.numberOfLines = 1;
+    aItem.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    [self addSubview:aItem.iconView];
+    [self addSubview:aItem.titleLabel];
+   */
+    
+    [aItem layoutSubviews];
+    
+}
+
+-(void)switchToImage:(DMPagerNavigationBarItem *) aItem{
+    
+    NSDictionary *textAttributes = @{ NSFontAttributeName : [UIFont fontWithName:@"Superclarendon-Regular" size:21.0],
+                                      NSForegroundColorAttributeName : [self navColor]};
+    
+    aItem.title = [[NSAttributedString alloc] initWithString:@"DOP" attributes:textAttributes];
+    aItem.icon = [UIImage imageNamed:@"logo"];
+/*
+    aItem.renderingMode = DMPagerNavigationBarItemModeOnlyText;
+    
+    aItem.iconView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    aItem.iconView.image = [UIImage imageNamed:@"logo"];
+    aItem.iconView.contentMode = UIViewContentModeCenter;
+    aItem.iconView.clipsToBounds = YES;
+    aItem.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    aItem.titleLabel.text = @"DOP";
+    aItem.iconView.backgroundColor = [UIColor clearColor];
+    aItem.titleLabel.backgroundColor = [UIColor clearColor];
+    aItem.titleLabel.numberOfLines = 1;
+    aItem.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    [self addSubview:aItem.iconView];
+    [self addSubview:aItem.titleLabel];  */
+    
+    [aItem layoutSubviews];
+
+}
+
 - (void)goThere:(id)sender {
-       
+    
    NSNotification* notification = [NSNotification notificationWithName:@"pushSettings" object:self];
   [[NSNotificationCenter defaultCenter] postNotification:notification];
 
+}
+
+-(UIColor*)navColor{
     
+    return [UIColor colorWithRed:0.0 green:172.0f/255.0f blue:237.0f/255.0f alpha:1.0];
 }
 
 @end
