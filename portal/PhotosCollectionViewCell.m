@@ -10,8 +10,6 @@
 
 @interface PhotosCollectionViewCell()
 
-@property (nonatomic, strong, readwrite) UIImageView *photoimageView;
-
 @end
 
 

@@ -13,7 +13,7 @@
 
 @interface PhotosCollectionViewCell : UICollectionViewCell
 
-@property (strong, nonatomic) IBOutlet UIImageView *PhotoImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *fbImageView;
 
 
 @end

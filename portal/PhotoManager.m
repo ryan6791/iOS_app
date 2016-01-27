@@ -97,24 +97,27 @@
                   
                     NSDictionary *dict;
           //           NSLog(@"%@", albumObject.photo);
+                    int largest = 0, smallest = 300;
                 for(dict in images){
                  //    NSLog(@"%@", dict);
                     NSString *photo = [dict valueForKey:@"height"];
 
                     int height = [photo intValue];
                     
-                    if (height < 200) {
+                    //get the smallest photo for the icon
+                    if (height < smallest) {
                         NSString *data = [dict valueForKey:@"source"];
              //           NSLog(@"%@", albumObject.photo);
                         albumObject.photo = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:data]]];
+                        smallest = height;
                         
                     }
-                    
-                    if ((height > 500) && (height < 600)) {
+                    //get the largest photo for the full screen photos
+                    if (height > largest) {
                         NSString *data = [dict valueForKey:@"source"];
                         //           NSLog(@"%@", albumObject.photo);
                         albumObject.fullSizePhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:data]]];
-                        
+                        largest = height;
                     }
                     
                  }
@@ -122,7 +125,7 @@
          //            NSLog(@"%@", albumObject.photo);
                  [singleton.photos addObject: albumObject];
                  }
-                     NSLog(@"%u", [singleton.photos count]);
+         //            NSLog(@"%lu", (unsigned long)[singleton.photos count]);
                  completionBlock();
                  
                  }];

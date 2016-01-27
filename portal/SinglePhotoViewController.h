@@ -11,7 +11,10 @@
 @interface SinglePhotoViewController : UIViewController
 
 @property (nonatomic, strong) UIImage *photo;
-
+@property (strong, nonatomic) IBOutlet UIButton *okBtn;
+@property (strong, nonatomic) IBOutlet UIButton *cancelBtn;
 + (id)singletonInstance;
+
+
 
 @end

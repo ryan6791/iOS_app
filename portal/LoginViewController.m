@@ -417,12 +417,15 @@
     self.pagerController.navigationBar.activeItemColor = activeColor;
     
     [self.pagerController.navigationBar addSettingsIcon];
-    
+ /*
     self.navController = [[UINavigationController alloc] initWithRootViewController:self.pagerController];
     [self.navController setNavigationBarHidden:YES];
     self.window.rootViewController = self.navController;
-    [self.window makeKeyAndVisible];
+    [self.window makeKeyAndVisible]; */
     
+    NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];
+    [viewControllers replaceObjectAtIndex:0 withObject:self.pagerController];
+    [self.navigationController setViewControllers:viewControllers];
     
 }
 

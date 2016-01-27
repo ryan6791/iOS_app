@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, strong) UIImage *photo;
 @property (nonatomic, strong) UIImage *fullSizePhoto;
+@property (nonatomic, weak) NSString *boxID;
 
 
 + (id)singletonInstance;

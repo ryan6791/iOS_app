@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		08B8ED1E7B55B560B635A10E /* Pods_pairedUP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 297863195D14C9F88569478B /* Pods_pairedUP.framework */; };
+		4A01F7D81C5875300011C9A9 /* UserAccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A01F7D71C5875300011C9A9 /* UserAccountTableViewCell.m */; };
+		4A01F7DB1C58C5980011C9A9 /* FBAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A01F7DA1C58C5980011C9A9 /* FBAlbumsViewController.m */; };
+		4A0B080D1C583E170097C72C /* PhotosCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0B080C1C583E170097C72C /* PhotosCollectionViewController.xib */; };
+		4A0B080F1C5847F70097C72C /* PhotosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0B080E1C5847F70097C72C /* PhotosCollectionViewCell.xib */; };
+		4A0B08131C58500F0097C72C /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0B08111C58500F0097C72C /* PhotosViewController.m */; };
+		4A0B08141C58500F0097C72C /* PhotosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0B08121C58500F0097C72C /* PhotosViewController.xib */; };
 		4A12DDF01C49F10A0068D79C /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12DDEF1C49F10A0068D79C /* MessagesViewController.m */; };
 		4A12DDF91C49F4260068D79C /* ModelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12DDF81C49F4260068D79C /* ModelData.m */; };
 		4A12DDFF1C49F6140068D79C /* NSUserDefaults+Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12DDFE1C49F6140068D79C /* NSUserDefaults+Settings.m */; };
@@ -18,7 +24,6 @@
 		4A12DE551C4C75840068D79C /* images-3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4A12DE531C4C75840068D79C /* images-3.jpeg */; };
 		4A12DE561C4C75840068D79C /* 6956323-cute-girl-photos.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A12DE541C4C75840068D79C /* 6956323-cute-girl-photos.jpg */; };
 		4A12E7A11BFB0EEA000ECD59 /* UserMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12E7A01BFB0EEA000ECD59 /* UserMenuViewController.m */; };
-		4A12E7A41BFB0F90000ECD59 /* UserAccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12E7A31BFB0F90000ECD59 /* UserAccountTableViewCell.m */; };
 		4A12E7A71BFC32EB000ECD59 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12E7A61BFC32EB000ECD59 /* ProfileViewController.m */; };
 		4A1D714B1C3B28E400F0B6B8 /* UserAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1D714A1C3B28E300F0B6B8 /* UserAlbumsViewController.m */; };
 		4A1EDE5B1C5054E600DF3087 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4A1EDE5A1C5054E600DF3087 /* .gitignore */; };
@@ -34,21 +39,15 @@
 		4A705C951BF598410084B23C /* Sign-in-Large---Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A705C941BF598410084B23C /* Sign-in-Large---Default.png */; };
 		4A705C971BF598620084B23C /* Sign-In-Large---Default-ret.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A705C961BF598620084B23C /* Sign-In-Large---Default-ret.png */; };
 		4A8095151C436B9200C7295A /* SwipeAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8095141C436B9200C7295A /* SwipeAlbumViewController.m */; };
-		4A86E71C1BCA42E200DF3F8A /* AlbumsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A86E71B1BCA42E200DF3F8A /* AlbumsTableViewController.m */; };
 		4A86E7A41BCF709800DF3F8A /* PhotosCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A86E7A31BCF709600DF3F8A /* PhotosCollectionViewCell.m */; };
 		4A92A38E1C057F1B00E12000 /* 1448450737_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A92A38D1C057F1B00E12000 /* 1448450737_back.png */; };
 		4A92A3921C0584A300E12000 /* 1448452123_info-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A92A3911C0584A300E12000 /* 1448452123_info-1.png */; };
 		4A92A3941C0586C600E12000 /* 1448452694_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A92A3931C0586C600E12000 /* 1448452694_settings.png */; };
 		4A92A3981C07D0BB00E12000 /* peace-sign-hand.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A92A3971C07D0BB00E12000 /* peace-sign-hand.png */; };
-		4A99BF311BE728EC00356805 /* MyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A99BF301BE728EC00356805 /* MyProfileViewController.m */; };
 		4A99BF331BE72BF000356805 /* Edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A99BF321BE72BF000356805 /* Edit.png */; };
-		4A99BF361BE72DE700356805 /* MyProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A99BF351BE72DE700356805 /* MyProfileTableViewCell.m */; };
 		4A99BF381BE7380900356805 /* image_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A99BF371BE7380900356805 /* image_placeholder.png */; };
 		4AB8E3A71C4627A1007BA38D /* NewMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8E3A61C4627A1007BA38D /* NewMatchViewController.m */; };
 		4AB8E3AA1C463BB4007BA38D /* LockedNewMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8E3A91C463BB4007BA38D /* LockedNewMatchViewController.m */; };
-		4AB948951BD2246D002FEDE0 /* Main2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AB948931BD220FA002FEDE0 /* Main2.storyboard */; };
-		4AB948961BD2246E002FEDE0 /* Main2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AB948931BD220FA002FEDE0 /* Main2.storyboard */; };
-		4AB948971BD224FB002FEDE0 /* Main2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AB948931BD220FA002FEDE0 /* Main2.storyboard */; };
 		4AB9489A1BD2F746002FEDE0 /* SinglePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB948991BD2F746002FEDE0 /* SinglePhotoViewController.m */; };
 		4ABB5B9C1BC8BCB600BEA3EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5B9B1BC8BCB600BEA3EF /* main.m */; };
 		4ABB5B9F1BC8BCB700BEA3EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5B9E1BC8BCB700BEA3EF /* AppDelegate.m */; };
@@ -65,7 +64,6 @@
 		4ABB5BE41BC8C11900BEA3EF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5BE31BC8C11900BEA3EF /* ViewController.m */; };
 		4ABB5BE71BC8C31400BEA3EF /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5BE61BC8C31400BEA3EF /* DataAccess.m */; };
 		4ABB5BF01BC9D5D800BEA3EF /* PhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5BEF1BC9D5D800BEA3EF /* PhotoManager.m */; };
-		4ABB5BF41BC9D66E00BEA3EF /* PhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5BF31BC9D66E00BEA3EF /* PhotosCollectionViewController.m */; };
 		4ABB5BF71BC9D78100BEA3EF /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5BF61BC9D78100BEA3EF /* AccountViewController.m */; };
 		4AC9A8721C4C875F0096350D /* MatchProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9A8711C4C875F0096350D /* MatchProfileViewController.m */; };
 		4AC9A8741C4DA6B00096350D /* 1453179218_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC9A8731C4DA6B00096350D /* 1453179218_chat.png */; };
@@ -120,6 +118,15 @@
 /* Begin PBXFileReference section */
 		1110F5D6FF2B08449712BE0B /* Pods-pairedUP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pairedUP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pairedUP/Pods-pairedUP.debug.xcconfig"; sourceTree = "<group>"; };
 		297863195D14C9F88569478B /* Pods_pairedUP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pairedUP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A01F7D61C5875300011C9A9 /* UserAccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAccountTableViewCell.h; sourceTree = "<group>"; };
+		4A01F7D71C5875300011C9A9 /* UserAccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAccountTableViewCell.m; sourceTree = "<group>"; };
+		4A01F7D91C58C5980011C9A9 /* FBAlbumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBAlbumsViewController.h; sourceTree = "<group>"; };
+		4A01F7DA1C58C5980011C9A9 /* FBAlbumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBAlbumsViewController.m; sourceTree = "<group>"; };
+		4A0B080C1C583E170097C72C /* PhotosCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosCollectionViewController.xib; sourceTree = "<group>"; };
+		4A0B080E1C5847F70097C72C /* PhotosCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosCollectionViewCell.xib; sourceTree = "<group>"; };
+		4A0B08101C58500F0097C72C /* PhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
+		4A0B08111C58500F0097C72C /* PhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosViewController.m; sourceTree = "<group>"; };
+		4A0B08121C58500F0097C72C /* PhotosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosViewController.xib; sourceTree = "<group>"; };
 		4A12DDEE1C49F10A0068D79C /* MessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
 		4A12DDEF1C49F10A0068D79C /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
 		4A12DDF71C49F4260068D79C /* ModelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelData.h; sourceTree = "<group>"; };
@@ -135,8 +142,6 @@
 		4A12DE541C4C75840068D79C /* 6956323-cute-girl-photos.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "6956323-cute-girl-photos.jpg"; sourceTree = "<group>"; };
 		4A12E79F1BFB0EEA000ECD59 /* UserMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserMenuViewController.h; sourceTree = "<group>"; };
 		4A12E7A01BFB0EEA000ECD59 /* UserMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserMenuViewController.m; sourceTree = "<group>"; };
-		4A12E7A21BFB0F90000ECD59 /* UserAccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAccountTableViewCell.h; sourceTree = "<group>"; };
-		4A12E7A31BFB0F90000ECD59 /* UserAccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAccountTableViewCell.m; sourceTree = "<group>"; };
 		4A12E7A51BFC32EB000ECD59 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		4A12E7A61BFC32EB000ECD59 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		4A1D71491C3B28E300F0B6B8 /* UserAlbumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAlbumsViewController.h; sourceTree = "<group>"; };
@@ -158,25 +163,18 @@
 		4A705C961BF598620084B23C /* Sign-In-Large---Default-ret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sign-In-Large---Default-ret.png"; sourceTree = "<group>"; };
 		4A8095131C436B9100C7295A /* SwipeAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeAlbumViewController.h; sourceTree = "<group>"; };
 		4A8095141C436B9200C7295A /* SwipeAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeAlbumViewController.m; sourceTree = "<group>"; };
-		4A86E71A1BCA42E200DF3F8A /* AlbumsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumsTableViewController.h; sourceTree = "<group>"; };
-		4A86E71B1BCA42E200DF3F8A /* AlbumsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumsTableViewController.m; sourceTree = "<group>"; };
 		4A86E7A21BCF709600DF3F8A /* PhotosCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosCollectionViewCell.h; sourceTree = "<group>"; };
 		4A86E7A31BCF709600DF3F8A /* PhotosCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosCollectionViewCell.m; sourceTree = "<group>"; };
 		4A92A38D1C057F1B00E12000 /* 1448450737_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1448450737_back.png; sourceTree = "<group>"; };
 		4A92A3911C0584A300E12000 /* 1448452123_info-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "1448452123_info-1.png"; path = "Assets.xcassets/connections.imageset/1448452123_info-1.png"; sourceTree = "<group>"; };
 		4A92A3931C0586C600E12000 /* 1448452694_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1448452694_settings.png; sourceTree = "<group>"; };
 		4A92A3971C07D0BB00E12000 /* peace-sign-hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "peace-sign-hand.png"; sourceTree = "<group>"; };
-		4A99BF2F1BE728EC00356805 /* MyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileViewController.h; sourceTree = "<group>"; };
-		4A99BF301BE728EC00356805 /* MyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProfileViewController.m; sourceTree = "<group>"; };
 		4A99BF321BE72BF000356805 /* Edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Edit.png; sourceTree = "<group>"; };
-		4A99BF341BE72DE700356805 /* MyProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileTableViewCell.h; sourceTree = "<group>"; };
-		4A99BF351BE72DE700356805 /* MyProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProfileTableViewCell.m; sourceTree = "<group>"; };
 		4A99BF371BE7380900356805 /* image_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_placeholder.png; sourceTree = "<group>"; };
 		4AB8E3A51C4627A1007BA38D /* NewMatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMatchViewController.h; sourceTree = "<group>"; };
 		4AB8E3A61C4627A1007BA38D /* NewMatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMatchViewController.m; sourceTree = "<group>"; };
 		4AB8E3A81C463BB4007BA38D /* LockedNewMatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockedNewMatchViewController.h; sourceTree = "<group>"; };
 		4AB8E3A91C463BB4007BA38D /* LockedNewMatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockedNewMatchViewController.m; sourceTree = "<group>"; };
-		4AB948931BD220FA002FEDE0 /* Main2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main2.storyboard; sourceTree = "<group>"; };
 		4AB948981BD2F746002FEDE0 /* SinglePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinglePhotoViewController.h; sourceTree = "<group>"; };
 		4AB948991BD2F746002FEDE0 /* SinglePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinglePhotoViewController.m; sourceTree = "<group>"; };
 		4ABB5B971BC8BCB600BEA3EF /* pairedUP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pairedUP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,8 +204,6 @@
 		4ABB5BE61BC8C31400BEA3EF /* DataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataAccess.m; sourceTree = "<group>"; };
 		4ABB5BEE1BC9D5D800BEA3EF /* PhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoManager.h; sourceTree = "<group>"; };
 		4ABB5BEF1BC9D5D800BEA3EF /* PhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoManager.m; sourceTree = "<group>"; };
-		4ABB5BF21BC9D66E00BEA3EF /* PhotosCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosCollectionViewController.h; sourceTree = "<group>"; };
-		4ABB5BF31BC9D66E00BEA3EF /* PhotosCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosCollectionViewController.m; sourceTree = "<group>"; };
 		4ABB5BF51BC9D78100BEA3EF /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		4ABB5BF61BC9D78100BEA3EF /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		4AC9A8701C4C875F0096350D /* MatchProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchProfileViewController.h; sourceTree = "<group>"; };
@@ -343,7 +339,6 @@
 			isa = PBXGroup;
 			children = (
 				F98AD2E51C55CA6F001FD5F2 /* OAuth */,
-				4AB948931BD220FA002FEDE0 /* Main2.storyboard */,
 				4ABB5BE11BC8C08A00BEA3EF /* ViewControllers */,
 				4ABB5BD71BC8BE3000BEA3EF /* classes */,
 				4ABB5B9D1BC8BCB600BEA3EF /* AppDelegate.h */,
@@ -465,30 +460,29 @@
 		4ABB5BEB1BC9824300BEA3EF /* User Account */ = {
 			isa = PBXGroup;
 			children = (
-				4ABB5BF21BC9D66E00BEA3EF /* PhotosCollectionViewController.h */,
-				4ABB5BF31BC9D66E00BEA3EF /* PhotosCollectionViewController.m */,
-				4ABB5BF51BC9D78100BEA3EF /* AccountViewController.h */,
-				4ABB5BF61BC9D78100BEA3EF /* AccountViewController.m */,
-				4A86E71A1BCA42E200DF3F8A /* AlbumsTableViewController.h */,
-				4A86E71B1BCA42E200DF3F8A /* AlbumsTableViewController.m */,
+				4A01F7D61C5875300011C9A9 /* UserAccountTableViewCell.h */,
+				4A01F7D71C5875300011C9A9 /* UserAccountTableViewCell.m */,
+				4A0B080E1C5847F70097C72C /* PhotosCollectionViewCell.xib */,
 				4A86E7A21BCF709600DF3F8A /* PhotosCollectionViewCell.h */,
 				4A86E7A31BCF709600DF3F8A /* PhotosCollectionViewCell.m */,
+				4A0B08101C58500F0097C72C /* PhotosViewController.h */,
+				4A0B08111C58500F0097C72C /* PhotosViewController.m */,
+				4A0B08121C58500F0097C72C /* PhotosViewController.xib */,
+				4A0B080C1C583E170097C72C /* PhotosCollectionViewController.xib */,
+				4ABB5BF51BC9D78100BEA3EF /* AccountViewController.h */,
+				4ABB5BF61BC9D78100BEA3EF /* AccountViewController.m */,
 				4AB948981BD2F746002FEDE0 /* SinglePhotoViewController.h */,
 				4AB948991BD2F746002FEDE0 /* SinglePhotoViewController.m */,
-				4A99BF2F1BE728EC00356805 /* MyProfileViewController.h */,
-				4A99BF301BE728EC00356805 /* MyProfileViewController.m */,
-				4A99BF341BE72DE700356805 /* MyProfileTableViewCell.h */,
-				4A99BF351BE72DE700356805 /* MyProfileTableViewCell.m */,
 				4A46C2FF1BF6F34000FF9B46 /* ProfilePictureViewController.h */,
 				4A46C3001BF6F34000FF9B46 /* ProfilePictureViewController.m */,
 				4A12E79F1BFB0EEA000ECD59 /* UserMenuViewController.h */,
 				4A12E7A01BFB0EEA000ECD59 /* UserMenuViewController.m */,
-				4A12E7A21BFB0F90000ECD59 /* UserAccountTableViewCell.h */,
-				4A12E7A31BFB0F90000ECD59 /* UserAccountTableViewCell.m */,
 				4A12E7A51BFC32EB000ECD59 /* ProfileViewController.h */,
 				4A12E7A61BFC32EB000ECD59 /* ProfileViewController.m */,
 				4AFC396D1C099D38004E7262 /* SettingsViewController.h */,
 				4AFC396E1C099D38004E7262 /* SettingsViewController.m */,
+				4A01F7D91C58C5980011C9A9 /* FBAlbumsViewController.h */,
+				4A01F7DA1C58C5980011C9A9 /* FBAlbumsViewController.m */,
 			);
 			name = "User Account";
 			sourceTree = "<group>";
@@ -676,11 +670,12 @@
 				4A12DE4D1C4A60890068D79C /* Keira-Knightley_A-Cute-Woman_441.jpg in Resources */,
 				4A92A38E1C057F1B00E12000 /* 1448450737_back.png in Resources */,
 				4A12DE521C4C756B0068D79C /* original.jpg in Resources */,
+				4A0B08141C58500F0097C72C /* PhotosViewController.xib in Resources */,
 				4ADCA13A1C1E9B75002A018B /* Oval 2 + Rectangle 10-1.png in Resources */,
 				4AC9A8741C4DA6B00096350D /* 1453179218_chat.png in Resources */,
-				4AB948971BD224FB002FEDE0 /* Main2.storyboard in Resources */,
 				4A256ADC1BE49248006CD39E /* linkedin_icon.png in Resources */,
 				4AFC39791C0A6766004E7262 /* 1448772307_Streamline-76.png in Resources */,
+				4A0B080F1C5847F70097C72C /* PhotosCollectionViewCell.xib in Resources */,
 				4A99BF381BE7380900356805 /* image_placeholder.png in Resources */,
 				4A12DE421C4A1A230068D79C /* JSQMessagesAssets.bundle in Resources */,
 				4AFC39891C0ACD27004E7262 /* 1448798373_linkedin.png in Resources */,
@@ -696,6 +691,7 @@
 				4A92A3941C0586C600E12000 /* 1448452694_settings.png in Resources */,
 				4A256AEE1BE59BB0006CD39E /* checkbox.png in Resources */,
 				4A705C971BF598620084B23C /* Sign-In-Large---Default-ret.png in Resources */,
+				4A0B080D1C583E170097C72C /* PhotosCollectionViewController.xib in Resources */,
 				4ADCA1361C1E9B47002A018B /* yesButton-01-1.png in Resources */,
 				4AFC397D1C0A6A13004E7262 /* 1448772977_snapchat.png in Resources */,
 				4A12DE551C4C75840068D79C /* images-3.jpeg in Resources */,
@@ -715,7 +711,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AB948951BD2246D002FEDE0 /* Main2.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,7 +718,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AB948961BD2246E002FEDE0 /* Main2.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -783,9 +777,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AC9A8721C4C875F0096350D /* MatchProfileViewController.m in Sources */,
-				4ABB5BF41BC9D66E00BEA3EF /* PhotosCollectionViewController.m in Sources */,
 				4A12DDF01C49F10A0068D79C /* MessagesViewController.m in Sources */,
-				4A99BF361BE72DE700356805 /* MyProfileTableViewCell.m in Sources */,
 				4ABB5BE41BC8C11900BEA3EF /* ViewController.m in Sources */,
 				4ABB5BA81BC8BCB700BEA3EF /* portal.xcdatamodeld in Sources */,
 				4ACFE2A41C50C33D00B758AC /* TestViewController.m in Sources */,
@@ -803,11 +795,10 @@
 				4ADCA12E1C1E9804002A018B /* DraggableViewBackground.m in Sources */,
 				4ABB5BF71BC9D78100BEA3EF /* AccountViewController.m in Sources */,
 				F98AD2ED1C55CA89001FD5F2 /* OAuthToken.m in Sources */,
+				4A01F7D81C5875300011C9A9 /* UserAccountTableViewCell.m in Sources */,
 				4ADCA1321C1E9920002A018B /* SwipeViewController.m in Sources */,
-				4A12E7A41BFB0F90000ECD59 /* UserAccountTableViewCell.m in Sources */,
 				4ABB5BF01BC9D5D800BEA3EF /* PhotoManager.m in Sources */,
 				F98AD2F91C55D09E001FD5F2 /* NSURL+QueryParser.m in Sources */,
-				4A99BF311BE728EC00356805 /* MyProfileViewController.m in Sources */,
 				4ABB5B9F1BC8BCB700BEA3EF /* AppDelegate.m in Sources */,
 				F98AD2F11C55CBEA001FD5F2 /* GlobalConstants.m in Sources */,
 				4ABB5B9C1BC8BCB600BEA3EF /* main.m in Sources */,
@@ -815,7 +806,6 @@
 				4AB9489A1BD2F746002FEDE0 /* SinglePhotoViewController.m in Sources */,
 				4AC9A8771C4F75820096350D /* RelationshipMatchViewController.m in Sources */,
 				4A12E7A71BFC32EB000ECD59 /* ProfileViewController.m in Sources */,
-				4A86E71C1BCA42E200DF3F8A /* AlbumsTableViewController.m in Sources */,
 				F98AD2F81C55D09E001FD5F2 /* NSMutableData+AES.m in Sources */,
 				4AFC396F1C099D38004E7262 /* SettingsViewController.m in Sources */,
 				4ABB5BE01BC8C07C00BEA3EF /* LoginViewController.m in Sources */,
@@ -825,6 +815,8 @@
 				F98AD2FA1C55D09E001FD5F2 /* NSString+URLEncoding.m in Sources */,
 				4A12DE501C4C6EEC0068D79C /* UserData.m in Sources */,
 				4ADCA12F1C1E9804002A018B /* OverlayView.m in Sources */,
+				4A0B08131C58500F0097C72C /* PhotosViewController.m in Sources */,
+				4A01F7DB1C58C5980011C9A9 /* FBAlbumsViewController.m in Sources */,
 				F98AD2FD1C55D157001FD5F2 /* OAuthSecurity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

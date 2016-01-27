@@ -8,7 +8,6 @@
 
 #import "UserMenuViewController.h"
 #import "DeviceManager.h"
-#import "AlbumsTableViewController.h"
 #import "DataAccess.h"
 #import "UserAccountTableViewCell.h"
 #import "AccountViewController.h"
@@ -477,8 +476,7 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2
-    ;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

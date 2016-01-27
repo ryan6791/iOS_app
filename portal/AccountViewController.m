@@ -8,9 +8,10 @@
 
 #import "AccountViewController.h"
 #import "DeviceManager.h"
-#import "AlbumsTableViewController.h"
 #import "DataAccess.h"
 #import "ProfileViewController.h"
+#import "FBAlbumsViewController.h"
+#import "PhotoManager.h"
 
 
 
@@ -402,12 +403,11 @@
     self.pic.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pic invalidateIntrinsicContentSize];
     
-    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"ProfileImage"];
-    UIImage* image = [UIImage imageWithData:imageData];
+    UIImage* image = [[DataAccess singletonInstance] getProfileImage];
     
     
     if (image != nil) {
-        self.pic.image = [[DataAccess singletonInstance] getProfileImage];
+        self.pic.image = image;
     }else{
         self.pic.image = [UIImage imageNamed:@"image_placeholder.png"];
     }
@@ -444,7 +444,7 @@
         width = 138;
     }
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picturePressed:)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picturePressed1:)];
     [self.pic addGestureRecognizer:tapGesture];
     
     
@@ -552,12 +552,11 @@
     self.pic2.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pic2 invalidateIntrinsicContentSize];
     
-    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"ProfileImage2"];
-    UIImage* image = [UIImage imageWithData:imageData];
+    UIImage* image = [[DataAccess singletonInstance] getProfileImage2];
     
     
     if (image != nil) {
-        self.pic2.image = [[DataAccess singletonInstance] getProfileImage2];
+        self.pic2.image = image;
     }else{
         self.pic2.image = [UIImage imageNamed:@"image_placeholder.png"];
     }
@@ -595,7 +594,7 @@
         width = 138;
     }
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picturePressed:)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picturePressed2:)];
     [self.pic2 addGestureRecognizer:tapGesture];
     
     
@@ -779,12 +778,11 @@
     self.pic3.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pic3 invalidateIntrinsicContentSize];
     
-    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"ProfileImage3"];
-    UIImage* image = [UIImage imageWithData:imageData];
+    UIImage* image = [[DataAccess singletonInstance] getProfileImage3];
     
     
     if (image != nil) {
-        self.pic3.image = [[DataAccess singletonInstance] getProfileImage3];
+        self.pic3.image = image;
     }else{
         self.pic3.image = [UIImage imageNamed:@"image_placeholder.png"];
     }
@@ -821,7 +819,7 @@
         width = 138;
     }
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picturePressed:)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picturePressed3:)];
     [self.pic3 addGestureRecognizer:tapGesture];
     
     
@@ -858,12 +856,11 @@
     self.pic4.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pic4 invalidateIntrinsicContentSize];
     
-    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"ProfileImage4"];
-    UIImage* image = [UIImage imageWithData:imageData];
+    UIImage* image = [[DataAccess singletonInstance] getProfileImage4];
     
     
     if (image != nil) {
-        self.pic4.image = [[DataAccess singletonInstance] getProfileImage4];
+        self.pic4.image = image;
     }else{
         self.pic4.image = [UIImage imageNamed:@"image_placeholder.png"];
     }
@@ -901,7 +898,7 @@
         width = 138;
     }
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picturePressed:)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picturePressed4:)];
     [self.pic4 addGestureRecognizer:tapGesture];
     
     
@@ -1200,17 +1197,59 @@
 }
 
 
-- (void)picturePressed:(id)sender {
+- (void)picturePressed1:(id)sender {
     
-    AlbumsTableViewController *albums = [[AlbumsTableViewController alloc] init];
+    PhotoManager *box = [PhotoManager singletonInstance];
+    
+    box.boxID = @"1";
+    
+    FBAlbumsViewController *albums = [[FBAlbumsViewController alloc] init];
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     [self.navigationController pushViewController:albums animated:YES];
-    /*
-     InstagramFieldViewController *account = [[InstagramFieldViewController alloc] init];
-     [self.navigationItem setHidesBackButton:YES];
-     [self.navigationController setNavigationBarHidden:NO animated:NO];
-     [self.navigationController pushViewController:account animated:YES];*/
+
+    
+}
+
+- (void)picturePressed2:(id)sender {
+    
+    PhotoManager *box = [PhotoManager singletonInstance];
+    
+    box.boxID = @"2";
+
+    
+    FBAlbumsViewController *albums = [[FBAlbumsViewController alloc] init];
+    [self.navigationItem setHidesBackButton:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController pushViewController:albums animated:YES];
+
+    
+}
+
+- (void)picturePressed3:(id)sender {
+    
+    PhotoManager *box = [PhotoManager singletonInstance];
+    
+    box.boxID = @"3";
+    
+    FBAlbumsViewController *albums = [[FBAlbumsViewController alloc] init];
+    [self.navigationItem setHidesBackButton:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController pushViewController:albums animated:YES];
+    
+}
+
+- (void)picturePressed4:(id)sender {
+    
+    PhotoManager *box = [PhotoManager singletonInstance];
+    
+    box.boxID = @"4";
+    
+    FBAlbumsViewController *albums = [[FBAlbumsViewController alloc] init];
+    [self.navigationItem setHidesBackButton:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController pushViewController:albums animated:YES];
+
     
 }
 

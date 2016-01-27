@@ -10,7 +10,6 @@
 
 @interface UserMenuViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic, strong) NSString *linkedinId;
 
 
 @end
