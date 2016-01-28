@@ -112,4 +112,9 @@
 - (BOOL)incomingAvatarSetting;
 
 
+-(void)setBio:(NSString*)bio;
+
+-(NSString*)getBio;
+
+
 @end

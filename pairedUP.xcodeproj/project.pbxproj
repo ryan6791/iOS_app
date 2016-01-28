@@ -39,6 +39,7 @@
 		4A705C951BF598410084B23C /* Sign-in-Large---Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A705C941BF598410084B23C /* Sign-in-Large---Default.png */; };
 		4A705C971BF598620084B23C /* Sign-In-Large---Default-ret.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A705C961BF598620084B23C /* Sign-In-Large---Default-ret.png */; };
 		4A8095151C436B9200C7295A /* SwipeAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8095141C436B9200C7295A /* SwipeAlbumViewController.m */; };
+		4A8606641C598394006D4E4D /* BioInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8606631C598394006D4E4D /* BioInfoViewController.m */; };
 		4A86E7A41BCF709800DF3F8A /* PhotosCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A86E7A31BCF709600DF3F8A /* PhotosCollectionViewCell.m */; };
 		4A92A38E1C057F1B00E12000 /* 1448450737_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A92A38D1C057F1B00E12000 /* 1448450737_back.png */; };
 		4A92A3921C0584A300E12000 /* 1448452123_info-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A92A3911C0584A300E12000 /* 1448452123_info-1.png */; };
@@ -163,6 +164,8 @@
 		4A705C961BF598620084B23C /* Sign-In-Large---Default-ret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sign-In-Large---Default-ret.png"; sourceTree = "<group>"; };
 		4A8095131C436B9100C7295A /* SwipeAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeAlbumViewController.h; sourceTree = "<group>"; };
 		4A8095141C436B9200C7295A /* SwipeAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeAlbumViewController.m; sourceTree = "<group>"; };
+		4A8606621C598394006D4E4D /* BioInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BioInfoViewController.h; sourceTree = "<group>"; };
+		4A8606631C598394006D4E4D /* BioInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BioInfoViewController.m; sourceTree = "<group>"; };
 		4A86E7A21BCF709600DF3F8A /* PhotosCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosCollectionViewCell.h; sourceTree = "<group>"; };
 		4A86E7A31BCF709600DF3F8A /* PhotosCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosCollectionViewCell.m; sourceTree = "<group>"; };
 		4A92A38D1C057F1B00E12000 /* 1448450737_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1448450737_back.png; sourceTree = "<group>"; };
@@ -483,6 +486,8 @@
 				4AFC396E1C099D38004E7262 /* SettingsViewController.m */,
 				4A01F7D91C58C5980011C9A9 /* FBAlbumsViewController.h */,
 				4A01F7DA1C58C5980011C9A9 /* FBAlbumsViewController.m */,
+				4A8606621C598394006D4E4D /* BioInfoViewController.h */,
+				4A8606631C598394006D4E4D /* BioInfoViewController.m */,
 			);
 			name = "User Account";
 			sourceTree = "<group>";
@@ -816,6 +821,7 @@
 				4A12DE501C4C6EEC0068D79C /* UserData.m in Sources */,
 				4ADCA12F1C1E9804002A018B /* OverlayView.m in Sources */,
 				4A0B08131C58500F0097C72C /* PhotosViewController.m in Sources */,
+				4A8606641C598394006D4E4D /* BioInfoViewController.m in Sources */,
 				4A01F7DB1C58C5980011C9A9 /* FBAlbumsViewController.m in Sources */,
 				F98AD2FD1C55D157001FD5F2 /* OAuthSecurity.m in Sources */,
 			);

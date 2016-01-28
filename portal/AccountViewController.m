@@ -12,6 +12,7 @@
 #import "ProfileViewController.h"
 #import "FBAlbumsViewController.h"
 #import "PhotoManager.h"
+#import "BioInfoViewController.h"
 
 
 
@@ -75,7 +76,8 @@
     [self addProfileImage4];
     [self setupnetworkLabel];
     [self addLine];
-    [self setupnetworkTextField];
+    [self setupnetworkTextBox];
+    [self setupUserBioLabel];
     
 }
 
@@ -1066,13 +1068,13 @@
 }
 
 
-- (void)setupnetworkTextField {
+- (void)setupnetworkTextBox {
     
-    self.networkTextField = [[UITextField alloc]init];
-    self.networkTextField.delegate = self;
-    self.networkTextField.layer.cornerRadius = 7.0;
-    self.networkTextField.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.networkTextField invalidateIntrinsicContentSize];
+    self.networkTextBox = [[UIView alloc]init];
+
+    self.networkTextBox.layer.cornerRadius = 7.0;
+    self.networkTextBox.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.networkTextBox invalidateIntrinsicContentSize];
 
 
   //  if ([[DataAccess singletonInstance] getInstagram] != nil) {
@@ -1120,23 +1122,30 @@
     UIColor *color = [UIColor lightGrayColor];
 
     
-    self.networkTextField.backgroundColor = [UIColor whiteColor];
-    self.networkTextField.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.networkTextField.layer.borderWidth = 0.5f;
-    self.networkTextField.layer.masksToBounds = true;
+    self.networkTextBox.userInteractionEnabled = YES;
+    UITapGestureRecognizer *textBoxPressed =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(textBoxPressed:)];
+    [self.networkTextBox addGestureRecognizer:textBoxPressed];
+    
+    
+    self.networkTextBox.backgroundColor = [UIColor whiteColor];
+    self.networkTextBox.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.networkTextBox.layer.borderWidth = 0.5f;
+    self.networkTextBox.layer.masksToBounds = YES;
     
     NSMutableDictionary *viewsDictionary = [[NSMutableDictionary alloc] init];
-    [viewsDictionary setObject:self.networkTextField forKey:@"textField"];
+    [viewsDictionary setObject:self.networkTextBox forKey:@"textField"];
     [viewsDictionary setObject:self.Line forKey:@"label"];
     
-    [self.view addSubview:self.networkTextField];
+    [self.view addSubview:self.networkTextBox];
     
     NSArray *hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-xpad-[textField]" options:0 metrics:@{@"xpad" : [NSNumber numberWithFloat:xpad], @"width" : [NSNumber numberWithFloat:width]} views:viewsDictionary];
     NSArray *vConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-pad-[textField(height)]" options:0 metrics:@{@"height" : [NSNumber numberWithFloat:height], @"pad" : [NSNumber numberWithFloat:ypad]} views:viewsDictionary];
     
     [self.view addConstraints:hConstraints];
     
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.networkTextField attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.networkTextBox attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width]];
     
     [self.view addConstraints:vConstraints];
     
@@ -1195,6 +1204,64 @@
     [self.view addConstraint:constraint4];
     
 }
+
+- (void)setupUserBioLabel {
+        CGFloat height = 0;
+    
+    self.userBioLabel = [[UILabel alloc] init];
+    
+    self.userBioLabel.font = [UIFont systemFontOfSize:5];
+    height = 15;
+    
+    CGFloat pad = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 5;
+        height = 180;
+        self.userBioLabel.font = [UIFont systemFontOfSize:16];
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 27;
+        height = 180;
+        self.userBioLabel.font = [UIFont systemFontOfSize:17];
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 8;
+        height = 180;
+        self.userBioLabel.font = [UIFont systemFontOfSize:18];
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 5;
+        height = 180;
+        self.userBioLabel.font = [UIFont systemFontOfSize:15];
+        
+    }
+    
+    
+    
+    [self.userBioLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.userBioLabel invalidateIntrinsicContentSize];
+    self.userBioLabel.font = [UIFont fontWithName:@"Verdana" size:17.0f];
+    self.userBioLabel.textColor = [UIColor lightGrayColor];
+    
+    self.userBioLabel.text = [[DataAccess singletonInstance] getBio];
+    NSLog(@"the bio is %@", self.userBioLabel.text);
+    
+    [self.networkTextBox addSubview:self.userBioLabel];
+    
+    NSDictionary *viewsDictionary = @{@"label" : self.userBioLabel};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-7-[label]" options:0 metrics:nil views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    
+}
+
 
 
 - (void)picturePressed1:(id)sender {
@@ -1290,6 +1357,15 @@
     
 }
 
+-(IBAction)textBoxPressed:(id)sender{
+    
+    BioInfoViewController *account = [[BioInfoViewController alloc] init];
+    [self.navigationItem setHidesBackButton:NO];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController pushViewController:account animated:NO];
+    
+}
+
 -(IBAction)Settings:(id)sender{
     
     CATransition *transition = [CATransition animation];
@@ -1315,40 +1391,7 @@
 }
 
 
-- (void)textFieldDidChange {
-    //
-}
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    [textField setReturnKeyType:UIReturnKeyDone];
-    return TRUE;
-}
-
-- (BOOL)textFieldShouldClear:(UITextField *)textField{
-    return YES;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [self.networkTextField resignFirstResponder];
-    return YES;
-}
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    [self.networkTextField resignFirstResponder];
-    [self.networkTextField endEditing:YES];
-}
-
-
-- (void)touchesEnded: (NSSet *) touches withEvent: (UIEvent *) event {
-    NSArray *subviews = [self.view subviews];
-    for (id objects in subviews) {
-        if ([objects isKindOfClass:[UITextField class]]) {
-            UITextField *theTextField = objects;
-            if ([objects isFirstResponder]) {
-                [theTextField resignFirstResponder];
-            }
-        }
-    }
-}
 
 
 @end

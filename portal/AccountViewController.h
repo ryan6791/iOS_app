@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AccountViewController : UIViewController<UITextFieldDelegate>
+@interface AccountViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UITextField *networkTextField;
+@property (strong, nonatomic) IBOutlet UIView *networkTextBox;
+@property (strong, nonatomic) IBOutlet UILabel *userBioLabel;
 
 
 @end

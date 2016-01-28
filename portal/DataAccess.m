@@ -278,6 +278,21 @@ static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
     return name;
 }
 
+-(void)setBio:(NSString*)bio{
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:bio forKey:@"bio"];
+    
+}
+
+-(NSString*)getBio{
+    
+    NSString *bio = [[NSUserDefaults standardUserDefaults]
+                      stringForKey:@"bio"];
+    
+    return bio;
+}
+
 -(void)setGender:(NSString*)gender{
     
     
