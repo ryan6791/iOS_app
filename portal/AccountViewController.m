@@ -85,10 +85,7 @@
     
     [super viewDidAppear:YES];
     
-    //   self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
-    //   self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    //    [self.navigationController.navigationBar setTranslucent:YES];
-    //   [self.navigationItem setHidesBackButton:YES];
+
     
 }
 
@@ -97,6 +94,35 @@
     [super viewWillAppear:animated];
     [self styleNavBar];
     
+    UIImage* image = [[DataAccess singletonInstance] getProfileImage];
+    UIImage* image2 = [[DataAccess singletonInstance] getProfileImage2];
+    UIImage* image3 = [[DataAccess singletonInstance] getProfileImage3];
+    UIImage* image4 = [[DataAccess singletonInstance] getProfileImage4];
+    
+    
+    if (image != nil) {
+        self.pic.image = image;
+    }else{
+        self.pic.image = [UIImage imageNamed:@"image_placeholder.png"];
+    }
+    
+    if (image2 != nil) {
+        self.pic2.image = image2;
+    }else{
+        self.pic2.image = [UIImage imageNamed:@"image_placeholder.png"];
+    }
+    
+    if (image3 != nil) {
+        self.pic3.image = image3;
+    }else{
+        self.pic3.image = [UIImage imageNamed:@"image_placeholder.png"];
+    }
+    
+    if (image4 != nil) {
+        self.pic4.image = image4;
+    }else {
+        self.pic4.image = [UIImage imageNamed:@"image_placeholder.png"];
+    }
     
 }
 
@@ -405,17 +431,8 @@
     self.pic.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pic invalidateIntrinsicContentSize];
     
-    UIImage* image = [[DataAccess singletonInstance] getProfileImage];
-    
-    
-    if (image != nil) {
-        self.pic.image = image;
-    }else{
-        self.pic.image = [UIImage imageNamed:@"image_placeholder.png"];
-    }
-    
+
     self.pic.alpha = 2.0;
-    
     
     
     [self.pickbackground addSubview:self.pic];
@@ -554,14 +571,6 @@
     self.pic2.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pic2 invalidateIntrinsicContentSize];
     
-    UIImage* image = [[DataAccess singletonInstance] getProfileImage2];
-    
-    
-    if (image != nil) {
-        self.pic2.image = image;
-    }else{
-        self.pic2.image = [UIImage imageNamed:@"image_placeholder.png"];
-    }
     
     self.pic2.alpha = 2.0;
     
@@ -779,15 +788,7 @@
     CGFloat width = 0; // CGRectGetWidth([[UIScreen mainScreen] bounds]) - 10;
     self.pic3.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pic3 invalidateIntrinsicContentSize];
-    
-    UIImage* image = [[DataAccess singletonInstance] getProfileImage3];
-    
-    
-    if (image != nil) {
-        self.pic3.image = image;
-    }else{
-        self.pic3.image = [UIImage imageNamed:@"image_placeholder.png"];
-    }
+
     
     self.pic3.alpha = 2.0;
     
@@ -857,15 +858,6 @@
     CGFloat width = 0; // CGRectGetWidth([[UIScreen mainScreen] bounds]) - 10;
     self.pic4.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pic4 invalidateIntrinsicContentSize];
-    
-    UIImage* image = [[DataAccess singletonInstance] getProfileImage4];
-    
-    
-    if (image != nil) {
-        self.pic4.image = image;
-    }else{
-        self.pic4.image = [UIImage imageNamed:@"image_placeholder.png"];
-    }
     
     self.pic4.alpha = 2.0;
     

@@ -146,6 +146,15 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self styleNavBar];
+    
+
+    [self.tableView reloadData];
+    
+}
+
 - (void)styleNavBar {
     
     CGFloat height = 0, ypad = 0;
