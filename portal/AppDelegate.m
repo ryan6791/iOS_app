@@ -14,6 +14,7 @@
 #import "MessagesViewController.h"
 #import "GlobalConstants.h"
 #import "OAuthServices.h"
+#import "LockedNewMatchViewController.h"
 
 
 @interface AppDelegate ()
@@ -52,7 +53,6 @@
         [self initLoginViewController];
     }
     
-
 
     
     
@@ -309,6 +309,27 @@
             abort();
         }
     }
+}
+
+-(void)displayVC{
+    
+    
+    UIViewController *currentVC =  self.navController.visibleViewController;
+    
+    LockedNewMatchViewController *newMatchVC = [[LockedNewMatchViewController alloc]init];
+    currentVC.providesPresentationContextTransitionStyle = YES;
+    currentVC.definesPresentationContext = YES;
+    [newMatchVC setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+    newMatchVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [currentVC presentViewController:newMatchVC animated:NO completion:nil];
+    
+}
+
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
+
+
 }
 
 

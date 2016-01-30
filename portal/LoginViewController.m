@@ -17,6 +17,8 @@
 @interface LoginViewController ()
 
 @property (nonatomic, retain) UIView * background;
+@property (nonatomic, retain) UIView * overlay;
+@property (nonatomic, retain) UIImageView * logo;
 @property (nonatomic, strong) IBOutlet UIButton *LoginButton;
 @property (nonatomic,unsafe_unretained) CGRect mainScreenBounds;
 @property (nonatomic, strong) NSMutableDictionary *viewsDictionary;
@@ -31,7 +33,7 @@
     
     [self.navigationController setNavigationBarHidden:YES];
     
-    
+
     CGRect full = [[UIScreen mainScreen]bounds];
     
     
@@ -44,15 +46,21 @@
     
 
     [self setLoginBtn];
+    [self addSplash];
+    [self addSplashLogo];
     
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    
+
+}
+
 
 
 -(void)LoginButtonClicked
 {
-
-
-    
     
    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     login.loginBehavior = FBSDKLoginBehaviorNative;
@@ -66,39 +74,183 @@
              NSLog(@"Cancelled");
          } else {
              if ([result.grantedPermissions containsObject:@"email"] && [result.grantedPermissions containsObject:@"user_photos"]) {
+                 self.overlay.hidden = NO;
+                 self.logo.hidden = NO;
+                 
                  if ([FBSDKAccessToken currentAccessToken]) {
-                //remove when server is setup
-                     
                     NSString *userid = [FBSDKAccessToken currentAccessToken].userID;
-                     [self fetchUserInfo];
-                     
-                     [[DataAccess singletonInstance] setFacebook:userid];
-                     
-                     [[DataAccess singletonInstance] setUserLoginStatus:YES];
-                     [[DataAccess singletonInstance] setisLoggedInWithFB:YES];
-                 //    SwipeViewController *root = [[SwipeViewController alloc] init];
-                 //    [self.navigationItem setHidesBackButton:YES];
-                 //    [self.navigationController setNavigationBarHidden:NO animated:NO];
-                 //    [self.navigationController pushViewController:root animated:YES];
-                     //[[DataAccess singletonInstance] setName:name];
-   
-                     
-                     
+                     [self fetchUserInfo:[[FBSDKAccessToken currentAccessToken] tokenString] completion:^{
+                    
+                         [self fetchUserPhoto:[[FBSDKAccessToken currentAccessToken] tokenString] completion:^{
+                             
+                                [self start];
+                             
+                         }];
+                         
+                     }];
+
+                 }else{
+                     [self viewDidLoad];
                  }
              }
-             [self viewDidLoad];
          }
-     }];
 
+     }];
 }
 
--(void)fetchUserInfo
-{
+-(void)addSplash{
     
-    if ([FBSDKAccessToken currentAccessToken])
-    {
-       // NSLog(@"Token is available : %@",[[FBSDKAccessToken currentAccessToken]tokenString]);
+        self.overlay = [[UIView alloc]init];
         
+        self.overlay.hidden = YES;
+
+    
+        self.overlay.backgroundColor = [UIColor whiteColor];
+        self.overlay.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.overlay invalidateIntrinsicContentSize];
+        
+        
+        self.background.alpha = 100.0;
+        
+    
+        
+        
+        
+        
+        [self.view addSubview:self.overlay];
+    
+        
+        CGFloat pad = 0, Offset = 0;
+        if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+        {
+            pad = 1.5f;
+            Offset = 3;
+            //   self.background.layer.cornerRadius = 40;
+        }
+        else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+        {
+            pad = 2;
+            Offset = 4;
+            //    self.background.layer.cornerRadius = 105;
+            
+        }
+        else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+        {
+            pad = 2.5f;
+            Offset = 5;
+            //    self.background.layer.cornerRadius = 105;
+            
+        }
+        else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+            pad = 1;
+            Offset = 2;
+            //    self.background.layer.cornerRadius = 105;
+        }
+        
+        CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
+        CGFloat height = CGRectGetHeight([[UIScreen mainScreen] bounds]);
+        
+        
+        
+        
+        NSDictionary *viewsDictionary = @{@"back":self.overlay};
+        NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.overlay attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+        NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+        [self.view addConstraint:constraint1];
+        [self.view addConstraints:constraint2];
+        
+        NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.overlay attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
+        [self.view addConstraint:constraint3];
+        
+        NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.overlay attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+        [self.view addConstraint:constraint4];
+    
+}
+
+- (void)addSplashLogo {
+    
+    self.logo = [[UIImageView alloc]init];
+    self.logo.hidden = YES;
+  //  self.logo.backgroundColor = [UIColor blueColor];
+    self.logo.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.logo invalidateIntrinsicContentSize];
+    
+
+    self.logo.image = [UIImage imageNamed:@"logo"];
+
+    
+    self.logo.alpha = 2.0;
+    
+    
+    
+    
+    [self.overlay addSubview:self.logo];
+    
+    self.logo.layer.masksToBounds = YES;
+    self.logo.layer.shadowOffset = CGSizeMake(-.1, .2);
+    self.logo.layer.shadowRadius = .5;
+    self.logo.layer.shadowOpacity = 0.5;
+    
+    CGFloat pad = 0, height = 0, widthOffset;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 110;
+        height = 200;
+        widthOffset = 100;
+        self.logo.layer.masksToBounds = YES;
+        self.logo.layer.shadowOffset = CGSizeMake(-.1, .2);
+        self.logo.layer.shadowRadius = .5;
+        self.logo.layer.shadowOpacity = 0.5;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 40;
+        height = 250;
+        widthOffset = 110;
+
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 50;
+        height = 300;
+        widthOffset = 120;
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 25;
+        height = 200;
+        widthOffset = 97;
+
+    }
+    
+    CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - widthOffset;
+    
+    
+    
+    NSDictionary *viewsDictionary = @{@"image":self.logo};
+    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.logo attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.overlay attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[image]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.overlay addConstraint:constraint1];
+    [self.overlay addConstraints:constraint2];
+    
+    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.logo attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
+    [self.overlay addConstraint:constraint3];
+    
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.logo attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+    [self.overlay addConstraint:constraint4];
+    
+    
+}
+
+
+
+
+
+-(void)fetchUserInfo:(NSString*)access_token completion:(void (^)(void))completionBlock{
+    
+    self.info_success = NO;
+    
         [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"first_name, birthday, gender"}]
          startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
              if (!error)
@@ -110,17 +262,30 @@
                  [[DataAccess singletonInstance] setBirthday:birthday];
                  NSString *gender = [result objectForKey:@"gender"];
                  [[DataAccess singletonInstance] setGender:gender];
-
+                 
                  
                  NSLog(@"the gender is %@", [[DataAccess singletonInstance] getGender]);
                  NSLog(@"The age is: %@", birthday);
+                 self.info_success = YES;
                  
+
              }
              else
              {
                  NSLog(@"Error %@",error);
              }
+             
+             if(self.info_success){
+                 completionBlock();
+             }
          }];
+
+}
+
+-(void)fetchUserPhoto:(NSString*)access_token completion:(void (^)(void))completionBlock{
+    
+    self.photo_success = NO;
+    
         
         FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
                                       initWithGraphPath:[NSString stringWithFormat:@"me/picture?type=large&redirect=false"]
@@ -131,158 +296,31 @@
                                               NSError *error) {
             if (!error){
                 
-                        NSDictionary *res = [result objectForKey:@"data"];
+                NSDictionary *res = [result objectForKey:@"data"];
                 
                 
-                          NSDictionary *imageUrl = [res objectForKey:@"url"];
+                NSDictionary *imageUrl = [res objectForKey:@"url"];
                 
                 
                 
-                        UIImage *proImage =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
+                UIImage *proImage =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
                 
-                        [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(proImage) forKey:@"ProfileImage"];
+                [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(proImage) forKey:@"ProfileImage"];
                 
-                [self start];
-
+                NSLog(@"The image be : %@", proImage);
+                
+                self.photo_success = YES;
                 
             }
             else {
                 NSLog(@"result: %@",[error description]);
-            }}];
-        
-    }
-    
-}
-
-
-
-
--(void)sendData:(NSString*)access_token completion:(void (^)(void))completionBlock{
-    
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
-    
-    self.session = [NSURLSession sessionWithConfiguration:config];
-    
-//    NSError *error = nil;
-    
-    //   self.request_success = NO;
-    
-    //
-    /*
-    NSString *otto_url = v2URL;
-    NSString *OTTOurl = @"/user/sso/login";
-    otto_url = [otto_url stringByAppendingString:OTTOurl];
-    NSURL *url = [NSURL URLWithString:otto_url];
-    
-    NSDictionary *dict = @{
-                           @"token": access_token
-                           };
-    
-    
-    
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    
-    [request addValue:@"0770" forHTTPHeaderField:@"X-OTTO-Validation"];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
-    [request setHTTPMethod:@"PUT"];
-    [request setHTTPBody: jsonData];
-    
-    
-    
-    NSURLSessionDataTask *dataTask =
-    [self.session dataTaskWithRequest:request
-                    completionHandler:^(NSData *data,
-                                        NSURLResponse *response,
-                                        NSError *error) {
-                        
-                        NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                        
-                        NSLog(@"%@", newStr);
-                        
-                        NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-                        NSString *statusString = (NSString*)[responseData objectForKey:@"status"];
-                        NSString *messageString = (NSString*)[responseData objectForKey:@"message"];
-                        
-                        if (error) {
-                            [OTTOLogManagement Log:@"%@", error.localizedDescription];
-                        }
-                        
-                        NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
-                        
-                        if (statusCode == 200) {
-                            
-                            
-                            if([@"OK" isEqualToString:statusString]) {
-                                [OTTOLogManagement Log:@"Status %@\tMessage: %@", statusString, messageString];
-                                [[OTTODataAccess singletonInstance] setOttoIsLoggedIn:YES];
-                                self.request_success = YES;
-                                NSLog(@"being hit in login controller");
-                            } else {
-                                [OTTOLogManagement Log:@"Status %@\tMessage: %@", statusString, messageString];
-                                [[OTTODataAccess singletonInstance] setOttoIsLoggedIn:NO];
-                                if ([messageString containsString:@"Account not found for FB SSO credentials:"]) {
-                                    //   [[RegisterViewController singletonInstance] LoginButtonClicked];
-                                    NSLog(@"you are here");
-                                    [[RegisterViewController singletonInstance] setVCStatus];
-                                    RegisterViewController *pass = nil;
-                                    pass = [[RegisterViewController alloc] init];
-                                    [self.navigationController pushViewController:pass animated:YES];
-                                }
-                                
-                                
-                            }
-                            if (self.request_success) {
-                                completionBlock();
-                            }
-                            
-                            
-                        }else{
-                            
-                            if ([UIAlertController class]) {
-                                
-                                
-                                UIAlertController *alert= [UIAlertController
-                                                           alertControllerWithTitle:statusString
-                                                           message:messageString
-                                                           preferredStyle:UIAlertControllerStyleAlert];
-                                
-                                
-                                UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                               handler:^(UIAlertAction * action) {
-                                                                                   [alert dismissViewControllerAnimated:YES completion:nil];
-                                                                                   
-                                                                               }];
-                                
-                                [alert addAction:cancel];
-                                
-                                
-                                [self presentViewController:alert animated:YES completion:nil];
-                                
-                                
-                                
-                            }
-                            
-                            else{
-                                
-                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:statusString
-                                                                                message:messageString
-                                                                               delegate:self
-                                                                      cancelButtonTitle:@"OK"
-                                                                      otherButtonTitles:nil, nil];
-                                [alert show];
-                            }
-                            
-                        }
-                        
-                    }];
-    
-    
-    [dataTask resume];
-     */
+            }
+            
+            if(self.photo_success){
+                completionBlock();
+            }
+            
+        }];
     
 }
 
@@ -370,6 +408,8 @@
 
 
 -(void)start{
+
+    NSLog(@"finalemente");
     
     [[DataAccess singletonInstance] setMatchName:@"Jess"];
     UIImage *matchImage = [UIImage imageNamed:@"_avatar_cook"];
@@ -426,6 +466,7 @@
     NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];
     [viewControllers replaceObjectAtIndex:0 withObject:self.pagerController];
     [self.navigationController setViewControllers:viewControllers];
+
     
 }
 

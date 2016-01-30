@@ -12,6 +12,7 @@
 #import <FBSDKShareKit/FBSDKShareKit.h>
 #import "DMPagerViewController/DMPagerViewController.h"
 #import "SwipeViewController.h"
+#import "Login.h"
 
 
 @interface LoginViewController : UIViewController
@@ -20,6 +21,11 @@
 
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, assign) BOOL request_success;
+
+@property (nonatomic, assign) BOOL info_success;
+@property (nonatomic, assign) BOOL photo_success;
+
+
 
 @property (nonatomic, assign) BOOL loggedin;
 @property (strong, nonatomic) UIWindow *window;

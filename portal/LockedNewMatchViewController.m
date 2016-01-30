@@ -78,26 +78,26 @@
     {
         pad = 1.5f;
         Offset = 3;
-        self.background.layer.cornerRadius = 40;
+     //   self.background.layer.cornerRadius = 40;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 2;
         Offset = 4;
-        self.background.layer.cornerRadius = 105;
+    //    self.background.layer.cornerRadius = 105;
         
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 2.5f;
         Offset = 5;
-        self.background.layer.cornerRadius = 105;
+    //    self.background.layer.cornerRadius = 105;
         
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 1;
         Offset = 2;
-        self.background.layer.cornerRadius = 105;
+    //    self.background.layer.cornerRadius = 105;
     }
     
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - Offset;

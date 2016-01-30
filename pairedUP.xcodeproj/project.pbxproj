@@ -36,6 +36,7 @@
 		4A29E0ED1C560E570075F730 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A29E0EC1C560E570075F730 /* SystemConfiguration.framework */; };
 		4A3440611C508EBB00AD5E89 /* NotificationLayover.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3440601C508EBB00AD5E89 /* NotificationLayover.m */; };
 		4A46C3011BF6F34000FF9B46 /* ProfilePictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A46C3001BF6F34000FF9B46 /* ProfilePictureViewController.m */; };
+		4A6054631C5C457700BA6CB9 /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6054621C5C457700BA6CB9 /* Login.m */; };
 		4A705C951BF598410084B23C /* Sign-in-Large---Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A705C941BF598410084B23C /* Sign-in-Large---Default.png */; };
 		4A705C971BF598620084B23C /* Sign-In-Large---Default-ret.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A705C961BF598620084B23C /* Sign-In-Large---Default-ret.png */; };
 		4A8095151C436B9200C7295A /* SwipeAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8095141C436B9200C7295A /* SwipeAlbumViewController.m */; };
@@ -69,7 +70,6 @@
 		4AC9A8721C4C875F0096350D /* MatchProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9A8711C4C875F0096350D /* MatchProfileViewController.m */; };
 		4AC9A8741C4DA6B00096350D /* 1453179218_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC9A8731C4DA6B00096350D /* 1453179218_chat.png */; };
 		4AC9A8771C4F75820096350D /* RelationshipMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9A8761C4F75820096350D /* RelationshipMatchViewController.m */; };
-		4ACFE2A41C50C33D00B758AC /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACFE2A31C50C33D00B758AC /* TestViewController.m */; };
 		4ADCA12D1C1E9804002A018B /* DraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCA1281C1E9804002A018B /* DraggableView.m */; };
 		4ADCA12E1C1E9804002A018B /* DraggableViewBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCA12A1C1E9804002A018B /* DraggableViewBackground.m */; };
 		4ADCA12F1C1E9804002A018B /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCA12C1C1E9804002A018B /* OverlayView.m */; };
@@ -160,6 +160,8 @@
 		4A3440601C508EBB00AD5E89 /* NotificationLayover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationLayover.m; sourceTree = "<group>"; };
 		4A46C2FF1BF6F34000FF9B46 /* ProfilePictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePictureViewController.h; sourceTree = "<group>"; };
 		4A46C3001BF6F34000FF9B46 /* ProfilePictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePictureViewController.m; sourceTree = "<group>"; };
+		4A6054611C5C457700BA6CB9 /* Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Login.h; sourceTree = "<group>"; };
+		4A6054621C5C457700BA6CB9 /* Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Login.m; sourceTree = "<group>"; };
 		4A705C941BF598410084B23C /* Sign-in-Large---Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sign-in-Large---Default.png"; sourceTree = "<group>"; };
 		4A705C961BF598620084B23C /* Sign-In-Large---Default-ret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sign-In-Large---Default-ret.png"; sourceTree = "<group>"; };
 		4A8095131C436B9100C7295A /* SwipeAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeAlbumViewController.h; sourceTree = "<group>"; };
@@ -214,8 +216,6 @@
 		4AC9A8731C4DA6B00096350D /* 1453179218_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1453179218_chat.png; sourceTree = "<group>"; };
 		4AC9A8751C4F75820096350D /* RelationshipMatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelationshipMatchViewController.h; sourceTree = "<group>"; };
 		4AC9A8761C4F75820096350D /* RelationshipMatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelationshipMatchViewController.m; sourceTree = "<group>"; };
-		4ACFE2A21C50C33D00B758AC /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		4ACFE2A31C50C33D00B758AC /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		4ADCA1271C1E9804002A018B /* DraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableView.h; sourceTree = "<group>"; };
 		4ADCA1281C1E9804002A018B /* DraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableView.m; sourceTree = "<group>"; };
 		4ADCA1291C1E9804002A018B /* DraggableViewBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableViewBackground.h; sourceTree = "<group>"; };
@@ -431,6 +431,8 @@
 		4ABB5BD71BC8BE3000BEA3EF /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				4A6054611C5C457700BA6CB9 /* Login.h */,
+				4A6054621C5C457700BA6CB9 /* Login.m */,
 				4ABB5BEE1BC9D5D800BEA3EF /* PhotoManager.h */,
 				4ABB5BEF1BC9D5D800BEA3EF /* PhotoManager.m */,
 				4ABB5BDB1BC8BEC400BEA3EF /* DeviceManager.h */,
@@ -454,8 +456,6 @@
 				4ABB5BDF1BC8C07C00BEA3EF /* LoginViewController.m */,
 				4ABB5BE21BC8C11900BEA3EF /* ViewController.h */,
 				4ABB5BE31BC8C11900BEA3EF /* ViewController.m */,
-				4ACFE2A21C50C33D00B758AC /* TestViewController.h */,
-				4ACFE2A31C50C33D00B758AC /* TestViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -785,7 +785,6 @@
 				4A12DDF01C49F10A0068D79C /* MessagesViewController.m in Sources */,
 				4ABB5BE41BC8C11900BEA3EF /* ViewController.m in Sources */,
 				4ABB5BA81BC8BCB700BEA3EF /* portal.xcdatamodeld in Sources */,
-				4ACFE2A41C50C33D00B758AC /* TestViewController.m in Sources */,
 				4ABB5BDD1BC8BEC400BEA3EF /* DeviceManager.m in Sources */,
 				4A3440611C508EBB00AD5E89 /* NotificationLayover.m in Sources */,
 				4AB8E3AA1C463BB4007BA38D /* LockedNewMatchViewController.m in Sources */,
@@ -804,6 +803,7 @@
 				4ADCA1321C1E9920002A018B /* SwipeViewController.m in Sources */,
 				4ABB5BF01BC9D5D800BEA3EF /* PhotoManager.m in Sources */,
 				F98AD2F91C55D09E001FD5F2 /* NSURL+QueryParser.m in Sources */,
+				4A6054631C5C457700BA6CB9 /* Login.m in Sources */,
 				4ABB5B9F1BC8BCB700BEA3EF /* AppDelegate.m in Sources */,
 				F98AD2F11C55CBEA001FD5F2 /* GlobalConstants.m in Sources */,
 				4ABB5B9C1BC8BCB600BEA3EF /* main.m in Sources */,
