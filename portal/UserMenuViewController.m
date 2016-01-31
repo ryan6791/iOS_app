@@ -702,6 +702,9 @@ viewForFooterInSection:(NSInteger)section {
      
         NSLog(@"Hit");
         
+        [[FBSDKLoginManager new] logOut];
+
+        
             if (indexPath.row == 0) {
                 
                 [[DataAccess singletonInstance] setIsLoggedIn:NO];
