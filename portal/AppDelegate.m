@@ -31,8 +31,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-
-
     [[DataAccess singletonInstance] setAPICurrentURL:URL_Dev];
     [OAuthServices startupTokenSequence];
     
