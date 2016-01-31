@@ -116,18 +116,37 @@
     if ([_titleLabel.text isEqualToString:@"POD"]) {
         imageRect = CGRectZero;
         titleRect = CGRectMake(0.0f, 0.0f, self.title_width, navigationBarSize.height);
+        
+        
+        if (self.title_offset == 0.0) {
+            self.title_offset = self.frame.origin.x;
+        }
+        
+        self.frame = CGRectMake(self.title_offset,
+                                self.frame.origin.y,
+                                MAX(titleRect.size.width,imageRect.size.width),
+                                self.frame.size.height);
+        _titleLabel.frame = titleRect;
+        _iconView.frame = imageRect;
     }
-    if ([_titleLabel.text isEqualToString:@"CHAT"] || [_titleLabel.text isEqualToString:@"MATCH"] || [_titleLabel.text isEqualToString:@"DOP"]) {
+    else {
         imageRect = CGRectMake(0.0f, 0.0f, imageRect.size.width, navigationBarSize.height);
         titleRect = CGRectZero;
+        
+        self.frame = CGRectMake(self.frame.origin.x,
+                                self.frame.origin.y,
+                                MAX(titleRect.size.width,imageRect.size.width),
+                                self.frame.size.height);
+        _titleLabel.frame = titleRect;
+        _iconView.frame = imageRect;
     }
-
+/*
 	self.frame = CGRectMake(self.frame.origin.x,
 							self.frame.origin.y,
 							MAX(titleRect.size.width,imageRect.size.width),
 							self.frame.size.height);
 	_titleLabel.frame = titleRect;
-	_iconView.frame = imageRect;
+	_iconView.frame = imageRect; */
 }
 
 @end

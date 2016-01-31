@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, DMPagerNavigationBarStyle) {
 + (DMPagerNavigationBarItem *) newItemWithText:(NSAttributedString *) aTitle andIcon:(UIImage *) aIcon;
 
 @property (nonatomic,assign)	float title_width;
-
+@property (nonatomic,assign)	float title_offset;
 @property (nonatomic,assign)	CGRect titleRect;
 
 @property (nonatomic,assign)	BOOL didSet;

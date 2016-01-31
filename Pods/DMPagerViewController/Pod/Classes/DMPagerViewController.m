@@ -32,6 +32,7 @@ static CGFloat	kDeviationFactor		= 0.5f;
 		_scrollView.backgroundColor = [UIColor whiteColor];
 		_scrollView.delegate = self;
 		_scrollView.pagingEnabled = YES;
+        self.automaticallyAdjustsScrollViewInsets = NO;
 		_scrollView.showsHorizontalScrollIndicator = NO;
 		_scrollView.showsVerticalScrollIndicator = NO;
 		[self.view addSubview:_scrollView];
