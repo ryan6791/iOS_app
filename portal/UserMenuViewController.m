@@ -705,7 +705,8 @@ viewForFooterInSection:(NSInteger)section {
             if (indexPath.row == 0) {
                 
                 [[DataAccess singletonInstance] setIsLoggedIn:NO];
-                
+                [[DataAccess singletonInstance] setUserLoginStatus:NO];
+
                 
                 if ([[DataAccess singletonInstance] LoggedInWithFB]) {
                     
@@ -716,7 +717,7 @@ viewForFooterInSection:(NSInteger)section {
         if (indexPath.row == 1) {
             
             [[DataAccess singletonInstance] setIsLoggedIn:NO];
-            
+            [[DataAccess singletonInstance] setUserLoginStatus:NO];
             
             if ([[DataAccess singletonInstance] LoggedInWithFB]) {
                 
@@ -737,10 +738,14 @@ viewForFooterInSection:(NSInteger)section {
         UIView *containerView = self.view.window;
         [containerView.layer addAnimation:transition forKey:nil];
         
-        LoginViewController *account = [[LoginViewController alloc] init];
-        [self.navigationItem setHidesBackButton:NO];
-        [self.navigationController setNavigationBarHidden:NO animated:NO];
-        [self.navigationController pushViewController:account animated:NO];
+        
+        LoginViewController *login = [[LoginViewController alloc] init];
+        NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];
+        [viewControllers replaceObjectAtIndex:0 withObject:login];
+        [self.navigationController setViewControllers:viewControllers];
+        
+        [self.navigationController popViewControllerAnimated:NO];
+
         
         
     }

@@ -111,9 +111,6 @@
         self.overlay.translatesAutoresizingMaskIntoConstraints = NO;
         [self.overlay invalidateIntrinsicContentSize];
         
-        
-        self.background.alpha = 100.0;
-        
     
         
         
