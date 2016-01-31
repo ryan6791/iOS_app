@@ -82,8 +82,10 @@
                      [self fetchUserInfo:[[FBSDKAccessToken currentAccessToken] tokenString] completion:^{
                     
                          [self fetchUserPhoto:[[FBSDKAccessToken currentAccessToken] tokenString] completion:^{
-                             
-                                [self start];
+                             [[DataAccess singletonInstance] setFacebook:userid];
+                             [[DataAccess singletonInstance] setUserLoginStatus:YES];
+                             [[DataAccess singletonInstance] setisLoggedInWithFB:YES];
+                             [self start];
                              
                          }];
                          
