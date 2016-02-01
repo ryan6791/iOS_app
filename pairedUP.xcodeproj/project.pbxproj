@@ -62,7 +62,6 @@
 		4ABB5BD51BC8BD1600BEA3EF /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABB5BD21BC8BD1600BEA3EF /* FBSDKLoginKit.framework */; };
 		4ABB5BD61BC8BD1600BEA3EF /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABB5BD31BC8BD1600BEA3EF /* FBSDKShareKit.framework */; };
 		4ABB5BDD1BC8BEC400BEA3EF /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5BDC1BC8BEC400BEA3EF /* DeviceManager.m */; };
-		4ABB5BE01BC8C07C00BEA3EF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5BDF1BC8C07C00BEA3EF /* LoginViewController.m */; };
 		4ABB5BE41BC8C11900BEA3EF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5BE31BC8C11900BEA3EF /* ViewController.m */; };
 		4ABB5BE71BC8C31400BEA3EF /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5BE61BC8C31400BEA3EF /* DataAccess.m */; };
 		4ABB5BF01BC9D5D800BEA3EF /* PhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5BEF1BC9D5D800BEA3EF /* PhotoManager.m */; };
@@ -78,6 +77,7 @@
 		4ADCA1361C1E9B47002A018B /* yesButton-01-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCA1351C1E9B47002A018B /* yesButton-01-1.png */; };
 		4ADCA1381C1E9B62002A018B /* noButton-01-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCA1371C1E9B62002A018B /* noButton-01-1.png */; };
 		4ADCA13A1C1E9B75002A018B /* Oval 2 + Rectangle 10-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCA1391C1E9B75002A018B /* Oval 2 + Rectangle 10-1.png */; };
+		4AF804751C5EE699004BA598 /* LandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF804741C5EE699004BA598 /* LandingViewController.m */; };
 		4AFC396F1C099D38004E7262 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC396E1C099D38004E7262 /* SettingsViewController.m */; };
 		4AFC39711C0A5AEA004E7262 /* 1448769105_down4-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AFC39701C0A5AEA004E7262 /* 1448769105_down4-1.png */; };
 		4AFC39751C0A5D86004E7262 /* 1448769786_share-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AFC39741C0A5D86004E7262 /* 1448769786_share-2.png */; };
@@ -201,8 +201,6 @@
 		4ABB5BD31BC8BD1600BEA3EF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		4ABB5BDB1BC8BEC400BEA3EF /* DeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceManager.h; sourceTree = "<group>"; };
 		4ABB5BDC1BC8BEC400BEA3EF /* DeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceManager.m; sourceTree = "<group>"; };
-		4ABB5BDE1BC8C07C00BEA3EF /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		4ABB5BDF1BC8C07C00BEA3EF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		4ABB5BE21BC8C11900BEA3EF /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		4ABB5BE31BC8C11900BEA3EF /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4ABB5BE51BC8C31400BEA3EF /* DataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataAccess.h; sourceTree = "<group>"; };
@@ -228,6 +226,8 @@
 		4ADCA1351C1E9B47002A018B /* yesButton-01-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yesButton-01-1.png"; sourceTree = "<group>"; };
 		4ADCA1371C1E9B62002A018B /* noButton-01-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noButton-01-1.png"; sourceTree = "<group>"; };
 		4ADCA1391C1E9B75002A018B /* Oval 2 + Rectangle 10-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Oval 2 + Rectangle 10-1.png"; sourceTree = "<group>"; };
+		4AF804731C5EE699004BA598 /* LandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingViewController.h; sourceTree = "<group>"; };
+		4AF804741C5EE699004BA598 /* LandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingViewController.m; sourceTree = "<group>"; };
 		4AFC396D1C099D38004E7262 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		4AFC396E1C099D38004E7262 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		4AFC39701C0A5AEA004E7262 /* 1448769105_down4-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "1448769105_down4-1.png"; path = "Assets.xcassets/down_arrow.imageset/1448769105_down4-1.png"; sourceTree = "<group>"; };
@@ -452,10 +452,10 @@
 				4AD4043D1C33B96D004AC3E8 /* Match */,
 				4ADCA1261C1E9749002A018B /* Home */,
 				4ABB5BEB1BC9824300BEA3EF /* User Account */,
-				4ABB5BDE1BC8C07C00BEA3EF /* LoginViewController.h */,
-				4ABB5BDF1BC8C07C00BEA3EF /* LoginViewController.m */,
 				4ABB5BE21BC8C11900BEA3EF /* ViewController.h */,
 				4ABB5BE31BC8C11900BEA3EF /* ViewController.m */,
+				4AF804731C5EE699004BA598 /* LandingViewController.h */,
+				4AF804741C5EE699004BA598 /* LandingViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -807,13 +807,13 @@
 				4ABB5B9F1BC8BCB700BEA3EF /* AppDelegate.m in Sources */,
 				F98AD2F11C55CBEA001FD5F2 /* GlobalConstants.m in Sources */,
 				4ABB5B9C1BC8BCB600BEA3EF /* main.m in Sources */,
+				4AF804751C5EE699004BA598 /* LandingViewController.m in Sources */,
 				4A12E7A11BFB0EEA000ECD59 /* UserMenuViewController.m in Sources */,
 				4AB9489A1BD2F746002FEDE0 /* SinglePhotoViewController.m in Sources */,
 				4AC9A8771C4F75820096350D /* RelationshipMatchViewController.m in Sources */,
 				4A12E7A71BFC32EB000ECD59 /* ProfileViewController.m in Sources */,
 				F98AD2F81C55D09E001FD5F2 /* NSMutableData+AES.m in Sources */,
 				4AFC396F1C099D38004E7262 /* SettingsViewController.m in Sources */,
-				4ABB5BE01BC8C07C00BEA3EF /* LoginViewController.m in Sources */,
 				4A86E7A41BCF709800DF3F8A /* PhotosCollectionViewCell.m in Sources */,
 				4ADCA12D1C1E9804002A018B /* DraggableView.m in Sources */,
 				4A46C3011BF6F34000FF9B46 /* ProfilePictureViewController.m in Sources */,

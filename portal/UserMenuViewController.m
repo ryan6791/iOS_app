@@ -11,7 +11,7 @@
 #import "DataAccess.h"
 #import "UserAccountTableViewCell.h"
 #import "AccountViewController.h"
-#import "LoginViewController.h"
+#import "LandingViewController.h"
 #import "SettingsViewController.h"
 
 @interface UserMenuViewController ()
@@ -742,7 +742,7 @@ viewForFooterInSection:(NSInteger)section {
         [containerView.layer addAnimation:transition forKey:nil];
         
         
-        LoginViewController *login = [[LoginViewController alloc] init];
+        LandingViewController *login = [[LandingViewController alloc] init];
         NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];
         [viewControllers replaceObjectAtIndex:0 withObject:login];
         [self.navigationController setViewControllers:viewControllers];

@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "LoginViewController.h"
+#import "LandingViewController.h"
 #import "DataAccess.h"
 #import "AccountViewController.h"
 #import "MatchProfileViewController.h"
@@ -37,7 +37,7 @@
     if([[DataAccess singletonInstance] oAuthAccessTokenExists])
         [OAuthServices doOAuthHeartbeat];
     
-    [self CurrentLocationIdentifier]; // call this method
+    [self CurrentLocationIdentifier];
   
     if ([[DataAccess singletonInstance] UserIsLoggedIn]) {
         [[DataAccess singletonInstance] setMatchName:@"Jess"];
@@ -96,7 +96,7 @@
 - (void)initLoginViewController {
     
     
-    LoginViewController *ViewController = [[LoginViewController alloc] init];
+    LandingViewController *ViewController = [[LandingViewController alloc] init];
     
     self.navController = [[UINavigationController alloc] initWithRootViewController:ViewController];
     [self.navController setNavigationBarHidden:YES];

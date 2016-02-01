@@ -1,9 +1,9 @@
 //
-//  LoginViewController.h
-//  portal
+//  LandingViewController.h
+//  pairedUP
 //
-//  Created by Neil Ballard on 10/9/15.
-//  Copyright © 2015 Neil_appworld. All rights reserved.
+//  Created by Neil Ballard on 1/31/16.
+//  Copyright © 2016 Neil_appworld. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,10 +12,10 @@
 #import <FBSDKShareKit/FBSDKShareKit.h>
 #import "DMPagerViewController/DMPagerViewController.h"
 #import "SwipeViewController.h"
-#import "Login.h"
+#import "MatchProfileViewController.h"
+#import "MessagesViewController.h"
 
-
-@interface LoginViewController : UIViewController
+@interface LandingViewController : UIViewController<UIScrollViewDelegate>
 
 @property(nonatomic, strong) UINavigationController *navController;
 
@@ -31,10 +31,8 @@
 @property (strong, nonatomic) UIWindow *window;
 
 
--(void)sendData:(NSString*)access_token completion:(void (^)(void))completionBlock;
 
 
 @property (strong, nonatomic) DMPagerViewController	*pagerController;
-
 
 @end
