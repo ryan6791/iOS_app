@@ -81,6 +81,17 @@ static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
     [[NSUserDefaults standardUserDefaults] setBool:status forKey:@"isLoggedIn"];
 }
 
+- (BOOL)IsInitialUser {
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"isInitialUser"]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)setInitialUserStatus:(BOOL)status {
+    [[NSUserDefaults standardUserDefaults] setBool:status forKey:@"isInitialUser"];
+}
+
 
 //match data
 - (BOOL)UserHasMatch {

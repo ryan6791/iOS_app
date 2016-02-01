@@ -96,11 +96,15 @@
     
     
     [self addLoginScreen];
-    [self setLoginBtn];
+    [self setupExplainLabel];
     [self addSlide1];
+    [self setupExplainLabel2];
     [self addSlide2];
+    [self setupExplainLabel3];
     [self addSlide3];
-    
+    [self setupExplainLabel4];
+    [self setLoginBtn];
+
 
     [self addSplash];
     [self addSplashLogo];
@@ -126,7 +130,7 @@
     [self.tempView addSubview:self.background];
     
     CGFloat pad = 0, pad2 = 0;
-    CGFloat height = CGRectGetHeight([[UIScreen mainScreen] bounds]);
+    CGFloat height = CGRectGetHeight([[UIScreen mainScreen] bounds]) - 100;
 
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
@@ -171,7 +175,7 @@
 -(void)addSlide1{
     
     self.slide1 = [[UIImageView alloc] init];
-    self.slide1.backgroundColor = [UIColor orangeColor];
+    self.slide1.backgroundColor = [UIColor whiteColor];
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     self.slide1.translatesAutoresizingMaskIntoConstraints = NO;
     [self.slide1 invalidateIntrinsicContentSize];
@@ -181,7 +185,7 @@
     [self.tempView addSubview:self.slide1];
     
     CGFloat pad = 0, pad2 = 0;
-    CGFloat height = CGRectGetHeight([[UIScreen mainScreen] bounds]);
+    CGFloat height = CGRectGetHeight([[UIScreen mainScreen] bounds]) - 100;
     
     
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
@@ -226,7 +230,7 @@
     
     self.slide2 = [[UIImageView alloc] init];
     self.slide2.contentMode = UIViewContentModeScaleAspectFill;
-    self.slide2.backgroundColor = [UIColor greenColor];
+    self.slide2.backgroundColor = [UIColor whiteColor];
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     self.slide2.translatesAutoresizingMaskIntoConstraints = NO;
     [self.slide2 invalidateIntrinsicContentSize];
@@ -236,7 +240,7 @@
     [self.tempView addSubview:self.slide2];
     
     CGFloat pad = 0, pad2 = 0;
-    CGFloat height = CGRectGetHeight([[UIScreen mainScreen] bounds]);
+    CGFloat height = CGRectGetHeight([[UIScreen mainScreen] bounds]) - 100;
     
     
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
@@ -281,7 +285,7 @@
     
     self.slide3 = [[UIImageView alloc]init];
     
-    self.slide3.backgroundColor = [UIColor redColor];
+    self.slide3.backgroundColor = [UIColor whiteColor];
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     self.slide3.translatesAutoresizingMaskIntoConstraints = NO;
     [self.slide3 invalidateIntrinsicContentSize];
@@ -292,7 +296,7 @@
     [self.tempView addSubview:self.slide3];
     
     CGFloat pad = 0, pad2 = 0;
-    CGFloat height = CGRectGetHeight([[UIScreen mainScreen] bounds]);
+    CGFloat height = CGRectGetHeight([[UIScreen mainScreen] bounds]) - 100;
     
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
@@ -358,6 +362,7 @@
                              [[DataAccess singletonInstance] setFacebook:userid];
                              [[DataAccess singletonInstance] setUserLoginStatus:YES];
                              [[DataAccess singletonInstance] setisLoggedInWithFB:YES];
+                             [[DataAccess singletonInstance] setInitialUserStatus:YES];
                              [self start];
                              
                          }];
@@ -660,19 +665,19 @@
     }
     
     
-    [self.background addSubview:self.LoginButton];
+    [self.view addSubview:self.LoginButton];
     
     NSDictionary *viewsDictionary = @{@"fbButton" : self.LoginButton};
-    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.background attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.LoginButton attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.LoginButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
     NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[fbButton]-pad-|" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    [self.background addConstraint:constraint1];
-    [self.background addConstraints:constraint2];
+    [self.view addConstraint:constraint1];
+    [self.view addConstraints:constraint2];
     
     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.LoginButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
-    [self.background addConstraint:constraint3];
+    [self.view addConstraint:constraint3];
     
     NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.LoginButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:buttonWidth];
-    [self.background addConstraint:constraint4];
+    [self.view addConstraint:constraint4];
     
     
     
@@ -680,8 +685,6 @@
 
 
 -(void)start{
-    
-    NSLog(@"finalemente");
     
     [[DataAccess singletonInstance] setMatchName:@"Jess"];
     UIImage *matchImage = [UIImage imageNamed:@"_avatar_cook"];
@@ -737,6 +740,215 @@
     
     
 }
+
+
+- (void)setupExplainLabel {
+    
+    
+    self.explainLabel = [[UILabel alloc] init];
+    [self.explainLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.explainLabel invalidateIntrinsicContentSize];
+    self.explainLabel.textColor = [UIColor blackColor];
+    
+    self.explainLabel.text = @"This is an introduction. Swipe to view next slide(s)";
+    
+    
+    self.explainLabel.layer.masksToBounds = NO;
+    
+    //   self.explainLabel.layer.shouldRasterize = YES;
+    
+    CGFloat pad = 0, pad2 = 0;
+    self.explainLabel.font = [UIFont systemFontOfSize:11];
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 17;
+        pad2 = 10;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 8;
+        pad2 = 16;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 9;
+        pad2 = 16;
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 6;
+        pad2 = 8;
+        
+    }
+    
+    self.explainLabel.alpha = 100.0;
+    
+    [self.background addSubview:self.explainLabel];
+    
+    NSDictionary *viewsDictionary = @{@"label" : self.explainLabel};
+    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.explainLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.background attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    [self.background addConstraint:constraint1];
+    NSLayoutConstraint *constraint2 = [NSLayoutConstraint constraintWithItem:self.explainLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.background attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0];
+    [self.background addConstraint:constraint2];
+    
+    
+}
+
+- (void)setupExplainLabel2 {
+    
+    
+    self.explainLabel2 = [[UILabel alloc] init];
+    [self.explainLabel2 setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.explainLabel2 invalidateIntrinsicContentSize];
+    self.explainLabel2.textColor = [UIColor blackColor];
+    
+    self.explainLabel2.text = @"This is an introduction. Swipe to view next slide(s)";
+    
+    
+    self.explainLabel2.layer.masksToBounds = NO;
+    
+    //   self.explainLabel2.layer.shouldRasterize = YES;
+    
+    CGFloat pad = 0, pad2 = 0;
+    self.explainLabel2.font = [UIFont systemFontOfSize:11];
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 17;
+        pad2 = 10;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 8;
+        pad2 = 16;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 9;
+        pad2 = 16;
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 6;
+        pad2 = 8;
+        
+    }
+    
+    self.explainLabel2.alpha = 100.0;
+    
+    [self.slide1 addSubview:self.explainLabel2];
+    
+    NSDictionary *viewsDictionary = @{@"label" : self.explainLabel2};
+    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.explainLabel2 attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.slide1 attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    [self.slide1 addConstraint:constraint1];
+    NSLayoutConstraint *constraint2 = [NSLayoutConstraint constraintWithItem:self.explainLabel2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.slide1 attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0];
+    [self.slide1 addConstraint:constraint2];
+    
+}
+
+
+- (void)setupExplainLabel3 {
+    
+    
+    self.explainLabel3 = [[UILabel alloc] init];
+    [self.explainLabel3 setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.explainLabel3 invalidateIntrinsicContentSize];
+    self.explainLabel3.textColor = [UIColor blackColor];
+    
+    self.explainLabel3.text = @"This is an introduction. Swipe to view next slide(s)";
+    
+    
+    self.explainLabel3.layer.masksToBounds = NO;
+    
+    //   self.explainLabel3.layer.shouldRasterize = YES;
+    
+    CGFloat pad = 0, pad2 = 0;
+    self.explainLabel3.font = [UIFont systemFontOfSize:11];
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 17;
+        pad2 = 10;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 8;
+        pad2 = 16;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 9;
+        pad2 = 16;
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 6;
+        pad2 = 8;
+        
+    }
+    
+    self.explainLabel3.alpha = 100.0;
+    
+    [self.slide2 addSubview:self.explainLabel3];
+    
+    NSDictionary *viewsDictionary = @{@"label" : self.explainLabel3};
+    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.explainLabel3 attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.slide2 attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    [self.slide2 addConstraint:constraint1];
+    NSLayoutConstraint *constraint2 = [NSLayoutConstraint constraintWithItem:self.explainLabel3 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.slide2 attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0];
+    [self.slide2 addConstraint:constraint2];
+    
+}
+
+- (void)setupExplainLabel4 {
+    
+    
+    self.explainLabel4 = [[UILabel alloc] init];
+    [self.explainLabel4 setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.explainLabel4 invalidateIntrinsicContentSize];
+    self.explainLabel4.textColor = [UIColor blackColor];
+    
+    self.explainLabel4.text = @"This is an introduction. Swipe to view next slide(s)";
+    
+    
+    self.explainLabel4.layer.masksToBounds = NO;
+    
+    //   self.explainLabel3.layer.shouldRasterize = YES;
+    
+    CGFloat pad = 0, pad2 = 0;
+    self.explainLabel4.font = [UIFont systemFontOfSize:11];
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 17;
+        pad2 = 10;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 8;
+        pad2 = 16;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 9;
+        pad2 = 16;
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 6;
+        pad2 = 8;
+        
+    }
+    
+    self.explainLabel4.alpha = 100.0;
+    
+    [self.slide3 addSubview:self.explainLabel4];
+    
+    NSDictionary *viewsDictionary = @{@"label" : self.explainLabel4};
+    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.explainLabel4 attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.slide3 attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    [self.slide3 addConstraint:constraint1];
+    NSLayoutConstraint *constraint2 = [NSLayoutConstraint constraintWithItem:self.explainLabel4 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.slide3 attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0];
+    [self.slide3 addConstraint:constraint2];
+    
+}
+
+
 
 -(UIColor*)navColor{
     

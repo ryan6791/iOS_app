@@ -78,6 +78,9 @@
 		4ADCA1381C1E9B62002A018B /* noButton-01-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCA1371C1E9B62002A018B /* noButton-01-1.png */; };
 		4ADCA13A1C1E9B75002A018B /* Oval 2 + Rectangle 10-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCA1391C1E9B75002A018B /* Oval 2 + Rectangle 10-1.png */; };
 		4AF804751C5EE699004BA598 /* LandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF804741C5EE699004BA598 /* LandingViewController.m */; };
+		4AF804781C5F1DBE004BA598 /* IntroductionDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF804771C5F1DBE004BA598 /* IntroductionDraggableView.m */; };
+		4AF8047B1C5F20F8004BA598 /* IntroductionViewBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF8047A1C5F20F8004BA598 /* IntroductionViewBackground.m */; };
+		4AF8047E1C5F31C2004BA598 /* IntroductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF8047D1C5F31C2004BA598 /* IntroductionViewController.m */; };
 		4AFC396F1C099D38004E7262 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC396E1C099D38004E7262 /* SettingsViewController.m */; };
 		4AFC39711C0A5AEA004E7262 /* 1448769105_down4-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AFC39701C0A5AEA004E7262 /* 1448769105_down4-1.png */; };
 		4AFC39751C0A5D86004E7262 /* 1448769786_share-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AFC39741C0A5D86004E7262 /* 1448769786_share-2.png */; };
@@ -228,6 +231,12 @@
 		4ADCA1391C1E9B75002A018B /* Oval 2 + Rectangle 10-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Oval 2 + Rectangle 10-1.png"; sourceTree = "<group>"; };
 		4AF804731C5EE699004BA598 /* LandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingViewController.h; sourceTree = "<group>"; };
 		4AF804741C5EE699004BA598 /* LandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingViewController.m; sourceTree = "<group>"; };
+		4AF804761C5F1DBE004BA598 /* IntroductionDraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroductionDraggableView.h; sourceTree = "<group>"; };
+		4AF804771C5F1DBE004BA598 /* IntroductionDraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroductionDraggableView.m; sourceTree = "<group>"; };
+		4AF804791C5F20F8004BA598 /* IntroductionViewBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroductionViewBackground.h; sourceTree = "<group>"; };
+		4AF8047A1C5F20F8004BA598 /* IntroductionViewBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroductionViewBackground.m; sourceTree = "<group>"; };
+		4AF8047C1C5F31C2004BA598 /* IntroductionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroductionViewController.h; sourceTree = "<group>"; };
+		4AF8047D1C5F31C2004BA598 /* IntroductionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroductionViewController.m; sourceTree = "<group>"; };
 		4AFC396D1C099D38004E7262 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		4AFC396E1C099D38004E7262 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		4AFC39701C0A5AEA004E7262 /* 1448769105_down4-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "1448769105_down4-1.png"; path = "Assets.xcassets/down_arrow.imageset/1448769105_down4-1.png"; sourceTree = "<group>"; };
@@ -526,6 +535,12 @@
 				4A8095141C436B9200C7295A /* SwipeAlbumViewController.m */,
 				4A12DE4E1C4C6EEC0068D79C /* UserData.h */,
 				4A12DE4F1C4C6EEC0068D79C /* UserData.m */,
+				4AF804761C5F1DBE004BA598 /* IntroductionDraggableView.h */,
+				4AF804771C5F1DBE004BA598 /* IntroductionDraggableView.m */,
+				4AF804791C5F20F8004BA598 /* IntroductionViewBackground.h */,
+				4AF8047A1C5F20F8004BA598 /* IntroductionViewBackground.m */,
+				4AF8047C1C5F31C2004BA598 /* IntroductionViewController.h */,
+				4AF8047D1C5F31C2004BA598 /* IntroductionViewController.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -781,6 +796,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AF8047E1C5F31C2004BA598 /* IntroductionViewController.m in Sources */,
 				4AC9A8721C4C875F0096350D /* MatchProfileViewController.m in Sources */,
 				4A12DDF01C49F10A0068D79C /* MessagesViewController.m in Sources */,
 				4ABB5BE41BC8C11900BEA3EF /* ViewController.m in Sources */,
@@ -793,6 +809,7 @@
 				4A8095151C436B9200C7295A /* SwipeAlbumViewController.m in Sources */,
 				4A12DDF91C49F4260068D79C /* ModelData.m in Sources */,
 				F98AD2EC1C55CA89001FD5F2 /* NSMutableURLRequest+OAuth.m in Sources */,
+				4AF804781C5F1DBE004BA598 /* IntroductionDraggableView.m in Sources */,
 				F98AD2EE1C55CA89001FD5F2 /* OAuthServices.m in Sources */,
 				4A1D714B1C3B28E400F0B6B8 /* UserAlbumsViewController.m in Sources */,
 				4AB8E3A71C4627A1007BA38D /* NewMatchViewController.m in Sources */,
@@ -803,6 +820,7 @@
 				4ADCA1321C1E9920002A018B /* SwipeViewController.m in Sources */,
 				4ABB5BF01BC9D5D800BEA3EF /* PhotoManager.m in Sources */,
 				F98AD2F91C55D09E001FD5F2 /* NSURL+QueryParser.m in Sources */,
+				4AF8047B1C5F20F8004BA598 /* IntroductionViewBackground.m in Sources */,
 				4A6054631C5C457700BA6CB9 /* Login.m in Sources */,
 				4ABB5B9F1BC8BCB700BEA3EF /* AppDelegate.m in Sources */,
 				F98AD2F11C55CBEA001FD5F2 /* GlobalConstants.m in Sources */,

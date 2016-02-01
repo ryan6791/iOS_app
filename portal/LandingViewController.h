@@ -31,6 +31,12 @@
 @property (strong, nonatomic) UIWindow *window;
 
 
+@property (nonatomic, strong) UILabel *explainLabel;
+@property (nonatomic, strong) UILabel *explainLabel2;
+@property (nonatomic, strong) UILabel *explainLabel3;
+@property (nonatomic, strong) UILabel *explainLabel4;
+
+
 
 
 @property (strong, nonatomic) DMPagerViewController	*pagerController;

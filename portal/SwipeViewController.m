@@ -25,12 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-
-    
-
-    
-
 }
 
 - (instancetype)initWithText:(NSString *) aText backgroundColor:(UIColor *) aBkgColor {
@@ -48,30 +42,7 @@
         
         [self addMainView];
         
-        /*
-         self.view = [[UIView alloc] initWithFrame:CGRectZero];
-         self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-         self.view.backgroundColor = aBkgColor;
-         
-         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-         label.text = aText;
-         label.font = [UIFont boldSystemFontOfSize:40];
-         label.numberOfLines = 1;
-         label.textAlignment = NSTextAlignmentCenter;
-         label.backgroundColor = [UIColor clearColor];
-         label.textColor = [UIColor whiteColor];
-         label.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
-         UIViewAutoresizingFlexibleTopMargin    |
-         UIViewAutoresizingFlexibleBottomMargin);
-         [self.view addSubview:label];
-         
-         CGSize bestSize = [label.attributedText boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
-         options:NSStringDrawingTruncatesLastVisibleLine
-         context:NULL].size;
-         label.frame = CGRectMake(0,
-         ((CGRectGetHeight(self.view.frame)-bestSize.height)/2.0f),
-         CGRectGetWidth(self.view.frame),
-         bestSize.height); */
+
         
     }
     return self;
@@ -86,6 +57,10 @@
  //   [self.navigationItem setHidesBackButton:YES];
  //   self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
  //   [self styleNavBar];
+    
+    if ([[DataAccess singletonInstance] IsInitialUser]) {
+        [self pushIntro];
+    }
     
 
     
@@ -154,6 +129,8 @@
     [self.view addConstraint:constraint4];
     
 }
+
+
 
 - (void)addSettingsIcon {
     
@@ -255,24 +232,15 @@
 
 - (void)rightButtonPressed:(id)sender {
     
-    
-
-  //  MessagesViewController *vc = [MessagesViewController messagesViewController];
     MatchProfileViewController *vc = [[MatchProfileViewController alloc]init];
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self.navigationController pushViewController:vc animated:YES];
-
-    
-/*
-    NewMatchViewController *account = [[NewMatchViewController alloc] init];
-    self.providesPresentationContextTransitionStyle = YES;
-    self.definesPresentationContext = YES;
-    [account setModalPresentationStyle:UIModalPresentationOverCurrentContext];
-    account.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:account animated:YES completion:nil]; */
     
 }
+
+
+
 
 -(void) pushDetailView:(id)sender
 {
@@ -283,16 +251,6 @@
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     [self.navigationController pushViewController:album animated:NO];
     
-    
-    
-    /*
-     -(void) pushDetailView:(NSNotification*)note
-     {
-     NSNumber indexPathRow = [note object];
-     NSDictionary *product = self.products[[indexPathRow intValue]];
-     // and on with your pushViewController code
-     }
-     */
 }
 
 -(void) pushSettings:(id)sender
@@ -308,6 +266,22 @@
     [self.navigationItem setHidesBackButton:NO];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     [self.navigationController pushViewController:account animated:YES];
+}
+
+
+-(void)pushIntro
+{
+    
+    
+    IntroductionViewController *intro = [[IntroductionViewController alloc]init];
+    self.parentViewController.providesPresentationContextTransitionStyle = YES;
+    self.parentViewController.definesPresentationContext = YES;
+    [intro setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+    intro.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [self.parentViewController presentViewController:intro animated:NO completion:nil];
+
+
 }
 
 

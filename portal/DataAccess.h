@@ -117,4 +117,8 @@
 -(NSString*)getBio;
 
 
+- (BOOL)IsInitialUser;
+- (void)setInitialUserStatus:(BOOL)status;
+
+
 @end

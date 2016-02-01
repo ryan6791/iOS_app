@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DraggableViewBackground.h"
 #import "DMPagerViewController.h"
+#import "IntroductionViewController.h"
 
 @class DMPagerNavigationBarItem;
 
@@ -28,5 +29,6 @@
 
 
 - (instancetype)initWithText:(NSString *) aText backgroundColor:(UIColor *) aBkgColor;
+
 
 @end
