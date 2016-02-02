@@ -335,6 +335,20 @@ static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
 }
 
 
+-(void)setAge:(NSString*)age{
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:age forKey:@"age"];
+    
+}
+
+-(NSString*)getAge{
+    
+    NSString *age = [[NSUserDefaults standardUserDefaults]
+                      stringForKey:@"age"];
+    
+    return age;
+}
 
 #pragma - social networks
 

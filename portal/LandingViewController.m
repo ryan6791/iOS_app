@@ -537,12 +537,27 @@
              NSLog(@"%@", [[DataAccess singletonInstance] getName]);
              NSString *birthday = [result objectForKey:@"birthday"];
              [[DataAccess singletonInstance] setBirthday:birthday];
+             
+             NSDate* today = [NSDate date];
+             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+             [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+             NSDate* birthDate = [dateFormatter dateFromString:birthday];
+             NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
+                                                components:NSCalendarUnitYear
+                                                fromDate:birthDate
+                                                toDate:today
+                                                options:0];
+             NSInteger numAge = [ageComponents year];
+             NSString *age = [NSString stringWithFormat:@"%d", numAge];
+             [[DataAccess singletonInstance] setAge:age];
+            
              NSString *gender = [result objectForKey:@"gender"];
              [[DataAccess singletonInstance] setGender:gender];
              
              
              NSLog(@"the gender is %@", [[DataAccess singletonInstance] getGender]);
-             NSLog(@"The age is: %@", birthday);
+             NSLog(@"The birthday is: %@", birthday);
+             NSLog(@"The age is: %@", age);
              self.info_success = YES;
              
              

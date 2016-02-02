@@ -90,6 +90,9 @@
 -(void)setBirthday:(NSString*)bday;
 -(NSString*)getBirthday;
 
+-(void)setAge:(NSString*)age;
+-(NSString*)getAge;
+
 -(void)setGender:(NSString*)gender;
 -(NSString*)getGender;
 
