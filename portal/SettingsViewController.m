@@ -14,6 +14,8 @@
 
 @property (nonatomic, retain) UIView * background;
 @property (nonatomic, retain) UIView * Line;
+@property (nonatomic, retain) UIView * Line2;
+
 
 @property (nonatomic, retain) UILabel *optionUseLabel;
 @property (nonatomic, retain) UIImageView * checkboxUse;
@@ -24,6 +26,9 @@
 
 
 @property (nonatomic, retain) UINavigationBar * navBar;
+
+@property (nonatomic, retain) CERangeSlider *ageRangeSlider;
+@property (nonatomic, retain) DistanceRangeSlider *distanceRangeSlider;
 
 
 @end
@@ -36,15 +41,29 @@
     CGRect full = [[UIScreen mainScreen]bounds];
     self.background = [[UIView alloc] initWithFrame:full];
     self.background.hidden = NO;
-    self.background.backgroundColor = [self grayColor];
+    self.background.backgroundColor = [UIColor whiteColor];
     self.background.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:self.background];
     
     
     [self styleNavBar];
-    [self setupnetworkLabel];
+    [self setupAgeLabel];
+    [self addAgeSlider];
     [self addLine];
-    // Do any additional setup after loading the view.
+    
+    [self setupDistanceLabel];
+    [self addDistanceSlider];
+    [self addLine2];
+    
+    
+    [self.ageRangeSlider addTarget:self
+                     action:@selector(slideAgeValueChanged:)
+           forControlEvents:UIControlEventValueChanged];
+    
+    [self.distanceRangeSlider addTarget:self
+                            action:@selector(slideDistanceValueChanged:)
+                  forControlEvents:UIControlEventValueChanged];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -125,31 +144,60 @@
 }
 
 
-- (void)setupnetworkLabel {
+- (void)setupAgeLabel {
     UIFont *font;
     
     CGFloat height = 0;
     
-    self.networksLabel = [[UILabel alloc] init];
+    self.ageLabel = [[UILabel alloc] init];
     
-    self.networksLabel.font = [UIFont systemFontOfSize:5];
+    self.ageLabel.font = [UIFont systemFontOfSize:5];
     height = 15;
     
     
     
-    [self.networksLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.networksLabel invalidateIntrinsicContentSize];
-    self.networksLabel.font = font;
-    self.networksLabel.textColor = [UIColor lightGrayColor];
+    [self.ageLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.ageLabel invalidateIntrinsicContentSize];
+    self.ageLabel.font = font;
+    self.ageLabel.textColor = [UIColor blackColor];
     
-    self.networksLabel.text = @"Settings";
+    self.ageLabel.text = @"Age Range";
     
-    [self.view addSubview:self.networksLabel];
+    [self.view addSubview:self.ageLabel];
     
-    NSDictionary *viewsDictionary = @{@"top":self.navBar, @"label" : self.networksLabel};
-    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[label]" options:0 metrics:nil views:viewsDictionary];
+    NSDictionary *viewsDictionary = @{@"top":self.navBar, @"label" : self.ageLabel};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-21-[label]" options:0 metrics:nil views:viewsDictionary];
     [self.view addConstraints:constraint1];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-6-[label]" options:0 metrics:nil views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-10-[label]" options:0 metrics:nil views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    
+}
+
+- (void)setupDistanceLabel {
+    UIFont *font;
+    
+    CGFloat height = 0;
+    
+    self.distanceLabel = [[UILabel alloc] init];
+    
+    self.distanceLabel.font = [UIFont systemFontOfSize:5];
+    height = 15;
+    
+    
+    
+    [self.distanceLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.distanceLabel invalidateIntrinsicContentSize];
+    self.distanceLabel.font = font;
+    self.distanceLabel.textColor = [UIColor blackColor];
+    
+    self.distanceLabel.text = @"Distance";
+    
+    [self.view addSubview:self.distanceLabel];
+    
+    NSDictionary *viewsDictionary = @{@"top":self.Line, @"label" : self.distanceLabel};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-21-[label]" options:0 metrics:nil views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-10-[label]" options:0 metrics:nil views:viewsDictionary];
     [self.view addConstraints:constraint2];
     
 }
@@ -160,7 +208,7 @@
     self.Line = [[UIView alloc]init];
     
     self.Line.backgroundColor = [self lineColor];
-    CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
+    CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 20;
     self.Line.translatesAutoresizingMaskIntoConstraints = NO;
     [self.Line invalidateIntrinsicContentSize];
     
@@ -171,7 +219,7 @@
     CGFloat pad = 0, height = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 2;
+        pad = 8;
         height = 1;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
@@ -191,7 +239,7 @@
     
     
     
-    NSDictionary *viewsDictionary = @{@"top":self.networksLabel, @"line": self.Line};
+    NSDictionary *viewsDictionary = @{@"top":self.ageRangeSlider, @"line": self.Line};
     NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.Line attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
     NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[line]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
     [self.view addConstraint:constraint1];
@@ -205,6 +253,143 @@
     
 }
 
+
+- (void)addLine2{
+    
+    self.Line2 = [[UIView alloc]init];
+    
+    self.Line2.backgroundColor = [self lineColor];
+    CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 20;
+    self.Line2.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.Line2 invalidateIntrinsicContentSize];
+    
+    
+    
+    [self.view addSubview:self.Line2];
+    
+    CGFloat pad = 0, height = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 8;
+        height = 1;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 2;
+        height = 1;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 2;
+        height = 1;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 2;
+        height = 1;
+    }
+    
+    
+    
+    NSDictionary *viewsDictionary = @{@"top":self.distanceRangeSlider, @"line": self.Line2};
+    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.Line2 attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[line]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraint:constraint1];
+    [self.view addConstraints:constraint2];
+    
+    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.Line2 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
+    [self.view addConstraint:constraint3];
+    
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.Line2 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+    [self.view addConstraint:constraint4];
+    
+}
+
+
+
+-(void)addAgeSlider{
+    
+    
+    CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 40;
+    
+    CGFloat pad = 0, height = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 20;
+        height = 30;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 10;
+        height = 30;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 10;
+        height = 30;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 10;
+        height = 30;
+    }
+    
+    
+    self.ageRangeSlider = [[CERangeSlider alloc] initWithFrame:CGRectMake(pad, 100, width - 10 * 2, height)];
+    self.ageRangeSlider.backgroundColor = [UIColor clearColor];
+    
+    [self.view addSubview:self.ageRangeSlider];
+    
+    
+    
+}
+
+-(void)addDistanceSlider{
+    
+    
+    CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 40;
+    
+    CGFloat pad = 0, height = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 20;
+        height = 30;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 10;
+        height = 30;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 10;
+        height = 30;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 10;
+        height = 30;
+    }
+    
+    
+    self.distanceRangeSlider = [[DistanceRangeSlider alloc] initWithFrame:CGRectMake(pad, 200, width - 10 * 2, height)];
+    self.distanceRangeSlider.backgroundColor = [UIColor clearColor];
+    
+    [self.view addSubview:self.distanceRangeSlider];
+    
+}
+
+
+
+
+- (void)slideAgeValueChanged:(id)control
+{
+    NSLog(@"Slider Age value changed: (%.2f,%.2f)",
+          self.ageRangeSlider.lowerValue, self.ageRangeSlider.upperValue);
+}
+
+- (void)slideDistanceValueChanged:(id)control
+{
+    NSLog(@"Slider Distance value changed: (%.2f,%.2f)",
+          self.distanceRangeSlider.lowerValue, self.distanceRangeSlider.upperValue);
+}
 
 -(void)goback{
     

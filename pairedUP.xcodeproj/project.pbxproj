@@ -66,6 +66,10 @@
 		4ABB5BE71BC8C31400BEA3EF /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5BE61BC8C31400BEA3EF /* DataAccess.m */; };
 		4ABB5BF01BC9D5D800BEA3EF /* PhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5BEF1BC9D5D800BEA3EF /* PhotoManager.m */; };
 		4ABB5BF71BC9D78100BEA3EF /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB5BF61BC9D78100BEA3EF /* AccountViewController.m */; };
+		4AC91BDF1C6091120078CBD0 /* CERangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC91BDE1C6091120078CBD0 /* CERangeSlider.m */; };
+		4AC91BE21C60AC470078CBD0 /* CERangeSliderKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC91BE11C60AC470078CBD0 /* CERangeSliderKnobLayer.m */; };
+		4AC91BE51C60B08C0078CBD0 /* CERangeSliderTrackLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC91BE41C60B08C0078CBD0 /* CERangeSliderTrackLayer.m */; };
+		4AC91BE81C620D190078CBD0 /* DistanceRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC91BE71C620D190078CBD0 /* DistanceRangeSlider.m */; };
 		4AC9A8721C4C875F0096350D /* MatchProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9A8711C4C875F0096350D /* MatchProfileViewController.m */; };
 		4AC9A8741C4DA6B00096350D /* 1453179218_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC9A8731C4DA6B00096350D /* 1453179218_chat.png */; };
 		4AC9A8771C4F75820096350D /* RelationshipMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9A8761C4F75820096350D /* RelationshipMatchViewController.m */; };
@@ -212,6 +216,14 @@
 		4ABB5BEF1BC9D5D800BEA3EF /* PhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoManager.m; sourceTree = "<group>"; };
 		4ABB5BF51BC9D78100BEA3EF /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		4ABB5BF61BC9D78100BEA3EF /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
+		4AC91BDD1C6091120078CBD0 /* CERangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CERangeSlider.h; sourceTree = "<group>"; };
+		4AC91BDE1C6091120078CBD0 /* CERangeSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CERangeSlider.m; sourceTree = "<group>"; };
+		4AC91BE01C60AC470078CBD0 /* CERangeSliderKnobLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CERangeSliderKnobLayer.h; sourceTree = "<group>"; };
+		4AC91BE11C60AC470078CBD0 /* CERangeSliderKnobLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CERangeSliderKnobLayer.m; sourceTree = "<group>"; };
+		4AC91BE31C60B08C0078CBD0 /* CERangeSliderTrackLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CERangeSliderTrackLayer.h; sourceTree = "<group>"; };
+		4AC91BE41C60B08C0078CBD0 /* CERangeSliderTrackLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CERangeSliderTrackLayer.m; sourceTree = "<group>"; };
+		4AC91BE61C620D190078CBD0 /* DistanceRangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceRangeSlider.h; sourceTree = "<group>"; };
+		4AC91BE71C620D190078CBD0 /* DistanceRangeSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceRangeSlider.m; sourceTree = "<group>"; };
 		4AC9A8701C4C875F0096350D /* MatchProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchProfileViewController.h; sourceTree = "<group>"; };
 		4AC9A8711C4C875F0096350D /* MatchProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchProfileViewController.m; sourceTree = "<group>"; };
 		4AC9A8731C4DA6B00096350D /* 1453179218_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1453179218_chat.png; sourceTree = "<group>"; };
@@ -497,6 +509,14 @@
 				4A01F7DA1C58C5980011C9A9 /* FBAlbumsViewController.m */,
 				4A8606621C598394006D4E4D /* BioInfoViewController.h */,
 				4A8606631C598394006D4E4D /* BioInfoViewController.m */,
+				4AC91BDD1C6091120078CBD0 /* CERangeSlider.h */,
+				4AC91BDE1C6091120078CBD0 /* CERangeSlider.m */,
+				4AC91BE01C60AC470078CBD0 /* CERangeSliderKnobLayer.h */,
+				4AC91BE11C60AC470078CBD0 /* CERangeSliderKnobLayer.m */,
+				4AC91BE31C60B08C0078CBD0 /* CERangeSliderTrackLayer.h */,
+				4AC91BE41C60B08C0078CBD0 /* CERangeSliderTrackLayer.m */,
+				4AC91BE61C620D190078CBD0 /* DistanceRangeSlider.h */,
+				4AC91BE71C620D190078CBD0 /* DistanceRangeSlider.m */,
 			);
 			name = "User Account";
 			sourceTree = "<group>";
@@ -798,6 +818,7 @@
 			files = (
 				4AF8047E1C5F31C2004BA598 /* IntroductionViewController.m in Sources */,
 				4AC9A8721C4C875F0096350D /* MatchProfileViewController.m in Sources */,
+				4AC91BE21C60AC470078CBD0 /* CERangeSliderKnobLayer.m in Sources */,
 				4A12DDF01C49F10A0068D79C /* MessagesViewController.m in Sources */,
 				4ABB5BE41BC8C11900BEA3EF /* ViewController.m in Sources */,
 				4ABB5BA81BC8BCB700BEA3EF /* portal.xcdatamodeld in Sources */,
@@ -820,6 +841,7 @@
 				4ADCA1321C1E9920002A018B /* SwipeViewController.m in Sources */,
 				4ABB5BF01BC9D5D800BEA3EF /* PhotoManager.m in Sources */,
 				F98AD2F91C55D09E001FD5F2 /* NSURL+QueryParser.m in Sources */,
+				4AC91BE81C620D190078CBD0 /* DistanceRangeSlider.m in Sources */,
 				4AF8047B1C5F20F8004BA598 /* IntroductionViewBackground.m in Sources */,
 				4A6054631C5C457700BA6CB9 /* Login.m in Sources */,
 				4ABB5B9F1BC8BCB700BEA3EF /* AppDelegate.m in Sources */,
@@ -830,10 +852,12 @@
 				4AB9489A1BD2F746002FEDE0 /* SinglePhotoViewController.m in Sources */,
 				4AC9A8771C4F75820096350D /* RelationshipMatchViewController.m in Sources */,
 				4A12E7A71BFC32EB000ECD59 /* ProfileViewController.m in Sources */,
+				4AC91BE51C60B08C0078CBD0 /* CERangeSliderTrackLayer.m in Sources */,
 				F98AD2F81C55D09E001FD5F2 /* NSMutableData+AES.m in Sources */,
 				4AFC396F1C099D38004E7262 /* SettingsViewController.m in Sources */,
 				4A86E7A41BCF709800DF3F8A /* PhotosCollectionViewCell.m in Sources */,
 				4ADCA12D1C1E9804002A018B /* DraggableView.m in Sources */,
+				4AC91BDF1C6091120078CBD0 /* CERangeSlider.m in Sources */,
 				4A46C3011BF6F34000FF9B46 /* ProfilePictureViewController.m in Sources */,
 				F98AD2FA1C55D09E001FD5F2 /* NSString+URLEncoding.m in Sources */,
 				4A12DE501C4C6EEC0068D79C /* UserData.m in Sources */,

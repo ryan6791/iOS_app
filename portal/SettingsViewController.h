@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CERangeSlider.h"
+#import "DistanceRangeSlider.h"
 
 @interface SettingsViewController : UIViewController
 
-@property (strong, nonatomic) UILabel *networksLabel;
+@property (strong, nonatomic) UILabel *ageLabel;
+@property (strong, nonatomic) UILabel *distanceLabel;
 
 
 @end
