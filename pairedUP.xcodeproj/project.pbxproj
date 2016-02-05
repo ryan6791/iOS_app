@@ -35,6 +35,8 @@
 		4A256AEE1BE59BB0006CD39E /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A256AED1BE59BB0006CD39E /* checkbox.png */; };
 		4A29E0ED1C560E570075F730 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A29E0EC1C560E570075F730 /* SystemConfiguration.framework */; };
 		4A3440611C508EBB00AD5E89 /* NotificationLayover.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3440601C508EBB00AD5E89 /* NotificationLayover.m */; };
+		4A44E8681C64B6F5002390FF /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A44E8671C64B6F5002390FF /* SettingsTableViewCell.m */; };
+		4A44E86B1C64C0BD002390FF /* GenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A44E86A1C64C0BD002390FF /* GenderViewController.m */; };
 		4A46C3011BF6F34000FF9B46 /* ProfilePictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A46C3001BF6F34000FF9B46 /* ProfilePictureViewController.m */; };
 		4A6054631C5C457700BA6CB9 /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6054621C5C457700BA6CB9 /* Login.m */; };
 		4A705C951BF598410084B23C /* Sign-in-Large---Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A705C941BF598410084B23C /* Sign-in-Large---Default.png */; };
@@ -165,6 +167,10 @@
 		4A29E0EC1C560E570075F730 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4A34405F1C508EBB00AD5E89 /* NotificationLayover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationLayover.h; sourceTree = "<group>"; };
 		4A3440601C508EBB00AD5E89 /* NotificationLayover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationLayover.m; sourceTree = "<group>"; };
+		4A44E8661C64B6F5002390FF /* SettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewCell.h; sourceTree = "<group>"; };
+		4A44E8671C64B6F5002390FF /* SettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewCell.m; sourceTree = "<group>"; };
+		4A44E8691C64C0BD002390FF /* GenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenderViewController.h; sourceTree = "<group>"; };
+		4A44E86A1C64C0BD002390FF /* GenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenderViewController.m; sourceTree = "<group>"; };
 		4A46C2FF1BF6F34000FF9B46 /* ProfilePictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePictureViewController.h; sourceTree = "<group>"; };
 		4A46C3001BF6F34000FF9B46 /* ProfilePictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePictureViewController.m; sourceTree = "<group>"; };
 		4A6054611C5C457700BA6CB9 /* Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Login.h; sourceTree = "<group>"; };
@@ -517,6 +523,10 @@
 				4AC91BE41C60B08C0078CBD0 /* CERangeSliderTrackLayer.m */,
 				4AC91BE61C620D190078CBD0 /* DistanceRangeSlider.h */,
 				4AC91BE71C620D190078CBD0 /* DistanceRangeSlider.m */,
+				4A44E8661C64B6F5002390FF /* SettingsTableViewCell.h */,
+				4A44E8671C64B6F5002390FF /* SettingsTableViewCell.m */,
+				4A44E8691C64C0BD002390FF /* GenderViewController.h */,
+				4A44E86A1C64C0BD002390FF /* GenderViewController.m */,
 			);
 			name = "User Account";
 			sourceTree = "<group>";
@@ -833,6 +843,8 @@
 				4AF804781C5F1DBE004BA598 /* IntroductionDraggableView.m in Sources */,
 				F98AD2EE1C55CA89001FD5F2 /* OAuthServices.m in Sources */,
 				4A1D714B1C3B28E400F0B6B8 /* UserAlbumsViewController.m in Sources */,
+				4A44E86B1C64C0BD002390FF /* GenderViewController.m in Sources */,
+				4A44E8681C64B6F5002390FF /* SettingsTableViewCell.m in Sources */,
 				4AB8E3A71C4627A1007BA38D /* NewMatchViewController.m in Sources */,
 				4ADCA12E1C1E9804002A018B /* DraggableViewBackground.m in Sources */,
 				4ABB5BF71BC9D78100BEA3EF /* AccountViewController.m in Sources */,

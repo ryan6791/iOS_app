@@ -9,19 +9,15 @@
 #import "SettingsViewController.h"
 #import "DeviceManager.h"
 #import "DataAccess.h"
+#import "LandingViewController.h"
+#import "GenderViewController.h"
 
 @interface SettingsViewController ()
 
 @property (nonatomic, retain) UIView * background;
+@property (nonatomic, retain) UIView * topLine;
 @property (nonatomic, retain) UIView * Line;
 @property (nonatomic, retain) UIView * Line2;
-
-
-@property (nonatomic, retain) UILabel *optionUseLabel;
-@property (nonatomic, retain) UIImageView * checkboxUse;
-
-@property (nonatomic, retain) UILabel *optionHideLabel;
-@property (nonatomic, retain) UIImageView * checkboxHide;
 
 
 
@@ -29,6 +25,8 @@
 
 @property (nonatomic, retain) CERangeSlider *ageRangeSlider;
 @property (nonatomic, retain) DistanceRangeSlider *distanceRangeSlider;
+
+@property (nonatomic, retain) UITableView *tableView;
 
 
 @end
@@ -47,6 +45,8 @@
     
     
     [self styleNavBar];
+    [self setupSettingsLabel];
+    [self addTopLine];
     [self setupAgeLabel];
     [self addAgeSlider];
     [self addLine];
@@ -55,6 +55,12 @@
     [self addDistanceSlider];
     [self addLine2];
     
+    [self setupInvisibleLabel];
+    [self addInvisibleSwitch];
+    [self setupNotificationLabel];
+    [self addNotificationSwitch];
+    
+    [self initTableView];
     
     [self.ageRangeSlider addTarget:self
                      action:@selector(slideAgeValueChanged:)
@@ -144,6 +150,88 @@
 }
 
 
+- (void)setupSettingsLabel {
+    UIFont *font;
+    
+    CGFloat height = 0;
+    
+    self.networksLabel = [[UILabel alloc] init];
+    
+    self.networksLabel.font = [UIFont systemFontOfSize:5];
+    height = 15;
+    
+    
+    
+    [self.networksLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.networksLabel invalidateIntrinsicContentSize];
+    self.networksLabel.font = font;
+    self.networksLabel.textColor = [UIColor lightGrayColor];
+    
+    self.networksLabel.text = @"Settings";
+    
+    [self.view addSubview:self.networksLabel];
+    
+    NSDictionary *viewsDictionary = @{@"top":self.navBar, @"label" : self.networksLabel};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[label]" options:0 metrics:nil views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-6-[label]" options:0 metrics:nil views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    
+}
+
+
+- (void)addTopLine{
+    
+    self.topLine = [[UIView alloc]init];
+    
+    self.topLine.backgroundColor = [self lineColor];
+    CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
+    self.topLine.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.topLine invalidateIntrinsicContentSize];
+    
+    
+    
+    [self.view addSubview:self.topLine];
+    
+    CGFloat pad = 0, height = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 2;
+        height = 1;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 2;
+        height = 1;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 2;
+        height = 1;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 2;
+        height = 1;
+    }
+    
+    
+    
+    NSDictionary *viewsDictionary = @{@"top":self.networksLabel, @"line": self.topLine};
+    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.topLine attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[line]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraint:constraint1];
+    [self.view addConstraints:constraint2];
+    
+    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.topLine attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
+    [self.view addConstraint:constraint3];
+    
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.topLine attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+    [self.view addConstraint:constraint4];
+    
+}
+
+
+
 - (void)setupAgeLabel {
     UIFont *font;
     
@@ -165,7 +253,7 @@
     
     [self.view addSubview:self.ageLabel];
     
-    NSDictionary *viewsDictionary = @{@"top":self.navBar, @"label" : self.ageLabel};
+    NSDictionary *viewsDictionary = @{@"top":self.topLine, @"label" : self.ageLabel};
     NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-21-[label]" options:0 metrics:nil views:viewsDictionary];
     [self.view addConstraints:constraint1];
     NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-10-[label]" options:0 metrics:nil views:viewsDictionary];
@@ -333,7 +421,7 @@
     }
     
     
-    self.ageRangeSlider = [[CERangeSlider alloc] initWithFrame:CGRectMake(pad, 100, width - 10 * 2, height)];
+    self.ageRangeSlider = [[CERangeSlider alloc] initWithFrame:CGRectMake(pad, 135, width - 10 * 2, height)];
     self.ageRangeSlider.backgroundColor = [UIColor clearColor];
     
     [self.view addSubview:self.ageRangeSlider];
@@ -369,13 +457,394 @@
     }
     
     
-    self.distanceRangeSlider = [[DistanceRangeSlider alloc] initWithFrame:CGRectMake(pad, 200, width - 10 * 2, height)];
+    self.distanceRangeSlider = [[DistanceRangeSlider alloc] initWithFrame:CGRectMake(pad, 215, width - 10 * 2, height)];
     self.distanceRangeSlider.backgroundColor = [UIColor clearColor];
     
     [self.view addSubview:self.distanceRangeSlider];
     
 }
 
+-(void)addInvisibleSwitch{
+    
+    self.invisibleSwitch = [[UISwitch alloc] init];
+    self.invisibleSwitch.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.invisibleSwitch invalidateIntrinsicContentSize];
+    
+    CGFloat pad = 15, pad2 = 45;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+
+    }
+    
+    [self.view addSubview:self.invisibleSwitch];
+    
+    NSDictionary *viewsDictionary = @{@"switch" : self.invisibleSwitch, @"line": self.Line2};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[switch]-pad-|" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[line]-pad-[switch]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    [self.view addConstraints:constraint2];
+
+
+}
+
+
+- (void)setupInvisibleLabel {
+    UIFont *font;
+    
+    CGFloat height = 0;
+    
+    self.invisibleLabel = [[UILabel alloc] init];
+    
+    self.invisibleLabel.font = [UIFont systemFontOfSize:5];
+    height = 15;
+    
+    
+    
+    [self.invisibleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.invisibleLabel invalidateIntrinsicContentSize];
+    self.invisibleLabel.font = font;
+    self.invisibleLabel.textColor = [UIColor blackColor];
+    
+    self.invisibleLabel.text = @"Go Invisible";
+    
+    [self.view addSubview:self.invisibleLabel];
+    
+    NSDictionary *viewsDictionary = @{@"top":self.Line2, @"label" : self.invisibleLabel};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-21-[label]" options:0 metrics:nil views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-20-[label]" options:0 metrics:nil views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    
+}
+
+
+-(void)addNotificationSwitch{
+    
+    self.notificationsSwitch = [[UISwitch alloc] init];
+    self.notificationsSwitch.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.notificationsSwitch invalidateIntrinsicContentSize];
+    
+    CGFloat pad = 15, pad2 = 45;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        
+    }
+    
+    [self.view addSubview:self.notificationsSwitch];
+    
+    NSDictionary *viewsDictionary = @{@"switch" : self.notificationsSwitch, @"top": self.invisibleSwitch};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[switch]-pad-|" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[switch]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    [self.view addConstraints:constraint2];
+    
+    
+}
+
+
+- (void)setupNotificationLabel {
+    UIFont *font;
+    
+    CGFloat height = 0;
+    
+    self.notificationsLabel = [[UILabel alloc] init];
+    
+    self.notificationsLabel.font = [UIFont systemFontOfSize:5];
+    height = 15;
+    
+    
+    
+    [self.notificationsLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.notificationsLabel invalidateIntrinsicContentSize];
+    self.notificationsLabel.font = font;
+    self.notificationsLabel.textColor = [UIColor blackColor];
+    
+    self.notificationsLabel.text = @"Notifications";
+    
+    [self.view addSubview:self.notificationsLabel];
+    
+    NSDictionary *viewsDictionary = @{@"top":self.invisibleLabel, @"label" : self.notificationsLabel};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-21-[label]" options:0 metrics:nil views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-24-[label]" options:0 metrics:nil views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    
+}
+
+
+- (void)initTableView {
+    CGRect frame = [[UIScreen mainScreen] bounds];
+    self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.view addSubview:self.tableView];
+    self.tableView.scrollEnabled = NO;
+    self.tableView.backgroundColor = [UIColor whiteColor];
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1)];
+    
+    [self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.tableView invalidateIntrinsicContentSize];
+    
+    CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
+    
+    
+    CGFloat pad = 0, height = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 0;
+        height = 300;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 0;
+        height = 250;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 0;
+        height = 250;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 0;
+        height = 250;
+    }
+    
+    
+    
+    NSDictionary *viewsDictionary = @{@"top":self.notificationsLabel, @"table": self.tableView};
+    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-20-[table]" options:0 metrics:nil views:viewsDictionary];
+    [self.view addConstraint:constraint1];
+    [self.view addConstraints:constraint2];
+
+    
+     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
+     [self.view addConstraint:constraint3];
+    
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+    [self.view addConstraint:constraint4];
+    
+}
+
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Number of rows is the number of time zones in the region for the specified section.
+    
+    if (section == 0) {
+        
+        return 1;
+        
+    }else{
+        
+        return 2;
+    }
+    
+}
+
+- (CGFloat)tableView:(UITableView*)tableView
+heightForFooterInSection:(NSInteger)section {
+    
+    CGFloat pad;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        pad = 60;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        pad = 240;
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 270;
+        
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 140;
+        
+    }
+    
+    return pad;
+}
+
+- (UIView*)tableView:(UITableView*)tableView
+viewForHeaderInSection:(NSInteger)section {
+    return [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+- (UIView*)tableView:(UITableView*)tableView
+viewForFooterInSection:(NSInteger)section {
+    return [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *MyIdentifier = @"MyReuseIdentifier";
+
+    
+
+    
+    if (indexPath.section == 0) {
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+        
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier];
+        }
+        
+        UIFont *myFont = [UIFont fontWithName: @"Arial" size: 19.0 ];
+        cell.textLabel.font  = myFont;
+        
+        cell.textLabel.text = @"Only Females";
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+        
+        
+    }else{
+        SettingsTableViewCell *cell = (SettingsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+        
+        if (cell == nil) {
+            cell = [[SettingsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier];
+        }
+        
+        if (indexPath.row == 0) {
+            cell.superLabel.text = @"Logout";
+        }else if (indexPath.row == 1) {
+            cell.superLabel.text = @"Remove Account";
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+        
+    }
+    
+    
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //  CGFloat height = self.tableBack.frame.size.height;
+    
+    CGFloat height = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        height = 45;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        height = 45;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        height = 48;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        height = 37;
+    }
+    return height; //(height / 5);//[self getCellHeight];
+}
+
+
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+
+            
+        GenderViewController *genderVC = [[GenderViewController alloc] init];
+        [self.navigationItem setHidesBackButton:NO];
+        [self.navigationController setNavigationBarHidden:NO animated:NO];
+        [self.navigationController pushViewController:genderVC animated:NO];
+        
+        
+    }else if(indexPath.section == 1){
+        
+        [[FBSDKLoginManager new] logOut];
+        
+        
+        if (indexPath.row == 0) {
+            
+            [[DataAccess singletonInstance] setIsLoggedIn:NO];
+            [[DataAccess singletonInstance] setUserLoginStatus:NO];
+            
+            
+            if ([[DataAccess singletonInstance] LoggedInWithFB]) {
+                
+                [[DataAccess singletonInstance] setisLoggedInWithFB:NO];
+                
+            }
+        }
+        if (indexPath.row == 1) {
+            
+            [[DataAccess singletonInstance] setIsLoggedIn:NO];
+            [[DataAccess singletonInstance] setUserLoginStatus:NO];
+            
+            if ([[DataAccess singletonInstance] LoggedInWithFB]) {
+                
+                [[DataAccess singletonInstance] setisLoggedInWithFB:NO];
+                
+            }
+            
+        }
+        
+        CATransition *transition = [CATransition animation];
+        transition.duration = 0.35;
+        transition.timingFunction =
+        [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        transition.type = kCATransitionMoveIn;
+        transition.subtype = kCATransitionFromTop;
+        
+        // NSLog(@"%s: self.view.window=%@", _func_, self.view.window);
+        UIView *containerView = self.view.window;
+        [containerView.layer addAnimation:transition forKey:nil];
+        
+        
+        LandingViewController *login = [[LandingViewController alloc] init];
+        NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];
+        [viewControllers replaceObjectAtIndex:0 withObject:login];
+        [self.navigationController setViewControllers:viewControllers];
+        
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        
+        
+        
+    }
+
+    
+    
+}
 
 
 
@@ -424,8 +893,6 @@
     
     
 }
-
-//
 
 -(UIColor*)lineColor{
     

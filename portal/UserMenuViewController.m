@@ -485,20 +485,14 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Number of rows is the number of time zones in the region for the specified section.
     
-    if (section == 0) {
         
-            return 4;
-        
-    }else{
-        
-        return 2;
-    }
+    return 4;
 
 }
 
@@ -551,9 +545,6 @@ viewForFooterInSection:(NSInteger)section {
     
     UIFont *myFont = [ UIFont fontWithName: @"Arial" size: 19.0 ];
     cell.textLabel.font  = myFont;
-    
-    
-    if (indexPath.section == 0) {
         
    
     
@@ -610,16 +601,7 @@ viewForFooterInSection:(NSInteger)section {
     //        [cell.backgroundView setBackgroundColor:[self grayColor]];
             
         }
-        
-    }else{
-        
-        if (indexPath.row == 0) {
-            cell.superLabel.text = @"Logout";
-        }else if (indexPath.row == 1) {
-            cell.superLabel.text = @"Remove Account";
-        }
-        
-    }
+    
     
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -697,62 +679,7 @@ viewForFooterInSection:(NSInteger)section {
         }
         
         
-    }else if(indexPath.section == 1){
-        
-     
-        NSLog(@"Hit");
-        
-        [[FBSDKLoginManager new] logOut];
-
-        
-            if (indexPath.row == 0) {
-                
-                [[DataAccess singletonInstance] setIsLoggedIn:NO];
-                [[DataAccess singletonInstance] setUserLoginStatus:NO];
-
-                
-                if ([[DataAccess singletonInstance] LoggedInWithFB]) {
-                    
-                    [[DataAccess singletonInstance] setisLoggedInWithFB:NO];
-                
-                }
-        }
-        if (indexPath.row == 1) {
-            
-            [[DataAccess singletonInstance] setIsLoggedIn:NO];
-            [[DataAccess singletonInstance] setUserLoginStatus:NO];
-            
-            if ([[DataAccess singletonInstance] LoggedInWithFB]) {
-                
-                [[DataAccess singletonInstance] setisLoggedInWithFB:NO];
-                
-            }
-
-        }
-        
-        CATransition *transition = [CATransition animation];
-        transition.duration = 0.35;
-        transition.timingFunction =
-        [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-        transition.type = kCATransitionMoveIn;
-        transition.subtype = kCATransitionFromTop;
-        
-        // NSLog(@"%s: self.view.window=%@", _func_, self.view.window);
-        UIView *containerView = self.view.window;
-        [containerView.layer addAnimation:transition forKey:nil];
-        
-        
-        LandingViewController *login = [[LandingViewController alloc] init];
-        NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];
-        [viewControllers replaceObjectAtIndex:0 withObject:login];
-        [self.navigationController setViewControllers:viewControllers];
-        
-        [self.navigationController popViewControllerAnimated:NO];
-
-        
-        
     }
-
 
     
     
