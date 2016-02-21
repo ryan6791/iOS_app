@@ -76,6 +76,9 @@
 - (BOOL)ProfileImageIsSet4;
 -(UIImage*)getProfileImage4;
 
+
+-(UIImage*)getProfileImage4;
+
 - (BOOL)LoggedInWithFB;
 
 - (void)setisLoggedInWithFB:(BOOL)status;

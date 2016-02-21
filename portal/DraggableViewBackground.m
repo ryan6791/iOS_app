@@ -105,9 +105,9 @@ static const int MAX_BUFFER_SIZE = 2;
     CGFloat pad = 0, w_pad;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 40;
+        pad = 10;
         w_pad = 7;
-        CARD_HEIGHT = 426;
+        CARD_HEIGHT = 475;
         CARD_WIDTH = 305;
 
     }
@@ -135,15 +135,19 @@ static const int MAX_BUFFER_SIZE = 2;
     
 
     
-    UserData *instance = [UserData singletonInstance];
+   // UserData *instance = [UserData singletonInstance];
     UIImage *image = nil;
     
     if(index == 0){
-       image = [UIImage imageNamed:@"girl1"];
+       image = [UIImage imageNamed:@"snow"];
         
     }else if(index == 1){
         image = [UIImage imageNamed:@"girl2"];
 
+        
+    }else if(index == 2){
+        image = [UIImage imageNamed:@"snow"];
+        
         
     }else{
         image = [UIImage imageNamed:@"girl3"];
@@ -151,10 +155,11 @@ static const int MAX_BUFFER_SIZE = 2;
         
     }
     
-    instance.image = image;
+ //   instance.image = image;
     
     DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake(w_pad, pad, CARD_WIDTH, CARD_HEIGHT)];
     
+    draggableView.image = image;
     
     draggableView.delegate = self;
     return draggableView;
@@ -194,7 +199,7 @@ static const int MAX_BUFFER_SIZE = 2;
 #warning include own action here!
 //%%% action called when the card goes to the left.
 // This should be customized with your own action
--(void)cardSwipedLeft:(UIView *)card;
+-(void)cardSwipedLeft:(UIImageView *)card;
 {
     //do whatever you want with the card that was swiped
     //    DraggableView *c = (DraggableView *)card;
@@ -211,7 +216,7 @@ static const int MAX_BUFFER_SIZE = 2;
 #warning include own action here!
 //%%% action called when the card goes to the right.
 // This should be customized with your own action
--(void)cardSwipedRight:(UIView *)card
+-(void)cardSwipedRight:(UIImageView *)card
 {
     //do whatever you want with the card that was swiped
     //    DraggableView *c = (DraggableView *)card;

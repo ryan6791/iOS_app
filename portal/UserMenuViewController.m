@@ -52,23 +52,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    CGRect full = [[UIScreen mainScreen]bounds];
-    self.navigationController.navigationBarHidden = NO;
-    
-    self.background = [[UIView alloc] initWithFrame:full];
-    self.background.hidden = NO;
-    self.background.backgroundColor = [UIColor whiteColor];
-    self.background.contentMode = UIViewContentModeScaleAspectFill;
-    [self.view addSubview:self.background];
-    
-    [self styleNavBar];
-    [self setupnetworkLabel];
-    [self addLine];
-    
-    
-    [self addTableContainer];
-    
-    [self initTableView];
+
     
   //  [self addBottomLine];
     
@@ -78,6 +62,39 @@
     //  [self addConstraints];
     
     
+}
+
+- (instancetype)initWithText:(NSString *) aText backgroundColor:(UIColor *) aBkgColor {
+    self = [super init];
+    if (self) {
+
+        
+        //   [self addSettingsIcon];
+        
+        
+        self.view.userInteractionEnabled = YES;
+        CGRect full = [[UIScreen mainScreen]bounds];
+        self.navigationController.navigationBarHidden = NO;
+        
+        self.background = [[UIView alloc] initWithFrame:full];
+        self.background.hidden = NO;
+        self.background.backgroundColor = [UIColor whiteColor];
+        self.background.contentMode = UIViewContentModeScaleAspectFill;
+        [self.view addSubview:self.background];
+        
+        [self setupnetworkLabel];
+        [self addLine];
+        
+        
+        [self addTableContainer];
+        
+        [self initTableView];
+        
+        
+        
+        
+    }
+    return self;
 }
 
 
@@ -142,13 +159,11 @@
     self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self.navigationItem setHidesBackButton:NO];
-    [self styleNavBar];
     
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self styleNavBar];
     
 
     [self.tableView reloadData];
@@ -335,7 +350,7 @@
     CGFloat pad = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 70;
+        pad = 0;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
@@ -489,9 +504,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Number of rows is the number of time zones in the region for the specified section.
-    
-        
+
     return 4;
 
 }
@@ -983,6 +996,20 @@ viewForFooterInSection:(NSInteger)section {
     
     
     
+}
+
+
+
+- (DMPagerNavigationBarItem *)pagerItem {
+    /*
+     NSDictionary *textAttributes = @{ NSFontAttributeName : [UIFont systemFontOfSize:12.0f],
+     NSForegroundColorAttributeName : [UIColor blackColor]};
+     
+     UIImage *itemIcon = [UIImage imageNamed:@"settings"];
+     NSAttributedString *itemTitle = @"hello3";
+     self.pagerObj = [DMPagerNavigationBarItem newItemWithText:[[NSAttributedString alloc] initWithString:@"CHAT" attributes:textAttributes] andIcon: itemIcon];
+     self.pagerObj.renderingMode = DMPagerNavigationBarItemModeOnlyText; */
+    return self.pagerObj;
 }
 
 

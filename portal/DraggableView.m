@@ -41,19 +41,27 @@
         self.backgroundColor = [UIColor whiteColor];
 
         
-        
+        self.userInteractionEnabled = YES;
+        self.clipsToBounds = YES;
         
         panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(beingDragged:)];
         
         [self addGestureRecognizer:panGestureRecognizer];
-//        [self addSubview:information];
         
+        UITapGestureRecognizer *socialTap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(goThere:)];
+        [self addGestureRecognizer:socialTap];
+        
+//        [self addSubview:information];
+     /*
         [self addProfileBackground];
         [self addProfileImage];
         [self addSocialBackground];
-        [self setupNameLabel];
-        [self setupdateLabel];
 
+         */
+        [self setupdateLabel];
+        [self setupNameLabel];
         
         overlayView = [[OverlayView alloc]initWithFrame:CGRectMake(self.frame.size.width/2-100, 0, 100, 100)];
         overlayView.alpha = 0;
@@ -64,7 +72,7 @@
 
 -(void)setupView
 {
-    self.layer.cornerRadius = 4;
+    self.layer.cornerRadius = 20;
     self.layer.shadowRadius = 3;
     self.layer.shadowOpacity = 0.2;
     self.layer.shadowOffset = CGSizeMake(1, 1);
@@ -95,9 +103,9 @@
     CGFloat width = 250;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 6;
-        height = 415;
-        width = 292;
+        pad = 0;
+        height = 490;
+        width = 305;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
@@ -157,11 +165,7 @@
     
     self.pic.userInteractionEnabled = YES;
 
-    UITapGestureRecognizer *socialTap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self
-                                            action:@selector(goThere:)];
-    [self.pic addGestureRecognizer:socialTap];
-    
+
     
     
     [self.pickbackground addSubview:self.pic];
@@ -169,9 +173,9 @@
     CGFloat pad = 0, height = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 1;
-        height = 413;
-        width = 290;
+        pad = 0;
+        height = 490;
+        width = 305;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
@@ -305,6 +309,8 @@
     
     self.nameLabel.layer.shadowRadius = 3.0;
     self.nameLabel.layer.shadowOpacity = 0.5;
+  //  self.nameLabel.layer.borderWidth = 1;
+  //  self.nameLabel.layer.borderColor = [self titleColor].CGColor;
     
         self.nameLabel.layer.masksToBounds = NO;
     
@@ -313,9 +319,9 @@
     CGFloat pad = 0, pad2 = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        self.nameLabel.font = [UIFont systemFontOfSize:24];
-        pad = 7;
-        pad2 = 5;
+        self.nameLabel.font = [UIFont fontWithName:@"Arial" size:24.0f];
+        pad = 15;
+        pad2 = 1;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
@@ -339,12 +345,12 @@
     
     self.nameLabel.alpha = 100.0;
     
-    [self.socialbackground addSubview:self.nameLabel];
+    [self addSubview:self.nameLabel];
     
-    NSDictionary *viewsDictionary = @{@"top":self.pic, @"label" : self.nameLabel};
+    NSDictionary *viewsDictionary = @{@"label" : self.nameLabel, @"info": self.contact_time};
     NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
     [self addConstraints:constraint1];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-pad-[info]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
     [self addConstraints:constraint2];
     
 }
@@ -360,9 +366,9 @@
     
     [self.contact_time setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.contact_time invalidateIntrinsicContentSize];
-    self.contact_time.textColor = [UIColor whiteColor];
+    self.contact_time.textColor = [UIColor lightTextColor];
     
-    self.contact_time.text = @"";
+    self.contact_time.text = @"Florida State University";
     
     self.contact_time.layer.shadowRadius = 3.0;
     self.contact_time.layer.shadowOpacity = 0.5;
@@ -374,9 +380,9 @@
     CGFloat pad = 0, pad2 = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        self.contact_time.font = [UIFont systemFontOfSize:14];
-        pad = 7;
-        pad2 = 7;
+        self.contact_time.font = [UIFont fontWithName:@"Verdana" size:14.0f];
+        pad = 15;
+        pad2 = 10;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
@@ -399,7 +405,7 @@
         
     }
     
-    [self.socialbackground addSubview:self.contact_time];
+    [self addSubview:self.contact_time];
     
     NSDictionary *viewsDictionary = @{@"label" : self.contact_time};
     NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];

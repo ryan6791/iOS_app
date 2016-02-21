@@ -38,13 +38,14 @@
 
 @protocol DraggableViewDelegate <NSObject>
 
--(void)cardSwipedLeft:(UIView *)card;
--(void)cardSwipedRight:(UIView *)card;
+-(void)cardSwipedLeft:(UIImageView *)card;
+-(void)cardSwipedRight:(UIImageView *)card;
 
 
 @end
 
-@interface DraggableView : UIView
+@interface DraggableView : UIImageView
+
 
 @property (weak) id <DraggableViewDelegate> delegate;
 
@@ -60,7 +61,7 @@
 @property (strong, nonatomic) IBOutlet UIView *cellbackground;
 
 
-@property (nonatomic, strong) UIImage *image;
+//@property (nonatomic, strong) UIImage *image;
 
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *contact_time;

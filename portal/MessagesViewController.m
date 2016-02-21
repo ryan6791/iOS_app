@@ -24,109 +24,66 @@
  *  Customize your layout.
  *  Look at the properties on `JSQMessagesCollectionViewFlowLayout` to see what is possible.
  */
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        
+        // self.title = @"My Title";
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-
-}
-
-
-- (instancetype)initWithText:(NSString *) aText backgroundColor:(UIColor *) aBkgColor {
-    self = [super init];
-    if (self) {
-        
-     //   [self styleNavBar];
-        
-        
-        //    self.title = @"JSQMessages";
-        
-        /**
-         *  You MUST set your senderId and display name
-         */
-        self.senderId = kJSQAvatarIdCook;
-        self.senderDisplayName = [[DataAccess singletonInstance] getName];
-        
-        self.inputToolbar.contentView.textView.pasteDelegate = self;
-        
-        /**
-         *  Load up our fake data for the
-         */
-        self.data = [[ModelData alloc] init];
-        
-        
-        /**
-         *  You can set custom avatar sizes
-         */
-        if (![[DataAccess singletonInstance] incomingAvatarSetting]) {
-            self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
-        }
-        
-        //   if (![[DataAccess singletonInstance] outgoingAvatarSetting]) {
-        self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
-        //   }
-        
-        self.showLoadEarlierMessagesHeader = YES;
-        
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage jsq_defaultTypingIndicatorImage]
-                                                                                  style:UIBarButtonItemStyleBordered
-                                                                                 target:self
-                                                                                 action:@selector(receiveMessagePressed:)];
-        
-        /**
-         *  Register custom menu actions for cells.
-         */
-        [JSQMessagesCollectionViewCell registerMenuAction:@selector(customAction:)];
-        [UIMenuController sharedMenuController].menuItems = @[ [[UIMenuItem alloc] initWithTitle:@"Custom Action"
-                                                                                          action:@selector(customAction:)] ];
-        
-        /**
-         *  OPT-IN: allow cells to be deleted
-         */
-        [JSQMessagesCollectionViewCell registerMenuAction:@selector(delete:)];
-        
-        /**
-         *  Customize your toolbar buttons
-         *
-         *  self.inputToolbar.contentView.leftBarButtonItem = custom button or nil to remove
-         *  self.inputToolbar.contentView.rightBarButtonItem = custom button or nil to remove
-         */
-        
-        /**
-         *  Set a maximum height for the input toolbar
-         *
-         *  self.inputToolbar.maximumHeight = 150;
-         */
-        
-        
-        /*
-         self.view = [[UIView alloc] initWithFrame:CGRectZero];
-         self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-         self.view.backgroundColor = aBkgColor;
-         
-         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-         label.text = aText;
-         label.font = [UIFont boldSystemFontOfSize:40];
-         label.numberOfLines = 1;
-         label.textAlignment = NSTextAlignmentCenter;
-         label.backgroundColor = [UIColor clearColor];
-         label.textColor = [UIColor whiteColor];
-         label.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
-         UIViewAutoresizingFlexibleTopMargin    |
-         UIViewAutoresizingFlexibleBottomMargin);
-         [self.view addSubview:label];
-         
-         CGSize bestSize = [label.attributedText boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
-         options:NSStringDrawingTruncatesLastVisibleLine
-         context:NULL].size;
-         label.frame = CGRectMake(0,
-         ((CGRectGetHeight(self.view.frame)-bestSize.height)/2.0f),
-         CGRectGetWidth(self.view.frame),
-         bestSize.height); */
-        
+    self.senderId = kJSQAvatarIdCook;
+    self.senderDisplayName = [[DataAccess singletonInstance] getName];
+    
+    self.inputToolbar.contentView.textView.pasteDelegate = self;
+    
+    /**
+     *  Load up our fake data for the
+     */
+    self.data = [[ModelData alloc] init];
+    
+    
+    /**
+     *  You can set custom avatar sizes
+     */
+    if (![[DataAccess singletonInstance] incomingAvatarSetting]) {
+        self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
     }
-    return self;
+    
+    //   if (![[DataAccess singletonInstance] outgoingAvatarSetting]) {
+    self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
+    //   }
+    
+    self.showLoadEarlierMessagesHeader = YES;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage jsq_defaultTypingIndicatorImage]
+                                                                              style:UIBarButtonItemStyleBordered
+                                                                             target:self
+                                                                             action:@selector(receiveMessagePressed:)];
+    
+    /**
+     *  Register custom menu actions for cells.
+     */
+    [JSQMessagesCollectionViewCell registerMenuAction:@selector(customAction:)];
+    [UIMenuController sharedMenuController].menuItems = @[ [[UIMenuItem alloc] initWithTitle:@"Custom Action"
+                                                                                      action:@selector(customAction:)] ];
+    
+    /**
+     *  OPT-IN: allow cells to be deleted
+     */
+    [JSQMessagesCollectionViewCell registerMenuAction:@selector(delete:)];
+    
+
 }
+
 
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -962,19 +919,6 @@
     [self.navigationController pushViewController:account animated:NO];
     
     
-}
-
-- (DMPagerNavigationBarItem *)pagerItem {
-    
-    /*
-     NSDictionary *textAttributes = @{ NSFontAttributeName : [UIFont systemFontOfSize:12.0f],
-     NSForegroundColorAttributeName : [UIColor blackColor]};
-     
-     UIImage *itemIcon = [UIImage imageNamed:@"settings"];
-     NSAttributedString *itemTitle = @"hello3";
-     self.pagerObj = [DMPagerNavigationBarItem newItemWithText:[[NSAttributedString alloc] initWithString:@"CHAT" attributes:textAttributes] andIcon: itemIcon];
-     self.pagerObj.renderingMode = DMPagerNavigationBarItemModeOnlyText; */
-    return self.pagerObj;
 }
 
 

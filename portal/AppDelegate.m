@@ -15,7 +15,8 @@
 #import "GlobalConstants.h"
 #import "OAuthServices.h"
 #import "LockedNewMatchViewController.h"
-
+#import "UserMenuViewController.h"
+#import "MatchTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -34,13 +35,19 @@
     [[DataAccess singletonInstance] setAPICurrentURL:URL_Dev];
     [OAuthServices startupTokenSequence];
     
+    [[UITabBar appearance] setBarTintColor:[UIColor clearColor]];
+    [[UITabBar appearance] setBackgroundImage:[UIImage new]];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:15.0f], NSFontAttributeName, nil] forState:UIControlStateNormal];
+
+    
+    
     if([[DataAccess singletonInstance] oAuthAccessTokenExists])
         [OAuthServices doOAuthHeartbeat];
     
     [self CurrentLocationIdentifier];
   
     if ([[DataAccess singletonInstance] UserIsLoggedIn]) {
-        [[DataAccess singletonInstance] setMatchName:@"Jess"];
+        [[DataAccess singletonInstance] setMatchName:@"Stephanie"];
         UIImage *matchImage = [UIImage imageNamed:@"_avatar_cook"];
         [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(matchImage) forKey:@"matchImage"];
         [[DataAccess singletonInstance] saveIncomingAvatarSetting:YES];
@@ -117,24 +124,25 @@
     UIColor *bkVC3 = [UIColor colorWithRed:0.753 green:0.929 blue:0.996 alpha:1.000];
     
     
-    SwipeViewController *vc1 = [[SwipeViewController alloc] initWithText:@"Page #1" backgroundColor:bkVC1];
-    vc1.pagerObj = [DMPagerNavigationBarItem newItemWithText: [[NSAttributedString alloc] initWithString:@"POD" attributes:textAttributes]
+    UserMenuViewController *vc1 = [[UserMenuViewController alloc] initWithText:@"Page #1" backgroundColor:bkVC1];
+    vc1.pagerObj = [DMPagerNavigationBarItem newItemWithText: [[NSAttributedString alloc] initWithString:@"Settings" attributes:textAttributes]
                                                      andIcon: [UIImage imageNamed:@"settings"]];
  //   vc1.pagerObj.renderingMode = DMPagerNavigationBarItemModeOnlyText;
     
     
-    MatchProfileViewController *vc2 = [[MatchProfileViewController alloc] initWithText:@"Page #2" backgroundColor:bkVC2];
-    vc2.pagerObj = [DMPagerNavigationBarItem newItemWithText: [[NSAttributedString alloc] initWithString:@"MATCH" attributes:textAttributes]
+    SwipeViewController *vc2 = [[SwipeViewController alloc] initWithText:@"Page #2" backgroundColor:bkVC2];
+    vc2.pagerObj = [DMPagerNavigationBarItem newItemWithText: [[NSAttributedString alloc] initWithString:@"DOP" attributes:textAttributes]
                                                      andIcon: [UIImage imageNamed:@"logo"]];
 //    vc2.pagerItem.renderingMode = DMPagerNavigationBarItemModeOnlyImage;
     
-    MessagesViewController *vc3 = [[MessagesViewController alloc] initWithText:@"Page #3" backgroundColor:bkVC3];
+    MatchTabBarController *vc3 = [[MatchTabBarController alloc] initWithText:@"Page #3" backgroundColor:bkVC3];
     vc3.pagerObj = [DMPagerNavigationBarItem newItemWithText: [[NSAttributedString alloc] initWithString:@"CHAT" attributes:textAttributes]
                                                      andIcon: [UIImage imageNamed:@"chat_icon"]];
   //  vc3.pagerObj.renderingMode = DMPagerNavigationBarItemModeOnlyText;
     
     // Create pager with items
     self.pagerController = [[DMPagerViewController alloc] initWithViewControllers: @[vc1,vc2,vc3]];
+    [self.pagerController setPageIndex:1 animated:NO];
     self.pagerController.useNavigationBar = YES;
     self.pagerController.navigationBar.style = DMPagerNavigationBarStyleClose;
 
@@ -145,8 +153,6 @@
     UIColor *inactiveColor = [UIColor colorWithRed:.84 green:.84 blue:.84 alpha:1.0];
     self.pagerController.navigationBar.inactiveItemColor = inactiveColor;
     self.pagerController.navigationBar.activeItemColor = activeColor;
-    
-    [self.pagerController.navigationBar addSettingsIcon];
     self.navController = [[UINavigationController alloc] initWithRootViewController:self.pagerController];
     [self.navController setNavigationBarHidden:YES];
     self.window.rootViewController = self.navController;
@@ -170,8 +176,8 @@
     self.currentLocation = [locations objectAtIndex:0];
     [self.locationManager stopUpdatingLocation];
     
-    NSLog(@"long is:%f", self.currentLocation.coordinate.longitude);
-    NSLog(@"lat is:%f", self.currentLocation.coordinate.latitude);
+  //  NSLog(@"long is:%f", self.currentLocation.coordinate.longitude);
+  //  NSLog(@"lat is:%f", self.currentLocation.coordinate.latitude);
 
     /*
     CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;

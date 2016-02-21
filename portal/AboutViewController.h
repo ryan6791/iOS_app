@@ -1,25 +1,16 @@
 //
-//  AccountViewController.h
-//  portal
+//  AboutViewController.h
+//  pairedUP
 //
-//  Created by Neil Ballard on 10/10/15.
-//  Copyright © 2015 Neil_appworld. All rights reserved.
+//  Created by Neil Ballard on 2/19/16.
+//  Copyright © 2016 Neil_appworld. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface AccountViewController : UIViewController
+@interface AboutViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIView *networkBox;
-@property (strong, nonatomic) IBOutlet UILabel *userBioLabel;
-
-@property (nonatomic, strong) UIView *editIcon;
-@property (nonatomic, strong) UILabel *editLabel;
-@property (nonatomic, strong) UIImageView *editPencil;
-
-
-
-
+@property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *locationLabel;
 @property (nonatomic, strong) UILabel *locationTextLabel;
 @property (nonatomic, strong) UILabel *infoLabel;
@@ -36,5 +27,6 @@
 @property (nonatomic, strong) UIImageView *educationIcon;
 @property (nonatomic, strong) UIImageView *workIcon;
 
+@property (nonatomic, strong) UIView *Line;
 
 @end

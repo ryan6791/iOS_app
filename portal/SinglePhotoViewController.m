@@ -346,6 +346,8 @@
         [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(singlePhoto.photo) forKey:@"ProfileImage3"];
     }else if([box.boxID isEqualToString:@"4"]){
         [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(singlePhoto.photo) forKey:@"ProfileImage4"];
+    }else if([box.boxID isEqualToString:@"5"]){
+        [[NSUserDefaults standardUserDefaults] setObject:UIImagePNGRepresentation(singlePhoto.photo) forKey:@"ProfileImage5"];
     }
     
 

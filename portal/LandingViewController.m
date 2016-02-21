@@ -9,6 +9,8 @@
 #import "LandingViewController.h"
 #import "DeviceManager.h"
 #import "DataAccess.h"
+#import "UserMenuViewController.h"
+#import "MatchTabBarController.h"
 
 @interface LandingViewController ()
 
@@ -717,21 +719,22 @@
     UIColor *bkVC3 = [UIColor colorWithRed:0.753 green:0.929 blue:0.996 alpha:1.000];
     
     
-    SwipeViewController *vc1 = [[SwipeViewController alloc] initWithText:@"Page #1" backgroundColor:bkVC1];
-    vc1.pagerObj = [DMPagerNavigationBarItem newItemWithText: [[NSAttributedString alloc] initWithString:@"POD" attributes:textAttributes]
+    UserMenuViewController *vc1 = [[UserMenuViewController alloc] initWithText:@"Page #1" backgroundColor:bkVC1];
+    vc1.pagerObj = [DMPagerNavigationBarItem newItemWithText: [[NSAttributedString alloc] initWithString:@"Settings" attributes:textAttributes]
                                                      andIcon: [UIImage imageNamed:@"settings"]];
     //   vc1.pagerObj.renderingMode = DMPagerNavigationBarItemModeOnlyText;
     
     
-    MatchProfileViewController *vc2 = [[MatchProfileViewController alloc] initWithText:@"Page #2" backgroundColor:bkVC2];
-    vc2.pagerObj = [DMPagerNavigationBarItem newItemWithText: [[NSAttributedString alloc] initWithString:@"MATCH" attributes:textAttributes]
+    SwipeViewController *vc2 = [[SwipeViewController alloc] initWithText:@"Page #2" backgroundColor:bkVC2];
+    vc2.pagerObj = [DMPagerNavigationBarItem newItemWithText: [[NSAttributedString alloc] initWithString:@"POD" attributes:textAttributes]
                                                      andIcon: [UIImage imageNamed:@"logo"]];
     //    vc2.pagerItem.renderingMode = DMPagerNavigationBarItemModeOnlyImage;
     
-    MessagesViewController *vc3 = [[MessagesViewController alloc] initWithText:@"Page #3" backgroundColor:bkVC3];
+    MatchTabBarController *vc3 = [[MatchTabBarController alloc] initWithText:@"Page #3" backgroundColor:bkVC3];
     vc3.pagerObj = [DMPagerNavigationBarItem newItemWithText: [[NSAttributedString alloc] initWithString:@"CHAT" attributes:textAttributes]
                                                      andIcon: [UIImage imageNamed:@"chat_icon"]];
     //  vc3.pagerObj.renderingMode = DMPagerNavigationBarItemModeOnlyText;
+    
     
     // Create pager with items
     self.pagerController = [[DMPagerViewController alloc] initWithViewControllers: @[vc1,vc2,vc3]];
@@ -746,8 +749,6 @@
     self.pagerController.navigationBar.inactiveItemColor = inactiveColor;
     self.pagerController.navigationBar.activeItemColor = activeColor;
     
-    [self.pagerController.navigationBar addSettingsIcon];
-
     
     NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];
     [viewControllers replaceObjectAtIndex:0 withObject:self.pagerController];

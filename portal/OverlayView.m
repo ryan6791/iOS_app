@@ -34,7 +34,7 @@
     if(mode == GGOverlayViewModeLeft) {
         imageView.image = [UIImage imageNamed:@"noButton"];
     } else {
-        imageView.image = [UIImage imageNamed:@"yesButton"];
+        imageView.image = [UIImage imageNamed:@"logo"];
     }
 }
 

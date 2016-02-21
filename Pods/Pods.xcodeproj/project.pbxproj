@@ -42,6 +42,8 @@
 		4319A72765FFE454BFC3BFC106B38935 /* JSQMessagesTimestampFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = D1503DF91ED47AEBFFC5DCF925A242BE /* JSQMessagesTimestampFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		44620CAF348A786FF605D031C12F9F0F /* JSQMessagesBubblesSizeCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = C1D627E228F523ADB06E163DF1D0EFFA /* JSQMessagesBubblesSizeCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49597BC9119A404D2A7EFDD4429D01B1 /* UIView+JSQMessages.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F7E4A6907F1A7287E32A391548324F4 /* UIView+JSQMessages.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4ADD3A211C7549CD00F24393 /* PodSizeManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4ADD3A1F1C7549CD00F24393 /* PodSizeManager.h */; };
+		4ADD3A221C7549CD00F24393 /* PodSizeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD3A201C7549CD00F24393 /* PodSizeManager.m */; };
 		4B742B0EF5F7162FEC382F37E8755579 /* JSQMessagesAvatarImageFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A5916322BDB776A357DA2D2AF086FFB /* JSQMessagesAvatarImageFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C848C14B88DFA501D24A6FDB3905654 /* JSQMessagesCellTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = D8C781F4C723CF8EA854541862B2A68B /* JSQMessagesCellTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4D23921227D519A3AB89F604CA8CEFC9 /* UIImage+JSQMessages.h in Headers */ = {isa = PBXBuildFile; fileRef = 58D21843E03214DB1B5E58E4ECE17D4C /* UIImage+JSQMessages.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -208,6 +210,8 @@
 		483270141065C54D149CF68C96E6B182 /* DMPagerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DMPagerViewController.m; path = Pod/Classes/DMPagerViewController.m; sourceTree = "<group>"; };
 		48A86950949E9DCCF1A83DDE441F1D79 /* JSQMessagesLoadEarlierHeaderView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSQMessagesLoadEarlierHeaderView.m; path = JSQMessagesViewController/Views/JSQMessagesLoadEarlierHeaderView.m; sourceTree = "<group>"; };
 		4A9BC5D7230905D46EDABD215CDA622F /* JSQMessagesBubblesSizeCalculator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSQMessagesBubblesSizeCalculator.m; path = JSQMessagesViewController/Layout/JSQMessagesBubblesSizeCalculator.m; sourceTree = "<group>"; };
+		4ADD3A1F1C7549CD00F24393 /* PodSizeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PodSizeManager.h; sourceTree = "<group>"; };
+		4ADD3A201C7549CD00F24393 /* PodSizeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PodSizeManager.m; sourceTree = "<group>"; };
 		50ACD1220AE7C18E4326783BA70E3C99 /* Pods-pairedUP-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-pairedUP-umbrella.h"; sourceTree = "<group>"; };
 		52D1EE6B86D8C728E3339129FF8AB424 /* JSQMessagesCollectionViewLayoutAttributes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSQMessagesCollectionViewLayoutAttributes.m; path = JSQMessagesViewController/Layout/JSQMessagesCollectionViewLayoutAttributes.m; sourceTree = "<group>"; };
 		5548C28457189882F2A22517B2A45EFA /* JSQMessagesCollectionViewFlowLayoutInvalidationContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSQMessagesCollectionViewFlowLayoutInvalidationContext.h; path = JSQMessagesViewController/Layout/JSQMessagesCollectionViewFlowLayoutInvalidationContext.h; sourceTree = "<group>"; };
@@ -449,6 +453,8 @@
 				38C73CEE1BCE7CAADEE192DF855A5023 /* DMPagerViewController */,
 				D4C6A11E7B19FA8723F9FB7711A8EF7D /* JSQMessagesViewController */,
 				3FDEFCCF91D3DC5D579422EF4547292F /* JSQSystemSoundPlayer */,
+				4ADD3A1F1C7549CD00F24393 /* PodSizeManager.h */,
+				4ADD3A201C7549CD00F24393 /* PodSizeManager.m */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -634,6 +640,7 @@
 				37079A1E1582C47A9C22B3F77F3A5E48 /* DMPagerNavigationBar.h in Headers */,
 				321997F89E7CC556ED95C06E2396340C /* DMPagerViewController-umbrella.h in Headers */,
 				A6A9D9EC8BAE54436A4514EE1B972230 /* DMPagerViewController.h in Headers */,
+				4ADD3A211C7549CD00F24393 /* PodSizeManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,6 +868,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ADD3A221C7549CD00F24393 /* PodSizeManager.m in Sources */,
 				51F7BC7B28C5479D11C1460F9BFD6442 /* DMPagerNavigationBar.m in Sources */,
 				544232AF16ED5E36827737161ECA1E3B /* DMPagerViewController-dummy.m in Sources */,
 				50E840687D536556446995CF5C97DC87 /* DMPagerViewController.m in Sources */,

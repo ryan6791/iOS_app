@@ -18,67 +18,58 @@
 
 @interface AccountViewController ()
 
-@property (nonatomic, retain) UIView * background;
-@property (strong, nonatomic) IBOutlet UIImageView *pic;
-@property (strong, nonatomic) IBOutlet UIView *topbackground;
-@property (strong, nonatomic) IBOutlet UIView *pickbackground;
+@property (strong, nonatomic)  UIImageView *pickbackground;
 
 
-@property (strong, nonatomic) IBOutlet UIImageView *pic2;
-@property (strong, nonatomic) IBOutlet UIView *pickbackground2;
-@property (strong, nonatomic) IBOutlet UIImageView *pic3;
-@property (strong, nonatomic) IBOutlet UIView *pickbackground3;
-@property (strong, nonatomic) IBOutlet UIImageView *pic4;
-@property (strong, nonatomic) IBOutlet UIView *pickbackground4;
-
-@property (strong, nonatomic) IBOutlet UILabel *networksLabel;
+@property (strong, nonatomic)  UIImageView *pickbackground2;
+@property (strong, nonatomic)  UIImageView *pickbackground3;
+@property (strong, nonatomic)  UIImageView *pickbackground4;
+@property (strong, nonatomic)  UIImageView *pickbackground5;
 
 
-
+@property (strong, nonatomic)  UILabel *networksLabel;
 @property (nonatomic, retain) UIView * Line;
-
-
-@property (nonatomic,unsafe_unretained) CGRect mainScreenBounds;
-@property (nonatomic, retain) UITableView *tableView;
-@property (nonatomic, retain) UIView * tableBack;
-
+@property (nonatomic, retain) UINavigationBar * navBar;
 
 
 @end
+
+
 
 @implementation AccountViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    CGRect full = [[UIScreen mainScreen]bounds];
     self.navigationController.navigationBarHidden = YES;
     [self.navigationItem setHidesBackButton:YES];
-    self.background = [[UIView alloc] initWithFrame:full];
-    self.background.hidden = NO;
-    self.background.backgroundColor = [UIColor whiteColor];
-    self.background.contentMode = UIViewContentModeScaleAspectFill;
-    self.pickbackground.userInteractionEnabled = YES;
-    [self.view addSubview:self.background];
+    
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     
     // [self initViewItems];
-    [self addTopBackground];
     [self styleNavBar];
     
     [self addProfileBackground];
-    [self addProfileImage];
     [self addProfileBackground2];
-    [self addProfileImage2];
     [self addProfileBackground3];
-    [self addProfileImage3];
     [self addProfileBackground4];
-    [self addProfileImage4];
-    [self setupnetworkLabel];
-    [self addLine];
-    [self setupnetworkTextBox];
-    [self setupUserBioLabel];
+    [self addProfileBackground5];
     
+    [self addEditIcon];
+    [self setupEditLabel];
+    
+    [self addEduIcon];
+    [self setupEduLabel];
+    [self setupEduText];
+    
+    [self addWorkIcon];
+    [self setupWorkLabel];
+    [self setupWorkText];
+    
+    [self addinfoIcon];
+    [self setupInfoLabel];
+    [self setupInfoText];
+
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -98,32 +89,38 @@
     UIImage* image2 = [[DataAccess singletonInstance] getProfileImage2];
     UIImage* image3 = [[DataAccess singletonInstance] getProfileImage3];
     UIImage* image4 = [[DataAccess singletonInstance] getProfileImage4];
+    UIImage* image5 = [[DataAccess singletonInstance] getProfileImage4];
     
     
     if (image != nil) {
-        self.pic.image = image;
+        self.pickbackground.image = image;
     }else{
-        self.pic.image = [UIImage imageNamed:@"image_placeholder.png"];
+        self.pickbackground.image = [UIImage imageNamed:@"image_placeholder.png"];
     }
     
     if (image2 != nil) {
-        self.pic2.image = image2;
+        self.pickbackground2.image = image2;
     }else{
-        self.pic2.image = [UIImage imageNamed:@"image_placeholder.png"];
+        self.pickbackground2.image = [UIImage imageNamed:@"image_placeholder.png"];
     }
     
     if (image3 != nil) {
-        self.pic3.image = image3;
+        self.pickbackground3.image = image3;
     }else{
-        self.pic3.image = [UIImage imageNamed:@"image_placeholder.png"];
+        self.pickbackground3.image = [UIImage imageNamed:@"image_placeholder.png"];
     }
     
     if (image4 != nil) {
-        self.pic4.image = image4;
+        self.pickbackground4.image = image4;
     }else {
-        self.pic4.image = [UIImage imageNamed:@"image_placeholder.png"];
+        self.pickbackground4.image = [UIImage imageNamed:@"image_placeholder.png"];
     }
-    
+
+    if (image5 != nil) {
+        self.pickbackground5.image = image5;
+    }else {
+        self.pickbackground5.image = [UIImage imageNamed:@"image_placeholder.png"];
+    }
 }
 
 - (void)styleNavBar {
@@ -154,15 +151,15 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
     // 2. create a new nav bar and style it
-    UINavigationBar *newNavBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), height)];
-    newNavBar.translucent = YES;
+    self.navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), height)];
+    self.navBar.translucent = YES;
     // 3. add a new navigation item w/title to the new nav bar
     UINavigationItem *newItem = [[UINavigationItem alloc] init];
     
     UIButton* customButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    newNavBar.backgroundColor = [UIColor whiteColor];
-    newNavBar.barTintColor = [UIColor whiteColor];
+    self.navBar.backgroundColor = [UIColor whiteColor];
+    self.navBar.barTintColor = [UIColor whiteColor];
     
     
     
@@ -236,39 +233,13 @@
     
     
     [backView addSubview:nameLabel];
-    
-    
-    
-    
+
     viewImage.alpha = 1.0;
     viewImage.layer.masksToBounds = YES;
-    
-    
-    
-    
-    //   backView.backgroundColor = [UIColor redColor];
-    
-    
-    
-    
-    //  [backView addSubview:customButton];
-    
-    
-    //  viewImage.backgroundColor = [UIColor clearColor];
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // newItem.titleView = backView;
-    // 4. add the nav bar to the main view
-    [newNavBar setItems:@[newItem]];
-    [self.view addSubview:newNavBar];
-    [newNavBar addSubview:backView];
+
+    [self.navBar setItems:@[newItem]];
+    [self.view addSubview:self.navBar];
+    [self.navBar addSubview:backView];
     
     [backView addSubview:viewImage];
     
@@ -286,8 +257,8 @@
     NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:backView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:100];
     [self.view addConstraint:constraint4];
     
-    NSDictionary *viewsDictionary = @{@"back":backView, @"nav": newNavBar, @"image": viewImage, @"name": nameLabel};
-    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:newNavBar attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:backView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    NSDictionary *viewsDictionary = @{@"back":backView, @"nav": self.navBar, @"image": viewImage, @"name": nameLabel};
+    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.navBar attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:backView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
     NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:20]} views:viewsDictionary];
     [self.view addConstraint:constraint1];
     [self.view addConstraints:constraint2];
@@ -296,7 +267,7 @@
     CGFloat image_size = 0, v_pad = 0, h_pad = 0, n_pad = 10;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        image_size = 32;
+        image_size = 30;
         v_pad = 5;
         n_pad = 10;
         viewImage.layer.cornerRadius = 15;
@@ -351,15 +322,6 @@
     [self.view addConstraints:constraint12];
     [self.view addConstraint:constraint15];
     
-    
-    /*
-     NSLayoutConstraint *constraint7 = [NSLayoutConstraint constraintWithItem:customButton.imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:35];
-     [self.view addConstraint:constraint7];
-     
-     NSLayoutConstraint *constraint8 = [NSLayoutConstraint constraintWithItem:customButton.imageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:35];
-     [self.view addConstraint:constraint8];
-     
-     */
 }
 
 
@@ -372,161 +334,47 @@
 }
 
 
-- (void)addTopBackground {
-    
-    self.topbackground = [[UIView alloc]init];
-    
-    self.topbackground.backgroundColor = [UIColor whiteColor];
-    CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
-    self.topbackground.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.topbackground invalidateIntrinsicContentSize];
-    
-    
-    
-    [self.view addSubview:self.topbackground];
-    
-    CGFloat pad = 0, height = 0;
-    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
-    {
-        pad = 64;
-        height = 270;
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
-    {
-        pad = 70;
-        height = 310;
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
-    {
-        pad = 80;
-        height = 320;
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 55;
-        height = 231;
-    }
-    
-    
-    
-    NSDictionary *viewsDictionary = @{@"back":self.topbackground};
-    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.topbackground attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    [self.view addConstraint:constraint1];
-    [self.view addConstraints:constraint2];
-    
-    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.topbackground attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
-    [self.view addConstraint:constraint3];
-    
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.topbackground attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
-    [self.view addConstraint:constraint4];
-    
-}
-
-- (void)addProfileImage {
-    
-    self.pic = [[UIImageView alloc]init];
-    
-    self.pic.backgroundColor = [UIColor blueColor];
-    CGFloat width = 0; // CGRectGetWidth([[UIScreen mainScreen] bounds]) - 10;
-    self.pic.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.pic invalidateIntrinsicContentSize];
-    
-
-    self.pic.alpha = 2.0;
-    
-    
-    [self.pickbackground addSubview:self.pic];
-    
-    CGFloat pad = 0, height = 0;
-    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
-    {
-        pad = 1;
-        height = 134;
-        width = 138;
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
-    {
-        pad = 1;
-        height = 150;
-        width = 158;
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
-    {
-        pad = 1;
-        height = 162;
-        width = 178;
-        
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 1;
-        height = 115;
-        width = 138;
-    }
-    
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picturePressed1:)];
-    [self.pic addGestureRecognizer:tapGesture];
-    
-    
-    if ([[DataAccess singletonInstance] LoggedInWithFB]) {
-        self.pic.userInteractionEnabled = YES;
-    }
-    
-    
-    NSDictionary *viewsDictionary = @{@"image":self.pic};
-    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.pic attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.pickbackground attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[image]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    [self.pickbackground addConstraint:constraint1];
-    [self.pickbackground addConstraints:constraint2];
-    
-    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.pic attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
-    [self.pickbackground addConstraint:constraint3];
-    
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.pic attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
-    [self.pickbackground addConstraint:constraint4];
-    
-    
-    
-    
-    
-    
-}
 
 
 
 - (void)addProfileBackground {
     
-    self.pickbackground = [[UIView alloc]init];
+    self.pickbackground = [[UIImageView alloc]init];
     
-    self.pickbackground.backgroundColor = [self cdBlue];//[UIColor whiteColor];
-    CGFloat width = 0; //CGRectGetWidth([[UIScreen mainScreen] bounds]) - 8;
+    self.pickbackground.backgroundColor = [self cdBlue];
+    CGFloat width = 0;
     self.pickbackground.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pickbackground invalidateIntrinsicContentSize];
-    
-    //  self.pickbackground.alpha = 2.0;
-    
     
     self.pickbackground.layer.masksToBounds = NO;
     self.pickbackground.layer.shadowOffset = CGSizeMake(-.1, .2);
     self.pickbackground.layer.shadowRadius = .5;
     self.pickbackground.layer.shadowOpacity = 0.5;
     
+    self.pickbackground.userInteractionEnabled = YES;
     
-    [self.topbackground addSubview:self.pickbackground];
+    UITapGestureRecognizer *pictureTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(picturePressed1:)];
+    [self.pickbackground addGestureRecognizer:pictureTap];
+    
+    
+    [self.view addSubview:self.pickbackground];
     
     CGFloat pad = 0, pad2 = 0, height = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 8;
-        pad2 = 14;
-        height = 136;
-        width = 140;
+        pad = 0;
+        pad2 = 0;
+        height = 110;
+        width = self.view.frame.size.width / 3;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 8;
         height = 152;
         width = 160;
-        pad2 = 15;
+        width = self.view.frame.size.width / 3;
         
         
     }
@@ -535,113 +383,37 @@
         pad = 8;
         height = 164;
         width = 180;
-        pad2 = 17;
+        width = self.view.frame.size.width / 3;
         
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
         pad = 8;
         pad2 = 13;
         height = 117;
-        width = 140;
+        width = self.view.frame.size.width / 3;
         
     }
     
     
     
-    NSDictionary *viewsDictionary = @{@"back":self.pickbackground, @"top": self.topbackground};
+    NSDictionary *viewsDictionary = @{@"back":self.pickbackground, @"nav": self.navBar};
     NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    [self.topbackground addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[nav]-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
     [self.view addConstraints:constraint2];
     
     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.pickbackground attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
-    [self.topbackground addConstraint:constraint3];
+    [self.view addConstraint:constraint3];
     
     NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.pickbackground attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
-    [self.topbackground addConstraint:constraint4];
+    [self.view addConstraint:constraint4];
     
 }
-
-- (void)addProfileImage2 {
-    
-    self.pic2 = [[UIImageView alloc]init];
-    
-    self.pic2.backgroundColor = [UIColor blueColor];
-    CGFloat width = 0; // CGRectGetWidth([[UIScreen mainScreen] bounds]) - 10;
-    self.pic2.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.pic2 invalidateIntrinsicContentSize];
-    
-    
-    self.pic2.alpha = 2.0;
-    
-    
-    
-    [self.pickbackground2 addSubview:self.pic2];
-    
-    CGFloat pad = 0, height = 0;
-    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
-    {
-        pad = 1;
-        height = 134;
-        width = 138;
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
-    {
-        pad = 1;
-        height = 150;
-        width = 158;
-        
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
-    {
-        pad = 1;
-        height = 162;
-        width = 178;
-        
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 1;
-        height = 115;
-        width = 138;
-    }
-    
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picturePressed2:)];
-    [self.pic2 addGestureRecognizer:tapGesture];
-    
-    
-    if ([[DataAccess singletonInstance] LoggedInWithFB]) {
-        self.pic2.userInteractionEnabled = YES;
-    }
-    
-    
-    NSDictionary *viewsDictionary = @{@"image":self.pic2};
-    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.pic2 attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.pickbackground2 attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[image]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    [self.pickbackground2 addConstraint:constraint1];
-    [self.pickbackground2 addConstraints:constraint2];
-    
-    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.pic2 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
-    [self.pickbackground2 addConstraint:constraint3];
-    
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.pic2 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
-    [self.pickbackground2 addConstraint:constraint4];
-    
-    
-    
-    
-    
-    
-}
-
-
-
-
-
 
 
 - (void)addProfileBackground2 {
     
-    self.pickbackground2 = [[UIView alloc]init];
+    self.pickbackground2 = [[UIImageView alloc]init];
     
     self.pickbackground2.backgroundColor = [UIColor whiteColor];
     CGFloat width = 0; //CGRectGetWidth([[UIScreen mainScreen] bounds]) - 8;
@@ -656,22 +428,29 @@
     self.pickbackground2.layer.shadowRadius = .5;
     self.pickbackground2.layer.shadowOpacity = 0.5;
     
+    self.pickbackground2.userInteractionEnabled = YES;
     
-    [self.topbackground addSubview:self.pickbackground2];
+    UITapGestureRecognizer *pictureTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(picturePressed2:)];
+    [self.pickbackground2 addGestureRecognizer:pictureTap];
+    
+    
+    [self.view addSubview:self.pickbackground2];
     
     CGFloat pad = 0, pad2 = 0, height = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 8;
-        pad2 = 14;
-        height = 136;
-        width = 140;
+        pad = 0;
+        pad2 = 0;
+        height = 110;
+        width = self.view.frame.size.width / 3;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 8;
         height = 152;
-        width = 160;
+        width = self.view.frame.size.width / 3;
         pad2 = 15;
         
         
@@ -680,7 +459,7 @@
     {
         pad = 8;
         height = 164;
-        width = 180;
+        width = self.view.frame.size.width / 3;
         pad2 = 17;
         
         
@@ -689,30 +468,30 @@
         pad = 8;
         pad2 = 13;
         height = 117;
-        width = 140;
+        width = self.view.frame.size.width / 3;
         
     }
     
     
     
-    NSDictionary *viewsDictionary = @{@"back":self.pickbackground, @"top": self.pickbackground2};
-    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[top]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[back]-pad-[top]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    [self.topbackground addConstraints:constraint1];
+    NSDictionary *viewsDictionary = @{@"side":self.pickbackground, @"back": self.pickbackground2, @"nav": self.navBar};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[side]-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[nav]-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
     [self.view addConstraints:constraint2];
     
     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.pickbackground2 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
-    [self.topbackground addConstraint:constraint3];
+    [self.view addConstraint:constraint3];
     
     NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.pickbackground2 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
-    [self.topbackground addConstraint:constraint4];
+    [self.view addConstraint:constraint4];
     
 }
 
 
 - (void)addProfileBackground3 {
     
-    self.pickbackground3 = [[UIView alloc]init];
+    self.pickbackground3 = [[UIImageView alloc]init];
     
     self.pickbackground3.backgroundColor = [UIColor whiteColor];
     CGFloat width = 0; //CGRectGetWidth([[UIScreen mainScreen] bounds]) - 8;
@@ -727,22 +506,28 @@
     self.pickbackground3.layer.shadowRadius = .5;
     self.pickbackground3.layer.shadowOpacity = 0.5;
     
+    self.pickbackground3.userInteractionEnabled = YES;
     
-    [self.topbackground addSubview:self.pickbackground3];
+    UITapGestureRecognizer *pictureTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(picturePressed3:)];
+    [self.pickbackground3 addGestureRecognizer:pictureTap];
+    
+    [self.view addSubview:self.pickbackground3];
     
     CGFloat pad = 0, pad2 = 0, height = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 8;
-        pad2 = 14;
-        height = 136;
-        width = 140;
+        pad = 0;
+        pad2 = 0;
+        height = 110;
+        width = self.view.frame.size.width / 3;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 8;
         height = 152;
-        width = 160;
+        width = self.view.frame.size.width / 3;
         pad2 = 15;
         
         
@@ -751,7 +536,7 @@
     {
         pad = 8;
         height = 164;
-        width = 180;
+        width = self.view.frame.size.width / 3;
         pad2 = 17;
         
         
@@ -760,175 +545,30 @@
         pad = 8;
         pad2 = 13;
         height = 117;
-        width = 140;
+        width = self.view.frame.size.width / 3;
         
     }
     
     
     
-    NSDictionary *viewsDictionary = @{@"top": self.pickbackground3};
+    NSDictionary *viewsDictionary = @{@"top": self.pickbackground3, @"nav": self.navBar};
     NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[top]-pad-|" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[top]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    [self.topbackground addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[nav]-pad-[top]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
     [self.view addConstraints:constraint2];
     
     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.pickbackground3 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
-    [self.topbackground addConstraint:constraint3];
+    [self.view addConstraint:constraint3];
     
     NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.pickbackground3 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
-    [self.topbackground addConstraint:constraint4];
+    [self.view addConstraint:constraint4];
     
 }
-
-- (void)addProfileImage3 {
-    
-    self.pic3 = [[UIImageView alloc]init];
-    
-    self.pic3.backgroundColor = [UIColor blueColor];
-    CGFloat width = 0; // CGRectGetWidth([[UIScreen mainScreen] bounds]) - 10;
-    self.pic3.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.pic3 invalidateIntrinsicContentSize];
-
-    
-    self.pic3.alpha = 2.0;
-    
-    
-    
-    [self.pickbackground3 addSubview:self.pic3];
-    
-    CGFloat pad = 0, height = 0;
-    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
-    {
-        pad = 1;
-        height = 134;
-        width = 138;
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
-    {
-        pad = 1;
-        height = 150;
-        width = 158;
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
-    {
-        pad = 1;
-        height = 162;
-        width = 178;
-        
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 1;
-        height = 115;
-        width = 138;
-    }
-    
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picturePressed3:)];
-    [self.pic3 addGestureRecognizer:tapGesture];
-    
-    
-    if ([[DataAccess singletonInstance] LoggedInWithFB]) {
-        self.pic3.userInteractionEnabled = YES;
-    }
-    
-    
-    NSDictionary *viewsDictionary = @{@"image":self.pic3};
-    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.pic3 attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.pickbackground3 attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[image]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    [self.pickbackground3 addConstraint:constraint1];
-    [self.pickbackground3 addConstraints:constraint2];
-    
-    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.pic3 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
-    [self.pickbackground3 addConstraint:constraint3];
-    
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.pic3 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
-    [self.pickbackground3 addConstraint:constraint4];
-    
-    
-    
-    
-    
-    
-}
-
-- (void)addProfileImage4 {
-    
-    self.pic4 = [[UIImageView alloc]init];
-    
-    self.pic4.backgroundColor = [UIColor blueColor];
-    CGFloat width = 0; // CGRectGetWidth([[UIScreen mainScreen] bounds]) - 10;
-    self.pic4.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.pic4 invalidateIntrinsicContentSize];
-    
-    self.pic4.alpha = 2.0;
-    
-    
-    
-    [self.pickbackground4 addSubview:self.pic4];
-    
-    CGFloat pad = 0, height = 0;
-    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
-    {
-        pad = 1;
-        height = 134;
-        width = 138;
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
-    {
-        pad = 1;
-        height = 150;
-        width = 158;
-        
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
-    {
-        pad = 1;
-        height = 162;
-        width = 178;
-        
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 1;
-        height = 115;
-        width = 138;
-    }
-    
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picturePressed4:)];
-    [self.pic4 addGestureRecognizer:tapGesture];
-    
-    
-    if ([[DataAccess singletonInstance] LoggedInWithFB]) {
-        self.pic4.userInteractionEnabled = YES;
-    }
-    
-    
-    NSDictionary *viewsDictionary = @{@"image":self.pic4};
-    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.pic4 attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.pickbackground4 attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[image]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    [self.pickbackground4 addConstraint:constraint1];
-    [self.pickbackground4 addConstraints:constraint2];
-    
-    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.pic4 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
-    [self.pickbackground4 addConstraint:constraint3];
-    
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.pic4 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
-    [self.pickbackground4 addConstraint:constraint4];
-    
-    
-    
-    
-    
-    
-}
-
-
-
-
-
 
 
 - (void)addProfileBackground4 {
     
-    self.pickbackground4 = [[UIView alloc]init];
+    self.pickbackground4 = [[UIImageView alloc]init];
     
     self.pickbackground4.backgroundColor = [UIColor whiteColor];
     CGFloat width = 0; //CGRectGetWidth([[UIScreen mainScreen] bounds]) - 8;
@@ -937,6 +577,14 @@
     
     //  self.pickbackground.alpha = 2.0;
     
+    self.pickbackground4.userInteractionEnabled = YES;
+
+    
+    UITapGestureRecognizer *pictureTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(picturePressed4:)];
+    [self.pickbackground4 addGestureRecognizer:pictureTap];
+    
     
     self.pickbackground4.layer.masksToBounds = NO;
     self.pickbackground4.layer.shadowOffset = CGSizeMake(-.1, .2);
@@ -944,21 +592,21 @@
     self.pickbackground4.layer.shadowOpacity = 0.5;
     
     
-    [self.topbackground addSubview:self.pickbackground4];
+    [self.view addSubview:self.pickbackground4];
     
     CGFloat pad = 0, pad2 = 0, height = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 8;
-        pad2 = 14;
-        height = 136;
-        width = 140;
+        pad = 0;
+        pad2 = 0;
+        height = 110;
+        width = self.view.frame.size.width / 3;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
         pad = 8;
         height = 152;
-        width = 160;
+        width = self.view.frame.size.width / 3;
         pad2 = 15;
         
     }
@@ -966,7 +614,7 @@
     {
         pad = 8;
         height = 164;
-        width = 180;
+        width = self.view.frame.size.width / 3;
         pad2 = 17;
         
         
@@ -975,284 +623,1111 @@
         pad = 8;
         pad2 = 13;
         height = 117;
-        width = 140;
+        width = self.view.frame.size.width / 3;
     }
     
     
     
-    NSDictionary *viewsDictionary = @{@"back":self.pickbackground3, @"top": self.pickbackground4};
-    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[top]-pad-|" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[back]-pad-[top]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    [self.topbackground addConstraints:constraint1];
+    NSDictionary *viewsDictionary = @{@"back":self.pickbackground4, @"top": self.pickbackground};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
     [self.view addConstraints:constraint2];
     
     NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.pickbackground4 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
-    [self.topbackground addConstraint:constraint3];
-    
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.pickbackground4 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
-    [self.topbackground addConstraint:constraint4];
-    
-}
-
-
-
-
-
-
-- (void)setupnetworkLabel {
-    UIFont *font;
-    UIWindow* window = [UIApplication sharedApplication].keyWindow;
-    
-    CGFloat height = 0;
-    
-    self.networksLabel = [[UILabel alloc] init];
-    
-    self.networksLabel.font = [UIFont systemFontOfSize:5];
-    height = 15;
-    
-    CGFloat pad = 0;
-    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
-    {
-        pad = 27;
-        height = 180;
-        self.networksLabel.font = [UIFont systemFontOfSize:16];
-        
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
-    {
-        pad = 27;
-        height = 180;
-        self.networksLabel.font = [UIFont systemFontOfSize:17];
-        
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
-    {
-        pad = 8;
-        height = 180;
-        self.networksLabel.font = [UIFont systemFontOfSize:18];
-        
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 5;
-        height = 180;
-        self.networksLabel.font = [UIFont systemFontOfSize:15];
-        
-    }
-    
-    
-    
-    [self.networksLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.networksLabel invalidateIntrinsicContentSize];
-    self.networksLabel.font = [UIFont fontWithName:@"Verdana" size:17.0f];
-    self.networksLabel.textColor = [self cdBlue];
-    
-    self.networksLabel.text = @"Bio";
-    
-    [self.view addSubview:self.networksLabel];
-    
-    UIView *top = self.topbackground;
-    NSDictionary *viewsDictionary = @{@"top":top, @"label" : self.networksLabel};
-    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[label]" options:0 metrics:nil views:viewsDictionary];
-    [self.view addConstraints:constraint1];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    [self.view addConstraints:constraint2];
-    
-}
-
-
-- (void)setupnetworkTextBox {
-    
-    self.networkTextBox = [[UIView alloc]init];
-
-    self.networkTextBox.layer.cornerRadius = 7.0;
-    self.networkTextBox.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.networkTextBox invalidateIntrinsicContentSize];
-
-
-  //  if ([[DataAccess singletonInstance] getInstagram] != nil) {
-  //      self.networkTextField.text = [[DataAccess singletonInstance] getInstagram];
-  //  }
-    
-    CGRect screen = [[UIScreen mainScreen] bounds];
-    CGFloat height = 0, width = 0, xpad = 0, ypad = 0;
-    width = screen.size.width - 30;
-    CGFloat font_size = 0;
-    
-    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
-    {
-        height = 150;
-        xpad = 15;
-        ypad = 3;
-        font_size = 12;
-
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
-    {
-        height = 200;
-        xpad = 15;
-        ypad = 5;
-        font_size = 13;
-
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
-    {
-        height = 45;
-        xpad = 15;
-        ypad = 10;
-        font_size = 14;
-
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad])
-    {
-        height = 30;
-        xpad = 15;
-        ypad = 0;
-        font_size = 11;
-
-    }
-    
-    UIColor *color = [UIColor lightGrayColor];
-
-    
-    self.networkTextBox.userInteractionEnabled = YES;
-    UITapGestureRecognizer *textBoxPressed =
-    [[UITapGestureRecognizer alloc] initWithTarget:self
-                                            action:@selector(textBoxPressed:)];
-    [self.networkTextBox addGestureRecognizer:textBoxPressed];
-    
-    
-    self.networkTextBox.backgroundColor = [UIColor whiteColor];
-    self.networkTextBox.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.networkTextBox.layer.borderWidth = 0.5f;
-    self.networkTextBox.layer.masksToBounds = YES;
-    
-    NSMutableDictionary *viewsDictionary = [[NSMutableDictionary alloc] init];
-    [viewsDictionary setObject:self.networkTextBox forKey:@"textField"];
-    [viewsDictionary setObject:self.Line forKey:@"label"];
-    
-    [self.view addSubview:self.networkTextBox];
-    
-    NSArray *hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-xpad-[textField]" options:0 metrics:@{@"xpad" : [NSNumber numberWithFloat:xpad], @"width" : [NSNumber numberWithFloat:width]} views:viewsDictionary];
-    NSArray *vConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-pad-[textField(height)]" options:0 metrics:@{@"height" : [NSNumber numberWithFloat:height], @"pad" : [NSNumber numberWithFloat:ypad]} views:viewsDictionary];
-    
-    [self.view addConstraints:hConstraints];
-    
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.networkTextBox attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width]];
-    
-    [self.view addConstraints:vConstraints];
-    
-}
-
-
-
-
-
-- (void)addLine{
-    
-    self.Line = [[UIView alloc]init];
-    
-    self.Line.backgroundColor = [UIColor whiteColor];
-    CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
-    self.Line.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.Line invalidateIntrinsicContentSize];
-    
-    
-    
-    [self.view addSubview:self.Line];
-    
-    CGFloat pad = 0, height = 0;
-    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
-    {
-        pad = 2;
-        height = 1;
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
-    {
-        pad = 2;
-        height = 1;
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
-    {
-        pad = 2;
-        height = 1;
-    }
-    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 2;
-        height = 1;
-    }
-    
-    
-    
-    NSDictionary *viewsDictionary = @{@"top":self.networksLabel, @"line": self.Line};
-    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.Line attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[line]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    [self.view addConstraint:constraint1];
-    [self.view addConstraints:constraint2];
-    
-    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.Line attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
     [self.view addConstraint:constraint3];
     
-    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.Line attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.pickbackground4 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
     [self.view addConstraint:constraint4];
     
 }
 
-- (void)setupUserBioLabel {
-        CGFloat height = 0;
+- (void)addProfileBackground5 {
     
-    self.userBioLabel = [[UILabel alloc] init];
+    self.pickbackground5 = [[UIImageView alloc]init];
     
-    self.userBioLabel.font = [UIFont systemFontOfSize:5];
-    height = 15;
+    self.pickbackground5.backgroundColor = [UIColor whiteColor];
+    CGFloat width = 0; //CGRectGetWidth([[UIScreen mainScreen] bounds]) - 8;
+    self.pickbackground5.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.pickbackground5 invalidateIntrinsicContentSize];
     
-    CGFloat pad = 0;
+    //  self.pickbackground.alpha = 2.0;
+    self.pickbackground5.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *pictureTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(picturePressed5:)];
+    [self.pickbackground5 addGestureRecognizer:pictureTap];
+
+    
+    self.pickbackground5.layer.masksToBounds = NO;
+    self.pickbackground5.layer.shadowOffset = CGSizeMake(-.1, .2);
+    self.pickbackground5.layer.shadowRadius = .5;
+    self.pickbackground5.layer.shadowOpacity = 0.5;
+    
+    
+    [self.view addSubview:self.pickbackground5];
+    
+    CGFloat pad = 0, pad2 = 0, height = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 5;
-        height = 180;
-        self.userBioLabel.font = [UIFont systemFontOfSize:16];
-        
+        pad = 0;
+        pad2 = 0;
+        height = 110;
+        width = self.view.frame.size.width / 3;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 27;
-        height = 180;
-        self.userBioLabel.font = [UIFont systemFontOfSize:17];
+        pad = 8;
+        height = 152;
+        width = self.view.frame.size.width / 3;
+        pad2 = 15;
         
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
         pad = 8;
-        height = 180;
-        self.userBioLabel.font = [UIFont systemFontOfSize:18];
+        height = 164;
+        width = self.view.frame.size.width / 3;
+        pad2 = 17;
+        
         
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 5;
-        height = 180;
-        self.userBioLabel.font = [UIFont systemFontOfSize:15];
+        pad = 8;
+        pad2 = 13;
+        height = 117;
+        width = self.view.frame.size.width / 3;
+    }
+    
+    
+    
+    NSDictionary *viewsDictionary = @{@"back":self.pickbackground5, @"side": self.pickbackground4, @"top": self.pickbackground2};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[side]-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[back]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    [self.view addConstraints:constraint2];
+    
+    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.pickbackground5 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
+    [self.view addConstraint:constraint3];
+    
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.pickbackground5 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+    [self.view addConstraint:constraint4];
+    
+}
+
+
+- (void)addEditIcon {
+    
+    self.editIcon = [[UIImageView alloc]init];
+    
+    
+    
+    self.editIcon.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.editIcon invalidateIntrinsicContentSize];
+    
+    
+    
+    self.editIcon.backgroundColor = [UIColor blueColor];
+    
+    
+    
+    self.editIcon.alpha = 0.1;
+    
+    self.editIcon.layer.cornerRadius = 10;
+    
+    
+    
+    self.editIcon.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *pictureTap =
+    
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+     
+                                            action:@selector(goToEdit:)];
+    
+    [self.editIcon addGestureRecognizer:pictureTap];
+    
+    
+    
+    [self.view addSubview:self.editIcon];
+    
+    
+    
+    CGFloat pad = 0, height = 0, width;
+    
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+        
+    {
+        
+        pad = 40;
+        height = 28;
+        width = 55;
+        
+        self.editIcon.layer.masksToBounds = YES;
+        
+        self.editIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.editIcon.layer.shadowRadius = .5;
+        
+        self.editIcon.layer.shadowOpacity = 0.5;
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+        
+    {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.editIcon.layer.masksToBounds = YES;
+        
+        self.editIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.editIcon.layer.shadowRadius = .5;
+        
+        self.editIcon.layer.shadowOpacity = 0.5;
+        
+        
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+        
+    {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.editIcon.layer.masksToBounds = YES;
+        
+        self.editIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.editIcon.layer.shadowRadius = .5;
+        
+        self.editIcon.layer.shadowOpacity = 0.5;
+        
+        
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.editIcon.layer.masksToBounds = YES;
+        
+        self.editIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.editIcon.layer.shadowRadius = .5;
+        
+        self.editIcon.layer.shadowOpacity = 0.5;
         
     }
     
     
     
-    [self.userBioLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.userBioLabel invalidateIntrinsicContentSize];
-    self.userBioLabel.font = [UIFont fontWithName:@"Verdana" size:17.0f];
-    self.userBioLabel.textColor = [UIColor lightGrayColor];
-    
-    self.userBioLabel.text = [[DataAccess singletonInstance] getBio];
-    NSLog(@"the bio is %@", self.userBioLabel.text);
-    
-    [self.networkTextBox addSubview:self.userBioLabel];
-    
-    NSDictionary *viewsDictionary = @{@"label" : self.userBioLabel};
-    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-7-[label]" options:0 metrics:nil views:viewsDictionary];
+    NSDictionary *viewsDictionary = @{@"top" : self.pickbackground5, @"icon" : self.editIcon};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:25]} views:viewsDictionary];
     [self.view addConstraints:constraint1];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[icon]-pad-|" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:20]} views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.editIcon attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
+    
+    [self.view addConstraint:constraint3];
+    
+    
+    
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.editIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+    
+    [self.view addConstraint:constraint4];
+    
+
+    
+}
+
+
+
+
+- (void)setupEditLabel {
+    
+    
+    self.editLabel = [[UILabel alloc] init];
+    [self.editLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.editLabel invalidateIntrinsicContentSize];
+    self.editLabel.textColor = [UIColor whiteColor];
+    
+    self.editLabel.text = @"EDIT";
+    
+    
+    self.editLabel.layer.masksToBounds = NO;
+    
+    //   self.nameLabel.layer.shouldRasterize = YES;
+    
+    CGFloat pad = 0, pad2 = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        self.editLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13];
+        pad = 35;
+        pad2 = 17;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        self.editLabel.font = [UIFont systemFontOfSize:26];
+        pad = 8;
+        pad2 = 12;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 9;
+        pad2 = 16;
+        self.editLabel.font = [UIFont systemFontOfSize:27];
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 6;
+        pad2 = 8;
+        self.editLabel.font = [UIFont systemFontOfSize:19];
+        
+    }
+    
+    self.editLabel.alpha = 100.0;
+    
+    [self.editIcon addSubview:self.editLabel];
+    
+    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.editLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.editIcon attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    [self.view addConstraint:constraint1];
+    NSLayoutConstraint *constraint2 = [NSLayoutConstraint constraintWithItem:self.editLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.editIcon attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0];
+    [self.view addConstraint:constraint2];
+    
+
+}
+
+
+- (void)addinfoIcon {
+    
+    
+    
+    self.infoIcon = [[UIImageView alloc]init];
+    
+    
+    
+    self.infoIcon.backgroundColor = [UIColor blueColor];
+    
+    self.infoIcon.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.infoIcon invalidateIntrinsicContentSize];
+    
+    
+    
+    [self.infoIcon setBackgroundColor:[UIColor clearColor]];
+    
+    
+    
+    
+    self.infoIcon.image = [UIImage imageNamed:@"info"];
+    
+    
+    
+    self.infoIcon.alpha = 2.0;
+    
+    
+    
+    self.infoIcon.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *pictureTap =
+    
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+     
+                                            action:@selector(goToPic:)];
+    
+    [self.infoIcon addGestureRecognizer:pictureTap];
+    
+    
+    
+    [self.view addSubview:self.infoIcon];
+    
+    
+    
+    CGFloat pad = 0, height = 0, width;
+    
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+        
+    {
+        
+        pad = 40;
+        height = 25;
+        width = 25;
+        
+        self.infoIcon.layer.masksToBounds = YES;
+        
+        self.infoIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.infoIcon.layer.shadowRadius = .5;
+        
+        self.infoIcon.layer.shadowOpacity = 0.5;
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+        
+    {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.infoIcon.layer.cornerRadius = 102.50000;
+        
+        self.infoIcon.layer.masksToBounds = YES;
+        
+        self.infoIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.infoIcon.layer.shadowRadius = .5;
+        
+        self.infoIcon.layer.shadowOpacity = 0.5;
+        
+        
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+        
+    {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.infoIcon.layer.cornerRadius = 102.50000;
+        
+        self.infoIcon.layer.masksToBounds = YES;
+        
+        self.infoIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.infoIcon.layer.shadowRadius = .5;
+        
+        self.infoIcon.layer.shadowOpacity = 0.5;
+        
+        
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.infoIcon.layer.cornerRadius = 102.50000;
+        
+        self.infoIcon.layer.masksToBounds = YES;
+        
+        self.infoIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.infoIcon.layer.shadowRadius = .5;
+        
+        self.infoIcon.layer.shadowOpacity = 0.5;
+        
+    }
+    
+    
+    
+    // CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - widthOffset;
+    
+    
+    
+    
+    
+    
+    
+    
+    NSDictionary *viewsDictionary = @{@"top" : self.workIcon, @"icon" : self.infoIcon};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:33]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:20]} views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.infoIcon attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
+    
+    [self.view addConstraint:constraint3];
+    
+    
+    
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.infoIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+    
+    [self.view addConstraint:constraint4];
+    
+    
+    
+}
+
+
+
+- (void)addEduIcon {
+    
+    
+    
+    self.educationIcon = [[UIImageView alloc]init];
+    
+    
+    
+    self.educationIcon.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.educationIcon invalidateIntrinsicContentSize];
+    
+    
+    
+    [self.educationIcon setBackgroundColor:[UIColor clearColor]];
+    
+    
+    
+    
+    self.educationIcon.image = [UIImage imageNamed:@"edu"];
+    
+    
+    
+    self.educationIcon.alpha = 2.0;
+    
+    
+    
+    self.educationIcon.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *pictureTap =
+    
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+     
+                                            action:@selector(goToPic:)];
+    
+    [self.educationIcon addGestureRecognizer:pictureTap];
+    
+    
+    
+    [self.view addSubview:self.educationIcon];
+    
+    
+    
+    CGFloat pad = 0, height = 0, width;
+    
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+        
+    {
+        
+        pad = 40;
+        height = 25;
+        width = 25;
+        
+        self.educationIcon.layer.masksToBounds = YES;
+        
+        self.educationIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.educationIcon.layer.shadowRadius = .5;
+        
+        self.educationIcon.layer.shadowOpacity = 0.5;
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+        
+    {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.educationIcon.layer.cornerRadius = 102.50000;
+        
+        self.educationIcon.layer.masksToBounds = YES;
+        
+        self.educationIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.educationIcon.layer.shadowRadius = .5;
+        
+        self.educationIcon.layer.shadowOpacity = 0.5;
+        
+        
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+        
+    {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.educationIcon.layer.cornerRadius = 102.50000;
+        
+        self.educationIcon.layer.masksToBounds = YES;
+        
+        self.educationIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.educationIcon.layer.shadowRadius = .5;
+        
+        self.educationIcon.layer.shadowOpacity = 0.5;
+        
+        
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.educationIcon.layer.cornerRadius = 102.50000;
+        
+        self.educationIcon.layer.masksToBounds = YES;
+        
+        self.educationIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.educationIcon.layer.shadowRadius = .5;
+        
+        self.educationIcon.layer.shadowOpacity = 0.5;
+        
+    }
+    
+    
+    
+    // CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - widthOffset;
+    
+    
+    
+    
+    
+    
+    
+    
+    NSDictionary *viewsDictionary = @{@"top" : self.pickbackground4, @"icon" : self.educationIcon};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:38]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:20]} views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.educationIcon attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
+    
+    [self.view addConstraint:constraint3];
+    
+    
+    
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.educationIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+    
+    [self.view addConstraint:constraint4];
+    
+    
+    
+}
+
+
+- (void)addWorkIcon {
+    
+    
+    
+    self.workIcon = [[UIImageView alloc]init];
+    
+    
+    
+    self.workIcon.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.workIcon invalidateIntrinsicContentSize];
+    
+    
+    
+    [self.workIcon setBackgroundColor:[UIColor clearColor]];
+    
+    
+    
+    
+    self.workIcon.image = [UIImage imageNamed:@"work"];
+    
+    
+    
+    self.workIcon.alpha = 2.0;
+    
+    
+    
+    self.workIcon.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *pictureTap =
+    
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+     
+                                            action:@selector(goToPic:)];
+    
+    [self.workIcon addGestureRecognizer:pictureTap];
+    
+    
+    
+    [self.view addSubview:self.workIcon];
+    
+    
+    
+    CGFloat pad = 0, height = 0, width;
+    
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+        
+    {
+        
+        pad = 40;
+        height = 25;
+        width = 25;
+        
+        self.workIcon.layer.masksToBounds = YES;
+        
+        self.workIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.workIcon.layer.shadowRadius = .5;
+        
+        self.workIcon.layer.shadowOpacity = 0.5;
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+        
+    {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.workIcon.layer.masksToBounds = YES;
+        
+        self.workIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.workIcon.layer.shadowRadius = .5;
+        
+        self.workIcon.layer.shadowOpacity = 0.5;
+        
+        
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+        
+    {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.workIcon.layer.masksToBounds = YES;
+        
+        self.workIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.workIcon.layer.shadowRadius = .5;
+        
+        self.workIcon.layer.shadowOpacity = 0.5;
+        
+        
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.workIcon.layer.masksToBounds = YES;
+        
+        self.workIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.workIcon.layer.shadowRadius = .5;
+        
+        self.workIcon.layer.shadowOpacity = 0.5;
+        
+    }
+    
+    
+    
+    NSDictionary *viewsDictionary = @{@"top" : self.educationIcon, @"icon" : self.workIcon};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:38]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:20]} views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.workIcon attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
+    
+    [self.view addConstraint:constraint3];
+    
+    
+    
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.workIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+    
+    [self.view addConstraint:constraint4];
+    
+    
+    
+}
+
+
+- (void)setupEduLabel {
+    
+    
+    self.eduLabel = [[UILabel alloc] init];
+    [self.eduLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.eduLabel invalidateIntrinsicContentSize];
+    self.eduLabel.textColor = [UIColor lightGrayColor];
+    
+    self.eduLabel.text = @"Education";
+    
+    
+    self.eduLabel.layer.masksToBounds = NO;
+    
+    //   self.nameLabel.layer.shouldRasterize = YES;
+    
+    CGFloat pad = 0, pad2 = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        self.eduLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
+        pad = 35;
+        pad2 = 17;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        self.eduLabel.font = [UIFont systemFontOfSize:26];
+        pad = 8;
+        pad2 = 12;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 9;
+        pad2 = 16;
+        self.eduLabel.font = [UIFont systemFontOfSize:27];
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 6;
+        pad2 = 8;
+        self.eduLabel.font = [UIFont systemFontOfSize:19];
+        
+    }
+    
+    self.eduLabel.alpha = 100.0;
+    
+    [self.view addSubview:self.eduLabel];
+    
+    NSDictionary *viewsDictionary = @{@"label" : self.eduLabel, @"side" : self.educationIcon, @"top": self.pickbackground4};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[side]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
     [self.view addConstraints:constraint2];
     
 }
+
+- (void)setupEduText {
+    
+    
+    self.eduTextLabel = [[UILabel alloc] init];
+    [self.eduTextLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.eduTextLabel invalidateIntrinsicContentSize];
+    self.eduTextLabel.textColor = [UIColor lightGrayColor];
+    
+    self.eduTextLabel.text = @"Florida State University";
+    
+    
+    self.eduTextLabel.layer.masksToBounds = NO;
+    
+    //   self.nameLabel.layer.shouldRasterize = YES;
+    
+    CGFloat pad = 0, pad2 = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        self.eduTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
+        pad = 3;
+        pad2 = 18;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        self.eduTextLabel.font = [UIFont systemFontOfSize:26];
+        pad = 8;
+        pad2 = 12;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 9;
+        pad2 = 16;
+        self.eduTextLabel.font = [UIFont systemFontOfSize:27];
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 6;
+        pad2 = 8;
+        self.eduTextLabel.font = [UIFont systemFontOfSize:19];
+        
+    }
+    
+    self.eduTextLabel.alpha = 100.0;
+    
+    [self.view addSubview:self.eduTextLabel];
+    
+    NSDictionary *viewsDictionary = @{@"label" : self.eduTextLabel, @"side" : self.educationIcon, @"top": self.eduLabel};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[side]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    
+}
+
+
+- (void)setupWorkLabel {
+    
+    
+    self.workLabel = [[UILabel alloc] init];
+    [self.workLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.workLabel invalidateIntrinsicContentSize];
+    self.workLabel.textColor = [UIColor lightGrayColor];
+    
+    self.workLabel.text = @"Job";
+    
+    
+    self.workLabel.layer.masksToBounds = NO;
+    
+    //   self.nameLabel.layer.shouldRasterize = YES;
+    
+    CGFloat pad = 0, pad2 = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        self.workLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
+        pad = 25;
+        pad2 = 17;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        self.workLabel.font = [UIFont systemFontOfSize:26];
+        pad = 8;
+        pad2 = 12;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 9;
+        pad2 = 16;
+        self.workLabel.font = [UIFont systemFontOfSize:27];
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 6;
+        pad2 = 8;
+        self.workLabel.font = [UIFont systemFontOfSize:19];
+        
+    }
+    
+    self.workLabel.alpha = 100.0;
+    
+    [self.view addSubview:self.workLabel];
+    
+    NSDictionary *viewsDictionary = @{@"label" : self.workLabel, @"side" : self.workIcon, @"top": self.eduTextLabel};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[side]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    
+}
+
+- (void)setupWorkText {
+    
+    
+    self.workTextLabel = [[UILabel alloc] init];
+    [self.workTextLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.workTextLabel invalidateIntrinsicContentSize];
+    self.workTextLabel.textColor = [UIColor lightGrayColor];
+    
+    self.workTextLabel.text = @"Software Engineer at Nowhere";
+    
+    
+    self.workTextLabel.layer.masksToBounds = NO;
+    
+    //   self.nameLabel.layer.shouldRasterize = YES;
+    
+    CGFloat pad = 0, pad2 = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        self.workTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
+        pad = 3;
+        pad2 = 18;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        self.workTextLabel.font = [UIFont systemFontOfSize:26];
+        pad = 8;
+        pad2 = 12;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 9;
+        pad2 = 16;
+        self.workTextLabel.font = [UIFont systemFontOfSize:27];
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 6;
+        pad2 = 8;
+        self.workTextLabel.font = [UIFont systemFontOfSize:19];
+        
+    }
+    
+    self.workTextLabel.alpha = 100.0;
+    
+    [self.view addSubview:self.workTextLabel];
+    
+    NSDictionary *viewsDictionary = @{@"label" : self.workTextLabel, @"side" : self.workIcon, @"top": self.workLabel};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[side]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    
+}
+
+
+- (void)setupInfoLabel {
+    
+    
+    self.infoLabel = [[UILabel alloc] init];
+    [self.infoLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.infoLabel invalidateIntrinsicContentSize];
+    self.infoLabel.textColor = [UIColor lightGrayColor];
+    
+    self.infoLabel.text = @"Info";
+    
+    
+    self.infoLabel.layer.masksToBounds = NO;
+    
+    //   self.nameLabel.layer.shouldRasterize = YES;
+    
+    CGFloat pad = 0, pad2 = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        self.infoLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
+        pad = 20;
+        pad2 = 20;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        self.infoLabel.font = [UIFont systemFontOfSize:26];
+        pad = 8;
+        pad2 = 12;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 9;
+        pad2 = 16;
+        self.infoLabel.font = [UIFont systemFontOfSize:27];
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 6;
+        pad2 = 8;
+        self.infoLabel.font = [UIFont systemFontOfSize:19];
+        
+    }
+    
+    self.infoLabel.alpha = 100.0;
+    
+    [self.view addSubview:self.infoLabel];
+    
+    NSDictionary *viewsDictionary = @{@"label" : self.infoLabel, @"side" : self.infoIcon, @"top": self.workTextLabel};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[side]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    
+}
+
+
+
+- (void)setupInfoText {
+    
+    
+    self.infoTextLabel = [[UITextView alloc] init];
+    [self.infoTextLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.infoTextLabel invalidateIntrinsicContentSize];
+    self.infoTextLabel.textColor = [UIColor lightGrayColor];
+    self.infoTextLabel.backgroundColor = [UIColor clearColor];
+    
+    self.infoTextLabel.text = @"Lover of long walks on the beach. Candlelit dinners under the stars. BE A GENTLEMAN. Not here for a one night stand. snapchat: @wineloverxx3";
+    
+    
+    self.infoTextLabel.layer.masksToBounds = NO;
+    
+    //   self.nameLabel.layer.shouldRasterize = YES;
+    
+    CGFloat pad = 0, pad2 = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        self.infoTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
+        pad = -5;
+        pad2 = 14;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        self.infoTextLabel.font = [UIFont systemFontOfSize:26];
+        pad = 8;
+        pad2 = 12;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 9;
+        pad2 = 16;
+        self.infoTextLabel.font = [UIFont systemFontOfSize:27];
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 6;
+        pad2 = 8;
+        self.infoTextLabel.font = [UIFont systemFontOfSize:19];
+        
+    }
+    
+    self.infoTextLabel.alpha = 100.0;
+    
+    [self.view addSubview:self.infoTextLabel];
+    
+    NSDictionary *viewsDictionary = @{@"label" : self.infoTextLabel, @"side" : self.infoIcon, @"top": self.infoLabel};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[side]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    
+    
+    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.infoTextLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:200];
+    [self.view addConstraint:constraint3];
+    
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.infoTextLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:235];
+    [self.view addConstraint:constraint4];
+    
+}
+
+
+
 
 
 
@@ -1309,6 +1784,20 @@
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     [self.navigationController pushViewController:albums animated:YES];
 
+    
+}
+
+- (void)picturePressed5:(id)sender {
+    
+    PhotoManager *box = [PhotoManager singletonInstance];
+    
+    box.boxID = @"5";
+    
+    FBAlbumsViewController *albums = [[FBAlbumsViewController alloc] init];
+    [self.navigationItem setHidesBackButton:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController pushViewController:albums animated:YES];
+    
     
 }
 
@@ -1382,6 +1871,9 @@
     return [UIColor colorWithRed:0.00 green:0.59 blue:0.84 alpha:1.0];
 }
 
+-(UIColor*)redishColor{
+    return [UIColor colorWithRed:225.0f/255.0f green:117.0f/255.0f blue:117.0f/255.0f alpha:1.0];
+}
 
 
 

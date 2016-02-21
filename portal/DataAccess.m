@@ -272,6 +272,15 @@ static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
     
 }
 
+
+-(UIImage*)getProfileImage5{
+    
+    NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"ProfileImage5"];
+    UIImage* image = [UIImage imageWithData:imageData];
+    return image;
+    
+}
+
 #pragma - user info
 
 -(void)setName:(NSString*)name{

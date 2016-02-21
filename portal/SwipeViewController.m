@@ -272,7 +272,6 @@
 -(void)pushIntro
 {
     
-    
     IntroductionViewController *intro = [[IntroductionViewController alloc]init];
     self.parentViewController.providesPresentationContextTransitionStyle = YES;
     self.parentViewController.definesPresentationContext = YES;
@@ -303,17 +302,5 @@
     return [UIColor colorWithRed:0.0 green:172.0f/255.0f blue:237.0f/255.0f alpha:1.0];
 }
 
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -10,9 +10,18 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKShareKit/FBSDKShareKit.h>
+#import "DMPagerViewController.h"
 
-@interface UserMenuViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@class DMPagerNavigationBarItem;
 
+
+@interface UserMenuViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,DMPagerViewControllerProtocol>
+
+@property (nonatomic,strong) DMPagerNavigationBarItem	*pagerObj;
+@property (strong, nonatomic) DMPagerNavigationBar	*pagerNav;
+
+
+- (instancetype)initWithText:(NSString *) aText backgroundColor:(UIColor *) aBkgColor;
 
 
 @end
