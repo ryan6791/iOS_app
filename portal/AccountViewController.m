@@ -918,11 +918,7 @@
 
 - (void)addinfoIcon {
     
-    
-    
     self.infoIcon = [[UIImageView alloc]init];
-    
-    
     
     self.infoIcon.backgroundColor = [UIColor blueColor];
     
@@ -1825,6 +1821,15 @@
     
     return [UIColor colorWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
     
+    
+}
+
+-(IBAction)goToEdit:(id)sender{
+    
+    BioInfoViewController *account = [[BioInfoViewController alloc] init];
+    [self.navigationItem setHidesBackButton:NO];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController pushViewController:account animated:NO];
     
 }
 

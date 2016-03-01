@@ -22,7 +22,18 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self styleNavBar];
-    [self setupbioLabel];
+ //   [self setupbioLabel];
+  //  [self setupBioTextField];
+    [self addEduIcon];
+    [self setupEduLabel];
+    [self setupEduTextField];
+    
+    [self addWorkIcon];
+    [self setupWorkLabel];
+    [self setupJobTextField];
+    
+    [self addinfoIcon];
+    [self setupInfoLabel];
     [self setupBioTextField];
 }
 
@@ -101,61 +112,159 @@
 }
 
 
-- (void)setupbioLabel {
-    UIFont *font;
+- (void)setupEduTextField {
     
-    CGFloat height = 0;
+    self.eduTextField = [[UITextField alloc]init];
+    self.eduTextField.delegate = self;
+    self.eduTextField.layer.cornerRadius = 7.0;
+    self.eduTextField.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.eduTextField invalidateIntrinsicContentSize];
     
-    self.bioLabel = [[UILabel alloc] init];
+    NSString *bio = [[DataAccess singletonInstance] getBio];
     
-    self.bioLabel.font = [UIFont systemFontOfSize:5];
-    height = 15;
+    if (bio != nil) {
+        self.eduTextField.text = bio;
+    }
     
-    CGFloat pad = 0;
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    CGFloat height = 0, width = 0, xpad = 0, ypad = 0;
+    width = screen.size.width - 85;
+    CGFloat font_size = 0;
+    
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
-        pad = 27;
-        height = 180;
-        self.bioLabel.font = [UIFont systemFontOfSize:16];
+        height = 35;
+        xpad = 15;
+        ypad = 3;
+        font_size = 12;
         
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
     {
-        pad = 27;
-        height = 180;
-        self.bioLabel.font = [UIFont systemFontOfSize:17];
+        height = 35;
+        xpad = 15;
+        ypad = 5;
+        font_size = 13;
         
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
     {
-        pad = 8;
-        height = 180;
-        self.bioLabel.font = [UIFont systemFontOfSize:18];
+        height = 35;
+        xpad = 15;
+        ypad = 10;
+        font_size = 14;
         
     }
-    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
-        pad = 5;
-        height = 180;
-        self.bioLabel.font = [UIFont systemFontOfSize:15];
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad])
+    {
+        height = 35;
+        xpad = 15;
+        ypad = 0;
+        font_size = 11;
         
     }
     
+    UIColor *color = [UIColor lightGrayColor];
     
     
-    [self.bioLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.bioLabel invalidateIntrinsicContentSize];
-    self.bioLabel.font = [UIFont fontWithName:@"Verdana" size:17.0f];
-    self.bioLabel.textColor = [self cdBlue];
+    self.eduTextField.backgroundColor = [UIColor whiteColor];
+    self.eduTextField.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.eduTextField.layer.borderWidth = 0.5f;
+    self.eduTextField.layer.masksToBounds = true;
     
-    self.bioLabel.text = @"Bio";
+    NSMutableDictionary *viewsDictionary = [[NSMutableDictionary alloc] init];
+    [viewsDictionary setObject:self.eduTextField forKey:@"textField"];
+    [viewsDictionary setObject:self.eduLabel forKey:@"label"];
+    [viewsDictionary setObject:self.educationIcon forKey:@"side"];
     
-    [self.view addSubview:self.bioLabel];
+    [self.view addSubview:self.eduTextField];
     
-    NSDictionary *viewsDictionary = @{@"label" : self.bioLabel, @"nav":self.navBar};
-    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[label]" options:0 metrics:nil views:viewsDictionary];
-    [self.view addConstraints:constraint1];
-    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[nav]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
-    [self.view addConstraints:constraint2];
+    NSArray *hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[side]-xpad-[textField]" options:0 metrics:@{@"xpad" : [NSNumber numberWithFloat:xpad], @"width" : [NSNumber numberWithFloat:width]} views:viewsDictionary];
+    NSArray *vConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-pad-[textField(height)]" options:0 metrics:@{@"height" : [NSNumber numberWithFloat:height], @"pad" : [NSNumber numberWithFloat:ypad]} views:viewsDictionary];
+    
+    [self.view addConstraints:hConstraints];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.eduTextField attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width]];
+    
+    [self.view addConstraints:vConstraints];
+    
+}
+
+- (void)setupJobTextField {
+    
+    self.jobTextField = [[UITextField alloc]init];
+    self.jobTextField.delegate = self;
+    self.jobTextField.layer.cornerRadius = 7.0;
+    self.jobTextField.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.jobTextField invalidateIntrinsicContentSize];
+    
+    NSString *bio = [[DataAccess singletonInstance] getBio];
+    
+    if (bio != nil) {
+        self.jobTextField.text = bio;
+    }
+    
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    CGFloat height = 0, width = 0, xpad = 0, ypad = 0;
+    width = screen.size.width - 85;
+    CGFloat font_size = 0;
+    
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        height = 35;
+        xpad = 15;
+        ypad = 3;
+        font_size = 12;
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        height = 35;
+        xpad = 15;
+        ypad = 5;
+        font_size = 13;
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        height = 35;
+        xpad = 15;
+        ypad = 10;
+        font_size = 14;
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad])
+    {
+        height = 35;
+        xpad = 15;
+        ypad = 0;
+        font_size = 11;
+        
+    }
+    
+    UIColor *color = [UIColor lightGrayColor];
+    
+    
+    self.jobTextField.backgroundColor = [UIColor whiteColor];
+    self.jobTextField.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.jobTextField.layer.borderWidth = 0.5f;
+    self.jobTextField.layer.masksToBounds = true;
+    
+    NSMutableDictionary *viewsDictionary = [[NSMutableDictionary alloc] init];
+    [viewsDictionary setObject:self.jobTextField forKey:@"textField"];
+    [viewsDictionary setObject:self.workLabel forKey:@"label"];
+    [viewsDictionary setObject:self.workIcon forKey:@"side"];
+    
+    [self.view addSubview:self.jobTextField];
+    
+    NSArray *hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[side]-xpad-[textField]" options:0 metrics:@{@"xpad" : [NSNumber numberWithFloat:xpad], @"width" : [NSNumber numberWithFloat:width]} views:viewsDictionary];
+    NSArray *vConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-pad-[textField(height)]" options:0 metrics:@{@"height" : [NSNumber numberWithFloat:height], @"pad" : [NSNumber numberWithFloat:ypad]} views:viewsDictionary];
+    
+    [self.view addConstraints:hConstraints];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.jobTextField attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width]];
+    
+    [self.view addConstraints:vConstraints];
     
 }
 
@@ -175,7 +284,7 @@
     
     CGRect screen = [[UIScreen mainScreen] bounds];
     CGFloat height = 0, width = 0, xpad = 0, ypad = 0;
-    width = screen.size.width - 30;
+    width = screen.size.width - 85;
     CGFloat font_size = 0;
     
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
@@ -221,11 +330,12 @@
     
     NSMutableDictionary *viewsDictionary = [[NSMutableDictionary alloc] init];
     [viewsDictionary setObject:self.bioTextField forKey:@"textField"];
-    [viewsDictionary setObject:self.bioLabel forKey:@"label"];
+    [viewsDictionary setObject:self.infoLabel forKey:@"label"];
+    [viewsDictionary setObject:self.infoIcon forKey:@"side"];
     
     [self.view addSubview:self.bioTextField];
     
-    NSArray *hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-xpad-[textField]" options:0 metrics:@{@"xpad" : [NSNumber numberWithFloat:xpad], @"width" : [NSNumber numberWithFloat:width]} views:viewsDictionary];
+    NSArray *hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[side]-xpad-[textField]" options:0 metrics:@{@"xpad" : [NSNumber numberWithFloat:xpad], @"width" : [NSNumber numberWithFloat:width]} views:viewsDictionary];
     NSArray *vConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-pad-[textField(height)]" options:0 metrics:@{@"height" : [NSNumber numberWithFloat:height], @"pad" : [NSNumber numberWithFloat:ypad]} views:viewsDictionary];
     
     [self.view addConstraints:hConstraints];
@@ -237,6 +347,646 @@
 }
 
 
+- (void)addinfoIcon {
+    
+    
+    
+    self.infoIcon = [[UIImageView alloc]init];
+    
+    
+    
+    self.infoIcon.backgroundColor = [UIColor blueColor];
+    
+    self.infoIcon.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.infoIcon invalidateIntrinsicContentSize];
+    
+    
+    
+    [self.infoIcon setBackgroundColor:[UIColor clearColor]];
+    
+    
+    
+    
+    self.infoIcon.image = [UIImage imageNamed:@"info"];
+    
+    
+    
+    self.infoIcon.alpha = 2.0;
+    
+    
+    
+    self.infoIcon.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *pictureTap =
+    
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+     
+                                            action:@selector(goToPic:)];
+    
+    [self.infoIcon addGestureRecognizer:pictureTap];
+    
+    
+    
+    [self.view addSubview:self.infoIcon];
+    
+    
+    
+    CGFloat pad = 0, height = 0, width;
+    
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+        
+    {
+        
+        pad = 40;
+        height = 25;
+        width = 25;
+        
+        self.infoIcon.layer.masksToBounds = YES;
+        
+        self.infoIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.infoIcon.layer.shadowRadius = .5;
+        
+        self.infoIcon.layer.shadowOpacity = 0.5;
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+        
+    {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.infoIcon.layer.cornerRadius = 102.50000;
+        
+        self.infoIcon.layer.masksToBounds = YES;
+        
+        self.infoIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.infoIcon.layer.shadowRadius = .5;
+        
+        self.infoIcon.layer.shadowOpacity = 0.5;
+        
+        
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+        
+    {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.infoIcon.layer.cornerRadius = 102.50000;
+        
+        self.infoIcon.layer.masksToBounds = YES;
+        
+        self.infoIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.infoIcon.layer.shadowRadius = .5;
+        
+        self.infoIcon.layer.shadowOpacity = 0.5;
+        
+        
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.infoIcon.layer.cornerRadius = 102.50000;
+        
+        self.infoIcon.layer.masksToBounds = YES;
+        
+        self.infoIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.infoIcon.layer.shadowRadius = .5;
+        
+        self.infoIcon.layer.shadowOpacity = 0.5;
+        
+    }
+    
+    
+    
+    // CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - widthOffset;
+    
+    
+    
+    
+    
+    
+    
+    
+    NSDictionary *viewsDictionary = @{@"top" : self.jobTextField, @"icon" : self.infoIcon};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:33]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:20]} views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.infoIcon attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
+    
+    [self.view addConstraint:constraint3];
+    
+    
+    
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.infoIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+    
+    [self.view addConstraint:constraint4];
+    
+    
+    
+}
+
+
+
+- (void)addEduIcon {
+    
+    
+    
+    self.educationIcon = [[UIImageView alloc]init];
+    
+    
+    
+    self.educationIcon.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.educationIcon invalidateIntrinsicContentSize];
+    
+    
+    
+    [self.educationIcon setBackgroundColor:[UIColor clearColor]];
+    
+    
+    
+    
+    self.educationIcon.image = [UIImage imageNamed:@"edu"];
+    
+    
+    
+    self.educationIcon.alpha = 2.0;
+    
+    
+    
+    self.educationIcon.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *pictureTap =
+    
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+     
+                                            action:@selector(goToPic:)];
+    
+    [self.educationIcon addGestureRecognizer:pictureTap];
+    
+    
+    
+    [self.view addSubview:self.educationIcon];
+    
+    
+    
+    CGFloat pad = 0, height = 0, width;
+    
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+        
+    {
+        
+        pad = 40;
+        height = 25;
+        width = 25;
+        
+        self.educationIcon.layer.masksToBounds = YES;
+        
+        self.educationIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.educationIcon.layer.shadowRadius = .5;
+        
+        self.educationIcon.layer.shadowOpacity = 0.5;
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+        
+    {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.educationIcon.layer.cornerRadius = 102.50000;
+        
+        self.educationIcon.layer.masksToBounds = YES;
+        
+        self.educationIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.educationIcon.layer.shadowRadius = .5;
+        
+        self.educationIcon.layer.shadowOpacity = 0.5;
+        
+        
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+        
+    {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.educationIcon.layer.cornerRadius = 102.50000;
+        
+        self.educationIcon.layer.masksToBounds = YES;
+        
+        self.educationIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.educationIcon.layer.shadowRadius = .5;
+        
+        self.educationIcon.layer.shadowOpacity = 0.5;
+        
+        
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.educationIcon.layer.cornerRadius = 102.50000;
+        
+        self.educationIcon.layer.masksToBounds = YES;
+        
+        self.educationIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.educationIcon.layer.shadowRadius = .5;
+        
+        self.educationIcon.layer.shadowOpacity = 0.5;
+        
+    }
+    
+    
+    
+    // CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]) - widthOffset;
+    
+    
+    
+    
+    
+    
+    
+    
+    NSDictionary *viewsDictionary = @{@"top" : self.navBar, @"icon" : self.educationIcon};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:38]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:20]} views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.educationIcon attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
+    
+    [self.view addConstraint:constraint3];
+    
+    
+    
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.educationIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+    
+    [self.view addConstraint:constraint4];
+    
+    
+    
+}
+
+
+- (void)addWorkIcon {
+    
+    
+    
+    self.workIcon = [[UIImageView alloc]init];
+    
+    
+    
+    self.workIcon.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.workIcon invalidateIntrinsicContentSize];
+    
+    
+    
+    [self.workIcon setBackgroundColor:[UIColor clearColor]];
+    
+    
+    
+    
+    self.workIcon.image = [UIImage imageNamed:@"work"];
+    
+    
+    
+    self.workIcon.alpha = 2.0;
+    
+    
+    
+    self.workIcon.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *pictureTap =
+    
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+     
+                                            action:@selector(goToPic:)];
+    
+    [self.workIcon addGestureRecognizer:pictureTap];
+    
+    
+    
+    [self.view addSubview:self.workIcon];
+    
+    
+    
+    CGFloat pad = 0, height = 0, width;
+    
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+        
+    {
+        
+        pad = 40;
+        height = 25;
+        width = 25;
+        
+        self.workIcon.layer.masksToBounds = YES;
+        
+        self.workIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.workIcon.layer.shadowRadius = .5;
+        
+        self.workIcon.layer.shadowOpacity = 0.5;
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+        
+    {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.workIcon.layer.masksToBounds = YES;
+        
+        self.workIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.workIcon.layer.shadowRadius = .5;
+        
+        self.workIcon.layer.shadowOpacity = 0.5;
+        
+        
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+        
+    {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.workIcon.layer.masksToBounds = YES;
+        
+        self.workIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.workIcon.layer.shadowRadius = .5;
+        
+        self.workIcon.layer.shadowOpacity = 0.5;
+        
+        
+        
+    }
+    
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        
+        pad = 40;
+        
+        height = 205;
+        
+        width = 205;
+        
+        self.workIcon.layer.masksToBounds = YES;
+        
+        self.workIcon.layer.shadowOffset = CGSizeMake(-.1, .2);
+        
+        self.workIcon.layer.shadowRadius = .5;
+        
+        self.workIcon.layer.shadowOpacity = 0.5;
+        
+    }
+    
+    
+    
+    NSDictionary *viewsDictionary = @{@"top" : self.eduTextField, @"icon" : self.workIcon};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:38]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-pad-[icon]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:20]} views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    NSLayoutConstraint *constraint3 = [NSLayoutConstraint constraintWithItem:self.workIcon attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height];
+    
+    [self.view addConstraint:constraint3];
+    
+    
+    
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.workIcon attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width];
+    
+    [self.view addConstraint:constraint4];
+    
+    
+    
+}
+
+
+- (void)setupEduLabel {
+    
+    
+    self.eduLabel = [[UILabel alloc] init];
+    [self.eduLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.eduLabel invalidateIntrinsicContentSize];
+    self.eduLabel.textColor = [UIColor lightGrayColor];
+    
+    self.eduLabel.text = @"Education";
+    
+    
+    self.eduLabel.layer.masksToBounds = NO;
+    
+    //   self.nameLabel.layer.shouldRasterize = YES;
+    
+    CGFloat pad = 0, pad2 = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        self.eduLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
+        pad = 35;
+        pad2 = 17;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        self.eduLabel.font = [UIFont systemFontOfSize:26];
+        pad = 8;
+        pad2 = 12;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 9;
+        pad2 = 16;
+        self.eduLabel.font = [UIFont systemFontOfSize:27];
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 6;
+        pad2 = 8;
+        self.eduLabel.font = [UIFont systemFontOfSize:19];
+        
+    }
+    
+    self.eduLabel.alpha = 100.0;
+    
+    [self.view addSubview:self.eduLabel];
+    
+    NSDictionary *viewsDictionary = @{@"label" : self.eduLabel, @"side" : self.educationIcon, @"top": self.navBar};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[side]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    
+}
+
+
+
+
+- (void)setupWorkLabel {
+    
+    
+    self.workLabel = [[UILabel alloc] init];
+    [self.workLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.workLabel invalidateIntrinsicContentSize];
+    self.workLabel.textColor = [UIColor lightGrayColor];
+    
+    self.workLabel.text = @"Job";
+    
+    
+    self.workLabel.layer.masksToBounds = NO;
+    
+    //   self.nameLabel.layer.shouldRasterize = YES;
+    
+    CGFloat pad = 0, pad2 = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        self.workLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
+        pad = 38;
+        pad2 = 17;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        self.workLabel.font = [UIFont systemFontOfSize:26];
+        pad = 8;
+        pad2 = 12;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 9;
+        pad2 = 16;
+        self.workLabel.font = [UIFont systemFontOfSize:27];
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 6;
+        pad2 = 8;
+        self.workLabel.font = [UIFont systemFontOfSize:19];
+        
+    }
+    
+    self.workLabel.alpha = 100.0;
+    
+    [self.view addSubview:self.workLabel];
+    
+    NSDictionary *viewsDictionary = @{@"label" : self.workLabel, @"side" : self.workIcon, @"top": self.eduTextField};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[side]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    
+}
+
+
+
+- (void)setupInfoLabel {
+    
+    
+    self.infoLabel = [[UILabel alloc] init];
+    [self.infoLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.infoLabel invalidateIntrinsicContentSize];
+    self.infoLabel.textColor = [UIColor lightGrayColor];
+    
+    self.infoLabel.text = @"Info";
+    
+    
+    self.infoLabel.layer.masksToBounds = NO;
+    
+    //   self.nameLabel.layer.shouldRasterize = YES;
+    
+    CGFloat pad = 0, pad2 = 0;
+    if([[DeviceManager sharedInstance] getIsIPhone5Screen])
+    {
+        self.infoLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
+        pad = 32;
+        pad2 = 20;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
+    {
+        self.infoLabel.font = [UIFont systemFontOfSize:26];
+        pad = 8;
+        pad2 = 12;
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone6PlusScreen])
+    {
+        pad = 9;
+        pad2 = 16;
+        self.infoLabel.font = [UIFont systemFontOfSize:27];
+        
+    }
+    else if ([[DeviceManager sharedInstance] getIsIPhone4Screen] || [[DeviceManager sharedInstance] getIsIPad]) {
+        pad = 6;
+        pad2 = 8;
+        self.infoLabel.font = [UIFont systemFontOfSize:19];
+        
+    }
+    
+    self.infoLabel.alpha = 100.0;
+    
+    [self.view addSubview:self.infoLabel];
+    
+    NSDictionary *viewsDictionary = @{@"label" : self.infoLabel, @"side" : self.infoIcon, @"top": self.jobTextField};
+    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
+    [self.view addConstraints:constraint1];
+    NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[side]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
+    [self.view addConstraints:constraint2];
+    
+}
 
 
 - (void)textFieldDidChange {

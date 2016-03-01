@@ -30,9 +30,8 @@
         [self addSubview:self.backgroundView];
 
         
-        [self addImage];
+    //    [self addImage];
         [self setupLabel];
-        [self setupSuperLabel];
         
     }
     return self;
@@ -40,61 +39,33 @@
 
 
 - (void)setupLabel {
-    UIFont *font;
     
     CGFloat height = 0;
     
     self.Label = [[UILabel alloc] init];
     
-    self.Label.font = [UIFont systemFontOfSize:5];
+   // self.Label.font = [UIFont systemFontOfSize:5];
+    self.Label.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:22];
+
     height = 15;
     
     
     
     [self.Label setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.Label invalidateIntrinsicContentSize];
-    self.Label.font = font;
     self.Label.textColor = [UIColor blackColor];
     
     [self addSubview:self.Label];
     
     NSDictionary *viewsDictionary = @{@"label" : self.Label};
-    NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-75-[label]" options:0 metrics:nil views:viewsDictionary];
-    [self addConstraints:constraint1];
+ //   NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-30-[label]" options:0 metrics:nil views:viewsDictionary];
+        NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.Label attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    [self addConstraint:constraint1];
     NSLayoutConstraint *constraint2 = [NSLayoutConstraint constraintWithItem:self.Label attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0];
     [self addConstraint:constraint2];
 
     
 }
-
-
-- (void)setupSuperLabel {
-    UIFont *font;
-    
-    CGFloat height = 0;
-    
-    self.superLabel = [[UILabel alloc] init];
-    
-    self.superLabel.font = [UIFont systemFontOfSize:5];
-    height = 15;
-    
-    
-    
-    [self.superLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.superLabel invalidateIntrinsicContentSize];
-    self.superLabel.font = font;
-    self.superLabel.textColor = [UIColor blackColor];
-    
-    [self addSubview:self.superLabel];
-    
-    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.superLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
-    [self addConstraint:constraint1];
-    NSLayoutConstraint *constraint2 = [NSLayoutConstraint constraintWithItem:self.superLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0];
-    [self addConstraint:constraint2];
-    
-    
-}
-
 
 
 
@@ -162,6 +133,10 @@
 -(UIColor*)grayColor{
     
     return [UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1.0];
+}
+
+-(UIColor*)redishColor{
+    return [UIColor colorWithRed:225.0f/255.0f green:117.0f/255.0f blue:117.0f/255.0f alpha:1.0];
 }
 
 

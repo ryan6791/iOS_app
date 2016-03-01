@@ -17,7 +17,6 @@
 		4A12DDF01C49F10A0068D79C /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12DDEF1C49F10A0068D79C /* MessagesViewController.m */; };
 		4A12DDF91C49F4260068D79C /* ModelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12DDF81C49F4260068D79C /* ModelData.m */; };
 		4A12DDFF1C49F6140068D79C /* NSUserDefaults+Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12DDFE1C49F6140068D79C /* NSUserDefaults+Settings.m */; };
-		4A12DE421C4A1A230068D79C /* JSQMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A12DE411C4A1A230068D79C /* JSQMessagesAssets.bundle */; };
 		4A12DE4D1C4A60890068D79C /* Keira-Knightley_A-Cute-Woman_441.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A12DE4C1C4A60890068D79C /* Keira-Knightley_A-Cute-Woman_441.jpg */; };
 		4A12DE501C4C6EEC0068D79C /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A12DE4F1C4C6EEC0068D79C /* UserData.m */; };
 		4A12DE521C4C756B0068D79C /* original.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4A12DE511C4C756B0068D79C /* original.jpg */; };
@@ -34,6 +33,7 @@
 		4A256AEC1BE59B8E006CD39E /* checkedbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A256AEB1BE59B8E006CD39E /* checkedbox.png */; };
 		4A256AEE1BE59BB0006CD39E /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A256AED1BE59BB0006CD39E /* checkbox.png */; };
 		4A29E0ED1C560E570075F730 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A29E0EC1C560E570075F730 /* SystemConfiguration.framework */; };
+		4A2B76581C7FEE780003A4E6 /* JSQMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A2B76571C7FEE780003A4E6 /* JSQMessagesAssets.bundle */; };
 		4A3440611C508EBB00AD5E89 /* NotificationLayover.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3440601C508EBB00AD5E89 /* NotificationLayover.m */; };
 		4A44E8681C64B6F5002390FF /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A44E8671C64B6F5002390FF /* SettingsTableViewCell.m */; };
 		4A44E86B1C64C0BD002390FF /* GenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A44E86A1C64C0BD002390FF /* GenderViewController.m */; };
@@ -144,7 +144,6 @@
 		4A12DDF81C49F4260068D79C /* ModelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelData.m; sourceTree = "<group>"; };
 		4A12DDFD1C49F6140068D79C /* NSUserDefaults+Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Settings.h"; sourceTree = "<group>"; };
 		4A12DDFE1C49F6140068D79C /* NSUserDefaults+Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Settings.m"; sourceTree = "<group>"; };
-		4A12DE411C4A1A230068D79C /* JSQMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JSQMessagesAssets.bundle; sourceTree = "<group>"; };
 		4A12DE4C1C4A60890068D79C /* Keira-Knightley_A-Cute-Woman_441.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Keira-Knightley_A-Cute-Woman_441.jpg"; sourceTree = "<group>"; };
 		4A12DE4E1C4C6EEC0068D79C /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
 		4A12DE4F1C4C6EEC0068D79C /* UserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserData.m; sourceTree = "<group>"; };
@@ -166,6 +165,7 @@
 		4A256AED1BE59BB0006CD39E /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
 		4A29E0EA1C560E150075F730 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		4A29E0EC1C560E570075F730 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4A2B76571C7FEE780003A4E6 /* JSQMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JSQMessagesAssets.bundle; sourceTree = "<group>"; };
 		4A34405F1C508EBB00AD5E89 /* NotificationLayover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationLayover.h; sourceTree = "<group>"; };
 		4A3440601C508EBB00AD5E89 /* NotificationLayover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationLayover.m; sourceTree = "<group>"; };
 		4A44E8661C64B6F5002390FF /* SettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewCell.h; sourceTree = "<group>"; };
@@ -327,7 +327,7 @@
 		4A12DE0A1C4A187F0068D79C /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				4A12DE411C4A1A230068D79C /* JSQMessagesAssets.bundle */,
+				4A2B76571C7FEE780003A4E6 /* JSQMessagesAssets.bundle */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -736,7 +736,6 @@
 				4AFC39791C0A6766004E7262 /* 1448772307_Streamline-76.png in Resources */,
 				4A0B080F1C5847F70097C72C /* PhotosCollectionViewCell.xib in Resources */,
 				4A99BF381BE7380900356805 /* image_placeholder.png in Resources */,
-				4A12DE421C4A1A230068D79C /* JSQMessagesAssets.bundle in Resources */,
 				4A705C951BF598410084B23C /* Sign-in-Large---Default.png in Resources */,
 				4AB5EC201C780E9700CFAFC0 /* Marker Filled-50 (1).png in Resources */,
 				4ADCA1341C1E9AB1002A018B /* Oval 3 + Rectangle 11-1.png in Resources */,
@@ -746,6 +745,7 @@
 				4AFC841E1C783FCC00D1AB37 /* Literature Filled-50.png in Resources */,
 				4A256AEA1BE4950B006CD39E /* instagram_icon1.png in Resources */,
 				4A92A3941C0586C600E12000 /* 1448452694_settings.png in Resources */,
+				4A2B76581C7FEE780003A4E6 /* JSQMessagesAssets.bundle in Resources */,
 				4A256AEE1BE59BB0006CD39E /* checkbox.png in Resources */,
 				4A705C971BF598620084B23C /* Sign-In-Large---Default-ret.png in Resources */,
 				4A0B080D1C583E170097C72C /* PhotosCollectionViewController.xib in Resources */,

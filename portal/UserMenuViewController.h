@@ -20,6 +20,7 @@
 @property (nonatomic,strong) DMPagerNavigationBarItem	*pagerObj;
 @property (strong, nonatomic) DMPagerNavigationBar	*pagerNav;
 
+@property (strong, nonatomic) IBOutlet UIImageView *pic;
 
 - (instancetype)initWithText:(NSString *) aText backgroundColor:(UIColor *) aBkgColor;
 
