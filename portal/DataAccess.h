@@ -122,6 +122,14 @@
 
 -(NSString*)getBio;
 
+-(void)setEdu:(NSString*)edu;
+
+-(NSString*)getEdu;
+
+-(void)setWork:(NSString*)work;
+
+-(NSString*)getWork;
+
 
 - (BOOL)IsInitialUser;
 - (void)setInitialUserStatus:(BOOL)status;

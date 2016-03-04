@@ -104,7 +104,7 @@
     UIButton *titleView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
     [titleView setUserInteractionEnabled:NO];
     
-    [titleView setImage:[UIImage imageNamed:@"logo_.png"] forState:UIControlStateNormal];
+    [titleView setImage:[UIImage imageNamed:@"logo"] forState:UIControlStateNormal];
     
     self.navigationItem.titleView = titleView;
 }

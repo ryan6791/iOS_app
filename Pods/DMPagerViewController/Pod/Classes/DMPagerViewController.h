@@ -69,4 +69,7 @@ typedef NS_ENUM(NSInteger, DMPagerViewControllerAnimation) {
 // Return controller instance for a specified page
 - (UIViewController *) controllerAtPage:(NSInteger) aPageIndex;
 
++ (id)singletonInstance;
+
+
 @end

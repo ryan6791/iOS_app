@@ -74,6 +74,13 @@
 		4AC91BE21C60AC470078CBD0 /* CERangeSliderKnobLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC91BE11C60AC470078CBD0 /* CERangeSliderKnobLayer.m */; };
 		4AC91BE51C60B08C0078CBD0 /* CERangeSliderTrackLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC91BE41C60B08C0078CBD0 /* CERangeSliderTrackLayer.m */; };
 		4AC91BE81C620D190078CBD0 /* DistanceRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC91BE71C620D190078CBD0 /* DistanceRangeSlider.m */; };
+		4AC95D6E1C86C47F00582D0C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AC95D6D1C86C47F00582D0C /* Images.xcassets */; };
+		4AC95D721C88072900582D0C /* 1448769105_down4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC95D711C88072900582D0C /* 1448769105_down4.png */; };
+		4AC95D741C8807E500582D0C /* Screen Shot 2015-08-05 at 5.52.48 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC95D731C8807E500582D0C /* Screen Shot 2015-08-05 at 5.52.48 PM.png */; };
+		4AC95D761C88087600582D0C /* 1453179195_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC95D751C88087600582D0C /* 1453179195_chat.png */; };
+		4AC95D781C88096E00582D0C /* 635861833670816810507191518_6670-perfect-snow-1920x1080-nature-wallpaper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4AC95D771C88096E00582D0C /* 635861833670816810507191518_6670-perfect-snow-1920x1080-nature-wallpaper.jpg */; };
+		4AC95D7A1C880A6200582D0C /* Oval 2 + Rectangle 10.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC95D791C880A6200582D0C /* Oval 2 + Rectangle 10.png */; };
+		4AC95D7C1C880B9100582D0C /* Like-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC95D7B1C880B9100582D0C /* Like-50.png */; };
 		4AC9A8721C4C875F0096350D /* MatchProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9A8711C4C875F0096350D /* MatchProfileViewController.m */; };
 		4AC9A8741C4DA6B00096350D /* 1453179218_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC9A8731C4DA6B00096350D /* 1453179218_chat.png */; };
 		4AC9A8771C4F75820096350D /* RelationshipMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9A8761C4F75820096350D /* RelationshipMatchViewController.m */; };
@@ -235,6 +242,13 @@
 		4AC91BE41C60B08C0078CBD0 /* CERangeSliderTrackLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CERangeSliderTrackLayer.m; sourceTree = "<group>"; };
 		4AC91BE61C620D190078CBD0 /* DistanceRangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceRangeSlider.h; sourceTree = "<group>"; };
 		4AC91BE71C620D190078CBD0 /* DistanceRangeSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceRangeSlider.m; sourceTree = "<group>"; };
+		4AC95D6D1C86C47F00582D0C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4AC95D711C88072900582D0C /* 1448769105_down4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1448769105_down4.png; sourceTree = "<group>"; };
+		4AC95D731C8807E500582D0C /* Screen Shot 2015-08-05 at 5.52.48 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2015-08-05 at 5.52.48 PM.png"; sourceTree = "<group>"; };
+		4AC95D751C88087600582D0C /* 1453179195_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1453179195_chat.png; sourceTree = "<group>"; };
+		4AC95D771C88096E00582D0C /* 635861833670816810507191518_6670-perfect-snow-1920x1080-nature-wallpaper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "635861833670816810507191518_6670-perfect-snow-1920x1080-nature-wallpaper.jpg"; sourceTree = "<group>"; };
+		4AC95D791C880A6200582D0C /* Oval 2 + Rectangle 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Oval 2 + Rectangle 10.png"; sourceTree = "<group>"; };
+		4AC95D7B1C880B9100582D0C /* Like-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Like-50.png"; sourceTree = "<group>"; };
 		4AC9A8701C4C875F0096350D /* MatchProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchProfileViewController.h; sourceTree = "<group>"; };
 		4AC9A8711C4C875F0096350D /* MatchProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchProfileViewController.m; sourceTree = "<group>"; };
 		4AC9A8731C4DA6B00096350D /* 1453179218_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1453179218_chat.png; sourceTree = "<group>"; };
@@ -372,6 +386,7 @@
 		4ABB5B991BC8BCB600BEA3EF /* portal */ = {
 			isa = PBXGroup;
 			children = (
+				4AC95D6D1C86C47F00582D0C /* Images.xcassets */,
 				F98AD2E51C55CA6F001FD5F2 /* OAuth */,
 				4ABB5BE11BC8C08A00BEA3EF /* ViewControllers */,
 				4ABB5BD71BC8BE3000BEA3EF /* classes */,
@@ -388,6 +403,12 @@
 		4ABB5B9A1BC8BCB600BEA3EF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4AC95D7B1C880B9100582D0C /* Like-50.png */,
+				4AC95D791C880A6200582D0C /* Oval 2 + Rectangle 10.png */,
+				4AC95D771C88096E00582D0C /* 635861833670816810507191518_6670-perfect-snow-1920x1080-nature-wallpaper.jpg */,
+				4AC95D751C88087600582D0C /* 1453179195_chat.png */,
+				4AC95D731C8807E500582D0C /* Screen Shot 2015-08-05 at 5.52.48 PM.png */,
+				4AC95D711C88072900582D0C /* 1448769105_down4.png */,
 				4AFC841D1C783FCC00D1AB37 /* Literature Filled-50.png */,
 				4AFC841B1C783F4600D1AB37 /* Briefcase Filled-50.png */,
 				4AB5EC1F1C780E9700CFAFC0 /* Marker Filled-50 (1).png */,
@@ -731,9 +752,14 @@
 				4AFC841C1C783F4600D1AB37 /* Briefcase Filled-50.png in Resources */,
 				4A0B08141C58500F0097C72C /* PhotosViewController.xib in Resources */,
 				4ADCA13A1C1E9B75002A018B /* Oval 2 + Rectangle 10-1.png in Resources */,
+				4AC95D6E1C86C47F00582D0C /* Images.xcassets in Resources */,
 				4AC9A8741C4DA6B00096350D /* 1453179218_chat.png in Resources */,
 				4A256ADC1BE49248006CD39E /* linkedin_icon.png in Resources */,
+				4AC95D781C88096E00582D0C /* 635861833670816810507191518_6670-perfect-snow-1920x1080-nature-wallpaper.jpg in Resources */,
+				4AC95D761C88087600582D0C /* 1453179195_chat.png in Resources */,
+				4AC95D7C1C880B9100582D0C /* Like-50.png in Resources */,
 				4AFC39791C0A6766004E7262 /* 1448772307_Streamline-76.png in Resources */,
+				4AC95D7A1C880A6200582D0C /* Oval 2 + Rectangle 10.png in Resources */,
 				4A0B080F1C5847F70097C72C /* PhotosCollectionViewCell.xib in Resources */,
 				4A99BF381BE7380900356805 /* image_placeholder.png in Resources */,
 				4A705C951BF598410084B23C /* Sign-in-Large---Default.png in Resources */,
@@ -750,6 +776,7 @@
 				4A705C971BF598620084B23C /* Sign-In-Large---Default-ret.png in Resources */,
 				4A0B080D1C583E170097C72C /* PhotosCollectionViewController.xib in Resources */,
 				4ADCA1361C1E9B47002A018B /* yesButton-01-1.png in Resources */,
+				4AC95D721C88072900582D0C /* 1448769105_down4.png in Resources */,
 				4AFC397D1C0A6A13004E7262 /* 1448772977_snapchat.png in Resources */,
 				4A12DE551C4C75840068D79C /* images-3.jpeg in Resources */,
 				4ABB5BAD1BC8BCB700BEA3EF /* LaunchScreen.storyboard in Resources */,
@@ -759,6 +786,7 @@
 				4A99BF331BE72BF000356805 /* Edit.png in Resources */,
 				4A92A3981C07D0BB00E12000 /* peace-sign-hand.png in Resources */,
 				4A12DE561C4C75840068D79C /* 6956323-cute-girl-photos.jpg in Resources */,
+				4AC95D741C8807E500582D0C /* Screen Shot 2015-08-05 at 5.52.48 PM.png in Resources */,
 				4AFC39871C0ACCB3004E7262 /* 1448798253_facebook.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

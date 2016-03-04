@@ -285,6 +285,19 @@ static CGFloat	kDeviationFactor		= 0.5f;
 	lastContentOffset = aScrollView.contentOffset.x;
 }
 
++ (id)singletonInstance {
+    
+    static DMPagerViewController *DMPager = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        DMPager = [[self alloc] init];
+    });
+    
+    return DMPager;
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

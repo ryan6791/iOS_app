@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BioInfoViewController : UIViewController<UITextFieldDelegate>
+@interface BioInfoViewController : UIViewController<UITextFieldDelegate, UITextViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel *bioLabel;
-@property (strong, nonatomic) IBOutlet UILabel *userBioLabel;
+@property (strong, nonatomic) UILabel *bioLabel;
+@property (strong, nonatomic) UILabel *userBioLabel;
 @property (nonatomic, retain) UINavigationBar * navBar;
-@property (strong, nonatomic) IBOutlet UITextField *bioTextField;
-@property (strong, nonatomic) IBOutlet UITextField *eduTextField;
-@property (strong, nonatomic) IBOutlet UITextField *jobTextField;
+@property (strong, nonatomic) UITextView *bioTextView;
+@property (strong, nonatomic) UITextField *eduTextField;
+@property (strong, nonatomic) UITextField *jobTextField;
 
 
 @property (nonatomic, strong) UILabel *locationLabel;

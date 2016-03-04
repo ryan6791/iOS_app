@@ -80,7 +80,6 @@
     ctrl1.title = name;
     ctrl2.title = @"Message";
     ctrl3.title = @"About";
-
     
  //   ctrl1.tabBarItem.image = [UIImage imageNamed:@"logo"];
 //    ctrl2.tabBarItem.image = [UIImage imageNamed:@"logo"];

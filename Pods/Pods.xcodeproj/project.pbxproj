@@ -42,6 +42,8 @@
 		4319A72765FFE454BFC3BFC106B38935 /* JSQMessagesTimestampFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = D1503DF91ED47AEBFFC5DCF925A242BE /* JSQMessagesTimestampFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		44620CAF348A786FF605D031C12F9F0F /* JSQMessagesBubblesSizeCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = C1D627E228F523ADB06E163DF1D0EFFA /* JSQMessagesBubblesSizeCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49597BC9119A404D2A7EFDD4429D01B1 /* UIView+JSQMessages.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F7E4A6907F1A7287E32A391548324F4 /* UIView+JSQMessages.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4ABFE3031C86BCEB004C988E /* PodSizeManage.h in Headers */ = {isa = PBXBuildFile; fileRef = 4ABFE3011C86BCEA004C988E /* PodSizeManage.h */; };
+		4ABFE3041C86BCEB004C988E /* PodSizeManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABFE3021C86BCEA004C988E /* PodSizeManage.m */; };
 		4ADD3A211C7549CD00F24393 /* PodSizeManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4ADD3A1F1C7549CD00F24393 /* PodSizeManager.h */; };
 		4ADD3A221C7549CD00F24393 /* PodSizeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD3A201C7549CD00F24393 /* PodSizeManager.m */; };
 		4B742B0EF5F7162FEC382F37E8755579 /* JSQMessagesAvatarImageFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A5916322BDB776A357DA2D2AF086FFB /* JSQMessagesAvatarImageFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -210,6 +212,8 @@
 		483270141065C54D149CF68C96E6B182 /* DMPagerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DMPagerViewController.m; path = Pod/Classes/DMPagerViewController.m; sourceTree = "<group>"; };
 		48A86950949E9DCCF1A83DDE441F1D79 /* JSQMessagesLoadEarlierHeaderView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSQMessagesLoadEarlierHeaderView.m; path = JSQMessagesViewController/Views/JSQMessagesLoadEarlierHeaderView.m; sourceTree = "<group>"; };
 		4A9BC5D7230905D46EDABD215CDA622F /* JSQMessagesBubblesSizeCalculator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSQMessagesBubblesSizeCalculator.m; path = JSQMessagesViewController/Layout/JSQMessagesBubblesSizeCalculator.m; sourceTree = "<group>"; };
+		4ABFE3011C86BCEA004C988E /* PodSizeManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PodSizeManage.h; sourceTree = "<group>"; };
+		4ABFE3021C86BCEA004C988E /* PodSizeManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PodSizeManage.m; sourceTree = "<group>"; };
 		4ADD3A1F1C7549CD00F24393 /* PodSizeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PodSizeManager.h; sourceTree = "<group>"; };
 		4ADD3A201C7549CD00F24393 /* PodSizeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PodSizeManager.m; sourceTree = "<group>"; };
 		50ACD1220AE7C18E4326783BA70E3C99 /* Pods-pairedUP-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-pairedUP-umbrella.h"; sourceTree = "<group>"; };
@@ -455,6 +459,8 @@
 				3FDEFCCF91D3DC5D579422EF4547292F /* JSQSystemSoundPlayer */,
 				4ADD3A1F1C7549CD00F24393 /* PodSizeManager.h */,
 				4ADD3A201C7549CD00F24393 /* PodSizeManager.m */,
+				4ABFE3011C86BCEA004C988E /* PodSizeManage.h */,
+				4ABFE3021C86BCEA004C988E /* PodSizeManage.m */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -638,6 +644,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37079A1E1582C47A9C22B3F77F3A5E48 /* DMPagerNavigationBar.h in Headers */,
+				4ABFE3031C86BCEB004C988E /* PodSizeManage.h in Headers */,
 				321997F89E7CC556ED95C06E2396340C /* DMPagerViewController-umbrella.h in Headers */,
 				A6A9D9EC8BAE54436A4514EE1B972230 /* DMPagerViewController.h in Headers */,
 				4ADD3A211C7549CD00F24393 /* PodSizeManager.h in Headers */,
@@ -800,6 +807,20 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					95DB89A8BFC5FF0BF98458651D0163CD = {
+						DevelopmentTeam = KYUNTCYL2V;
+					};
+					9F02DC628ACE7DF59D8EDA971E31B661 = {
+						DevelopmentTeam = KYUNTCYL2V;
+					};
+					ABA0832B969222B4FC7EC028DEFCA821 = {
+						DevelopmentTeam = KYUNTCYL2V;
+					};
+					EDA125ADA52355B7CA6DF7BA96918357 = {
+						DevelopmentTeam = KYUNTCYL2V;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -869,6 +890,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ADD3A221C7549CD00F24393 /* PodSizeManager.m in Sources */,
+				4ABFE3041C86BCEB004C988E /* PodSizeManage.m in Sources */,
 				51F7BC7B28C5479D11C1460F9BFD6442 /* DMPagerNavigationBar.m in Sources */,
 				544232AF16ED5E36827737161ECA1E3B /* DMPagerViewController-dummy.m in Sources */,
 				50E840687D536556446995CF5C97DC87 /* DMPagerViewController.m in Sources */,
@@ -975,6 +997,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 070A28EC9AE4BB94B664B9E7149E3486 /* JSQSystemSoundPlayer.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -990,6 +1013,7 @@
 				MODULEMAP_FILE = "Target Support Files/JSQSystemSoundPlayer/JSQSystemSoundPlayer.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = JSQSystemSoundPlayer;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1014,6 +1038,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 036C7157CDE9F75198C54D508BBEF107 /* DMPagerViewController.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1029,6 +1054,7 @@
 				MODULEMAP_FILE = "Target Support Files/DMPagerViewController/DMPagerViewController.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = DMPagerViewController;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1041,6 +1067,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8552BA71B2384F6C6966F0CF956D5081 /* JSQMessagesViewController.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1056,6 +1083,7 @@
 				MODULEMAP_FILE = "Target Support Files/JSQMessagesViewController/JSQMessagesViewController.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = JSQMessagesViewController;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1068,6 +1096,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 070A28EC9AE4BB94B664B9E7149E3486 /* JSQSystemSoundPlayer.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1083,6 +1112,7 @@
 				MODULEMAP_FILE = "Target Support Files/JSQSystemSoundPlayer/JSQSystemSoundPlayer.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = JSQSystemSoundPlayer;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1107,6 +1137,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8552BA71B2384F6C6966F0CF956D5081 /* JSQMessagesViewController.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1122,6 +1153,7 @@
 				MODULEMAP_FILE = "Target Support Files/JSQMessagesViewController/JSQMessagesViewController.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = JSQMessagesViewController;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1134,6 +1166,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A72FC288BA9456CBA0C92687E5E15A4F /* Pods-pairedUP.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1152,6 +1185,7 @@
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_NAME = Pods_pairedUP;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1203,6 +1237,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 036C7157CDE9F75198C54D508BBEF107 /* DMPagerViewController.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1218,6 +1253,7 @@
 				MODULEMAP_FILE = "Target Support Files/DMPagerViewController/DMPagerViewController.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = DMPagerViewController;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1230,6 +1266,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D9A72F801173A5D11502C2651439190 /* Pods-pairedUP.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1248,6 +1285,7 @@
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_NAME = Pods_pairedUP;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";

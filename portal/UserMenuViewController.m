@@ -440,21 +440,21 @@ viewForFooterInSection:(NSInteger)section {
             cell.Label.text = @"Account";//[[DataAccess singletonInstance] getName];
     
         }else if (indexPath.row == 1) {
-            cell.pic.image = [UIImage imageNamed:@"settings"];
+          //  cell.pic.image = [UIImage imageNamed:@"settings"];
             cell.pic.alpha = 0.8;
             cell.Label.text = @"Settings";
         }else if (indexPath.row == 2) {
-            cell.pic.image = [UIImage imageNamed:@"share_icon"];
+          //  cell.pic.image = [UIImage imageNamed:@"share_icon"];
             cell.Label.text = @"Share";
         }
         else if (indexPath.row == 3) {
-            cell.pic.image = [UIImage imageNamed:@"paper_clip"];
+         //   cell.pic.image = [UIImage imageNamed:@"paper_clip"];
             cell.Label.text = @"Terms of Service";
         }else if (indexPath.row == 4) {
-            cell.pic.image = [UIImage imageNamed:@"paper_clip"];
+         //   cell.pic.image = [UIImage imageNamed:@"paper_clip"];
             cell.Label.text = @"Privacy Policy";
         }else if (indexPath.row == 5) {
-            cell.pic.image = [UIImage imageNamed:@"paper_clip"];
+         //   cell.pic.image = [UIImage imageNamed:@"paper_clip"];
             cell.Label.text = @"Acknowledgements";
         }
     

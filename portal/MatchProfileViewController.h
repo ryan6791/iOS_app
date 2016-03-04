@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DMPagerViewController.h"
 
 
 @interface MatchProfileViewController : UIViewController
@@ -25,6 +26,7 @@
 
 @property (nonatomic, strong) UIButton *buttonBackground1;
 @property (nonatomic, strong) UIButton *buttonBackground2;
+
 
 
 

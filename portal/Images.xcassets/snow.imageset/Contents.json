@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "635861833670816810507191518_6670-perfect-snow-1920x1080-nature-wallpaper.jpg",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "635861833670816810507191518_6670-perfect-snow-1920x1080-nature-wallpaper-1.jpg",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "635861833670816810507191518_6670-perfect-snow-1920x1080-nature-wallpaper-2.jpg",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

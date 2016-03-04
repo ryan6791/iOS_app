@@ -243,16 +243,10 @@
     self.nameLabel = [[UILabel alloc] init];
     [self.nameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.nameLabel invalidateIntrinsicContentSize];
-    self.nameLabel.textColor = [UIColor blackColor];
-    
+    self.nameLabel.textColor = [self redishColor];
     self.nameLabel.text = [[DataAccess singletonInstance] getMatchName];
-    
     self.nameLabel.text = [self.nameLabel.text stringByAppendingString:@", 24"];
-    
-    
     self.nameLabel.layer.masksToBounds = NO;
-    
-    //   self.nameLabel.layer.shouldRasterize = YES;
     
     CGFloat pad = 0, pad2 = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
@@ -428,10 +422,10 @@
     // Handle clicks on the button
     [self.buttonBackground1
      addTarget:self
-     action:@selector(LoginButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+     action:@selector(dropButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
- //   self.buttonBackground1.layer.borderWidth = 1;
- //   self.buttonBackground1.layer.borderColor = [self redishColor].CGColor;
+    self.buttonBackground1.layer.borderWidth = 0.2;
+    self.buttonBackground1.layer.borderColor = [self redishColor].CGColor;
     self.buttonBackground1.alpha = 1.0;
     self.buttonBackground1.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18];
 //    self.buttonBackground1.layer.cornerRadius = 10.0;
@@ -439,10 +433,10 @@
     self.buttonBackground1.translatesAutoresizingMaskIntoConstraints = NO;
     [self.buttonBackground1 invalidateIntrinsicContentSize];
     
-    [self.buttonBackground1 setTitleColor:[self redishColor] forState:UIControlStateNormal];
+    [self.buttonBackground1 setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     self.buttonBackground1.titleEdgeInsets = UIEdgeInsetsMake(15, 0, 15, 0);
     [self.view addSubview:self.buttonBackground1];
- //   self.buttonBackground1.layer.shadowColor = [self redishColor].CGColor;
+    self.buttonBackground1.layer.shadowColor = [self redishColor].CGColor;
 
     
     CGFloat pad = 0, height = 0, widthOffset;
@@ -532,14 +526,52 @@
 
 
 
-/*
-#pragma mark - Navigation
+- (void)dropButtonTapped:(id)sender
+{
+    
+    
+    
+    NSString *name = @"Drop?";
+    NSString *description = [@"Are you sure you want to drop " stringByAppendingString:[[DataAccess singletonInstance] getMatchName]];
+    
+    NSString *desFull = [description stringByAppendingString:@"?"];
+    
+    
+        
+        UIAlertController *alert= [UIAlertController
+                                   alertControllerWithTitle:name
+                                   message:desFull
+                                   preferredStyle:UIAlertControllerStyleAlert];
+        
+        
+        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {
+                                                           
+                                                           [alert dismissViewControllerAnimated:YES completion:nil];
+                                                        
+                                                           
+                                                       //maybe have to edit the pod to forcefully change the page without button press
+                                                      //     [[DMPagerViewController singletonInstance] ];
+                                                           
+                                                       }];
+        
+        [alert addAction:ok];
+    
+    
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction * action) {
+                                                   
+                                                   [alert dismissViewControllerAnimated:YES completion:nil];
+                                                   
+                                               }];
+    
+    [alert addAction:cancel];
+    
+    
+    [self presentViewController:alert animated:YES completion:nil];
+        
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
 }
-*/
 
 @end

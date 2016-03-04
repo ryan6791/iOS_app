@@ -120,7 +120,7 @@
     self.eduTextField.translatesAutoresizingMaskIntoConstraints = NO;
     [self.eduTextField invalidateIntrinsicContentSize];
     
-    NSString *bio = [[DataAccess singletonInstance] getBio];
+    NSString *bio = [[DataAccess singletonInstance] getEdu];
     
     if (bio != nil) {
         self.eduTextField.text = bio;
@@ -198,7 +198,7 @@
     self.jobTextField.translatesAutoresizingMaskIntoConstraints = NO;
     [self.jobTextField invalidateIntrinsicContentSize];
     
-    NSString *bio = [[DataAccess singletonInstance] getBio];
+    NSString *bio = [[DataAccess singletonInstance] getWork];
     
     if (bio != nil) {
         self.jobTextField.text = bio;
@@ -270,16 +270,16 @@
 
 - (void)setupBioTextField {
     
-    self.bioTextField = [[UITextField alloc]init];
-    self.bioTextField.delegate = self;
-    self.bioTextField.layer.cornerRadius = 7.0;
-    self.bioTextField.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.bioTextField invalidateIntrinsicContentSize];
+    self.bioTextView = [[UITextView alloc]init];
+    self.bioTextView.delegate = self;
+    self.bioTextView.layer.cornerRadius = 7.0;
+    self.bioTextView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.bioTextView invalidateIntrinsicContentSize];
     
     NSString *bio = [[DataAccess singletonInstance] getBio];
     
       if (bio != nil) {
-          self.bioTextField.text = bio;
+          self.bioTextView.text = bio;
       }
     
     CGRect screen = [[UIScreen mainScreen] bounds];
@@ -323,24 +323,24 @@
     UIColor *color = [UIColor lightGrayColor];
     
     
-    self.bioTextField.backgroundColor = [UIColor whiteColor];
-    self.bioTextField.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.bioTextField.layer.borderWidth = 0.5f;
-    self.bioTextField.layer.masksToBounds = true;
+    self.bioTextView.backgroundColor = [UIColor whiteColor];
+    self.bioTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.bioTextView.layer.borderWidth = 0.5f;
+    self.bioTextView.layer.masksToBounds = true;
     
     NSMutableDictionary *viewsDictionary = [[NSMutableDictionary alloc] init];
-    [viewsDictionary setObject:self.bioTextField forKey:@"textField"];
+    [viewsDictionary setObject:self.bioTextView forKey:@"textField"];
     [viewsDictionary setObject:self.infoLabel forKey:@"label"];
     [viewsDictionary setObject:self.infoIcon forKey:@"side"];
     
-    [self.view addSubview:self.bioTextField];
+    [self.view addSubview:self.bioTextView];
     
     NSArray *hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[side]-xpad-[textField]" options:0 metrics:@{@"xpad" : [NSNumber numberWithFloat:xpad], @"width" : [NSNumber numberWithFloat:width]} views:viewsDictionary];
     NSArray *vConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-pad-[textField(height)]" options:0 metrics:@{@"height" : [NSNumber numberWithFloat:height], @"pad" : [NSNumber numberWithFloat:ypad]} views:viewsDictionary];
     
     [self.view addConstraints:hConstraints];
     
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bioTextField attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bioTextView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width]];
     
     [self.view addConstraints:vConstraints];
     
@@ -1003,13 +1003,40 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [self.bioTextField resignFirstResponder];
+    [textField resignFirstResponder];
     return YES;
 }
+
+
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    [[DataAccess singletonInstance] setBio:self.bioTextField.text];
-    [self.bioTextField resignFirstResponder];
-    [self.bioTextField endEditing:YES];
+    
+    if(textField == self.jobTextField) {
+        [[DataAccess singletonInstance] setWork:self.jobTextField.text];
+        [self.jobTextField resignFirstResponder];
+        [self.jobTextField endEditing:YES];
+    }
+    else if(textField == self.eduTextField) {
+        [[DataAccess singletonInstance] setEdu:self.eduTextField.text];
+        [self.eduTextField endEditing:YES];
+        [self.eduTextField resignFirstResponder];
+    }
+
+    
+ /*   if([self.jobTextField isFirstResponder]) {
+        [[DataAccess singletonInstance] setWork:self.jobTextField.text];
+        [self.jobTextField resignFirstResponder];
+        [self.jobTextField endEditing:YES];
+    }
+    else if([self.eduTextField isFirstResponder]) {
+        [[DataAccess singletonInstance] setEdu:self.eduTextField.text];
+        [self.eduTextField endEditing:YES];
+        [self.eduTextField resignFirstResponder];
+    }
+    else if([self.biotextView isFirstResponder]) {
+        [[DataAccess singletonInstance] setBio:self.biotextView.text];
+        [self.biotextView endEditing:YES];
+        [self.biotextView resignFirstResponder];
+    } */
 }
 
 - (void)touchesEnded: (NSSet *) touches withEvent: (UIEvent *) event {
@@ -1021,8 +1048,55 @@
                 [theTextField resignFirstResponder];
             }
         }
+        if ([objects isKindOfClass:[UITextView class]]) {
+            UITextView *theTextView = objects;
+            if ([objects isFirstResponder]) {
+                [theTextView resignFirstResponder];
+            }
+        }
     }
 }
+
+
+- (void)textViewDidChange {
+    //
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    [textView setReturnKeyType:UIReturnKeyDone];
+    return TRUE;
+}
+
+- (BOOL)textViewShouldClear:(UITextView *)textView{
+    return YES;
+}
+
+- (BOOL)textViewShouldReturn:(UITextView *)textView{
+    [textView resignFirstResponder];
+    return YES;
+}
+
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    
+
+    [[DataAccess singletonInstance] setBio:self.bioTextView.text];
+    [self.bioTextView endEditing:YES];
+    [self.bioTextView resignFirstResponder];
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    NSRange resultRange = [text rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet] options:NSBackwardsSearch];
+    if ([text length] == 1 && resultRange.location != NSNotFound) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
+}
+
+
+
 
 
 - (UIColor *) cdBlue {

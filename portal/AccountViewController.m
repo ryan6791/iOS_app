@@ -121,6 +121,30 @@
     }else {
         self.pickbackground5.image = [UIImage imageNamed:@"image_placeholder.png"];
     }
+    
+    NSString *info = [[DataAccess singletonInstance] getBio];
+    NSString *work = [[DataAccess singletonInstance] getWork];
+    NSString *edu = [[DataAccess singletonInstance] getEdu];
+
+    
+    
+    if (info != nil) {
+        self.infoTextLabel.text = info;
+    }else{
+        self.infoTextLabel.text = @"";
+    }
+    
+    if (work != nil) {
+        self.workTextLabel.text = work;
+    }else{
+        self.workTextLabel.text = @"";
+    }
+
+    if (edu != nil) {
+        self.eduTextLabel.text = edu;
+    }else{
+        self.eduTextLabel.text = @"";
+    }
 }
 
 - (void)styleNavBar {
@@ -761,7 +785,7 @@
         
     {
         
-        pad = 40;
+        pad = 35;
         height = 28;
         width = 55;
         
@@ -1448,8 +1472,6 @@
     [self.eduTextLabel invalidateIntrinsicContentSize];
     self.eduTextLabel.textColor = [UIColor lightGrayColor];
     
-    self.eduTextLabel.text = @"Florida State University";
-    
     
     self.eduTextLabel.layer.masksToBounds = NO;
     
@@ -1508,13 +1530,11 @@
     
     self.workLabel.layer.masksToBounds = NO;
     
-    //   self.nameLabel.layer.shouldRasterize = YES;
-    
     CGFloat pad = 0, pad2 = 0;
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
         self.workLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
-        pad = 25;
+        pad = 48;
         pad2 = 17;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
@@ -1541,7 +1561,7 @@
     
     [self.view addSubview:self.workLabel];
     
-    NSDictionary *viewsDictionary = @{@"label" : self.workLabel, @"side" : self.workIcon, @"top": self.eduTextLabel};
+    NSDictionary *viewsDictionary = @{@"label" : self.workLabel, @"side" : self.workIcon, @"top": self.eduLabel};
     NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
     [self.view addConstraints:constraint1];
     NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[side]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
@@ -1556,8 +1576,6 @@
     [self.workTextLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.workTextLabel invalidateIntrinsicContentSize];
     self.workTextLabel.textColor = [UIColor lightGrayColor];
-    
-    self.workTextLabel.text = @"Software Engineer at Nowhere";
     
     
     self.workTextLabel.layer.masksToBounds = NO;
@@ -1623,7 +1641,7 @@
     if([[DeviceManager sharedInstance] getIsIPhone5Screen])
     {
         self.infoLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
-        pad = 20;
+        pad = 36;
         pad2 = 20;
     }
     else if ([[DeviceManager sharedInstance] getIsIPhone6Screen])
@@ -1650,7 +1668,7 @@
     
     [self.view addSubview:self.infoLabel];
     
-    NSDictionary *viewsDictionary = @{@"label" : self.infoLabel, @"side" : self.infoIcon, @"top": self.workTextLabel};
+    NSDictionary *viewsDictionary = @{@"label" : self.infoLabel, @"side" : self.infoIcon, @"top": self.workLabel};
     NSArray *constraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad]} views:viewsDictionary];
     [self.view addConstraints:constraint1];
     NSArray *constraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[side]-pad-[label]" options:0 metrics:@{@"pad":[NSNumber numberWithFloat:pad2]} views:viewsDictionary];
@@ -1669,7 +1687,6 @@
     self.infoTextLabel.textColor = [UIColor lightGrayColor];
     self.infoTextLabel.backgroundColor = [UIColor clearColor];
     
-    self.infoTextLabel.text = @"Lover of long walks on the beach. Candlelit dinners under the stars. BE A GENTLEMAN. Not here for a one night stand. snapchat: @wineloverxx3";
     
     
     self.infoTextLabel.layer.masksToBounds = NO;
@@ -1867,10 +1884,7 @@
     
     [self.navigationController popViewControllerAnimated:NO];
     
-    
 }
-
-
 
 - (UIColor *) cdBlue {
     return [UIColor colorWithRed:0.00 green:0.59 blue:0.84 alpha:1.0];

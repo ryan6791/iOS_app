@@ -738,6 +738,7 @@
     
     // Create pager with items
     self.pagerController = [[DMPagerViewController alloc] initWithViewControllers: @[vc1,vc2,vc3]];
+    [self.pagerController setPageIndex:1 animated:NO];
     self.pagerController.useNavigationBar = YES;
     self.pagerController.navigationBar.style = DMPagerNavigationBarStyleClose;
     

@@ -359,6 +359,38 @@ static NSString * const kSettingOutgoingAvatar = @"kSettingOutgoingAvatar";
     return age;
 }
 
+-(void)setEdu:(NSString*)edu{
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:edu forKey:@"Education"];
+    
+}
+
+-(NSString*)getEdu{
+    
+    NSString *edu = [[NSUserDefaults standardUserDefaults]
+                     stringForKey:@"Education"];
+    
+    return edu;
+}
+
+
+-(void)setWork:(NSString *)work{
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:work forKey:@"Work"];
+    
+}
+
+-(NSString*)getWork{
+    
+    NSString *work = [[NSUserDefaults standardUserDefaults]
+                     stringForKey:@"Work"];
+    
+    return work;
+}
+
+
 #pragma - social networks
 
 -(void)setFacebook:(NSString*)network{
